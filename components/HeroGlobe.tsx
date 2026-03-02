@@ -150,7 +150,6 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     const raycaster = new THREE.Raycaster();
     const mouseNdc = new THREE.Vector2();
     const mouseTargetLocal = new THREE.Vector3(999, 999, 999);
-    let hasPointerInCanvas = false;
     let repelStrength = 0;
     let repelStrengthTarget = 0;
 
@@ -180,12 +179,19 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
 
-      hasPointerInCanvas = true;
       mouseNdc.set(x, y);
+      raycaster.setFromCamera(mouseNdc, camera);
+
+      const hit = raycaster.intersectObject(sphereMesh, false)[0];
+      if (hit) {
+        mouseTargetLocal.copy(points.worldToLocal(hit.point.clone()));
+        repelStrengthTarget = 1;
+      } else {
+        repelStrengthTarget = 0;
+      }
     };
 
     const onPointerLeave = () => {
-      hasPointerInCanvas = false;
       repelStrengthTarget = 0;
     };
 
@@ -228,7 +234,7 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     const repelRadius = globeRadius * 0.33;
     const repelRadiusSq = repelRadius * repelRadius;
     const repelForce = 64;
-    const returnForce = 5.6;
+    const returnForce = 1.4;
     const dampingAt60Fps = 0.9;
     const maxDisplacement = globeRadius * 0.22;
 
@@ -240,22 +246,10 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
       sphereMesh.rotation.copy(points.rotation);
       sphereMesh.updateMatrixWorld(true);
 
-      if (hasPointerInCanvas) {
-        raycaster.setFromCamera(mouseNdc, camera);
-        const hit = raycaster.intersectObject(sphereMesh, false)[0];
-        if (hit) {
-          mouseTargetLocal.copy(points.worldToLocal(hit.point.clone()));
-          repelStrengthTarget = 1;
-        } else {
-          repelStrengthTarget = 0;
-        }
-      } else {
-        repelStrengthTarget = 0;
-      }
-
       repelStrength += (repelStrengthTarget - repelStrength) * (1.0 - Math.pow(0.001, dt));
 
       const damping = Math.pow(dampingAt60Fps, dt * 60);
+      const cameraLocal = points.worldToLocal(camera.position.clone());
 
       for (let i = 0; i < simPositions.length; i += 3) {
         let px = simPositions[i];
@@ -289,7 +283,21 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
             const t = Math.max(0, Math.min(1, 1 - dist / repelRadius));
             const falloff = t * t * (3 - 2 * t);
             const centerBoost = 1 + 1.8 * t;
-            const force = repelForce * falloff * centerBoost * repelStrength;
+            const normalLen = Math.sqrt(rx * rx + ry * ry + rz * rz) + 1e-5;
+            const nx = rx / normalLen;
+            const ny = ry / normalLen;
+            const nz = rz / normalLen;
+
+            const viewX = cameraLocal.x - px;
+            const viewY = cameraLocal.y - py;
+            const viewZ = cameraLocal.z - pz;
+            const viewLen = Math.sqrt(viewX * viewX + viewY * viewY + viewZ * viewZ) + 1e-5;
+            const vxn = viewX / viewLen;
+            const vyn = viewY / viewLen;
+            const vzn = viewZ / viewLen;
+
+            const facing = Math.max(0, nx * vxn + ny * vyn + nz * vzn);
+            const force = repelForce * falloff * centerBoost * repelStrength * facing;
             fx += dirX * force;
             fy += dirY * force;
             fz += dirZ * force;
