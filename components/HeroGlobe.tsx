@@ -39,7 +39,7 @@ function fibonacciSpherePoints(count: number, radius: number) {
     base[i * 3 + 1] = py;
     base[i * 3 + 2] = pz;
 
-    sizes[i] = 0.195;
+    sizes[i] = 0.2925;
     noise[i] = Math.random();
 
     const rx = Math.random() * 2 - 1;
@@ -163,6 +163,22 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     sphereMesh.updateMatrixWorld(true);
     scene.add(sphereMesh);
 
+    const syncSpherePosition = () => {
+      sphereMesh.position.copy(points.position);
+      sphereMesh.updateMatrixWorld(true);
+    };
+
+    const setSphereLayout = () => {
+      if (window.innerWidth <= 980) {
+        points.position.set(0, -1.05, 0);
+        uniforms.uOpacity.value = 0.58;
+      } else {
+        points.position.set(1.82, 0.02, 0);
+        uniforms.uOpacity.value = 1;
+      }
+      syncSpherePosition();
+    };
+
     const setSize = () => {
       const rect = globeWrapEl.getBoundingClientRect();
       const w = rect.width;
@@ -170,6 +186,7 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
+      setSphereLayout();
     };
 
     setSize();
@@ -230,7 +247,7 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     const repelRadius = globeRadius * 0.33;
     const repelRadiusSq = repelRadius * repelRadius;
     const repelForce = 64;
-    const returnForce = 5.6;
+    const returnForce = 11.2;
     const dampingAt60Fps = 0.9;
     const maxDisplacement = globeRadius * 0.22;
 
