@@ -74,7 +74,7 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     camera.position.set(0, 0, 7.2);
 
     const globeRadius = 1.18;
-    const dotCount = 2400;
+    const dotCount = 4800;
     const { positions, basePositions, sizes, noise, rand } = fibonacciSpherePoints(dotCount, globeRadius);
 
     const geometry = new THREE.BufferGeometry();
