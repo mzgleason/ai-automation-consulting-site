@@ -84,10 +84,12 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     geometry.setAttribute("aNoise", new THREE.BufferAttribute(noise, 1));
     geometry.setAttribute("aRand", new THREE.BufferAttribute(rand, 3));
 
+    const positionAttr = geometry.getAttribute("position") as THREE.BufferAttribute;
+    const simPositions = positionAttr.array as Float32Array;
+    const restPositions = basePositions;
+    const velocities = new Float32Array(simPositions.length);
+
     const uniforms = {
-      uMouse3D: { value: new THREE.Vector3(999, 999, 999) },
-      uHoverRadius: { value: 0.36 },
-      uHoverStrength: { value: 0.55 },
       uScatter: { value: 0 },
       uScrollDissolve: { value: 0 },
       uOpacity: { value: 1 }
@@ -98,9 +100,6 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
       depthWrite: false,
       uniforms,
       vertexShader: `
-        uniform vec3  uMouse3D;
-        uniform float uHoverRadius;
-        uniform float uHoverStrength;
         uniform float uScatter;
         uniform float uScrollDissolve;
         uniform float uOpacity;
@@ -113,13 +112,8 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
         varying float vAlpha;
 
         void main() {
-          vec3 p = aBase;
-
+          vec3 p = position;
           vec3 normal = normalize(aBase);
-
-          float d = distance(p, uMouse3D);
-          float hover = smoothstep(uHoverRadius, 0.0, d);
-          p += normalize(p - uMouse3D + vec3(0.0001)) * hover * uHoverStrength;
 
           float rnd = aNoise;
           p += aRand * (uScatter * (0.6 + rnd * 1.2));
@@ -155,7 +149,11 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
 
     const raycaster = new THREE.Raycaster();
     const mouseNdc = new THREE.Vector2();
-    const mouseTarget = new THREE.Vector3(999, 999, 999);
+    const mouseTargetLocal = new THREE.Vector3(999, 999, 999);
+    let hasPointerInCanvas = false;
+    let repelStrength = 0;
+    let repelStrengthTarget = 0;
+
     const sphereMesh = new THREE.Mesh(
       new THREE.SphereGeometry(globeRadius, 32, 16),
       new THREE.MeshBasicMaterial({ visible: false })
@@ -178,37 +176,17 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     resizeObserver.observe(globeWrapEl);
 
     const onPointerMove = (e: PointerEvent) => {
-      const rect = overlayEl.getBoundingClientRect();
+      const rect = canvas.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
 
-      const centerNdc = points.position.clone().project(camera);
-      const centerX = ((centerNdc.x + 1) * 0.5) * rect.width + rect.left;
-      const centerY = ((1 - centerNdc.y) * 0.5) * rect.height + rect.top;
-      const activationRadius = Math.min(rect.width, rect.height) * 0.34;
-      const dx = e.clientX - centerX;
-      const dy = e.clientY - centerY;
-      const inActivationZone = dx * dx + dy * dy <= activationRadius * activationRadius;
-
-      if (!inActivationZone) {
-        mouseTarget.set(999, 999, 999);
-        return;
-      }
-
+      hasPointerInCanvas = true;
       mouseNdc.set(x, y);
-      raycaster.setFromCamera(mouseNdc, camera);
-
-      const hit = raycaster.intersectObject(sphereMesh, false)[0];
-      if (hit) {
-        const local = points.worldToLocal(hit.point.clone());
-        mouseTarget.copy(local);
-      } else {
-        mouseTarget.set(999, 999, 999);
-      }
     };
 
     const onPointerLeave = () => {
-      mouseTarget.set(999, 999, 999);
+      hasPointerInCanvas = false;
+      repelStrengthTarget = 0;
     };
 
     let scatterTarget = 0;
@@ -247,6 +225,13 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
     let last = performance.now();
     let rafId = 0;
 
+    const repelRadius = globeRadius * 0.33;
+    const repelRadiusSq = repelRadius * repelRadius;
+    const repelForce = 64;
+    const returnForce = 5.6;
+    const dampingAt60Fps = 0.9;
+    const maxDisplacement = globeRadius * 0.22;
+
     const animate = (now: number) => {
       const dt = Math.min((now - last) / 1000, 0.033);
       last = now;
@@ -255,7 +240,111 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
       sphereMesh.rotation.copy(points.rotation);
       sphereMesh.updateMatrixWorld(true);
 
-      uniforms.uMouse3D.value.copy(mouseTarget);
+      if (hasPointerInCanvas) {
+        raycaster.setFromCamera(mouseNdc, camera);
+        const hit = raycaster.intersectObject(sphereMesh, false)[0];
+        if (hit) {
+          mouseTargetLocal.copy(points.worldToLocal(hit.point.clone()));
+          repelStrengthTarget = 1;
+        } else {
+          repelStrengthTarget = 0;
+        }
+      } else {
+        repelStrengthTarget = 0;
+      }
+
+      repelStrength += (repelStrengthTarget - repelStrength) * (1.0 - Math.pow(0.001, dt));
+
+      const damping = Math.pow(dampingAt60Fps, dt * 60);
+
+      for (let i = 0; i < simPositions.length; i += 3) {
+        let px = simPositions[i];
+        let py = simPositions[i + 1];
+        let pz = simPositions[i + 2];
+
+        let vx = velocities[i];
+        let vy = velocities[i + 1];
+        let vz = velocities[i + 2];
+
+        const rx = restPositions[i];
+        const ry = restPositions[i + 1];
+        const rz = restPositions[i + 2];
+
+        let fx = (rx - px) * returnForce;
+        let fy = (ry - py) * returnForce;
+        let fz = (rz - pz) * returnForce;
+
+        if (repelStrength > 0.001) {
+          const dx = px - mouseTargetLocal.x;
+          const dy = py - mouseTargetLocal.y;
+          const dz = pz - mouseTargetLocal.z;
+          const distSq = dx * dx + dy * dy + dz * dz;
+
+          if (distSq < repelRadiusSq) {
+            const dist = Math.sqrt(distSq) + 1e-5;
+            const invDist = 1 / dist;
+            const dirX = dx * invDist;
+            const dirY = dy * invDist;
+            const dirZ = dz * invDist;
+            const t = Math.max(0, Math.min(1, 1 - dist / repelRadius));
+            const falloff = t * t * (3 - 2 * t);
+            const centerBoost = 1 + 1.8 * t;
+            const force = repelForce * falloff * centerBoost * repelStrength;
+            fx += dirX * force;
+            fy += dirY * force;
+            fz += dirZ * force;
+          }
+        }
+
+        vx += fx * dt;
+        vy += fy * dt;
+        vz += fz * dt;
+
+        vx *= damping;
+        vy *= damping;
+        vz *= damping;
+
+        px += vx * dt;
+        py += vy * dt;
+        pz += vz * dt;
+
+        const offX = px - rx;
+        const offY = py - ry;
+        const offZ = pz - rz;
+        const offLenSq = offX * offX + offY * offY + offZ * offZ;
+        const maxDisplacementSq = maxDisplacement * maxDisplacement;
+        if (offLenSq > maxDisplacementSq) {
+          const offLen = Math.sqrt(offLenSq) + 1e-5;
+          const scale = maxDisplacement / offLen;
+          px = rx + offX * scale;
+          py = ry + offY * scale;
+          pz = rz + offZ * scale;
+
+          const nx = offX / offLen;
+          const ny = offY / offLen;
+          const nz = offZ / offLen;
+          const radialVelocity = vx * nx + vy * ny + vz * nz;
+          if (radialVelocity > 0) {
+            vx -= nx * radialVelocity;
+            vy -= ny * radialVelocity;
+            vz -= nz * radialVelocity;
+          }
+
+          vx *= 0.65;
+          vy *= 0.65;
+          vz *= 0.65;
+        }
+
+        velocities[i] = vx;
+        velocities[i + 1] = vy;
+        velocities[i + 2] = vz;
+
+        simPositions[i] = px;
+        simPositions[i + 1] = py;
+        simPositions[i + 2] = pz;
+      }
+
+      positionAttr.needsUpdate = true;
 
       uniforms.uScatter.value += (scatterTarget - uniforms.uScatter.value) * (1.0 - Math.pow(0.001, dt));
 
