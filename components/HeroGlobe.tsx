@@ -138,7 +138,7 @@ export default function HeroGlobe({ heroRef, overlayRef, globeWrapRef, canvasRef
           float alpha = circle * vAlpha;
           if(alpha < 0.01) discard;
 
-          gl_FragColor = vec4(vec3(0.5373, 0.8118, 0.9412), alpha);
+          gl_FragColor = vec4(vec3(0.6667, 0.4745, 0.8863), alpha);
         }
       `
     });
