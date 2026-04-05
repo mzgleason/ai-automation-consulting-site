@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import HeroGlobe from "@/components/HeroGlobe";
 
@@ -19,9 +20,9 @@ export default function HomeHero() {
         <div className="hero__container">
           <div className="hero__text">
             <h1>A digital product studio that turns complexity into beautiful simplicity.</h1>
-            <a className="btn" href="/services">
+            <Link className="btn" href="/services">
               How we can help you <span aria-hidden="true">-&gt;</span>
-            </a>
+            </Link>
           </div>
 
           <div className="hero__separatorWrap">
