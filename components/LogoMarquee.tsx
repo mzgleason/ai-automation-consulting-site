@@ -1,5 +1,6 @@
-﻿"use client";
+"use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 type Logo = {
@@ -37,7 +38,7 @@ export default function LogoMarquee({ logos = defaultLogos }: LogoMarqueeProps) 
             key={logo.alt}
             className="flex h-14 items-center justify-center rounded-md border border-white/15 bg-white/5 px-4"
           >
-            <img src={logo.src} alt={logo.alt} className="h-10 w-auto opacity-85" loading="lazy" />
+            <Image src={logo.src} alt={logo.alt} width={120} height={40} className="h-10 w-auto opacity-85" />
           </div>
         ))}
       </div>
@@ -60,7 +61,7 @@ export default function LogoMarquee({ logos = defaultLogos }: LogoMarqueeProps) 
       >
         {loop.map((logo, idx) => (
           <div key={`${logo.alt}-${idx}`} className="flex h-14 w-[140px] items-center justify-center">
-            <img src={logo.src} alt={logo.alt} className="h-10 w-auto opacity-85" loading="lazy" />
+            <Image src={logo.src} alt={logo.alt} width={120} height={40} className="h-10 w-auto opacity-85" />
           </div>
         ))}
       </motion.div>

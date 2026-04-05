@@ -1,0 +1,29 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="#0B1118"/>
+  <rect x="44" y="44" width="1112" height="632" rx="32" fill="#101822" stroke="#243242"/>
+  <text x="84" y="116" fill="#8BD3FF" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">AI-DRIVEN CONTENT WORKFLOW</text>
+  <text x="84" y="164" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="48" font-weight="700">From weekly input to reviewed post</text>
+  <rect x="84" y="236" width="190" height="116" rx="24" fill="#16202C" stroke="#33506B"/>
+  <rect x="318" y="236" width="190" height="116" rx="24" fill="#16202C" stroke="#33506B"/>
+  <rect x="552" y="236" width="190" height="116" rx="24" fill="#16202C" stroke="#33506B"/>
+  <rect x="786" y="236" width="190" height="116" rx="24" fill="#16202C" stroke="#33506B"/>
+  <rect x="1010" y="236" width="106" height="116" rx="24" fill="#16202C" stroke="#33506B"/>
+  <text x="112" y="286" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Weekly</text>
+  <text x="112" y="320" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="22">Input capture</text>
+  <text x="348" y="286" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Story</text>
+  <text x="348" y="320" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="22">Extraction</text>
+  <text x="581" y="286" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Draft</text>
+  <text x="581" y="320" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="22">Narrative shaping</text>
+  <text x="814" y="286" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Review</text>
+  <text x="814" y="320" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="22">Human quality gate</text>
+  <text x="1028" y="286" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Ship</text>
+  <text x="1028" y="320" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="22">Publish</text>
+  <path d="M274 294H318" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M508 294H552" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M742 294H786" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M976 294H1010" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <rect x="84" y="432" width="1032" height="164" rx="28" fill="#0D151E" stroke="#22384D"/>
+  <text x="120" y="486" fill="#8BD3FF" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">WHY IT WORKED</text>
+  <text x="120" y="532" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="30" font-weight="700">The leverage came from workflow structure, not one giant prompt.</text>
+  <text x="120" y="574" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="22">Explicit stages, review gates, and observable handoffs reduced friction and improved consistency.</text>
+</svg>

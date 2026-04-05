@@ -1,0 +1,21 @@
+<svg width="1440" height="840" viewBox="0 0 1440 840" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="840" rx="40" fill="#0A1017"/>
+  <rect x="82" y="84" width="554" height="672" rx="30" fill="#101822" stroke="#243242"/>
+  <text x="122" y="142" fill="#8BD3FF" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">INTAKE LOGIC</text>
+  <text x="122" y="206" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="48" font-weight="700">Guide early conversations</text>
+  <text x="122" y="252" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="24">Collect the missing information that moves the process forward.</text>
+  <rect x="122" y="316" width="474" height="80" rx="22" fill="#16202C"/>
+  <rect x="122" y="422" width="474" height="80" rx="22" fill="#16202C"/>
+  <rect x="122" y="528" width="474" height="80" rx="22" fill="#16202C"/>
+  <text x="154" y="366" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Structured missing-info capture</text>
+  <text x="154" y="472" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Explicit secure-channel boundaries</text>
+  <text x="154" y="578" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Human escalation for complex cases</text>
+  <rect x="742" y="146" width="576" height="548" rx="34" fill="#101822" stroke="#243242"/>
+  <text x="786" y="216" fill="#8BD3FF" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">ROUTING VIEW</text>
+  <rect x="786" y="270" width="488" height="92" rx="24" fill="#0D151E" stroke="#22384D"/>
+  <rect x="786" y="390" width="488" height="92" rx="24" fill="#0D151E" stroke="#22384D"/>
+  <rect x="786" y="510" width="488" height="92" rx="24" fill="#0D151E" stroke="#22384D"/>
+  <text x="822" y="324" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Complete details and route next step</text>
+  <text x="822" y="444" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Missing fields trigger targeted follow-up</text>
+  <text x="822" y="564" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Qualified lead arrives with stronger context</text>
+</svg>

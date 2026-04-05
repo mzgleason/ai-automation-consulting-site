@@ -18,9 +18,13 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://irisautomation.co"),
-  title: "Iris Automation Consulting",
-  description: "Automation systems for local small business operators.",
+  metadataBase: new URL("https://markgleason.ai"),
+  title: {
+    default: "Mark Gleason | Builder-led AI systems",
+    template: "%s | Mark Gleason"
+  },
+  description:
+    "Builder-led site for AI workflows, prototypes, product systems, and practical writing about turning ideas into systems that ship.",
   alternates: { canonical: "/" }
 };
 
@@ -33,7 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${display.variable} ${body.variable}`}>
         <SiteHeader />
-        <main>{children}</main>
+        {children}
         <SiteFooter />
         <Analytics />
       </body>

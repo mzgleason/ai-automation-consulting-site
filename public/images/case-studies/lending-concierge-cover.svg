@@ -1,0 +1,19 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="#0B1118"/>
+  <rect x="42" y="42" width="1116" height="636" rx="32" fill="#101822" stroke="#243242"/>
+  <text x="84" y="114" fill="#8BD3FF" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">LENDING CONCIERGE FLOW</text>
+  <text x="84" y="164" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="48" font-weight="700">AI intake with explicit human handoff</text>
+  <rect x="84" y="230" width="1032" height="268" rx="30" fill="#0D151E" stroke="#22384D"/>
+  <circle cx="220" cy="364" r="58" fill="#16202C" stroke="#54B6F2" stroke-width="3"/>
+  <circle cx="448" cy="364" r="58" fill="#16202C" stroke="#54B6F2" stroke-width="3"/>
+  <circle cx="676" cy="364" r="58" fill="#16202C" stroke="#54B6F2" stroke-width="3"/>
+  <circle cx="904" cy="364" r="58" fill="#16202C" stroke="#54B6F2" stroke-width="3"/>
+  <path d="M278 364H390" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M506 364H618" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M734 364H846" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <text x="172" y="372" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="22" font-weight="700">Lead</text>
+  <text x="407" y="372" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="22" font-weight="700">Collect</text>
+  <text x="648" y="372" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="22" font-weight="700">Route</text>
+  <text x="871" y="372" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="22" font-weight="700">Human</text>
+  <text x="84" y="568" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="24">The system reduced repetitive intake work while protecting trust, boundaries, and expert time.</text>
+</svg>

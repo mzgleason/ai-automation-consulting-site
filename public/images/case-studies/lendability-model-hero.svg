@@ -1,0 +1,15 @@
+<svg width="1440" height="840" viewBox="0 0 1440 840" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="840" rx="40" fill="#0A1017"/>
+  <circle cx="1224" cy="160" r="140" fill="#102B3B"/>
+  <circle cx="1224" cy="160" r="78" fill="#15384B" stroke="#8BD3FF" stroke-width="2"/>
+  <rect x="82" y="86" width="1276" height="668" rx="34" fill="#101822" stroke="#243242"/>
+  <text x="128" y="152" fill="#8BD3FF" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">MODEL OPS VIEW</text>
+  <text x="128" y="214" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="48" font-weight="700">A lendability model wrapped in repeatable evaluation</text>
+  <rect x="128" y="282" width="1184" height="380" rx="30" fill="#0D151E" stroke="#22384D"/>
+  <polyline points="208,526 338,468 468,492 598,418 728,446 858,354 988,388 1118,312" fill="none" stroke="#8BD3FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="208" y1="604" x2="1118" y2="604" stroke="#22384D" stroke-width="2"/>
+  <line x1="208" y1="350" x2="208" y2="604" stroke="#22384D" stroke-width="2"/>
+  <rect x="888" y="342" width="370" height="214" rx="26" fill="#16202C"/>
+  <text x="924" y="402" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="28" font-weight="700">Validation before rollout</text>
+  <text x="924" y="452" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="24">Quiet deployment reduced risk and made comparison more credible.</text>
+</svg>

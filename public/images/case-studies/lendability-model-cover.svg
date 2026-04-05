@@ -1,0 +1,22 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="#0B1118"/>
+  <rect x="44" y="44" width="1112" height="632" rx="32" fill="#101822" stroke="#243242"/>
+  <text x="84" y="116" fill="#8BD3FF" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">REPRODUCIBLE TRAINING SYSTEM</text>
+  <text x="84" y="164" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="48" font-weight="700">Build the model and the process around it</text>
+  <rect x="84" y="232" width="1032" height="292" rx="30" fill="#0D151E" stroke="#22384D"/>
+  <rect x="124" y="292" width="180" height="172" rx="24" fill="#16202C"/>
+  <rect x="342" y="292" width="180" height="172" rx="24" fill="#16202C"/>
+  <rect x="560" y="292" width="180" height="172" rx="24" fill="#16202C"/>
+  <rect x="778" y="292" width="180" height="172" rx="24" fill="#16202C"/>
+  <rect x="996" y="292" width="80" height="172" rx="24" fill="#16202C"/>
+  <text x="154" y="366" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="24" font-weight="700">Data</text>
+  <text x="372" y="366" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="24" font-weight="700">Train</text>
+  <text x="584" y="366" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="24" font-weight="700">Evaluate</text>
+  <text x="812" y="366" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="24" font-weight="700">Validate</text>
+  <text x="1006" y="366" fill="#F2F5F7" font-family="Arial, sans-serif" font-size="24" font-weight="700">Iterate</text>
+  <path d="M304 378H342" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M522 378H560" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M740 378H778" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M958 378H996" stroke="#54B6F2" stroke-width="4" stroke-linecap="round"/>
+  <text x="84" y="594" fill="#AAB5BF" font-family="Arial, sans-serif" font-size="24">The system made future retraining and comparison easier instead of treating the model as a one-off artifact.</text>
+</svg>

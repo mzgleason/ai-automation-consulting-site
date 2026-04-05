@@ -1,12 +1,11 @@
 import Link from "next/link";
 
 const navItems = [
-  { href: "/services", label: "Services" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/industries", label: "Industries" },
-  { href: "/locations", label: "Locations" },
-  { href: "/case-approach", label: "Case Approach" },
-  { href: "/book", label: "Book" }
+  { href: "/projects", label: "Projects" },
+  { href: "/writing", label: "Writing" },
+  { href: "/work-with-me", label: "Work With Me" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" }
 ];
 
 export function SiteHeader() {
@@ -14,7 +13,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand">
-          Iris Automation Consulting
+          Mark Gleason
         </Link>
         <nav aria-label="Primary">
           <ul className="nav-list">
@@ -25,8 +24,8 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <Link href="/book" className="button button-sm button-accent">
-          Book Discovery Call
+        <Link href="/work-with-me" className="button button-sm button-accent">
+          Work With Me
         </Link>
       </div>
     </header>
