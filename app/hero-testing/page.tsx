@@ -1,4 +1,4 @@
-import { BuilderHero } from "@/components/BuilderHero";
+import HeroTestingHero from "@/components/HeroTestingHero";
 import { getPageContent } from "@/lib/content";
 
 export const metadata = {
@@ -9,8 +9,8 @@ export default async function HeroTestingPage() {
   const homePage = await getPageContent("home");
 
   return (
-    <main className="home-page">
-      <BuilderHero title={homePage.title} description={homePage.description} />
+    <main>
+      <HeroTestingHero title={homePage.title} description={homePage.description} />
     </main>
   );
 }
