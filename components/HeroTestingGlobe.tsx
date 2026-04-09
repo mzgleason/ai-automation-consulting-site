@@ -77,9 +77,9 @@ export default function HeroTestingGlobe({
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    camera.position.set(0, 0, 7.2);
+    camera.position.set(0, 0, 10.8);
 
-    const globeRadius = 1.18;
+    const globeRadius = 2.36;
     const dotCount = 4800;
     const { positions, basePositions, sizes, noise, rand } = fibonacciSpherePoints(dotCount, globeRadius);
 
@@ -98,7 +98,8 @@ export default function HeroTestingGlobe({
     const uniforms = {
       uScatter: { value: 0 },
       uScrollDissolve: { value: 0 },
-      uOpacity: { value: 1 }
+      uOpacity: { value: 1 },
+      uColor: { value: new THREE.Color("#7f97a8") }
     };
 
     const material = new THREE.ShaderMaterial({
@@ -109,6 +110,7 @@ export default function HeroTestingGlobe({
         uniform float uScatter;
         uniform float uScrollDissolve;
         uniform float uOpacity;
+        uniform vec3 uColor;
 
         attribute vec3 aBase;
         attribute float aSize;
@@ -135,6 +137,7 @@ export default function HeroTestingGlobe({
       fragmentShader: `
         precision highp float;
         varying float vAlpha;
+        uniform vec3 uColor;
 
         void main() {
           vec2 uv = gl_PointCoord.xy - 0.5;
@@ -144,7 +147,7 @@ export default function HeroTestingGlobe({
           float alpha = circle * vAlpha;
           if (alpha < 0.01) discard;
 
-          gl_FragColor = vec4(vec3(0.06), alpha);
+          gl_FragColor = vec4(uColor, alpha);
         }
       `
     });
@@ -155,7 +158,9 @@ export default function HeroTestingGlobe({
 
     const raycaster = new THREE.Raycaster();
     const mouseNdc = new THREE.Vector2();
-    const mouseTargetLocal = new THREE.Vector3(999, 999, 999);
+    let hasPointer = false;
+    const rayOriginLocal = new THREE.Vector3(999, 999, 999);
+    const rayDirectionLocal = new THREE.Vector3(0, 0, -1);
     let repelStrength = 0;
     let repelStrengthTarget = 0;
 
@@ -186,18 +191,11 @@ export default function HeroTestingGlobe({
       const y = -(((event.clientY - rect.top) / rect.height) * 2 - 1);
 
       mouseNdc.set(x, y);
-      raycaster.setFromCamera(mouseNdc, camera);
-
-      const hit = raycaster.intersectObject(sphereMesh, false)[0];
-      if (hit) {
-        mouseTargetLocal.copy(points.worldToLocal(hit.point.clone()));
-        repelStrengthTarget = 1;
-      } else {
-        repelStrengthTarget = 0;
-      }
+      hasPointer = true;
     };
 
     const onPointerLeave = () => {
+      hasPointer = false;
       repelStrengthTarget = 0;
     };
 
@@ -237,12 +235,12 @@ export default function HeroTestingGlobe({
     let last = performance.now();
     let rafId = 0;
 
-    const repelRadius = globeRadius * 0.33;
+    const repelRadius = globeRadius * 0.22;
     const repelRadiusSq = repelRadius * repelRadius;
-    const repelForce = 64;
-    const returnForce = 1.4;
-    const dampingAt60Fps = 0.9;
-    const maxDisplacement = globeRadius * 0.22;
+    const repelForce = 56;
+    const returnForce = 56;
+    const dampingAt60Fps = 0.5;
+    const maxDisplacement = globeRadius * 0.1;
 
     const animate = (now: number) => {
       const dt = Math.min((now - last) / 1000, 0.033);
@@ -253,10 +251,24 @@ export default function HeroTestingGlobe({
       sphereMesh.rotation.copy(points.rotation);
       sphereMesh.updateMatrixWorld(true);
 
+      if (hasPointer) {
+        raycaster.setFromCamera(mouseNdc, camera);
+        const hit = raycaster.intersectObject(sphereMesh, false)[0];
+
+        if (hit) {
+          const localOrigin = points.worldToLocal(raycaster.ray.origin.clone());
+          const localRayPoint = points.worldToLocal(raycaster.ray.origin.clone().add(raycaster.ray.direction.clone()));
+          rayOriginLocal.copy(localOrigin);
+          rayDirectionLocal.copy(localRayPoint.sub(localOrigin).normalize());
+          repelStrengthTarget = 1;
+        } else {
+          repelStrengthTarget = 0;
+        }
+      }
+
       repelStrength += (repelStrengthTarget - repelStrength) * (1.0 - Math.pow(0.001, dt));
 
       const damping = Math.pow(dampingAt60Fps, dt * 60);
-      const cameraLocal = points.worldToLocal(camera.position.clone());
 
       for (let i = 0; i < simPositions.length; i += 3) {
         let px = simPositions[i];
@@ -276,38 +288,38 @@ export default function HeroTestingGlobe({
         let fz = (rz - pz) * returnForce;
 
         if (repelStrength > 0.001) {
-          const dx = px - mouseTargetLocal.x;
-          const dy = py - mouseTargetLocal.y;
-          const dz = pz - mouseTargetLocal.z;
-          const distSq = dx * dx + dy * dy + dz * dz;
+          const fromRayOriginX = px - rayOriginLocal.x;
+          const fromRayOriginY = py - rayOriginLocal.y;
+          const fromRayOriginZ = pz - rayOriginLocal.z;
+          const projection =
+            fromRayOriginX * rayDirectionLocal.x +
+            fromRayOriginY * rayDirectionLocal.y +
+            fromRayOriginZ * rayDirectionLocal.z;
 
-          if (distSq < repelRadiusSq) {
-            const dist = Math.sqrt(distSq) + 1e-5;
-            const invDist = 1 / dist;
-            const dirX = dx * invDist;
-            const dirY = dy * invDist;
-            const dirZ = dz * invDist;
-            const t = Math.max(0, Math.min(1, 1 - dist / repelRadius));
-            const falloff = t * t * (3 - 2 * t);
-            const centerBoost = 1 + 1.8 * t;
-            const normalLen = Math.sqrt(rx * rx + ry * ry + rz * rz) + 1e-5;
-            const nx = rx / normalLen;
-            const ny = ry / normalLen;
-            const nz = rz / normalLen;
+          if (projection > 0) {
+            const closestX = rayOriginLocal.x + rayDirectionLocal.x * projection;
+            const closestY = rayOriginLocal.y + rayDirectionLocal.y * projection;
+            const closestZ = rayOriginLocal.z + rayDirectionLocal.z * projection;
+            const dx = px - closestX;
+            const dy = py - closestY;
+            const dz = pz - closestZ;
+            const distSq = dx * dx + dy * dy + dz * dz;
 
-            const viewX = cameraLocal.x - px;
-            const viewY = cameraLocal.y - py;
-            const viewZ = cameraLocal.z - pz;
-            const viewLen = Math.sqrt(viewX * viewX + viewY * viewY + viewZ * viewZ) + 1e-5;
-            const vxn = viewX / viewLen;
-            const vyn = viewY / viewLen;
-            const vzn = viewZ / viewLen;
-
-            const facing = Math.max(0, nx * vxn + ny * vyn + nz * vzn);
-            const force = repelForce * falloff * centerBoost * repelStrength * facing;
-            fx += dirX * force;
-            fy += dirY * force;
-            fz += dirZ * force;
+            if (distSq < repelRadiusSq) {
+              const dist = Math.sqrt(distSq) + 1e-5;
+              const invDist = 1 / dist;
+              const normalLen = Math.sqrt(rx * rx + ry * ry + rz * rz) + 1e-5;
+              const dirX = dist > 0.002 ? dx * invDist : rx / normalLen;
+              const dirY = dist > 0.002 ? dy * invDist : ry / normalLen;
+              const dirZ = dist > 0.002 ? dz * invDist : rz / normalLen;
+              const t = Math.max(0, Math.min(1, 1 - dist / repelRadius));
+              const falloff = t * t * (3 - 2 * t);
+              const centerBoost = 1 + 1.8 * t;
+              const force = repelForce * falloff * centerBoost * repelStrength;
+              fx += dirX * force;
+              fy += dirY * force;
+              fz += dirZ * force;
+            }
           }
         }
 
