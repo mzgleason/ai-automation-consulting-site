@@ -13,22 +13,22 @@ export type OfferEntry = {
 export const offers: OfferEntry[] = [
   {
     slug: "ai-workflow-design",
-    title: "AI Workflow Design",
+    title: "Workflow Improvement Plan",
     eyebrow: "Offer 01",
     summary:
-      "For businesses or teams that want to structure repetitive, manual, or fuzzy work into a better AI-enabled workflow.",
-    fit: "Best fit when the bottleneck is operational friction, inconsistent handoffs, or work that should be routed, reviewed, and improved instead of handled from scratch every time.",
+      "Manual work is slowing the team down, handoffs are inconsistent, and important tasks rely too much on people figuring it out each time.",
+    fit: "Best fit when a workflow is eating time, quality is uneven, or the team needs a clearer way to route, review, and complete recurring work.",
     outcomes: [
-      "A clearer workflow map with real decision points",
+      "A faster, more reliable workflow with clearer ownership and less manual drag",
       "A system design that respects human review and failure cases",
       "A practical implementation roadmap instead of vague automation ideas"
     ],
     deliverables: [
-      "Workflow map",
-      "Recommended system design",
-      "Human-in-the-loop design",
-      "Tool selection or build recommendation",
-      "Implementation roadmap",
+      "A workflow map that shows where AI helps and where people stay in control",
+      "A recommended system design for routing, review, and edge cases",
+      "An implementation plan with tool and build recommendations",
+      "Human review checkpoints",
+      "Operational rollout roadmap",
       "Optional prototype or pilot"
     ],
     examples: [
@@ -44,21 +44,21 @@ export const offers: OfferEntry[] = [
   },
   {
     slug: "prototype-sprint",
-    title: "Prototype Sprint",
+    title: "Pilot or Prototype Sprint",
     eyebrow: "Offer 02",
     summary:
-      "For founders or operators who need to move from vague idea to testable product, workflow, or proof of concept quickly.",
-    fit: "Best fit when the opportunity feels promising but the riskiest assumptions, workflow shape, or product direction still need to be pressure-tested with a real artifact.",
+      "You have an AI idea with potential, but it is still too vague to fund, staff, or build with confidence.",
+    fit: "Best fit when the opportunity seems real but the product direction, workflow shape, or biggest risk needs to be tested with something concrete.",
     outcomes: [
-      "A tighter product or workflow direction",
+      "A clearer go, no-go, or next-step decision based on something real instead of a slide or concept",
       "A scoped proof of concept or MVP path",
       "A better handoff into build, iteration, or internal alignment"
     ],
     deliverables: [
-      "Problem framing",
-      "Prototype plan",
-      "Scoped MVP or proof of concept",
-      "User flow or workflow design",
+      "A tight problem definition and prototype plan",
+      "A scoped proof of concept, MVP direction, or workflow prototype",
+      "A user flow or operating flow the team can react to",
+      "Decision-ready assumptions and risks",
       "Technical handoff or implementation support"
     ],
     examples: [
@@ -73,22 +73,21 @@ export const offers: OfferEntry[] = [
   },
   {
     slug: "advisory-build-support",
-    title: "Advisory + Build Support",
+    title: "Ongoing AI Advisory",
     eyebrow: "Offer 03",
     summary:
-      "For teams that need a partner who can help shape the right AI opportunity and stay involved as it gets built.",
-    fit: "Best fit when the team already knows AI matters, but needs sharper prioritization, stronger evaluation thinking, and an operator who can stay close to the work as decisions compound.",
+      "You are already moving, but priorities are blurry, decisions keep reopening, or the team needs stronger judgment as the work gets built.",
+    fit: "Best fit when AI is already on the roadmap and the team needs help prioritizing, making better build decisions, and keeping the work tied to real business value.",
     outcomes: [
+      "Less wasted effort, sharper priorities, and stronger decisions while the work is in motion",
       "Better sequencing on what to build now versus later",
-      "Stronger product and workflow decisions during implementation",
       "More disciplined acceptance criteria, iteration, and delivery support"
     ],
     deliverables: [
-      "Opportunity framing",
-      "Feature or system prioritization",
-      "Workflow and product decisions",
-      "Acceptance criteria and evaluation thinking",
-      "Build partner support",
+      "Priority calls on where AI should and should not be used",
+      "Feature, workflow, and system decisions during implementation",
+      "Clear acceptance criteria and quality checks",
+      "Builder-side feedback on tradeoffs and sequencing",
       "Iteration guidance"
     ],
     examples: [
@@ -107,17 +106,17 @@ export const qualificationFaq = [
   {
     question: "What is the best fit for working together?",
     answer:
-      "The fit is strongest if you are trying to structure a workflow, scope an AI-powered product or prototype, or move from a vague idea to a real system without wasting months."
+      "The fit is strongest if you have a real business process that is slow, repetitive, or inconsistent and you want a practical way to improve it with AI."
   },
   {
     question: "Do you only work on full builds?",
     answer:
-      "No. Some engagements are strategy and workflow design only. Others start as a prototype sprint or advisory engagement and grow into deeper build support."
+      "No. Some engagements stop at strategy and workflow design. Others start with a pilot or prototype and grow into deeper implementation support."
   },
   {
     question: "What happens in a first conversation?",
     answer:
-      "We clarify the problem, the current workflow, the constraint that matters most, the quality bar, and what a useful first milestone would look like."
+      "We clarify what is slowing the business down today, where the handoffs or delays are happening, what a successful outcome looks like, and what the smartest first step would be."
   },
   {
     question: "What kinds of teams are a poor fit?",
@@ -128,20 +127,20 @@ export const qualificationFaq = [
 
 export const processSteps = [
   {
-    title: "Scope",
-    summary: "Clarify the problem, workflow, constraints, and what success should look like."
+    title: "Understand",
+    summary: "Clarify what is happening today, where time is being lost, and what a better outcome should look like."
   },
   {
-    title: "Prototype",
-    summary: "Pressure-test the riskiest interaction, handoff, or system shape with something concrete."
+    title: "Test",
+    summary: "Try the riskiest part in a simple, concrete way before committing to a bigger rollout."
   },
   {
-    title: "Iterate",
-    summary: "Use what the prototype or workflow exposes to sharpen decisions, requirements, and next steps."
+    title: "Refine",
+    summary: "Use what the early version teaches us to improve the workflow, tighten decisions, and reduce waste."
   },
   {
-    title: "Operationalize",
-    summary: "Turn the useful version into a system, process, or ongoing build path that can actually run."
+    title: "Put in place",
+    summary: "Turn the useful version into a working process, tool, or implementation plan the team can actually use."
   }
 ];
 

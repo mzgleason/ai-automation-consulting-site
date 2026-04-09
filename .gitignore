@@ -8,3 +8,9 @@ coverage
 .DS_Store
 .npm-cache
 .codex
+playwright-report
+test-results
+tsconfig.tsbuildinfo
+artifacts
+*.log
+.tmp-start-test.pid

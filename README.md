@@ -1,42 +1,40 @@
-﻿# Iris Automation Consulting Site
+# Mark Gleason AI Consulting Site
 
-Production website for an AI automation consulting business focused on local SMB operators.
+Next.js website for Mark Gleason's AI consulting business.
 
 ## Stack
-- Next.js (App Router)
+- Next.js App Router
 - TypeScript
+- Tailwind CSS
 - Vercel Analytics
 - Vitest
+- Playwright
 
-## Local Development
+## Repo layout
+- `app/`: routes, layouts, and page entrypoints
+- `components/`: shared UI and page-building components
+- `content/`: markdown content for pages, projects, and writing
+- `lib/`: content loaders, offer definitions, analytics, and form logic
+- `public/`: static assets
+- `tests/`: unit tests with Vitest
+- `e2e/`: browser tests with Playwright
+- `docs/`: product, brand, content, and planning docs
+- `prompts/`: saved AI-agent prompt templates and working prompts
+
+## Local development
 ```bash
-npm.cmd install
-npm.cmd run dev
+npm install
+npm run dev
 ```
 
-## Quality Gates
+## Quality checks
 ```bash
-npm.cmd run lint
-npm.cmd run test
-npm.cmd run build
+npm run test
+npm run test:e2e
+npm run build
 ```
 
-## Launch Checklist (GitHub + Vercel)
-1. Create a new GitHub repo: `iris-automation-consulting-site`.
-2. Push this directory to `main`.
-3. In Vercel, import the GitHub repo and deploy.
-4. Add custom domain (`.com`) in Vercel project settings.
-5. Update DNS records at registrar to Vercel targets.
-6. Replace Calendly URL in `components/CalendlyEmbed.tsx`.
-7. Verify legal pages (`/privacy`, `/terms`) and contact email.
-8. Validate analytics events in Vercel Analytics dashboard.
-
-## Conversion Event Names
-- `cta_click`
-- `calendly_opened`
-- `contact_form_submitted`
-
-## Content Update Points
-- Offer and deliverables: `content/siteContent.ts`
-- Flagship guide: `app/resources/ai-automation-playbook/page.tsx`
-- Founder narrative: `app/about/page.tsx`
+## Notes
+- The live homepage and `/preview/foundry-home` both render the same shared homepage content component so the preview route can be used as a staging copy.
+- Content changes are usually made in `content/` and `lib/offers.ts`.
+- Browser verification is handled with Playwright against a local production build.

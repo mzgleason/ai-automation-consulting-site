@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
+import { AppShell } from "@/components/AppShell";
 
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -36,9 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable}`}>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <AppShell>{children}</AppShell>
         <Analytics />
       </body>
     </html>

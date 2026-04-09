@@ -1,49 +1,69 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
-import HeroGlobe from "@/components/HeroGlobe";
+import HeroProductionGlobe from "@/components/HeroProductionGlobe";
+
+type HeroProof = {
+  label: string;
+  title: string;
+  description: string;
+  href: string;
+  hrefLabel: string;
+};
 
 type BuilderHeroProps = {
   title: string;
   description: string;
+  proof?: HeroProof;
 };
 
-export function BuilderHero({ title, description }: BuilderHeroProps) {
-  const heroRef = useRef<HTMLElement>(null);
-  const globeWrapRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+export function BuilderHero({ title, description, proof }: BuilderHeroProps) {
+  const leftTitleLines = ["REMOVE THE", "WORK THAT"];
+  const rightTitleLines = ["SLOWS YOUR", "TEAM DOWN"];
 
   return (
-    <section className="builder-hero" ref={heroRef}>
-      <div className="builder-hero-globe" ref={globeWrapRef} aria-hidden="true">
-        <canvas ref={canvasRef} className="builder-hero-canvas" />
-      </div>
-
-      <div className="builder-hero-overlay" ref={overlayRef}>
+    <section className="builder-hero">
+      <div className="builder-hero-overlay">
         <div className="container builder-hero-grid">
-          <div className="builder-hero-copy">
-            <p className="eyebrow">Builder-led</p>
-            <h1>
-              <span>I help teams turn ideas</span>
-              <span>into AI-powered systems</span>
-              <span>that actually ship</span>
+          <div className="builder-hero-topline">
+            <p className="eyebrow">AI consulting</p>
+            <p className="builder-hero-kicker">Operator-led workflow design and systems implementation</p>
+          </div>
+
+          <HeroProductionGlobe />
+
+          <div className="builder-hero-headline">
+            <h1 aria-label={title}>
+              <span className="builder-hero-headline-left">
+                {leftTitleLines.map((line) => (
+                  <span key={line} className="builder-hero-line">
+                    {line}
+                  </span>
+                ))}
+              </span>
+              <span className="builder-hero-headline-right">
+                {rightTitleLines.map((line) => (
+                  <span key={line} className="builder-hero-line">
+                    {line}
+                  </span>
+                ))}
+              </span>
             </h1>
-            <p className="lead builder-hero-lead">{description}</p>
-            <div className="hero-actions">
-              <Link href="/projects" className="button button-accent">
-                View Projects
+          </div>
+
+          <div className="builder-hero-copy">
+            <p className="lead builder-hero-lead">
+              Start with the workflow that costs time, clarity, and follow-through every single week.
+            </p>
+            <div className="builder-hero-footer">
+              <Link href="/contact" className="text-link build-link builder-hero-inline-link">
+                Start a workflow review
               </Link>
-              <Link href="/work-with-me" className="button button-ghost">
-                Work With Me
-              </Link>
+              <p className="builder-hero-inline-note">{description}</p>
             </div>
           </div>
         </div>
       </div>
-
-      <HeroGlobe heroRef={heroRef} overlayRef={overlayRef} globeWrapRef={globeWrapRef} canvasRef={canvasRef} />
     </section>
   );
 }

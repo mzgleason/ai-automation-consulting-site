@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const footerLinks = [
-  { href: "/projects", label: "Projects" },
-  { href: "/writing", label: "Writing" },
-  { href: "/work-with-me", label: "Work With Me" },
+  { href: "/projects", label: "Case Studies" },
+  { href: "/writing", label: "Insights" },
+  { href: "/work-with-me", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
@@ -17,7 +17,8 @@ export function SiteFooter() {
         <div className="footer-copy">
           <p className="footer-title">Mark Gleason</p>
           <p className="muted">
-            Builder-led AI systems, prototypes, and product thinking for teams that want ideas to ship.
+            AI consulting for business owners and teams who want to save time, improve service, and make operations run
+            better.
           </p>
         </div>
         <ul className="footer-links">

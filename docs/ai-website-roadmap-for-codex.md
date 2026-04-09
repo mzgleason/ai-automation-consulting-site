@@ -352,21 +352,6 @@ Instead of only building a one-time model, the effort focused on wrapping the mo
 3. **Backend product capability graphic**
    “A conceptual product graphic showing an AI model running behind the scenes in a backend service, enriching decision systems and collecting validation data before customer-facing rollout. Clean, subtle, technical.”
 
-## Case study 4: Small Business Loan Marketplace Build
-This can be added after the first three.
-
-### Positioning
-A content-first small business lending site designed to build trust, grow organic traffic, and evolve into a lead generation platform.
-
-### Suggested narrative
-The project began as a content-rich website for small business owners exploring funding options, with the longer-term goal of evolving into a lead capture and partner routing platform. The build focused on information architecture, trust-building UX, SEO-oriented content structure, and a future-ready foundation for applications and integrations.
-
-### Image prompts
-1. “A clean website mockup for a small business funding marketplace homepage with trust indicators, educational content cards, navigation for loan types, and lead capture sections. Modern fintech editorial design.”
-2. “A structured content architecture diagram for a small business loan marketplace showing SEO content hubs, lead forms, partner routing, and application tracking. Crisp, strategy-focused visual.”
-3. “A polished UI screenshot concept for a small business loan application monitoring dashboard with status steps, required documents, and partner updates.”
-
----
 
 # 8. Writing program to support trust and SEO
 
