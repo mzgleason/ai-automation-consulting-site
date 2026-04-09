@@ -150,7 +150,7 @@ export default function HeroTestingGlobe({
     });
 
     const points = new THREE.Points(geometry, material);
-    points.position.set(1.82, 0.02, 0);
+    points.position.set(0, 0, -0.1);
     scene.add(points);
 
     const raycaster = new THREE.Raycaster();
@@ -248,7 +248,8 @@ export default function HeroTestingGlobe({
       const dt = Math.min((now - last) / 1000, 0.033);
       last = now;
 
-      points.rotation.y += dt * 0.25;
+      points.rotation.y += dt * 0.23;
+      points.rotation.x = Math.sin(now * 0.00008) * 0.04;
       sphereMesh.rotation.copy(points.rotation);
       sphereMesh.updateMatrixWorld(true);
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
 import HeroTestingGlobe from "@/components/HeroTestingGlobe";
 import styles from "@/components/HeroTestingHero.module.css";
@@ -22,27 +21,7 @@ export default function HeroTestingHero({ title, description }: HeroTestingHeroP
         <canvas ref={canvasRef} className={styles.canvas} />
       </div>
 
-      <div className={styles.overlay} ref={overlayRef}>
-        <div className={styles.container}>
-          <div className={styles.copy}>
-            <p className={styles.eyebrow}>Hero testing</p>
-            <h1 className={styles.title}>{title}</h1>
-            <p className={styles.lead}>{description}</p>
-            <div className={styles.actions}>
-              <Link href="/contact" className={styles.primaryAction}>
-                Start a workflow review
-              </Link>
-              <Link href="/" className={styles.secondaryAction}>
-                Return to homepage
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.separatorWrap}>
-            <div className={styles.separator} />
-          </div>
-        </div>
-      </div>
+      <div className={styles.overlay} ref={overlayRef} />
 
       <HeroTestingGlobe
         heroRef={heroRef}
