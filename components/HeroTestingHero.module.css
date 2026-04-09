@@ -1,0 +1,51 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(173, 193, 224, 0.28), transparent 17%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.44), transparent 24%),
+    linear-gradient(180deg, #f5f0e7 0%, #ece5da 52%, #e6ded1 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.36) 40%, rgba(245, 240, 231, 0.72) 74%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.globeWrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  contain: content;
+  z-index: 0;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  pointer-events: auto;
+}
+
+@media (max-width: 980px) {
+  .hero::before {
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.32) 40%, rgba(245, 240, 231, 0.76) 76%);
+  }
+}
