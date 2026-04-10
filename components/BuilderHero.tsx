@@ -48,6 +48,7 @@ export function BuilderHero(_props: BuilderHeroProps) {
       const workRect = workEl.getBoundingClientRect();
 
       const stageCx = stageRect.left + stageRect.width / 2;
+      const stageCy = stageRect.top + stageRect.height / 2;
 
       const line2Gap = Math.max(10, Math.min(24, buildRect.height * 0.22));
       const line2Total = thatRect.width + line2Gap + doRect.width;
@@ -58,22 +59,22 @@ export function BuilderHero(_props: BuilderHeroProps) {
         {
           el: buildEl,
           targetX: stageCx,
-          targetY: buildRect.top + buildRect.height / 2
+          targetY: stageCy - buildRect.height * 0.96
         },
         {
           el: thatEl,
           targetX: thatTargetCx,
-          targetY: thatRect.top + thatRect.height / 2
+          targetY: stageCy
         },
         {
           el: doEl,
           targetX: doTargetCx,
-          targetY: doRect.top + doRect.height / 2
+          targetY: stageCy
         },
         {
           el: workEl,
           targetX: stageCx,
-          targetY: workRect.top + workRect.height / 2
+          targetY: stageCy + workRect.height * 0.96
         }
       ] as const;
 

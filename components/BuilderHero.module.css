@@ -41,14 +41,21 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .textStage {
   position: relative;
-  min-height: calc(100vh - 8.5rem);
+  flex: 1;
+  min-height: 0;
   pointer-events: none;
+}
+
+.bottomRail {
+  margin-top: auto;
 }
 
 .srOnly {
@@ -83,8 +90,8 @@
   letter-spacing: -0.06em;
   text-transform: uppercase;
 
-  /* Final layout should live around the middle of the viewport, not the corners. */
-  --final-cy: 50vh;
+  /* Final layout should sit centered between the header area and the bottom rule. */
+  --final-cy: 45%;
   --split-step: 0.86em;
 }
 

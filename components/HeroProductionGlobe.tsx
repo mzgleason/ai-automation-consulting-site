@@ -153,7 +153,9 @@ export default function HeroTestingGlobe({
     });
 
     const points = new THREE.Points(geometry, material);
-    points.position.set(0, 0, -0.1);
+    const globeYOffset = globeRadius * 0.26;
+    points.position.set(0, globeYOffset, -0.1);
+    points.updateMatrixWorld(true);
     scene.add(points);
 
     const raycaster = new THREE.Raycaster();
