@@ -85,6 +85,7 @@
 
   /* Final layout should live around the middle of the viewport, not the corners. */
   --final-cy: 50vh;
+  --split-step: 0.56em;
 }
 
 .headlineStage[data-measuring="true"] .phrase {
@@ -114,25 +115,25 @@
 }
 
 .phraseBuild {
-  top: calc(var(--final-cy) - 1.05em);
+  top: calc(var(--final-cy) - var(--split-step));
   left: clamp(1.6rem, 4.2vw, 4.7rem);
   text-align: left;
 }
 
 .phraseThat {
-  top: calc(var(--final-cy) - 0.07em);
+  top: calc(var(--final-cy) - 0.04em);
   left: clamp(1.6rem, 4.2vw, 4.7rem);
   text-align: left;
 }
 
 .phraseDo {
-  top: calc(var(--final-cy) - 0.07em);
+  top: calc(var(--final-cy) - 0.04em);
   right: clamp(1.6rem, 4.2vw, 4.7rem);
   text-align: right;
 }
 
 .phraseWork {
-  top: calc(var(--final-cy) + 0.91em);
+  top: calc(var(--final-cy) + var(--split-step));
   right: clamp(1.6rem, 4.2vw, 4.7rem);
   text-align: right;
 }
@@ -348,22 +349,22 @@
   }
 
   .phraseBuild {
-    top: calc(var(--final-cy) - 1.05em);
+    top: calc(var(--final-cy) - var(--split-step));
     left: 1rem;
   }
 
   .phraseThat {
-    top: calc(var(--final-cy) - 0.07em);
+    top: calc(var(--final-cy) - 0.04em);
     left: 1rem;
   }
 
   .phraseDo {
-    top: calc(var(--final-cy) - 0.07em);
+    top: calc(var(--final-cy) - 0.04em);
     right: 1rem;
   }
 
   .phraseWork {
-    top: calc(var(--final-cy) + 0.91em);
+    top: calc(var(--final-cy) + var(--split-step));
     right: 1rem;
   }
 

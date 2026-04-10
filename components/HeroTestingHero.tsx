@@ -44,11 +44,10 @@ export default function HeroTestingHero(_props: HeroTestingHeroProps) {
       const buildRect = buildEl.getBoundingClientRect();
       const thatRect = thatEl.getBoundingClientRect();
       const doRect = doEl.getBoundingClientRect();
+      const workRect = workEl.getBoundingClientRect();
 
       const stageCx = stageRect.left + stageRect.width / 2;
-      const stageCy = Math.min(stageRect.bottom - 1, Math.max(stageRect.top + 1, window.innerHeight / 2));
 
-      const lineStep = Math.max(24, Math.min(88, buildRect.height * 0.94));
       const line2Gap = Math.max(10, Math.min(24, buildRect.height * 0.22));
 
       const line2Total = thatRect.width + line2Gap + doRect.width;
@@ -59,22 +58,22 @@ export default function HeroTestingHero(_props: HeroTestingHeroProps) {
         {
           el: buildEl,
           targetX: stageCx,
-          targetY: stageCy - lineStep
+          targetY: buildRect.top + buildRect.height / 2
         },
         {
           el: thatEl,
           targetX: thatTargetCx,
-          targetY: stageCy
+          targetY: thatRect.top + thatRect.height / 2
         },
         {
           el: doEl,
           targetX: doTargetCx,
-          targetY: stageCy
+          targetY: doRect.top + doRect.height / 2
         },
         {
           el: workEl,
           targetX: stageCx,
-          targetY: stageCy + lineStep
+          targetY: workRect.top + workRect.height / 2
         }
       ] as const;
 
