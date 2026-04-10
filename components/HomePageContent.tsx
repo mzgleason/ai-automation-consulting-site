@@ -1,5 +1,5 @@
 import Link from "next/link";
-import HeroTestingHero from "@/components/HeroTestingHero";
+import { BuilderHero } from "@/components/BuilderHero";
 import { getFeaturedProjects, getPageContent } from "@/lib/content";
 import { offers, processSteps } from "@/lib/offers";
 
@@ -68,7 +68,7 @@ export async function HomePageContent() {
   const supportingProjects = projects.slice(1, 3);
   return (
     <main className="home-page">
-      <HeroTestingHero title={homePage.title} description={homePage.description} />
+      <BuilderHero title={homePage.title} description={homePage.description} />
 
       <section className="section home-studio-section">
         <div className="container home-studio-head">

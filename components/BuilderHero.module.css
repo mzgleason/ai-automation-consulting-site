@@ -85,7 +85,7 @@
 
   /* Final layout should live around the middle of the viewport, not the corners. */
   --final-cy: 50vh;
-  --split-step: 0.56em;
+  --split-step: 0.86em;
 }
 
 .headlineStage[data-measuring="true"] .phrase {
@@ -121,13 +121,13 @@
 }
 
 .phraseThat {
-  top: calc(var(--final-cy) - 0.04em);
+  top: calc(var(--final-cy) - 0.02em);
   left: clamp(1.6rem, 4.2vw, 4.7rem);
   text-align: left;
 }
 
 .phraseDo {
-  top: calc(var(--final-cy) - 0.04em);
+  top: calc(var(--final-cy) - 0.02em);
   right: clamp(1.6rem, 4.2vw, 4.7rem);
   text-align: right;
 }
@@ -341,6 +341,7 @@
     font-size: clamp(2.4rem, 10vw, 4rem);
     line-height: 0.92;
     letter-spacing: -0.055em;
+    --split-step: 0.98em;
   }
 
   .phrase {
@@ -392,7 +393,7 @@
 
   .bottomCopy {
     justify-self: start;
-    max-width: 18rem;
+    max-width: none;
     font-size: 0.7rem;
   }
 }

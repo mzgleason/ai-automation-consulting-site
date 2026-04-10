@@ -1,69 +1,176 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import HeroProductionGlobe from "@/components/HeroProductionGlobe";
-
-type HeroProof = {
-  label: string;
-  title: string;
-  description: string;
-  href: string;
-  hrefLabel: string;
-};
+import styles from "@/components/BuilderHero.module.css";
 
 type BuilderHeroProps = {
   title: string;
   description: string;
-  proof?: HeroProof;
+  proof?: unknown;
 };
 
-export function BuilderHero({ title, description, proof }: BuilderHeroProps) {
-  const leftTitleLines = ["REMOVE THE", "WORK THAT"];
-  const rightTitleLines = ["SLOWS YOUR", "TEAM DOWN"];
+export function BuilderHero(_props: BuilderHeroProps) {
+  const heroRef = useRef<HTMLElement>(null);
+  const globeWrapRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const headlineStageRef = useRef<HTMLDivElement>(null);
+  const phraseBuildRef = useRef<HTMLSpanElement>(null);
+  const phraseThatRef = useRef<HTMLSpanElement>(null);
+  const phraseDoRef = useRef<HTMLSpanElement>(null);
+  const phraseWorkRef = useRef<HTMLSpanElement>(null);
+  const [headlineReady, setHeadlineReady] = useState(false);
+
+  useEffect(() => {
+    const stageEl = headlineStageRef.current;
+    const buildEl = phraseBuildRef.current;
+    const thatEl = phraseThatRef.current;
+    const doEl = phraseDoRef.current;
+    const workEl = phraseWorkRef.current;
+
+    if (!stageEl || !buildEl || !thatEl || !doEl || !workEl) return;
+
+    let rafId = 0;
+    let disposed = false;
+
+    const measure = () => {
+      if (disposed) return;
+
+      stageEl.dataset.measuring = "true";
+      stageEl.getBoundingClientRect();
+
+      const stageRect = stageEl.getBoundingClientRect();
+      const buildRect = buildEl.getBoundingClientRect();
+      const thatRect = thatEl.getBoundingClientRect();
+      const doRect = doEl.getBoundingClientRect();
+      const workRect = workEl.getBoundingClientRect();
+
+      const stageCx = stageRect.left + stageRect.width / 2;
+
+      const line2Gap = Math.max(10, Math.min(24, buildRect.height * 0.22));
+      const line2Total = thatRect.width + line2Gap + doRect.width;
+      const thatTargetCx = stageCx - line2Total / 2 + thatRect.width / 2;
+      const doTargetCx = stageCx + line2Total / 2 - doRect.width / 2;
+
+      const targets = [
+        {
+          el: buildEl,
+          targetX: stageCx,
+          targetY: buildRect.top + buildRect.height / 2
+        },
+        {
+          el: thatEl,
+          targetX: thatTargetCx,
+          targetY: thatRect.top + thatRect.height / 2
+        },
+        {
+          el: doEl,
+          targetX: doTargetCx,
+          targetY: doRect.top + doRect.height / 2
+        },
+        {
+          el: workEl,
+          targetX: stageCx,
+          targetY: workRect.top + workRect.height / 2
+        }
+      ] as const;
+
+      for (const item of targets) {
+        const rect = item.el.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = item.targetX - cx;
+        const dy = item.targetY - cy;
+        item.el.style.setProperty("--from-x", `${dx.toFixed(2)}px`);
+        item.el.style.setProperty("--from-y", `${dy.toFixed(2)}px`);
+      }
+
+      stageEl.dataset.measuring = "false";
+      setHeadlineReady(true);
+    };
+
+    const schedule = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(measure);
+    };
+
+    const resizeObserver = new ResizeObserver(schedule);
+    resizeObserver.observe(stageEl);
+
+    window.addEventListener("resize", schedule, { passive: true });
+
+    const anyDocument = document as unknown as { fonts?: { ready?: Promise<unknown> } };
+    const fontsReady = anyDocument.fonts?.ready;
+
+    if (fontsReady && typeof fontsReady.then === "function") {
+      fontsReady.then(schedule).catch(schedule);
+    } else {
+      schedule();
+    }
+
+    return () => {
+      disposed = true;
+      cancelAnimationFrame(rafId);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
 
   return (
-    <section className="builder-hero">
-      <div className="builder-hero-overlay">
-        <div className="container builder-hero-grid">
-          <div className="builder-hero-topline">
-            <p className="eyebrow">AI consulting</p>
-            <p className="builder-hero-kicker">Operator-led workflow design and systems implementation</p>
+    <section className={styles.hero} ref={heroRef}>
+      <div className={styles.globeWrap} ref={globeWrapRef} aria-hidden="true">
+        <canvas ref={canvasRef} className={styles.canvas} />
+      </div>
+
+      <div className={styles.overlay} ref={overlayRef}>
+        <div className={styles.textStage}>
+          <h1 className={styles.srOnly}>BUILD SYSTEMS THAT DO THE WORK FOR YOU</h1>
+          <div
+            className={styles.headlineStage}
+            aria-hidden="true"
+            ref={headlineStageRef}
+            data-ready={headlineReady ? "true" : "false"}
+          >
+            <span className={`${styles.phrase} ${styles.phraseBuild}`} ref={phraseBuildRef}>
+              BUILD SYSTEMS
+            </span>
+            <span className={`${styles.phrase} ${styles.phraseThat}`} ref={phraseThatRef}>
+              THAT
+            </span>
+            <span className={`${styles.phrase} ${styles.phraseDo}`} ref={phraseDoRef}>
+              DO THE
+            </span>
+            <span className={`${styles.phrase} ${styles.phraseWork}`} ref={phraseWorkRef}>
+              WORK FOR YOU
+            </span>
           </div>
+        </div>
 
-          <HeroProductionGlobe />
-
-          <div className="builder-hero-headline">
-            <h1 aria-label={title}>
-              <span className="builder-hero-headline-left">
-                {leftTitleLines.map((line) => (
-                  <span key={line} className="builder-hero-line">
-                    {line}
-                  </span>
-                ))}
+        <div className={styles.bottomRail}>
+          <div className={styles.bottomRule} />
+          <div className={styles.bottomRow}>
+            <Link href="/contact" className={styles.contactCta}>
+              CONTACT ME
+              <span className={styles.ctaCorners} aria-hidden="true">
+                <span className={styles.ctaCornerTl} />
+                <span className={styles.ctaCornerTr} />
+                <span className={styles.ctaCornerBl} />
+                <span className={styles.ctaCornerBr} />
               </span>
-              <span className="builder-hero-headline-right">
-                {rightTitleLines.map((line) => (
-                  <span key={line} className="builder-hero-line">
-                    {line}
-                  </span>
-                ))}
-              </span>
-            </h1>
-          </div>
-
-          <div className="builder-hero-copy">
-            <p className="lead builder-hero-lead">
-              Start with the workflow that costs time, clarity, and follow-through every single week.
-            </p>
-            <div className="builder-hero-footer">
-              <Link href="/contact" className="text-link build-link builder-hero-inline-link">
-                Start a workflow review
-              </Link>
-              <p className="builder-hero-inline-note">{description}</p>
-            </div>
+            </Link>
+            <p className={styles.bottomCopy}>{_props.description}</p>
           </div>
         </div>
       </div>
+
+      <HeroProductionGlobe
+        heroRef={heroRef}
+        overlayRef={overlayRef}
+        globeWrapRef={globeWrapRef}
+        canvasRef={canvasRef}
+      />
     </section>
   );
 }
