@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BuilderHero } from "@/components/BuilderHero";
+import HeroTestingHero from "@/components/HeroTestingHero";
 import { getFeaturedProjects, getPageContent } from "@/lib/content";
 import { offers, processSteps } from "@/lib/offers";
 
@@ -68,23 +68,7 @@ export async function HomePageContent() {
   const supportingProjects = projects.slice(1, 3);
   return (
     <main className="home-page">
-      <BuilderHero
-        title={homePage.title}
-        description={homePage.description}
-        proof={
-          featuredProject
-            ? {
-                label: "Recent proof",
-                title: projectProofCopy[featuredProject.slug]?.cardTitle ?? featuredProject.title,
-                description:
-                  projectProofCopy[featuredProject.slug]?.whyBuyerCares ??
-                  "Selected case study showing how an operational bottleneck became a clearer system.",
-                href: `/projects/${featuredProject.slug}`,
-                hrefLabel: "Read the case study"
-              }
-            : undefined
-        }
-      />
+      <HeroTestingHero title={homePage.title} description={homePage.description} />
 
       <section className="section home-studio-section">
         <div className="container home-studio-head">

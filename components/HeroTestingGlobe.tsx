@@ -79,7 +79,7 @@ export default function HeroTestingGlobe({
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
     camera.position.set(0, 0, 10.8);
 
-    const globeRadius = 2.36;
+    const globeRadius = 2.124;
     const dotCount = 4800;
     const { positions, basePositions, sizes, noise, rand } = fibonacciSpherePoints(dotCount, globeRadius);
 

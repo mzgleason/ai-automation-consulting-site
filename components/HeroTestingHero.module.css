@@ -51,90 +51,90 @@
   pointer-events: none;
 }
 
-.splitStage {
+.srOnly {
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-}
-
-.startHeadline {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  place-content: center;
-  grid-auto-rows: max-content;
-  color: #f4f7fa;
-  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
-  font-weight: 650;
-  line-height: 0.9;
-  row-gap: 0.01em;
-  letter-spacing: -0.06em;
-  text-align: center;
-  opacity: 0;
-  filter: blur(10px);
-  transform: translateY(1.2rem);
-  animation:
-    startIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards,
-    startOut 0.55s cubic-bezier(0.4, 0, 0.2, 1) 1.35s forwards;
-}
-
-.startLine {
-  display: block;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+  border: 0;
 }
 
-.splitGrid {
-  --split-shift: clamp(8rem, 18vw, 18rem);
-  width: min(100%, 100rem);
+.headlineStage {
+  --intro-dur: 0.28s;
+  --move-dur: 0.6s;
+  --intro-delay: 0.08s;
+  --move-delay: 0.42s;
+  --intro-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --move-ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
   padding: 0 1.6rem;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto;
-  align-items: center;
-  justify-content: space-between;
-  row-gap: 0.01em;
-  column-gap: clamp(2rem, 8vw, 7rem);
+
   color: #f4f7fa;
   font-size: clamp(2.6rem, 5.2vw, 5.2rem);
   font-weight: 650;
   line-height: 0.9;
   letter-spacing: -0.06em;
+  text-transform: uppercase;
+
+  /* Final layout should live around the middle of the viewport, not the corners. */
+  --final-cy: 50vh;
 }
 
-.splitLeftLine,
-.splitRightLine {
-  opacity: 0;
-  filter: blur(10px);
-  white-space: nowrap;
+.headlineStage[data-measuring="true"] .phrase {
+  animation: none !important;
+  opacity: 0 !important;
+  transform: translate3d(0, 0, 0) !important;
 }
 
-.splitLeftLine {
-  justify-self: start;
-  text-align: left;
-  transform: translateX(var(--split-shift));
-  animation: splitLeftOut 1s cubic-bezier(0.2, 0.9, 0.2, 1) 1.4s forwards;
-}
-
-.splitRightLine {
-  justify-self: end;
-  text-align: right;
-  transform: translateX(calc(-1 * var(--split-shift)));
-  animation: splitRightOut 1s cubic-bezier(0.2, 0.9, 0.2, 1) 1.4s forwards;
-}
-
-.splitLeftSpacer,
-.splitRightSpacer {
+.phrase {
+  position: absolute;
   display: block;
+  white-space: nowrap;
+  will-change: transform, opacity;
+  opacity: 0;
+  transform: translate3d(var(--from-x, 0px), calc(var(--from-y, 0px) + 1.05rem), 0);
 }
 
-.splitLeftSpacer {
-  grid-column: 1;
+.headlineStage[data-ready="false"] .phrase {
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
 }
 
-.splitRightSpacer {
-  grid-column: 2;
+.headlineStage[data-ready="true"] .phrase {
+  animation:
+    headlineIntro var(--intro-dur) var(--intro-ease) var(--intro-delay) both,
+    headlineMove var(--move-dur) var(--move-ease) var(--move-delay) forwards;
+}
+
+.phraseBuild {
+  top: calc(var(--final-cy) - 1.05em);
+  left: clamp(1.6rem, 4.2vw, 4.7rem);
+  text-align: left;
+}
+
+.phraseThat {
+  top: calc(var(--final-cy) - 0.07em);
+  left: clamp(1.6rem, 4.2vw, 4.7rem);
+  text-align: left;
+}
+
+.phraseDo {
+  top: calc(var(--final-cy) - 0.07em);
+  right: clamp(1.6rem, 4.2vw, 4.7rem);
+  text-align: right;
+}
+
+.phraseWork {
+  top: calc(var(--final-cy) + 0.91em);
+  right: clamp(1.6rem, 4.2vw, 4.7rem);
+  text-align: right;
 }
 
 .bottomRail {
@@ -162,6 +162,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: start;
+  width: fit-content;
   min-height: 2.5rem;
   padding: 0.72rem 1.05rem;
   border: 0;
@@ -304,53 +306,25 @@
   text-transform: uppercase;
 }
 
-@keyframes startIn {
+@keyframes headlineIntro {
   0% {
     opacity: 0;
-    filter: blur(10px);
-    transform: translateY(1.2rem);
+    transform: translate3d(var(--from-x, 0px), calc(var(--from-y, 0px) + 1.05rem), 0);
   }
 
   100% {
     opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
+    transform: translate3d(var(--from-x, 0px), var(--from-y, 0px), 0);
   }
 }
 
-@keyframes startOut {
-  to {
-    opacity: 0;
-    filter: blur(12px);
-    transform: translateY(-0.35rem) scale(1.015);
-  }
-}
-
-@keyframes splitLeftOut {
+@keyframes headlineMove {
   0% {
-    opacity: 0;
-    filter: blur(10px);
-    transform: translateX(var(--split-shift));
+    transform: translate3d(var(--from-x, 0px), var(--from-y, 0px), 0);
   }
 
   100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
-  }
-}
-
-@keyframes splitRightOut {
-  0% {
-    opacity: 0;
-    filter: blur(10px);
-    transform: translateX(calc(-1 * var(--split-shift)));
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -361,31 +335,36 @@
       radial-gradient(circle at 50% 50%, rgba(8, 18, 30, 0) 0%, rgba(8, 18, 30, 0.08) 58%, rgba(4, 11, 20, 0.22) 100%);
   }
 
-  .startHeadline {
+  .headlineStage {
+    padding: 0 1rem;
     font-size: clamp(2.4rem, 10vw, 4rem);
     line-height: 0.92;
+    letter-spacing: -0.055em;
   }
 
-  .splitGrid {
-    width: min(100%, 28rem);
-    padding: 0 1rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    justify-content: center;
-    row-gap: 0.02em;
+  .phrase {
+    max-width: calc(100vw - 1rem - 1rem);
+    white-space: normal;
   }
 
-  .splitRightSpacer,
-  .splitLeftSpacer {
-    display: none;
+  .phraseBuild {
+    top: calc(var(--final-cy) - 1.05em);
+    left: 1rem;
   }
 
-  .splitLeftLine,
-  .splitRightLine {
-    justify-self: center;
-    text-align: center;
-    transform: translateY(1rem);
-    animation-name: mobileSplitIn;
+  .phraseThat {
+    top: calc(var(--final-cy) - 0.07em);
+    left: 1rem;
+  }
+
+  .phraseDo {
+    top: calc(var(--final-cy) - 0.07em);
+    right: 1rem;
+  }
+
+  .phraseWork {
+    top: calc(var(--final-cy) + 0.91em);
+    right: 1rem;
   }
 
   .textStage {
@@ -403,22 +382,16 @@
   }
 
   .bottomCopy {
+    order: 0;
+  }
+
+  .contactCta {
+    order: 1;
+  }
+
+  .bottomCopy {
     justify-self: start;
     max-width: 18rem;
     font-size: 0.7rem;
-  }
-}
-
-@keyframes mobileSplitIn {
-  0% {
-    opacity: 0;
-    filter: blur(10px);
-    transform: translateY(1rem);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
   }
 }
