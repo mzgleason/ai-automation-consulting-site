@@ -51,96 +51,90 @@
   pointer-events: none;
 }
 
-.introText,
-.finalText {
+.splitStage {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
 }
 
-.introText {
-  gap: 0.02em;
-  text-align: center;
-  animation: introFadeOut 0.9s cubic-bezier(0.4, 0, 0.2, 1) 1.55s forwards;
-}
-
-.introLine {
-  display: block;
-  color: rgba(244, 247, 250, 0.94);
-  font-size: clamp(2.5rem, 5.9vw, 5.5rem);
+.startHeadline {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  place-content: center;
+  grid-auto-rows: max-content;
+  color: #f4f7fa;
+  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
   font-weight: 650;
-  line-height: 0.96;
-  letter-spacing: -0.055em;
+  line-height: 0.9;
+  row-gap: 0.01em;
+  letter-spacing: -0.06em;
+  text-align: center;
   opacity: 0;
-  filter: blur(8px);
-  transform: translateY(18px) scale(0.985);
-  animation: introLineIn 0.82s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  filter: blur(10px);
+  transform: translateY(1.2rem);
+  animation:
+    startIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards,
+    startOut 0.55s cubic-bezier(0.4, 0, 0.2, 1) 1.35s forwards;
 }
 
-.introLine:nth-child(1) {
-  animation-delay: 0.22s;
+.startLine {
+  display: block;
+  white-space: nowrap;
 }
 
-.introLine:nth-child(2) {
-  animation-delay: 0.35s;
-}
-
-.introLine:nth-child(3) {
-  animation-delay: 0.48s;
-}
-
-.introLine:nth-child(4) {
-  animation-delay: 0.61s;
-}
-
-.finalText {
-  opacity: 0;
-  animation: finalTextReveal 0.01s linear 1.6s forwards;
-}
-
-.finalHeadline {
+.splitGrid {
+  --split-shift: clamp(8rem, 18vw, 18rem);
   width: min(100%, 100rem);
   padding: 0 1.6rem;
   display: grid;
-  grid-template-columns: minmax(0, 0.98fr) minmax(0, 0.9fr);
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
   align-items: center;
-  gap: clamp(1.6rem, 7vw, 8rem);
+  justify-content: space-between;
+  row-gap: 0.01em;
+  column-gap: clamp(2rem, 8vw, 7rem);
   color: #f4f7fa;
-  font-size: clamp(2.5rem, 5vw, 4.9rem);
+  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
   font-weight: 650;
   line-height: 0.9;
   letter-spacing: -0.06em;
 }
 
-.finalColumnLeft,
-.finalColumnRight {
-  display: grid;
-  gap: 0.04em;
-}
-
-.finalColumnLeft {
-  justify-self: start;
-  max-width: 7.3em;
+.splitLeftLine,
+.splitRightLine {
   opacity: 0;
   filter: blur(10px);
-  transform: translateX(0) translateY(0.4rem);
-  animation: leftColumnIn 1.1s cubic-bezier(0.2, 0.9, 0.2, 1) 1.72s forwards;
-}
-
-.finalColumnRight {
-  justify-self: end;
-  text-align: left;
-  max-width: 5.2em;
-  opacity: 0;
-  filter: blur(10px);
-  transform: translateX(0) translateY(1.2rem);
-  animation: rightColumnIn 1.1s cubic-bezier(0.2, 0.9, 0.2, 1) 1.78s forwards;
-}
-
-.finalLine {
-  display: block;
   white-space: nowrap;
+}
+
+.splitLeftLine {
+  justify-self: start;
+  text-align: left;
+  transform: translateX(var(--split-shift));
+  animation: splitLeftOut 1s cubic-bezier(0.2, 0.9, 0.2, 1) 1.4s forwards;
+}
+
+.splitRightLine {
+  justify-self: end;
+  text-align: right;
+  transform: translateX(calc(-1 * var(--split-shift)));
+  animation: splitRightOut 1s cubic-bezier(0.2, 0.9, 0.2, 1) 1.4s forwards;
+}
+
+.splitLeftSpacer,
+.splitRightSpacer {
+  display: block;
+}
+
+.splitLeftSpacer {
+  grid-column: 1;
+}
+
+.splitRightSpacer {
+  grid-column: 2;
 }
 
 .bottomRail {
@@ -164,16 +158,138 @@
 }
 
 .contactCta {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 2.5rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(244, 247, 250, 0.18);
+  padding: 0.72rem 1.05rem;
+  border: 0;
   color: rgba(244, 247, 250, 0.92);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
+  background: rgba(255, 255, 255, 0.02);
+  transition: background-color 180ms ease, color 180ms ease, transform 160ms ease;
+}
+
+.contactCta:hover,
+.contactCta:focus-visible {
+  background: rgba(139, 211, 255, 0.07);
+  color: #f5fbff;
+  transform: translateY(-1px);
+}
+
+.ctaCorners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: rgba(244, 247, 250, 0.26);
+  transition: color 180ms ease;
+}
+
+.contactCta:hover .ctaCorners,
+.contactCta:focus-visible .ctaCorners {
+  color: rgba(139, 211, 255, 0.6);
+}
+
+.ctaCornerTl,
+.ctaCornerTr,
+.ctaCornerBl,
+.ctaCornerBr {
+  position: absolute;
+  width: 0.58rem;
+  height: 0.58rem;
+}
+
+.ctaCornerTl::before,
+.ctaCornerTl::after,
+.ctaCornerTr::before,
+.ctaCornerTr::after,
+.ctaCornerBl::before,
+.ctaCornerBl::after,
+.ctaCornerBr::before,
+.ctaCornerBr::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.ctaCornerTl {
+  top: 0;
+  left: 0;
+}
+
+.ctaCornerTl::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerTl::after {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.ctaCornerTr {
+  top: 0;
+  right: 0;
+}
+
+.ctaCornerTr::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerTr::after {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.ctaCornerBl {
+  bottom: 0;
+  left: 0;
+}
+
+.ctaCornerBl::before {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerBl::after {
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.ctaCornerBr {
+  right: 0;
+  bottom: 0;
+}
+
+.ctaCornerBr::before {
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerBr::after {
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 100%;
 }
 
 .bottomCopy {
@@ -188,65 +304,53 @@
   text-transform: uppercase;
 }
 
-@keyframes introLineIn {
+@keyframes startIn {
   0% {
     opacity: 0;
-    filter: blur(8px);
-    transform: translateY(18px) scale(0.985);
+    filter: blur(10px);
+    transform: translateY(1.2rem);
   }
 
   100% {
     opacity: 1;
     filter: blur(0);
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
-@keyframes introFadeOut {
-  0% {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
-
-  100% {
+@keyframes startOut {
+  to {
     opacity: 0;
     filter: blur(12px);
-    transform: scale(1.02);
+    transform: translateY(-0.35rem) scale(1.015);
   }
 }
 
-@keyframes finalTextReveal {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes leftColumnIn {
+@keyframes splitLeftOut {
   0% {
     opacity: 0;
     filter: blur(10px);
-    transform: translateX(0) translateY(0.4rem);
+    transform: translateX(var(--split-shift));
   }
 
   100% {
     opacity: 1;
     filter: blur(0);
-    transform: translateX(0) translateY(0);
+    transform: translateX(0);
   }
 }
 
-@keyframes rightColumnIn {
+@keyframes splitRightOut {
   0% {
     opacity: 0;
     filter: blur(10px);
-    transform: translateX(0) translateY(1.2rem);
+    transform: translateX(calc(-1 * var(--split-shift)));
   }
 
   100% {
     opacity: 1;
     filter: blur(0);
-    transform: translateX(0) translateY(1.2rem);
+    transform: translateX(0);
   }
 }
 
@@ -257,36 +361,31 @@
       radial-gradient(circle at 50% 50%, rgba(8, 18, 30, 0) 0%, rgba(8, 18, 30, 0.08) 58%, rgba(4, 11, 20, 0.22) 100%);
   }
 
-  .introLine {
-    font-size: clamp(2.1rem, 10vw, 3.3rem);
-    line-height: 0.98;
-  }
-
-  .finalHeadline {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding: 0 1rem;
-    font-size: clamp(2.5rem, 10vw, 4rem);
+  .startHeadline {
+    font-size: clamp(2.4rem, 10vw, 4rem);
     line-height: 0.92;
   }
 
-  .finalColumnLeft,
-  .finalColumnRight {
+  .splitGrid {
+    width: min(100%, 28rem);
+    padding: 0 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    justify-content: center;
+    row-gap: 0.02em;
+  }
+
+  .splitRightSpacer,
+  .splitLeftSpacer {
+    display: none;
+  }
+
+  .splitLeftLine,
+  .splitRightLine {
     justify-self: center;
     text-align: center;
-    max-width: none;
-  }
-
-  .finalColumnLeft {
     transform: translateY(1rem);
-    animation-name: mobileColumnIn;
-    max-width: none;
-  }
-
-  .finalColumnRight {
-    transform: translateY(1.6rem);
-    animation-name: mobileColumnInDelayed;
-    max-width: none;
+    animation-name: mobileSplitIn;
   }
 
   .textStage {
@@ -310,25 +409,11 @@
   }
 }
 
-@keyframes mobileColumnIn {
+@keyframes mobileSplitIn {
   0% {
     opacity: 0;
     filter: blur(10px);
     transform: translateY(1rem);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-  }
-}
-
-@keyframes mobileColumnInDelayed {
-  0% {
-    opacity: 0;
-    filter: blur(10px);
-    transform: translateY(1.6rem);
   }
 
   100% {

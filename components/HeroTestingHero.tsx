@@ -15,9 +15,7 @@ export default function HeroTestingHero({ title, description }: HeroTestingHeroP
   const globeWrapRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const introLines = ["TURN MESSY", "WORK INTO", "A CLEARER", "SYSTEM"];
-  const leftLines = ["TURN MESSY", "WORK INTO"];
-  const rightLines = ["A CLEARER", "SYSTEM"];
+  const startLines = ["BUILD SYSTEMS", "THAT DO THE", "WORK FOR YOU"];
 
   return (
     <section className={styles.hero} ref={heroRef}>
@@ -27,31 +25,25 @@ export default function HeroTestingHero({ title, description }: HeroTestingHeroP
 
       <div className={styles.overlay} ref={overlayRef}>
         <div className={styles.textStage}>
-          <div className={styles.introText} aria-hidden="true">
-            {introLines.map((line) => (
-              <span key={line} className={styles.introLine}>
+          <h1 className={styles.startHeadline} aria-label="Build systems that do the work for you">
+            {startLines.map((line) => (
+              <span key={line} className={styles.startLine}>
                 {line}
               </span>
             ))}
-          </div>
+          </h1>
 
-          <div className={styles.finalText}>
-            <h1 className={styles.finalHeadline} aria-label="Turn messy work into a clearer system">
-              <span className={styles.finalColumnLeft}>
-                {leftLines.map((line) => (
-                  <span key={line} className={styles.finalLine}>
-                    {line}
-                  </span>
-                ))}
-              </span>
-              <span className={styles.finalColumnRight}>
-                {rightLines.map((line) => (
-                  <span key={line} className={styles.finalLine}>
-                    {line}
-                  </span>
-                ))}
-              </span>
-            </h1>
+          <div className={styles.splitStage} aria-hidden="true">
+            <div className={styles.splitGrid}>
+              <span className={styles.splitLeftLine}>BUILD SYSTEMS</span>
+              <span className={styles.splitRightSpacer} />
+
+              <span className={styles.splitLeftLine}>THAT</span>
+              <span className={styles.splitRightLine}>DO THE</span>
+
+              <span className={styles.splitLeftSpacer} />
+              <span className={styles.splitRightLine}>WORK FOR YOU</span>
+            </div>
           </div>
         </div>
 
@@ -60,6 +52,12 @@ export default function HeroTestingHero({ title, description }: HeroTestingHeroP
           <div className={styles.bottomRow}>
             <Link href="/contact" className={styles.contactCta}>
               CONTACT US
+              <span className={styles.ctaCorners} aria-hidden="true">
+                <span className={styles.ctaCornerTl} />
+                <span className={styles.ctaCornerTr} />
+                <span className={styles.ctaCornerBl} />
+                <span className={styles.ctaCornerBr} />
+              </span>
             </Link>
             <p className={styles.bottomCopy}>
               Turn messy work into a clearer system with operator-led workflow design and implementation.

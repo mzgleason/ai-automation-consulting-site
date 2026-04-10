@@ -235,12 +235,12 @@ export default function HeroTestingGlobe({
     let last = performance.now();
     let rafId = 0;
 
-    const repelRadius = globeRadius * 0.22;
+    const repelRadius = globeRadius * 0.3;
     const repelRadiusSq = repelRadius * repelRadius;
-    const repelForce = 56;
-    const returnForce = 56;
+    const repelForce = 120;
+    const returnForce = 100;
     const dampingAt60Fps = 0.5;
-    const maxDisplacement = globeRadius * 0.1;
+    const maxDisplacement = globeRadius * 0.5;
 
     const animate = (now: number) => {
       const dt = Math.min((now - last) / 1000, 0.033);
@@ -253,20 +253,34 @@ export default function HeroTestingGlobe({
 
       if (hasPointer) {
         raycaster.setFromCamera(mouseNdc, camera);
-        const hit = raycaster.intersectObject(sphereMesh, false)[0];
+        const localOrigin = points.worldToLocal(raycaster.ray.origin.clone());
+        const localRayPoint = points.worldToLocal(raycaster.ray.origin.clone().add(raycaster.ray.direction.clone()));
+        rayOriginLocal.copy(localOrigin);
+        rayDirectionLocal.copy(localRayPoint.sub(localOrigin).normalize());
 
-        if (hit) {
-          const localOrigin = points.worldToLocal(raycaster.ray.origin.clone());
-          const localRayPoint = points.worldToLocal(raycaster.ray.origin.clone().add(raycaster.ray.direction.clone()));
-          rayOriginLocal.copy(localOrigin);
-          rayDirectionLocal.copy(localRayPoint.sub(localOrigin).normalize());
-          repelStrengthTarget = 1;
-        } else {
-          repelStrengthTarget = 0;
-        }
+        // Engage repulsion even when the cursor is outside the sphere silhouette by
+        // measuring the cursor ray's closest approach to the sphere centerline.
+        const tClosest = Math.max(
+          0,
+          -(
+            rayOriginLocal.x * rayDirectionLocal.x +
+            rayOriginLocal.y * rayDirectionLocal.y +
+            rayOriginLocal.z * rayDirectionLocal.z
+          )
+        );
+        const closestX = rayOriginLocal.x + rayDirectionLocal.x * tClosest;
+        const closestY = rayOriginLocal.y + rayDirectionLocal.y * tClosest;
+        const closestZ = rayOriginLocal.z + rayDirectionLocal.z * tClosest;
+        const closestDist = Math.sqrt(closestX * closestX + closestY * closestY + closestZ * closestZ);
+
+        const engageBand = repelRadius * 1.25;
+        const engageLinear = Math.max(0, Math.min(1, 1 - (closestDist - globeRadius) / engageBand));
+        repelStrengthTarget = engageLinear * engageLinear * (3 - 2 * engageLinear);
       }
 
-      repelStrength += (repelStrengthTarget - repelStrength) * (1.0 - Math.pow(0.001, dt));
+      // Faster interaction response: large follow constant so repel engages/disengages quickly.
+      const repelFollow = 1 - Math.exp(-200 * dt);
+      repelStrength += (repelStrengthTarget - repelStrength) * repelFollow;
 
       const damping = Math.pow(dampingAt60Fps, dt * 60);
 
