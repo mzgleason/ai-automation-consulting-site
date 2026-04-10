@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BuilderHero } from "@/components/BuilderHero";
 import { getFeaturedProjects, getPageContent } from "@/lib/content";
+import { PortfolioCarousel } from "@/components/PortfolioCarousel";
 import { offers, processSteps } from "@/lib/offers";
 
 const serviceNotes = [
@@ -61,11 +62,10 @@ const projectProofCopy: Record<
 export async function HomePageContent() {
   const [homePage, projects] = await Promise.all([
     getPageContent("home"),
-    getFeaturedProjects(3)
+    getFeaturedProjects(99)
   ]);
 
-  const featuredProject = projects[0];
-  const supportingProjects = projects.slice(1, 3);
+  const featuredProjects = projects.filter((project) => project.featured);
   return (
     <main className="home-page">
       <BuilderHero title={homePage.title} description={homePage.description} />
@@ -117,58 +117,8 @@ export async function HomePageContent() {
             </Link>
           </div>
 
-          {featuredProject ? (
-            <div className="home-proof-showcase">
-              <p className="home-proof-ghost-label">{featuredProject.serviceType ?? featuredProject.category}</p>
-
-              <div className="home-proof-rail">
-                {supportingProjects[0] ? (
-                  <article className="home-proof-sidecase">
-                    <p className="home-proof-side-name">{supportingProjects[0].title}</p>
-                  </article>
-                ) : (
-                  <div />
-                )}
-
-                <article className="home-proof-spotlight">
-                  <div className="home-proof-spotlight-corners" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <p className="card-kicker">Featured case</p>
-                  <h3>Repeatable content workflow.</h3>
-                  <p className="home-proof-spotlight-summary">
-                    A clearer publishing system that reduced weekly friction and made the work easier to repeat.
-                  </p>
-                  <div className="home-proof-spotlight-stats">
-                    <div>
-                      <p className="project-outcome-label">Problem</p>
-                      <p>{featuredProject.problem}</p>
-                    </div>
-                    <div>
-                      <p className="project-outcome-label">Result</p>
-                      <p>{projectProofCopy[featuredProject.slug]?.result ?? featuredProject.outcomes[0]}</p>
-                    </div>
-                  </div>
-                  <div className="home-proof-spotlight-footer">
-                    <span className="home-proof-count">01 / 03</span>
-                    <Link href={`/projects/${featuredProject.slug}`} className="text-link build-link">
-                      Read the case study
-                    </Link>
-                  </div>
-                </article>
-
-                {supportingProjects[1] ? (
-                  <article className="home-proof-sidecase home-proof-sidecase-right">
-                    <p className="home-proof-side-name">{supportingProjects[1].title}</p>
-                  </article>
-                ) : (
-                  <div />
-                )}
-              </div>
-            </div>
+          {featuredProjects.length > 0 ? (
+            <PortfolioCarousel projects={featuredProjects} proofCopy={projectProofCopy} />
           ) : null}
         </div>
       </section>
