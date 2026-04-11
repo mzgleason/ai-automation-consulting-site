@@ -188,13 +188,6 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   }
                   aria-hidden={offset !== 0}
                 >
-                  <div className="portfolio-carousel-card-corners" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-
                   <div className="portfolio-carousel-card-head">
                     <p className="portfolio-carousel-card-label">{category}</p>
                     <h3 className="portfolio-carousel-card-title">{cardTitle}</h3>
@@ -208,7 +201,13 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
 
                   <div className="portfolio-carousel-card-footer">
                     <Link href={`/projects/${project.slug}`} className="portfolio-carousel-card-cta">
-                      See breakdown
+                      <span className="portfolio-carousel-card-cta-label">See breakdown</span>
+                      <span className="portfolio-carousel-card-cta-corners" aria-hidden="true">
+                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-tl" />
+                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-tr" />
+                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-bl" />
+                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-br" />
+                      </span>
                     </Link>
                   </div>
                 </motion.article>

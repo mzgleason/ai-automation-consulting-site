@@ -111,11 +111,8 @@ export async function HomePageContent() {
       <section className="section home-proof-section">
         <div className="container home-proof-frame">
           <div className="home-proof-intro">
-            <p className="eyebrow">Our portfolio</p>
+            <p className="eyebrow">Selected work</p>
             <h2>Real systems. Real constraints. Better ways to operate.</h2>
-            <p className="home-proof-subhead">
-              Selected work across AI workflows, automation design, and product-led operating improvements.
-            </p>
             <Link href="/projects" className="text-link build-link home-proof-explore">
               Browse selected work
             </Link>
