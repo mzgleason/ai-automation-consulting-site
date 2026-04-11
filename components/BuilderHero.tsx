@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import HeroProductionGlobe from "@/components/HeroProductionGlobe";
+import HeroProductionGlobe from "@/components/visuals/HeroProductionGlobe";
 import styles from "@/components/BuilderHero.module.css";
 
 type BuilderHeroProps = {

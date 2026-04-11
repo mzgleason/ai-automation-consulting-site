@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { BuilderHero } from "@/components/BuilderHero";
 import { getFeaturedProjects, getPageContent } from "@/lib/content";
-import { PortfolioCarousel } from "@/components/PortfolioCarousel";
+import { PortfolioCarousel } from "./PortfolioCarousel";
 import { offers, processSteps } from "@/lib/offers";
+import proofStyles from "./HomeProof.module.css";
 
 const serviceNotes = [
   "Best for teams that need a practical first move.",
@@ -108,12 +109,12 @@ export async function HomePageContent() {
         </div>
       </section>
 
-      <section className="section home-proof-section">
-        <div className="container home-proof-frame">
-          <div className="home-proof-intro">
-            <p className="eyebrow">Selected work</p>
-            <h2>Real systems. Real constraints. Better ways to operate.</h2>
-            <Link href="/projects" className="text-link build-link home-proof-explore">
+      <section className={`section ${proofStyles.section}`}>
+        <div className={`container ${proofStyles.frame}`}>
+          <div className={proofStyles.intro}>
+            <p className={`eyebrow ${proofStyles.eyebrow}`}>Selected work</p>
+            <h2 className={proofStyles.heading}>Real systems. Real constraints. Better ways to operate.</h2>
+            <Link href="/projects" className={`text-link build-link ${proofStyles.explore}`}>
               Browse selected work
             </Link>
           </div>

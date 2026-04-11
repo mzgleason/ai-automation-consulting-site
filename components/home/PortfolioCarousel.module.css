@@ -1,0 +1,351 @@
+.carousel {
+  margin-top: 1.85rem;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 510px;
+}
+
+.dragSurface {
+  width: min(520px, 100%);
+  height: 500px;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dragSurface:active {
+  cursor: grabbing;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(390px, 80vw);
+  height: 470px;
+  translate: -50% -50%;
+  border-radius: 26px;
+  border: 1px solid var(--pc-border, #c9ccd3);
+  background: var(--pc-card, #ecede8);
+  color: var(--pc-ink, #12131a);
+  padding: 1.55rem 2rem 1.25rem;
+  box-shadow: 0 22px 56px rgba(18, 19, 26, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: background 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 24% 16%, rgba(61, 99, 255, 0.12), transparent 60%),
+    radial-gradient(circle at 80% 88%, rgba(18, 19, 26, 0.04), transparent 58%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--pc-accent, #3d63ff) 52%, var(--pc-border, #c9ccd3));
+  box-shadow: 0 30px 86px rgba(18, 19, 26, 0.16);
+}
+
+.card:hover::before {
+  opacity: 0;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cardHead {
+  padding-top: 0.1rem;
+}
+
+.label {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pc-muted, #5e6470);
+  text-align: center;
+}
+
+.title {
+  margin-top: 0.45rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.body {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.7rem;
+  padding: 0.9rem 0.4rem 0;
+  flex: 1;
+}
+
+.mark {
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  position: relative;
+}
+
+.mark::before,
+.mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 52px;
+  height: 52px;
+  background: color-mix(in srgb, var(--pc-ink, #12131a) 92%, var(--pc-accent, #3d63ff));
+  border-radius: 18px;
+  transform: rotate(45deg);
+}
+
+.mark::after {
+  width: 52px;
+  height: 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--pc-ink, #12131a) 92%, var(--pc-accent, #3d63ff));
+  transform: rotate(0deg);
+}
+
+.payoff {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--pc-ink, #12131a) 52%, var(--pc-muted, #5e6470));
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.support {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--pc-muted, #5e6470);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+  margin-top: auto;
+  padding-top: 1.35rem;
+  padding-bottom: 0.25rem;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 1.35rem;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  color: var(--pc-accent-dark, #2747d9);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease, transform 160ms ease;
+}
+
+.card:hover .cta {
+  background: color-mix(in srgb, var(--pc-accent-soft, #dce4ff) 44%, transparent);
+  transform: translateY(-1px);
+}
+
+.ctaCorners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: color-mix(in srgb, var(--pc-accent, #3d63ff) 22%, var(--pc-border, #c9ccd3));
+  transition: color 180ms ease;
+}
+
+.card:hover .ctaCorners {
+  color: color-mix(in srgb, var(--pc-accent, #3d63ff) 72%, var(--pc-border, #c9ccd3));
+}
+
+.ctaCorner {
+  position: absolute;
+  width: 0.58rem;
+  height: 0.58rem;
+}
+
+.ctaCorner::before,
+.ctaCorner::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.ctaCornerTl {
+  top: 0;
+  left: 0;
+}
+
+.ctaCornerTl::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerTl::after {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.ctaCornerTr {
+  top: 0;
+  right: 0;
+}
+
+.ctaCornerTr::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerTr::after {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.ctaCornerBl {
+  bottom: 0;
+  left: 0;
+}
+
+.ctaCornerBl::before {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerBl::after {
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.ctaCornerBr {
+  right: 0;
+  bottom: 0;
+}
+
+.ctaCornerBr::before {
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.ctaCornerBr::after {
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 48px auto 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: min(340px, 100%);
+  margin: 1.2rem auto 0;
+  padding-bottom: 0.2rem;
+}
+
+.arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1.5px solid var(--pc-border, #c9ccd3);
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--pc-ink, #12131a);
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  transition: background 220ms ease, transform 220ms ease;
+}
+
+.arrow:hover:enabled {
+  background: color-mix(in srgb, var(--pc-accent-soft, #dce4ff) 62%, #ffffff);
+  transform: translateY(-1px);
+}
+
+.arrow:disabled {
+  opacity: 0.35;
+}
+
+.count {
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pc-muted, #5e6470);
+}
+
+@media (max-width: 760px) {
+  .stage {
+    min-height: 500px;
+  }
+
+  .dragSurface {
+    height: 500px;
+  }
+
+  .card {
+    height: 450px;
+    padding: 1.5rem 1.35rem;
+  }
+}
+

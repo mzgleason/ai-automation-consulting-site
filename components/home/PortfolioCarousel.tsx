@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { ProjectEntry } from "@/lib/content";
+import styles from "./PortfolioCarousel.module.css";
 
 type PortfolioCarouselProps = {
   projects: ProjectEntry[];
@@ -121,14 +122,14 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
   return (
     <div
       ref={rootRef}
-      className="portfolio-carousel"
+      className={styles.carousel}
       tabIndex={hasCarousel ? 0 : -1}
       aria-label="Portfolio carousel"
       style={carouselThemeVars}
     >
-      <div className="portfolio-carousel-stage">
+      <div className={styles.stage}>
         <motion.div
-          className="portfolio-carousel-drag-surface"
+          className={styles.dragSurface}
           drag={hasCarousel ? "x" : false}
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.12}
@@ -143,7 +144,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
           }}
           style={{ touchAction: "pan-y" }}
         >
-          <div className="portfolio-carousel-track" aria-live="polite">
+          <div className={styles.track} aria-live="polite">
             {visible.map((project) => {
               const index = featuredIndexBySlug.get(project.slug) ?? 0;
               const offset = hasCarousel ? relativeOffset(index, activeIndex, length) : 0;
@@ -162,7 +163,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
               return (
                 <motion.article
                   key={project.slug}
-                  className="portfolio-carousel-card"
+                  className={styles.card}
                   style={
                     {
                       pointerEvents: offset === 0 ? "auto" : "none"
@@ -188,25 +189,25 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   }
                   aria-hidden={offset !== 0}
                 >
-                  <div className="portfolio-carousel-card-head">
-                    <p className="portfolio-carousel-card-label">{category}</p>
-                    <h3 className="portfolio-carousel-card-title">{cardTitle}</h3>
+                  <div className={styles.cardHead}>
+                    <p className={styles.label}>{category}</p>
+                    <h3 className={styles.title}>{cardTitle}</h3>
                   </div>
 
-                  <div className="portfolio-carousel-card-body">
-                    <div className="portfolio-carousel-card-mark" aria-hidden="true" />
-                    <p className="portfolio-carousel-card-payoff">{payoff}</p>
-                    {support ? <p className="portfolio-carousel-card-support">{support}</p> : null}
+                  <div className={styles.body}>
+                    <div className={styles.mark} aria-hidden="true" />
+                    <p className={styles.payoff}>{payoff}</p>
+                    {support ? <p className={styles.support}>{support}</p> : null}
                   </div>
 
-                  <div className="portfolio-carousel-card-footer">
-                    <Link href={`/projects/${project.slug}`} className="portfolio-carousel-card-cta">
-                      <span className="portfolio-carousel-card-cta-label">See breakdown</span>
-                      <span className="portfolio-carousel-card-cta-corners" aria-hidden="true">
-                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-tl" />
-                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-tr" />
-                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-bl" />
-                        <span className="portfolio-carousel-card-cta-corner portfolio-carousel-card-cta-corner-br" />
+                  <div className={styles.footer}>
+                    <Link href={`/projects/${project.slug}`} className={styles.cta}>
+                      <span>See breakdown</span>
+                      <span className={styles.ctaCorners} aria-hidden="true">
+                        <span className={`${styles.ctaCorner} ${styles.ctaCornerTl}`} />
+                        <span className={`${styles.ctaCorner} ${styles.ctaCornerTr}`} />
+                        <span className={`${styles.ctaCorner} ${styles.ctaCornerBl}`} />
+                        <span className={`${styles.ctaCorner} ${styles.ctaCornerBr}`} />
                       </span>
                     </Link>
                   </div>
@@ -217,10 +218,10 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
         </motion.div>
       </div>
 
-      <div className="portfolio-carousel-controls" aria-label="Carousel controls">
+      <div className={styles.controls} aria-label="Carousel controls">
         <button
           type="button"
-          className="portfolio-carousel-arrow"
+          className={styles.arrow}
           onClick={goPrev}
           disabled={!hasCarousel}
           aria-label="Previous case"
@@ -228,13 +229,13 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
           <span aria-hidden="true">←</span>
         </button>
 
-        <p className="portfolio-carousel-count" aria-label="Carousel position">
+        <p className={styles.count} aria-label="Carousel position">
           {formatCount(wrapIndex(activeIndex, length) + 1)} / {formatCount(length)}
         </p>
 
         <button
           type="button"
-          className="portfolio-carousel-arrow"
+          className={styles.arrow}
           onClick={goNext}
           disabled={!hasCarousel}
           aria-label="Next case"

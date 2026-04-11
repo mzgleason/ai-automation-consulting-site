@@ -1,0 +1,45 @@
+.section {
+  overflow: hidden;
+  position: relative;
+  background: #dedfe1;
+  color: #12161d;
+}
+
+.frame {
+  padding: 2rem 0 1rem;
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.55rem;
+  text-align: center;
+}
+
+.eyebrow {
+  color: rgba(32, 40, 51, 0.56);
+}
+
+.heading {
+  max-width: 20ch;
+  color: #161b23;
+  font-size: clamp(1.85rem, 3vw, 2.55rem);
+  line-height: 0.98;
+}
+
+.explore {
+  color: rgba(18, 22, 29, 0.82);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 0.08em;
+}
+
+@media (max-width: 760px) {
+  .heading {
+    max-width: none;
+  }
+}
+

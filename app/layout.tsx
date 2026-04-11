@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import { AppShell } from "@/components/AppShell";
+import { AppShell } from "@/components";
 
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],

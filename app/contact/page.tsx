@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components";
 import { getPageContent } from "@/lib/content";
 import { offers } from "@/lib/offers";
 
