@@ -10,10 +10,10 @@ type PortfolioCarouselProps = {
   proofCopy: Record<
     string,
     {
+      shortCategory: string;
       displayTitle: string;
-      cardTitle: string;
-      result: string;
-      whyBuyerCares: string;
+      payoff: string;
+      support?: string;
     }
   >;
 };
@@ -150,8 +150,9 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
               const proof = proofCopy[project.slug];
 
               const cardTitle = proof?.displayTitle ?? project.title;
-              const cardSubcopy = proof?.cardTitle ?? project.summary;
-              const cardDetail = proof?.whyBuyerCares ?? project.summary;
+              const category = proof?.shortCategory ?? project.serviceType ?? project.category;
+              const payoff = proof?.payoff ?? project.summary;
+              const support = proof?.support;
 
               const x = offset * step;
               const scale = offset === 0 ? 1 : offset === -1 || offset === 1 ? 0.92 : 0.86;
@@ -195,14 +196,14 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   </div>
 
                   <div className="portfolio-carousel-card-head">
-                    <p className="portfolio-carousel-card-label">{project.serviceType ?? project.category}</p>
+                    <p className="portfolio-carousel-card-label">{category}</p>
                     <h3 className="portfolio-carousel-card-title">{cardTitle}</h3>
                   </div>
 
                   <div className="portfolio-carousel-card-body">
                     <div className="portfolio-carousel-card-mark" aria-hidden="true" />
-                    <p className="portfolio-carousel-card-subtitle">{cardSubcopy}</p>
-                    <p className="portfolio-carousel-card-detail">{cardDetail}</p>
+                    <p className="portfolio-carousel-card-payoff">{payoff}</p>
+                    {support ? <p className="portfolio-carousel-card-support">{support}</p> : null}
                   </div>
 
                   <div className="portfolio-carousel-card-footer">

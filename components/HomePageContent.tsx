@@ -37,32 +37,26 @@ const serviceFocusItems = [
 const projectProofCopy: Record<
   string,
   {
+    shortCategory: string;
     displayTitle: string;
-    cardTitle: string;
-    result: string;
-    whyBuyerCares: string;
+    payoff: string;
+    support?: string;
   }
 > = {
   "ai-driven-linkedin-content-workflow": {
-    displayTitle: "LinkedIn Content System for Repeatable Weekly Publishing",
-    cardTitle: "A repeatable content system that cut weekly publishing friction",
-    result: "Structured a recurring content workflow into a reusable publishing system with less manual drag.",
-    whyBuyerCares:
-      "Built to reduce weekly content friction with a repeatable AI-assisted workflow for capture, drafting, review, and scheduling."
+    shortCategory: "AI Workflow",
+    displayTitle: "LinkedIn Content System for Weekly Publishing",
+    payoff: "Reduces weekly content friction with a repeatable AI workflow for capture, drafting, and publishing."
   },
   "ai-intern-lending-concierge-system": {
-    displayTitle: "AI Intake Assistant for Faster Lending Qualification",
-    cardTitle: "A cleaner intake flow with stronger early follow-up",
-    result: "Improved how information was captured early so human follow-up became more targeted and less repetitive.",
-    whyBuyerCares:
-      "Designed to improve intake, qualification, and early follow-up for lending workflows where speed and structure matter."
+    shortCategory: "Lending Ops",
+    displayTitle: "AI Intake Assistant for Lending Qualification",
+    payoff: "Improves intake and qualification with structured follow-up for lending workflows where speed matters."
   },
   "lendability-model-reproducible-training-system": {
-    displayTitle: "Lendability Model with a Reproducible Retraining Workflow",
-    cardTitle: "A decision workflow that became easier to trust over time",
-    result: "Wrapped a working model in a more repeatable process so later decisions became more reliable.",
-    whyBuyerCares:
-      "Created a scoring workflow that was not only fast to ship, but structured so future retraining and iteration would be far easier."
+    shortCategory: "Model Ops",
+    displayTitle: "Lending Model with Reusable Retraining",
+    payoff: "Ships a scoring workflow fast, then makes retraining and iteration dramatically easier later."
   }
 };
 

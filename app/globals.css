@@ -129,12 +129,12 @@ body {
   border: 1px solid var(--pc-border, #C9CCD3);
   background: var(--pc-card, #ECEDE8);
   color: var(--pc-ink, #12131A);
-  padding: 1.75rem 1.7rem;
+  padding: 1.55rem 2rem 1.25rem;
   box-shadow: 0 22px 56px rgba(18, 19, 26, 0.12);
   overflow: hidden;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   transition: background 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
 
@@ -214,28 +214,36 @@ body {
 }
 
 .portfolio-carousel-card-title {
-  margin-top: 0.85rem;
+  margin-top: 0.45rem;
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.7rem, 2.4vw, 2.3rem);
   font-weight: 900;
   letter-spacing: -0.05em;
-  line-height: 0.98;
+  line-height: 1.05;
   text-transform: uppercase;
   text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .portfolio-carousel-card-body {
   display: grid;
   justify-items: center;
   align-content: center;
-  gap: 1rem;
-  padding: 0 0.4rem;
+  gap: 0.7rem;
+  padding: 0.9rem 0.4rem 0;
+}
+
+.portfolio-carousel-card-head {
+  padding-top: 0.1rem;
 }
 
 .portfolio-carousel-card-mark {
-  width: 92px;
-  height: 92px;
-  border-radius: 28px;
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
   position: relative;
 }
 
@@ -245,42 +253,52 @@ body {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 70px;
-  height: 70px;
+  width: 52px;
+  height: 52px;
   background: color-mix(in srgb, var(--pc-ink, #12131A) 92%, var(--pc-accent, #3D63FF));
   border-radius: 18px;
   transform: rotate(45deg);
 }
 
 .portfolio-carousel-card-mark::after {
-  width: 70px;
-  height: 14px;
+  width: 52px;
+  height: 12px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--pc-ink, #12131A) 92%, var(--pc-accent, #3D63FF));
   transform: rotate(0deg);
 }
 
-.portfolio-carousel-card-subtitle {
-  margin: 0;
-  max-width: 20rem;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: color-mix(in srgb, var(--pc-ink, #12131A) 52%, var(--pc-muted, #5E6470));
-  text-align: center;
-}
-
-.portfolio-carousel-card-detail {
+.portfolio-carousel-card-payoff {
   margin: 0;
   max-width: 22rem;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--pc-ink, #12131A) 52%, var(--pc-muted, #5E6470));
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.portfolio-carousel-card-support {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
   color: var(--pc-muted, #5E6470);
   text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .portfolio-carousel-card-footer {
   display: grid;
   place-items: center;
+  margin-top: auto;
+  padding-top: 1.35rem;
   padding-bottom: 0.25rem;
 }
 
