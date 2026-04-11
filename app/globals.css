@@ -156,15 +156,6 @@ body {
   white-space: nowrap;
 }
 
-.home-focus-link {
-  transition: transform 320ms ease, color 320ms ease;
-}
-
-.home-focus-link:hover,
-.home-focus-link:focus-visible {
-  transform: translateX(10px);
-}
-
 .home-process-principle {
   transition: transform 280ms ease, filter 280ms ease;
 }
@@ -3233,207 +3224,7 @@ textarea:focus {
   line-height: 1.2;
 }
 
-.home-studio-section {
-  overflow: hidden;
-  position: relative;
-  background:
-    linear-gradient(180deg, rgba(241, 243, 245, 0.98), rgba(231, 234, 238, 0.98));
-  color: #12161d;
-}
 
-.home-studio-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(rgba(18, 22, 29, 0.12) 0.7px, transparent 0.75px),
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.88), transparent 46%);
-  background-size: 20px 20px, auto;
-  opacity: 0.42;
-  pointer-events: none;
-}
-
-.home-studio-head,
-.home-studio-layout,
-.home-process-layout,
-.home-cta-shell {
-  position: relative;
-  z-index: 1;
-}
-
-.home-studio-head {
-  display: grid;
-  grid-template-columns: minmax(140px, 0.22fr) minmax(0, 1fr);
-  gap: 1rem 2rem;
-  align-items: start;
-  margin-bottom: 2rem;
-}
-
-.home-studio-section .eyebrow {
-  color: rgba(32, 40, 51, 0.56);
-}
-
-.home-studio-intro {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.home-studio-intro h2 {
-  max-width: 13ch;
-  color: #161b23;
-  font-size: clamp(2.2rem, 4.5vw, 4.25rem);
-  line-height: 0.94;
-}
-
-.home-studio-lead {
-  max-width: 31rem;
-  margin: 0;
-  color: rgba(30, 37, 47, 0.64);
-  font-size: 0.95rem;
-  line-height: 1.68;
-}
-
-.home-focus-board {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 0;
-  margin-top: 0.6rem;
-  border-top: 1px solid rgba(18, 22, 29, 0.1);
-}
-
-.home-focus-item {
-  position: relative;
-  border-bottom: 1px solid rgba(18, 22, 29, 0.1);
-}
-
-.home-focus-link {
-  display: grid;
-  grid-template-columns: 70px minmax(0, 1fr) minmax(240px, 0.42fr);
-  align-items: center;
-  gap: 1rem;
-  min-height: 208px;
-  padding: 1.35rem 0;
-  transition: transform 320ms ease, color 320ms ease;
-}
-
-.home-focus-index {
-  color: rgba(24, 31, 41, 0.42);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-}
-
-.home-focus-title {
-  color: rgba(20, 25, 33, 0.2);
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(3.2rem, 6.7vw, 6rem);
-  font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.05em;
-  text-align: center;
-  transition:
-    color 320ms ease,
-    transform 320ms ease,
-    opacity 320ms ease;
-}
-
-.home-focus-summary,
-.home-focus-detail {
-  margin: 0;
-  color: rgba(30, 37, 47, 0.74);
-  line-height: 1.56;
-}
-
-.home-focus-summary {
-  max-width: 18rem;
-  justify-self: end;
-  text-align: left;
-  color: rgba(30, 37, 47, 0.62);
-  font-size: 0.95rem;
-}
-
-.home-focus-detail {
-  position: absolute;
-  left: 5rem;
-  bottom: 1.15rem;
-  opacity: 0;
-  transform: translateY(12px);
-  color: rgba(30, 37, 47, 0.58);
-  font-size: 0.82rem;
-  letter-spacing: 0.01em;
-  transition:
-    opacity 320ms ease,
-    transform 320ms ease;
-}
-
-.home-focus-item:nth-child(1) .home-focus-link {
-  animation: focusItemReveal 640ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
-}
-
-.home-focus-item:nth-child(2) .home-focus-link {
-  animation: focusItemReveal 640ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
-}
-
-.home-focus-item:nth-child(3) .home-focus-link {
-  animation: focusItemReveal 640ms cubic-bezier(0.22, 1, 0.36, 1) 360ms both;
-}
-
-.home-focus-link:hover .home-focus-title,
-.home-focus-link:focus-visible .home-focus-title {
-  color: rgba(17, 22, 29, 0.92);
-  transform: translateY(-6px);
-}
-
-.home-focus-link:hover .home-focus-detail,
-.home-focus-link:focus-visible .home-focus-detail {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.home-focus-link:hover .home-focus-summary,
-.home-focus-link:focus-visible .home-focus-summary {
-  color: rgba(20, 25, 33, 0.84);
-}
-
-.home-focus-footer {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid rgba(18, 22, 29, 0.08);
-}
-
-.home-service-footer-notes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.2rem;
-}
-
-.home-service-footer-notes p {
-  margin: 0;
-  color: rgba(30, 37, 47, 0.56);
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
-
-.home-focus-footer-link {
-  color: rgba(18, 22, 29, 0.82);
-}
-
-@keyframes focusItemReveal {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .home-process-section {
   overflow: hidden;
@@ -3752,8 +3543,6 @@ textarea:focus {
 
 @media (max-width: 980px) {
   .builder-hero-grid,
-  .home-studio-head,
-  .home-studio-layout,
   .home-process-layout,
   .home-cta-shell {
     grid-template-columns: 1fr;
@@ -3766,35 +3555,6 @@ textarea:focus {
 
   .builder-hero-stage {
     min-height: 260px;
-  }
-
-  .home-studio-head {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-
-  .home-focus-link {
-    grid-template-columns: 1fr;
-    gap: 0.45rem;
-    min-height: 0;
-    padding: 1.2rem 0;
-  }
-
-  .home-focus-title,
-  .home-focus-summary {
-    justify-self: start;
-    text-align: left;
-  }
-
-  .home-focus-detail {
-    position: static;
-    opacity: 1;
-    transform: none;
-    font-size: 0.84rem;
-  }
-
-  .home-focus-footer {
-    flex-direction: column;
   }
 
   .home-process-intro {
@@ -3813,14 +3573,6 @@ textarea:focus {
 @media (max-width: 760px) {
   .builder-hero {
     border-radius: 22px;
-  }
-
-  .home-focus-title {
-    font-size: clamp(2.1rem, 9vw, 3.4rem);
-  }
-
-  .home-studio-intro h2 {
-    max-width: none;
   }
 
   .home-process-principles {
@@ -3858,7 +3610,6 @@ textarea:focus {
     min-height: 200px;
   }
 
-  .home-studio-titleblock h2,
   .home-process-copy h2,
   .home-cta-copy h2 {
     max-width: none;
@@ -4091,7 +3842,6 @@ textarea:focus {
   color: #8fdfff;
 }
 
-.home-studio-section,
 .home-process-section,
 .final-cta-section {
   padding-top: 3rem;
@@ -4193,7 +3943,6 @@ textarea:focus {
   backdrop-filter: blur(2px);
 }
 
-.home-studio-layout,
 .home-process-layout,
 .home-cta-shell {
   gap: 1.4rem;

@@ -1,37 +1,29 @@
 import Link from "next/link";
 import { BuilderHero } from "@/components/BuilderHero";
 import { getFeaturedProjects, getPageContent } from "@/lib/content";
+import { MyFocusSection } from "./MyFocusSection";
 import { PortfolioCarousel } from "./PortfolioCarousel";
 import { offers, processSteps } from "@/lib/offers";
 import proofStyles from "./HomeProof.module.css";
 
-const serviceNotes = [
-  "Best for teams that need a practical first move.",
-  "Built around workflow clarity, not trend chasing.",
-  "Structured to move from messy process to usable system."
-];
-
 const serviceFocusItems = [
   {
+    id: "workflow-systems",
     slug: "ai-workflow-design",
-    label: "01",
-    title: "WORKFLOW SYSTEMS",
-    summary: "Map the messy repeat work first, then design the right AI-supported operating flow.",
-    detail: "Best when the team needs clearer routing, ownership, and review."
+    title: "MAKE THE WORK VISIBLE",
+    description: "Map the real flow. Expose friction and waste."
   },
   {
+    id: "prototype-sprints",
     slug: "prototype-sprint",
-    label: "02",
-    title: "PROTOTYPE SPRINTS",
-    summary: "Turn an unclear AI opportunity into something concrete enough to test, reject, or fund.",
-    detail: "Best when the opportunity is real but the next move still feels fuzzy."
+    title: "FORCE REAL DECISIONS",
+    description: "Move fast to something testable. Remove ambiguity early."
   },
   {
+    id: "ai-advisory",
     slug: "advisory-build-support",
-    label: "03",
-    title: "AI ADVISORY",
-    summary: "Stay close to product and workflow decisions while the system is actually being built.",
-    detail: "Best when priorities keep drifting or the build needs stronger judgment."
+    title: "STAY THROUGH EXECUTION",
+    description: "Shape the system as it's built. Make sure it holds."
   }
 ];
 
@@ -62,52 +54,20 @@ const projectProofCopy: Record<
 };
 
 export async function HomePageContent() {
-  const [homePage, projects] = await Promise.all([
-    getPageContent("home"),
-    getFeaturedProjects(99)
-  ]);
+  const [homePage, projects] = await Promise.all([getPageContent("home"), getFeaturedProjects(99)]);
 
   const featuredProjects = projects.filter((project) => project.featured);
   return (
     <main className="home-page">
       <BuilderHero title={homePage.title} description={homePage.description} />
 
-      <section className="section home-studio-section">
-        <div className="container home-studio-head">
-          <p className="eyebrow">Our focus</p>
-          <div className="home-studio-intro">
-            <h2>Three ways to move a messy workflow toward operational clarity.</h2>
-            <p className="lead home-studio-lead">
-              Clear workflow design, fast prototype decisions, and builder-side advisory support for teams that want AI
-              to improve real operations, not just decorate them.
-            </p>
-          </div>
-        </div>
-
-        <div className="container home-focus-board">
-          {serviceFocusItems.map((item) => (
-            <article key={item.slug} className="home-focus-item">
-              <Link href={`/services/${item.slug}`} className="home-focus-link">
-                <span className="home-focus-index">{item.label}</span>
-                <span className="home-focus-title">{item.title}</span>
-                <span className="home-focus-summary">{item.summary}</span>
-                <span className="home-focus-detail">{item.detail}</span>
-              </Link>
-            </article>
-          ))}
-        </div>
-
-        <div className="container home-focus-footer">
-          <div className="home-service-footer-notes">
-            {serviceNotes.map((note) => (
-              <p key={note}>{note}</p>
-            ))}
-          </div>
-          <Link href="/work-with-me" className="text-link build-link home-focus-footer-link">
-            Review how the work is scoped
-          </Link>
-        </div>
-      </section>
+      <MyFocusSection
+        items={serviceFocusItems.map(({ id, title, description }) => ({
+          id,
+          title,
+          description
+        }))}
+      />
 
       <section className={`section ${proofStyles.section}`}>
         <div className={`container ${proofStyles.frame}`}>
