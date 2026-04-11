@@ -10,6 +10,7 @@ type PortfolioCarouselProps = {
   proofCopy: Record<
     string,
     {
+      displayTitle: string;
       cardTitle: string;
       result: string;
       whyBuyerCares: string;
@@ -17,13 +18,16 @@ type PortfolioCarouselProps = {
   >;
 };
 
-const palette = [
-  { bg: "#f3f7b2", hoverBg: "#bfe7ff", ink: "#17191c", accent: "#1d1f23" },
-  { bg: "#bdf4e4", hoverBg: "#f1c7ff", ink: "#15181b", accent: "#1d1f23" },
-  { bg: "#f1c7ff", hoverBg: "#ffccae", ink: "#17191c", accent: "#1d1f23" },
-  { bg: "#ffccae", hoverBg: "#f3f7b2", ink: "#17191c", accent: "#1d1f23" },
-  { bg: "#bfe7ff", hoverBg: "#bdf4e4", ink: "#14171a", accent: "#1d1f23" }
-];
+const carouselThemeVars: CSSProperties = {
+  "--pc-bg": "#F3F3F0",
+  "--pc-card": "#ECEDE8",
+  "--pc-ink": "#12131A",
+  "--pc-muted": "#5E6470",
+  "--pc-border": "#C9CCD3",
+  "--pc-accent": "#3D63FF",
+  "--pc-accent-dark": "#2747D9",
+  "--pc-accent-soft": "#DCE4FF"
+} as CSSProperties;
 
 function wrapIndex(index: number, length: number) {
   if (length === 0) return 0;
@@ -120,6 +124,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
       className="portfolio-carousel"
       tabIndex={hasCarousel ? 0 : -1}
       aria-label="Portfolio carousel"
+      style={carouselThemeVars}
     >
       <div className="portfolio-carousel-stage">
         <motion.div
@@ -142,10 +147,9 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
             {visible.map((project) => {
               const index = featuredIndexBySlug.get(project.slug) ?? 0;
               const offset = hasCarousel ? relativeOffset(index, activeIndex, length) : 0;
-              const theme = palette[wrapIndex(index, palette.length)];
               const proof = proofCopy[project.slug];
 
-              const cardTitle = project.title;
+              const cardTitle = proof?.displayTitle ?? project.title;
               const cardSubcopy = proof?.cardTitle ?? project.summary;
               const cardDetail = proof?.whyBuyerCares ?? project.summary;
 
@@ -160,10 +164,6 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   className="portfolio-carousel-card"
                   style={
                     {
-                      "--card-bg": theme.bg,
-                      "--card-bg-hover": theme.hoverBg,
-                      "--card-ink": theme.ink,
-                      "--card-accent": theme.accent,
                       pointerEvents: offset === 0 ? "auto" : "none"
                     } as CSSProperties
                   }
@@ -207,7 +207,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
 
                   <div className="portfolio-carousel-card-footer">
                     <Link href={`/projects/${project.slug}`} className="portfolio-carousel-card-cta">
-                      View Case
+                      See breakdown
                     </Link>
                   </div>
                 </motion.article>

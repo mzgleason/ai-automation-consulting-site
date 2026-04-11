@@ -37,25 +37,32 @@ const serviceFocusItems = [
 const projectProofCopy: Record<
   string,
   {
+    displayTitle: string;
     cardTitle: string;
     result: string;
     whyBuyerCares: string;
   }
 > = {
   "ai-driven-linkedin-content-workflow": {
+    displayTitle: "LinkedIn Content System for Repeatable Weekly Publishing",
     cardTitle: "A repeatable content system that cut weekly publishing friction",
     result: "Structured a recurring content workflow into a reusable publishing system with less manual drag.",
-    whyBuyerCares: "A good example of turning messy repeat work into a dependable operating rhythm."
+    whyBuyerCares:
+      "Built to reduce weekly content friction with a repeatable AI-assisted workflow for capture, drafting, review, and scheduling."
   },
   "ai-intern-lending-concierge-system": {
+    displayTitle: "AI Intake Assistant for Faster Lending Qualification",
     cardTitle: "A cleaner intake flow with stronger early follow-up",
     result: "Improved how information was captured early so human follow-up became more targeted and less repetitive.",
-    whyBuyerCares: "Useful for any business dealing with intake, qualification, triage, or routing problems."
+    whyBuyerCares:
+      "Designed to improve intake, qualification, and early follow-up for lending workflows where speed and structure matter."
   },
   "lendability-model-reproducible-training-system": {
+    displayTitle: "Lendability Model with a Reproducible Retraining Workflow",
     cardTitle: "A decision workflow that became easier to trust over time",
     result: "Wrapped a working model in a more repeatable process so later decisions became more reliable.",
-    whyBuyerCares: "Shows that AI gets more useful when the surrounding workflow is disciplined and repeatable."
+    whyBuyerCares:
+      "Created a scoring workflow that was not only fast to ship, but structured so future retraining and iteration would be far easier."
   }
 };
 
@@ -111,9 +118,12 @@ export async function HomePageContent() {
         <div className="container home-proof-frame">
           <div className="home-proof-intro">
             <p className="eyebrow">Our portfolio</p>
-            <h2>Selected systems work that moved messy operations into something clearer.</h2>
+            <h2>Real systems. Real constraints. Better ways to operate.</h2>
+            <p className="home-proof-subhead">
+              Selected work across AI workflows, automation design, and product-led operating improvements.
+            </p>
             <Link href="/projects" className="text-link build-link home-proof-explore">
-              Explore case studies
+              Browse selected work
             </Link>
           </div>
 
