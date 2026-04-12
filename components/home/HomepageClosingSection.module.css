@@ -1,0 +1,63 @@
+.section {
+  padding-top: 2.75rem;
+}
+
+.headline {
+  margin: 0.5rem 0 0;
+  max-width: 22ch;
+}
+
+.column {
+  display: grid;
+  align-content: start;
+  gap: 1.1rem;
+}
+
+.block {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.block h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.block p {
+  margin: 0;
+}
+
+.ctaPanel {
+  margin-top: 0.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ctaPanel h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.ctaPanel p {
+  margin: 0;
+  color: rgba(233, 241, 247, 0.86);
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.microcopy {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(190, 206, 217, 0.92);
+}
+

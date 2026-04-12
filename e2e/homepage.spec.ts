@@ -7,7 +7,7 @@ test.describe("homepage staging checks", () => {
     await page.goto("/", { waitUntil: "domcontentloaded", timeout: 60_000 });
 
     const header = page.locator("header").first();
-    const homeHeading = page.getByRole("heading", { name: /bring the process that is slowing the business down/i });
+    const homeHeading = page.getByRole("heading", { name: /build systems that do the work for you/i });
     await expect(header).toHaveAttribute("data-hydrated", "true");
     await expect(homeHeading).toBeVisible();
     await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
@@ -20,10 +20,10 @@ test.describe("homepage staging checks", () => {
     await page.goto("/preview/foundry-home", { waitUntil: "domcontentloaded", timeout: 60_000 });
 
     await expect(header).toHaveAttribute("data-hydrated", "true");
-    await expect(page.getByRole("heading", { name: /bring the process that is slowing the business down/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /build systems that do the work for you/i })).toBeVisible();
     await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
     await expect(page.getByRole("link", { name: /^services$/i }).first()).toBeVisible();
-    await expect(page.getByText(/ai consulting for business owners and teams/i)).toBeVisible();
+    await expect(page.getByText(/turn slow, manual, or inconsistent work into clearer systems/i)).toBeVisible();
   });
 
   test("desktop header shrinks, hides on downward scroll, and returns on upward scroll", async ({ page, browserName }, testInfo) => {

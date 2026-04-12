@@ -3,8 +3,8 @@ import { BuilderHero } from "@/components/BuilderHero";
 import { getFeaturedProjects, getPageContent } from "@/lib/content";
 import { MyFocusSection } from "./MyFocusSection";
 import { PortfolioCarousel } from "./PortfolioCarousel";
-import { offers, processSteps } from "@/lib/offers";
 import proofStyles from "./HomeProof.module.css";
+import { HomepageClosingSection } from "./HomepageClosingSection";
 
 const serviceFocusItems = [
   {
@@ -85,77 +85,7 @@ export async function HomePageContent() {
         </div>
       </section>
 
-      <section className="section home-process-section">
-        <div className="container home-process-intro">
-          <div className="home-process-intro-left">
-            <p className="eyebrow">Our ethos</p>
-            <h2>Clarity matters. Practical momentum wins.</h2>
-          </div>
-
-          <div className="home-process-intro-right">
-            <p className="home-process-lead">
-              Good AI work starts with a real bottleneck, gets tested in a concrete way, and becomes useful through
-              iteration instead of abstraction. The process should create confidence, not more noise.
-            </p>
-            <Link href="/work-with-me" className="text-link build-link home-process-link">
-              Review how engagements start
-            </Link>
-          </div>
-        </div>
-
-        <div className="container home-process-principles">
-          {processSteps.map((step, index) => (
-            <article key={step.title} className="home-process-principle">
-              <div className="home-process-principle-art" aria-hidden="true" />
-              <p className="home-process-principle-title">{step.title}</p>
-              <p className="home-process-principle-count">0{index + 1} / 04</p>
-              <p className="home-process-principle-summary">{step.summary}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section final-cta-section">
-        <div className="container home-cta-shell">
-          <div className="home-cta-stack">
-            <article className="home-cta-panel-card home-cta-panel-card-sky">
-              <p className="home-cta-panel-title">Move at the speed of breakthrough.</p>
-              <span className="home-cta-panel-count">01</span>
-              <p className="home-cta-panel-copy">Start with the bottleneck that is costing time, quality, or follow-through.</p>
-            </article>
-
-            <article className="home-cta-panel-card home-cta-panel-card-fire">
-              <p className="home-cta-panel-title">Get to a practical first move fast.</p>
-              <span className="home-cta-panel-count">02</span>
-              <p className="home-cta-panel-copy">Use a tighter process to decide whether to design, prototype, or hold.</p>
-            </article>
-
-            <article className="home-cta-panel-card home-cta-panel-card-ghost">
-              <p className="home-cta-panel-title">Keep the work grounded in real operations.</p>
-              <span className="home-cta-panel-count">03</span>
-              <p className="home-cta-panel-copy">Build with workflow clarity, human checkpoints, and cleaner scope from the start.</p>
-            </article>
-          </div>
-
-          <div className="home-cta-copy">
-            <p className="eyebrow">Next step</p>
-            <h2>Build fast, with less friction and total focus.</h2>
-            <p className="home-cta-lead">
-              Skip the vague AI transformation pitch. Start with the real workflow, get direct feedback on fit, and move
-              toward something the team can actually use.
-            </p>
-            <div className="hero-actions home-cta-actions">
-              <Link href="/contact" className="button button-accent">
-                Talk about your workflow
-              </Link>
-              <Link href="/work-with-me" className="button button-ghost">
-                Review services
-              </Link>
-            </div>
-            <p className="home-cta-microcopy">Short conversation. Direct feedback. No pressure to force AI where it does not belong.</p>
-          </div>
-        </div>
-      </section>
+      <HomepageClosingSection />
     </main>
   );
 }
