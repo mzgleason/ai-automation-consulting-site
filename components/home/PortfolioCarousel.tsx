@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type CSSProperties } from "react";
 import type { ProjectEntry } from "@/lib/content";
+import { ContentEngineBlocksIcon, IntakeFunnelNodeIcon, ModelOpsLoopIcon } from "./PortfolioCardIcons";
 import styles from "./PortfolioCarousel.module.css";
 
 type PortfolioCarouselProps = {
@@ -119,6 +120,16 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
     return [...indices].sort((a, b) => a - b).map((index) => featured[index]);
   }, [activeIndex, featured, hasCarousel, length]);
 
+  const iconBySlug = useMemo(
+    () =>
+      new Map<string, ComponentType<{ className?: string }>>([
+        ["lendability-model-reproducible-training-system", ModelOpsLoopIcon],
+        ["ai-driven-linkedin-content-workflow", ContentEngineBlocksIcon],
+        ["ai-intern-lending-concierge-system", IntakeFunnelNodeIcon]
+      ]),
+    []
+  );
+
   return (
     <div
       ref={rootRef}
@@ -154,6 +165,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
               const category = proof?.shortCategory ?? project.serviceType ?? project.category;
               const payoff = proof?.payoff ?? project.summary;
               const support = proof?.support;
+              const Icon = iconBySlug.get(project.slug);
 
               const x = offset * step;
               const scale = offset === 0 ? 1 : offset === -1 || offset === 1 ? 0.92 : 0.86;
@@ -195,7 +207,9 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   </div>
 
                   <div className={styles.body}>
-                    <div className={styles.mark} aria-hidden="true" />
+                    <div className={styles.icon} aria-hidden="true">
+                      {Icon ? <Icon className={styles.iconSvg} /> : null}
+                    </div>
                     <p className={styles.payoff}>{payoff}</p>
                     {support ? <p className={styles.support}>{support}</p> : null}
                   </div>

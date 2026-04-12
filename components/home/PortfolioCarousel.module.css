@@ -112,32 +112,20 @@
   flex: 1;
 }
 
-.mark {
+.icon {
   width: 68px;
   height: 68px;
   border-radius: 22px;
-  position: relative;
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, var(--pc-ink, #12131a) 84%, var(--pc-accent, #3d63ff));
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid color-mix(in srgb, var(--pc-border, #c9ccd3) 70%, transparent);
 }
 
-.mark::before,
-.mark::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
+.iconSvg {
   width: 52px;
   height: 52px;
-  background: color-mix(in srgb, var(--pc-ink, #12131a) 92%, var(--pc-accent, #3d63ff));
-  border-radius: 18px;
-  transform: rotate(45deg);
-}
-
-.mark::after {
-  width: 52px;
-  height: 12px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--pc-ink, #12131a) 92%, var(--pc-accent, #3d63ff));
-  transform: rotate(0deg);
 }
 
 .payoff {
