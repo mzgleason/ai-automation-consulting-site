@@ -1,7 +1,7 @@
 import path from "node:path";
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = 3001;
+const PORT = 3002;
 const baseURL = `http://127.0.0.1:${PORT}`;
 
 export default defineConfig({
@@ -34,7 +34,7 @@ export default defineConfig({
   webServer: {
     command: "npm run build && npm run start:test",
     url: baseURL,
-    reuseExistingServer: false,
+    reuseExistingServer: !process.env.CI,
     timeout: 240000
   }
 });

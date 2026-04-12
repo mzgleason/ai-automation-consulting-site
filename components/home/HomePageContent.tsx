@@ -37,19 +37,21 @@ const projectProofCopy: Record<
   }
 > = {
   "ai-driven-linkedin-content-workflow": {
-    shortCategory: "AI Workflow",
-    displayTitle: "LinkedIn Content System for Weekly Publishing",
-    payoff: "Reduces weekly content friction with a repeatable AI workflow for capture, drafting, and publishing."
+    shortCategory: "CONTENT ENGINE",
+    displayTitle: "LINKEDIN CONTENT SYSTEM FOR WEEKLY PUBLISHING",
+    payoff: "Reduces weekly content friction with a repeatable workflow for capture, drafting, review, and publishing."
   },
   "ai-intern-lending-concierge-system": {
-    shortCategory: "Lending Ops",
-    displayTitle: "AI Intake Assistant for Lending Qualification",
-    payoff: "Improves intake and qualification with structured follow-up for lending workflows where speed matters."
+    shortCategory: "AI INTAKE SYSTEM",
+    displayTitle: "AI INTAKE ASSISTANT FOR LENDING QUALIFICATION",
+    payoff:
+      "Improves early qualification by structuring intake, surfacing missing information, and reducing manual follow-up."
   },
   "lendability-model-reproducible-training-system": {
-    shortCategory: "Model Ops",
-    displayTitle: "Lending Model with Reusable Retraining",
-    payoff: "Ships a scoring workflow fast, then makes retraining and iteration dramatically easier later."
+    shortCategory: "MODEL OPS SYSTEM",
+    displayTitle: "LENDING MODEL RETRAINING SYSTEM",
+    payoff:
+      "A reusable retraining workflow for keeping lending models current without rebuilding the process each cycle."
   }
 };
 
