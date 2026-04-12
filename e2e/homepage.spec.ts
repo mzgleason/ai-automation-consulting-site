@@ -10,6 +10,10 @@ test.describe("homepage staging checks", () => {
     const homeHeading = page.getByRole("heading", { name: /build systems that do the work for you/i });
     await expect(header).toHaveAttribute("data-hydrated", "true");
     await expect(homeHeading).toBeVisible();
+    const cta = page.getByTestId("hero-cta");
+    await cta.scrollIntoViewIfNeeded();
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveText(/work through your workflow/i);
     await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
     if (testInfo.project.name === "mobile-chrome") {
       await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();
@@ -21,9 +25,17 @@ test.describe("homepage staging checks", () => {
 
     await expect(header).toHaveAttribute("data-hydrated", "true");
     await expect(page.getByRole("heading", { name: /build systems that do the work for you/i })).toBeVisible();
+    const previewCta = page.getByTestId("hero-cta");
+    await previewCta.scrollIntoViewIfNeeded();
+    await expect(previewCta).toBeVisible();
+    await expect(previewCta).toHaveText(/work through your workflow/i);
     await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /^services$/i }).first()).toBeVisible();
-    await expect(page.getByText(/turn slow, manual, or inconsistent work into clearer systems/i)).toBeVisible();
+    if (testInfo.project.name === "mobile-chrome") {
+      await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();
+    } else {
+      await expect(page.getByLabel("Primary").getByRole("link", { name: /^case studies$/i })).toBeVisible();
+    }
+    await expect(page.getByText(/automation\.\s*operations\.\s*product decisions\./i)).toBeVisible();
   });
 
   test("desktop header shrinks, hides on downward scroll, and returns on upward scroll", async ({ page, browserName }, testInfo) => {
