@@ -26,7 +26,7 @@ serviceType: AI Workflow Design
 coverImage: /images/case-studies/lending-concierge-cover.svg
 heroImage: /images/case-studies/lending-concierge-hero.svg
 ctaLabel: See how I help
-ctaHref: /work-with-me
+ctaHref: /contact
 problem: Early-stage lending conversations slowed down because key information was missing, handoffs were unclear, and too much repetitive follow-up landed on human experts.
 ---
 

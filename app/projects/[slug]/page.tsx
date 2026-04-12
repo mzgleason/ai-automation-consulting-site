@@ -134,8 +134,8 @@ export default async function ProjectDetailPage({
               <Link href={project.ctaHref ?? "/contact"} className="button button-accent">
                 {project.ctaLabel ?? "Start a conversation"}
               </Link>
-              <Link href="/work-with-me" className="button button-ghost">
-                See how I help
+              <Link href="/playbooks" className="button button-ghost">
+                Browse playbooks
               </Link>
             </div>
           </div>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ContactForm } from "@/components";
 import { getPageContent } from "@/lib/content";
-import { offers } from "@/lib/offers";
 
 export default async function ContactPage() {
   const page = await getPageContent("contact");
@@ -56,18 +55,13 @@ export default async function ContactPage() {
           </section>
 
           <section className="card contact-fit-card">
-            <p className="card-kicker">Engagement paths</p>
-            <div className="contact-offer-list">
-              {offers.map((offer) => (
-                <div key={offer.slug} className="contact-offer-item">
-                  <h2>{offer.title}</h2>
-                  <p>{offer.summary}</p>
-                  <Link href={`/services/${offer.slug}`} className="text-link build-link">
-                    See how I help
-                  </Link>
-                </div>
-              ))}
-            </div>
+            <p className="card-kicker">What to send</p>
+            <p className="contact-fit-copy">
+              If you can, include a short workflow map (even bullets), what feels stuck, and what outcome you need.
+            </p>
+            <Link href="/playbooks" className="text-link build-link">
+              Browse playbooks first
+            </Link>
           </section>
         </div>
 

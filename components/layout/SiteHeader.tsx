@@ -14,8 +14,7 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { href: "/projects", label: "Case Studies", matchPrefixes: ["/projects"] },
-  { href: "/writing", label: "Insights", matchPrefixes: ["/writing"] },
-  { href: "/work-with-me", label: "Services", matchPrefixes: ["/work-with-me", "/services"] },
+  { href: "/playbooks", label: "Playbooks", matchPrefixes: ["/playbooks"] },
   { href: "/about", label: "About", matchPrefixes: ["/about"] },
   { href: "/contact", label: "Contact", matchPrefixes: ["/contact"], mobileFullWidth: true }
 ];
