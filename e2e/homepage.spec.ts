@@ -10,6 +10,10 @@ test.describe("homepage staging checks", () => {
     const homeHeading = page.getByRole("heading", { name: /build systems that do the work for you/i });
     await expect(header).toHaveAttribute("data-hydrated", "true");
     await expect(homeHeading).toBeVisible();
+    const cta = page.getByTestId("hero-cta");
+    await cta.scrollIntoViewIfNeeded();
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveText(/work through your workflow/i);
     await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
     if (testInfo.project.name === "mobile-chrome") {
       await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();
@@ -21,6 +25,10 @@ test.describe("homepage staging checks", () => {
 
     await expect(header).toHaveAttribute("data-hydrated", "true");
     await expect(page.getByRole("heading", { name: /build systems that do the work for you/i })).toBeVisible();
+    const previewCta = page.getByTestId("hero-cta");
+    await previewCta.scrollIntoViewIfNeeded();
+    await expect(previewCta).toBeVisible();
+    await expect(previewCta).toHaveText(/work through your workflow/i);
     await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
     if (testInfo.project.name === "mobile-chrome") {
       await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();

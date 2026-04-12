@@ -152,8 +152,8 @@ export function BuilderHero(_props: BuilderHeroProps) {
         <div className={styles.bottomRail}>
           <div className={styles.bottomRule} />
           <div className={styles.bottomRow}>
-            <Link href="/contact" className={styles.contactCta}>
-              CONTACT ME
+            <Link href="/contact" className={styles.contactCta} data-testid="hero-cta">
+              WORK THROUGH YOUR WORKFLOW
               <span className={styles.ctaCorners} aria-hidden="true">
                 <span className={styles.ctaCornerTl} />
                 <span className={styles.ctaCornerTr} />
