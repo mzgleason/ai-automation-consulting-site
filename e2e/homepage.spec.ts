@@ -14,7 +14,7 @@ test.describe("homepage staging checks", () => {
     await cta.scrollIntoViewIfNeeded();
     await expect(cta).toBeVisible();
     await expect(cta).toHaveText(/work through your workflow/i);
-    await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /mark (z )?gleason home/i })).toBeVisible();
     if (testInfo.project.name === "mobile-chrome") {
       await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();
     } else {
@@ -29,7 +29,7 @@ test.describe("homepage staging checks", () => {
     await previewCta.scrollIntoViewIfNeeded();
     await expect(previewCta).toBeVisible();
     await expect(previewCta).toHaveText(/work through your workflow/i);
-    await expect(page.getByRole("link", { name: /mark gleason home/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /mark (z )?gleason home/i })).toBeVisible();
     if (testInfo.project.name === "mobile-chrome") {
       await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();
     } else {

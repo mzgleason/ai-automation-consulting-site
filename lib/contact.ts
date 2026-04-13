@@ -10,9 +10,9 @@ export const contactSubmissionSchema = z.object({
 
 export type ContactSubmission = z.infer<typeof contactSubmissionSchema>;
 
-export const CONTACT_EMAIL = "hello@markgleason.ai";
-export const CONTACT_LINKEDIN_URL = "https://www.linkedin.com/in/markgleason/";
-export const CONTACT_CALENDLY_URL = "https://calendly.com/markgleason";
+export const CONTACT_EMAIL = "mark.z.gleason@gmail.com";
+export const CONTACT_LINKEDIN_URL = "https://www.linkedin.com/in/mark-gleason-mba-0558aa80/";
+export const CONTACT_CALENDLY_URL = "https://calendly.com/mark-z-gleason/chat-with-mark";
 
 export function sanitizeContactSubmission(submission: ContactSubmission): ContactSubmission {
   return {
