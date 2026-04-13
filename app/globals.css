@@ -1035,6 +1035,81 @@ code {
   line-height: 1.58;
 }
 
+
+.brutalist-frame {
+  position: relative;
+  border: 1px solid rgba(190, 220, 240, 0.2);
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 34px
+    ),
+    rgba(11, 17, 24, 0.9);
+}
+
+.brutalist-frame::before,
+.brutalist-frame::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid rgba(139, 211, 255, 0.65);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.brutalist-frame::before {
+  top: 0.6rem;
+  left: 0.6rem;
+  border-left: 2px solid rgba(139, 211, 255, 0.65);
+}
+
+.brutalist-frame::after {
+  right: 0.6rem;
+  bottom: 0.6rem;
+  border-right: 2px solid rgba(139, 211, 255, 0.65);
+  border-bottom: 2px solid rgba(139, 211, 255, 0.65);
+  border-top: 0;
+}
+
+.brutalist-frame-utility {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.68rem 1rem 0.62rem;
+  color: #afdffb;
+  font-size: 0.69rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.brutalist-frame-divider {
+  position: relative;
+  height: 10px;
+  border-top: 1px solid rgba(190, 220, 240, 0.22);
+  border-bottom: 1px solid rgba(190, 220, 240, 0.14);
+  background:
+    linear-gradient(90deg, rgba(139, 211, 255, 0.28), rgba(139, 211, 255, 0.02) 35%),
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 8px);
+}
+
+.brutalist-frame-content {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.projects-brutalist-block {
+  box-shadow: inset 0 0 0 1px rgba(139, 211, 255, 0.05);
+}
+
 .project-filter-row {
   gap: 0.55rem;
   margin-bottom: 0.25rem;
@@ -2661,6 +2736,29 @@ textarea:focus {
     gap: 0.18rem;
     margin-bottom: 0.68rem;
   }
+
+
+  .brutalist-frame {
+    border-radius: 14px;
+  }
+
+  .brutalist-frame::before,
+  .brutalist-frame::after {
+    width: 12px;
+    height: 12px;
+  }
+
+  .brutalist-frame-utility {
+    padding: 0.6rem 0.75rem 0.55rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+
+  .brutalist-frame-content {
+    padding: 0.78rem;
+    gap: 0.82rem;
+  }
+
 
   .project-filter-row {
     margin-bottom: 0.16rem;
