@@ -43,7 +43,6 @@ function HeaderCorners() {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const isHomeLikeRoute = pathname === "/" || pathname.startsWith("/preview/foundry-home");
   const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
   const lastScrollY = useRef(0);
   const viewportHeight = useRef(0);
@@ -177,116 +176,143 @@ export function SiteHeader() {
     };
   }, [isMenuOpen]);
 
-  return (
-    <>
-      <header
-        className={styles.header}
-        data-hydrated={isHydrated ? "true" : undefined}
-        data-hidden={isHidden ? "true" : undefined}
-        data-menu-open={isMenuOpen ? "true" : undefined}
-        data-scrolled={isScrolled ? "true" : undefined}
-      >
-        <div className={styles.frame}>
-          <div className={cx("container", styles.headerContainer)}>
-            <div className={styles.shell}>
-              <Link
-                href="/"
-                className={styles.brand}
-                aria-label="Mark Z Gleason home"
-                onBlur={() => setHoveredIndex(null)}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <span className={styles.brandFull}>Mark Z Gleason</span>
-                <span className={styles.brandCompact} aria-hidden="true">
-                  MZG
-                </span>
-              </Link>
+  const stickyVisible = isMenuOpen || isScrolled;
 
-              <nav className={styles.nav} aria-label="Primary">
-                <div className={styles.navTrack}>
-                  <ul className={styles.navList} onMouseLeave={() => setHoveredIndex(null)}>
-                    {navItems.map((item, index) => {
-                      const isActive = activeIndex === index;
+  const renderHeaderShell = ({
+    variant,
+    scrolled,
+    hidden
+  }: {
+    variant: "rail" | "sticky";
+    scrolled: boolean;
+    hidden: boolean;
+  }) => (
+    <header
+      className={variant === "sticky" ? styles.stickyHeader : styles.railHeader}
+      data-variant={variant}
+      data-hydrated={isHydrated ? "true" : undefined}
+      data-hidden={hidden ? "true" : undefined}
+      data-menu-open={isMenuOpen ? "true" : undefined}
+      data-scrolled={scrolled ? "true" : undefined}
+      data-visible={variant === "sticky" && stickyVisible ? "true" : undefined}
+      aria-hidden={
+        variant === "rail"
+          ? stickyVisible
+            ? "true"
+            : undefined
+          : stickyVisible
+            ? undefined
+            : "true"
+      }
+    >
+      <div className={styles.frame}>
+        <div className={cx("container", styles.headerContainer)}>
+          <div className={styles.shell}>
+            <Link
+              href="/"
+              className={styles.brand}
+              aria-label="Mark Z Gleason home"
+              onBlur={() => setHoveredIndex(null)}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <span className={styles.brandFull}>Mark Z Gleason</span>
+              <span className={styles.brandCompact} aria-hidden="true">
+                MZG
+              </span>
+            </Link>
 
-                      return (
-                        <li
-                          key={item.href}
-                          ref={(node) => {
-                            itemRefs.current[index] = node;
-                          }}
-                          className={styles.navItem}
-                          onMouseEnter={() => setHoveredIndex(index)}
-                        >
-                          <Link
-                            href={item.href}
-                            aria-current={isActive ? "page" : undefined}
-                            className={cx(styles.navLink, isActive && styles.navLinkActive)}
-                            onBlur={() => setHoveredIndex(null)}
-                            onFocus={() => setHoveredIndex(index)}
-                          >
-                            <span className={styles.navText}>{item.label}</span>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div
-                    className={cx(styles.navHighlight, indicator.visible && styles.navHighlightVisible)}
-                    style={{
-                      width: indicator.visible ? `${indicator.width}px` : undefined,
-                      transform: `translateX(${indicator.offset}px)`
-                    }}
-                  >
-                    <HeaderCorners />
-                  </div>
-                </div>
-              </nav>
-
-              <button
-                type="button"
-                className={styles.mobileToggle}
-                aria-expanded={isMenuOpen}
-                aria-controls="mobile-nav-panel"
-                aria-label="Toggle navigation menu"
-                onClick={() => setIsMenuOpen((open) => !open)}
-              >
-                <span className={styles.mobileToggleCore} />
-                <HeaderCorners />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {isMenuOpen ? (
-          <div className={styles.mobileBackdrop} onClick={() => setIsMenuOpen(false)}>
-            <div className={cx("container", styles.mobileFrame)}>
-              <div id="mobile-nav-panel" className={styles.mobilePanel} onClick={(event) => event.stopPropagation()}>
-                <ul className={styles.mobileGrid}>
-                  {navItems.map((item) => {
-                    const isActive = isItemActive(pathname, item);
+            <nav className={styles.nav} aria-label="Primary">
+              <div className={styles.navTrack}>
+                <ul className={styles.navList} onMouseLeave={() => setHoveredIndex(null)}>
+                  {navItems.map((item, index) => {
+                    const isActive = activeIndex === index;
 
                     return (
-                      <li key={item.href} className={cx(styles.mobileItem, item.mobileFullWidth && styles.mobileItemFull)}>
+                      <li
+                        key={`${variant}-${item.href}`}
+                        ref={(node) => {
+                          itemRefs.current[index] = node;
+                        }}
+                        className={styles.navItem}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                      >
                         <Link
                           href={item.href}
                           aria-current={isActive ? "page" : undefined}
-                          className={cx(styles.mobileLink, isActive && styles.mobileLinkActive)}
-                          onClick={() => setIsMenuOpen(false)}
+                          className={cx(styles.navLink, isActive && styles.navLinkActive)}
+                          onBlur={() => setHoveredIndex(null)}
+                          onFocus={() => setHoveredIndex(index)}
                         >
-                          <span className={styles.mobileLinkLabel}>{item.label}</span>
-                          <HeaderCorners />
+                          <span className={styles.navText}>{item.label}</span>
                         </Link>
                       </li>
                     );
                   })}
                 </ul>
+                <div
+                  className={cx(styles.navHighlight, indicator.visible && styles.navHighlightVisible)}
+                  style={{
+                    width: indicator.visible ? `${indicator.width}px` : undefined,
+                    transform: `translateX(${indicator.offset}px)`
+                  }}
+                >
+                  <HeaderCorners />
+                </div>
               </div>
+            </nav>
+
+            <button
+              type="button"
+              className={styles.mobileToggle}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav-panel"
+              aria-label="Toggle navigation menu"
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              <span className={styles.mobileToggleCore} />
+              <HeaderCorners />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+
+  return (
+    <>
+      <div className={styles.rail}>
+        {renderHeaderShell({ variant: "rail", scrolled: false, hidden: false })}
+      </div>
+
+      {renderHeaderShell({ variant: "sticky", scrolled: stickyVisible, hidden: stickyVisible && isHidden })}
+
+      {isMenuOpen ? (
+        <div className={styles.mobileBackdrop} onClick={() => setIsMenuOpen(false)}>
+          <div className={cx("container", styles.mobileFrame)}>
+            <div id="mobile-nav-panel" className={styles.mobilePanel} onClick={(event) => event.stopPropagation()}>
+              <ul className={styles.mobileGrid}>
+                {navItems.map((item) => {
+                  const isActive = isItemActive(pathname, item);
+
+                  return (
+                    <li key={item.href} className={cx(styles.mobileItem, item.mobileFullWidth && styles.mobileItemFull)}>
+                      <Link
+                        href={item.href}
+                        aria-current={isActive ? "page" : undefined}
+                        className={cx(styles.mobileLink, isActive && styles.mobileLinkActive)}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <span className={styles.mobileLinkLabel}>{item.label}</span>
+                        <HeaderCorners />
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
-        ) : null}
-      </header>
-
-      {isHomeLikeRoute ? <div className={styles.homeOffset} aria-hidden="true" /> : null}
+        </div>
+      ) : null}
     </>
   );
 }
