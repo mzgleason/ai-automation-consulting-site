@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type CSSProperties } from "react";
 import type { ProjectEntry } from "@/lib/content";
 import { ContentEngineBlocksIcon, IntakeFunnelNodeIcon, ModelOpsLoopIcon } from "./PortfolioCardIcons";
 import styles from "./PortfolioCarousel.module.css";
+import { Button } from "@/components/ui/Button";
 
 type PortfolioCarouselProps = {
   projects: ProjectEntry[];
@@ -215,15 +215,9 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   </div>
 
                   <div className={styles.footer}>
-                    <Link href={`/projects/${project.slug}`} className={styles.cta}>
-                      <span>See breakdown</span>
-                      <span className={styles.ctaCorners} aria-hidden="true">
-                        <span className={`${styles.ctaCorner} ${styles.ctaCornerTl}`} />
-                        <span className={`${styles.ctaCorner} ${styles.ctaCornerTr}`} />
-                        <span className={`${styles.ctaCorner} ${styles.ctaCornerBl}`} />
-                        <span className={`${styles.ctaCorner} ${styles.ctaCornerBr}`} />
-                      </span>
-                    </Link>
+                    <Button href={`/projects/${project.slug}`} variant="secondary" className={styles.cardCta}>
+                      See breakdown
+                    </Button>
                   </div>
                 </motion.article>
               );

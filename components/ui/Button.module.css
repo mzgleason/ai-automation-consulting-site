@@ -1,0 +1,195 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 2.5rem;
+  padding: 0.78rem 1.16rem;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.button:focus-visible {
+  outline: 2px solid rgba(139, 211, 255, 0.42);
+  outline-offset: 3px;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(244, 247, 250, 0.92);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  background: rgba(139, 211, 255, 0.08);
+  color: #f5fbff;
+}
+
+.primary {
+  background: rgba(139, 211, 255, 0.28);
+  color: rgba(235, 247, 255, 0.92);
+}
+
+.primary:hover,
+.primary:focus-visible {
+  background: rgba(139, 211, 255, 0.38);
+  color: #f5fbff;
+}
+
+.corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  --corner-size: 0.58rem;
+  --corner-stroke: 1px;
+  color: rgba(244, 247, 250, 0.26);
+  transition: color 180ms ease;
+}
+
+.primary .corners {
+  opacity: 0;
+  color: rgba(84, 182, 242, 0.95);
+  transform: scale(0.985);
+}
+
+.secondary:hover .corners,
+.secondary:focus-visible .corners {
+  color: rgba(139, 211, 255, 0.62);
+}
+
+.primary:hover .corners,
+.primary:focus-visible .corners {
+  opacity: 1;
+  color: rgba(84, 182, 242, 0.95);
+  transform: scale(1);
+  --corner-size: 0.64rem;
+  --corner-stroke: 2px;
+}
+
+.cornerTl,
+.cornerTr,
+.cornerBl,
+.cornerBr {
+  position: absolute;
+  width: var(--corner-size);
+  height: var(--corner-size);
+}
+
+.cornerTl::before,
+.cornerTl::after,
+.cornerTr::before,
+.cornerTr::after,
+.cornerBl::before,
+.cornerBl::after,
+.cornerBr::before,
+.cornerBr::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.cornerTl {
+  top: 0;
+  left: 0;
+}
+
+.cornerTl::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--corner-stroke);
+}
+
+.cornerTl::after {
+  top: 0;
+  left: 0;
+  width: var(--corner-stroke);
+  height: 100%;
+}
+
+.cornerTr {
+  top: 0;
+  right: 0;
+}
+
+.cornerTr::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: var(--corner-stroke);
+}
+
+.cornerTr::after {
+  top: 0;
+  right: 0;
+  width: var(--corner-stroke);
+  height: 100%;
+}
+
+.cornerBl {
+  bottom: 0;
+  left: 0;
+}
+
+.cornerBl::before {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--corner-stroke);
+}
+
+.cornerBl::after {
+  bottom: 0;
+  left: 0;
+  width: var(--corner-stroke);
+  height: 100%;
+}
+
+.cornerBr {
+  right: 0;
+  bottom: 0;
+}
+
+.cornerBr::before {
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--corner-stroke);
+}
+
+.cornerBr::after {
+  right: 0;
+  bottom: 0;
+  width: var(--corner-stroke);
+  height: 100%;
+}
+
+.tertiary {
+  min-height: unset;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  letter-spacing: 0.18em;
+  transform: none;
+}
+
+.tertiary:hover,
+.tertiary:focus-visible {
+  transform: none;
+}
