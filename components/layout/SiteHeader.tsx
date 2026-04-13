@@ -192,13 +192,13 @@ export function SiteHeader() {
               <Link
                 href="/"
                 className={styles.brand}
-                aria-label="Mark Gleason home"
+                aria-label="Mark Z Gleason home"
                 onBlur={() => setHoveredIndex(null)}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className={styles.brandFull}>Mark Gleason</span>
+                <span className={styles.brandFull}>Mark Z Gleason</span>
                 <span className={styles.brandCompact} aria-hidden="true">
-                  MG
+                  MZG
                 </span>
               </Link>
 
