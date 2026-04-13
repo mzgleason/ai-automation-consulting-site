@@ -32,25 +32,9 @@ export default async function ContactPage() {
     <main className={`section section-top ${styles.section}`}>
       <div className={`container ${styles.container}`}>
         <div className={styles.layout}>
-          <div className={styles.left}>
+          <div className={styles.intro}>
             <h1 className={styles.headline}>{page.title}</h1>
             <p className={styles.lead}>{page.description}</p>
-
-            <section className={`card ${styles.leftCard}`}>
-              <h2 className={styles.cardTitle}>Most conversations start here:</h2>
-              <ul className={styles.bulletList}>
-                <li>
-                  <strong>Best fit</strong> if you’ve prototyped something sticky, you’re scoping an AI prototype, or you
-                  need a real system to fit tight constraints
-                </li>
-                <li>
-                  <strong>Best for</strong> live workflow walkthroughs and product/system design decisions
-                </li>
-                <li>
-                  <strong>Bring</strong> a real problem
-                </li>
-              </ul>
-            </section>
           </div>
 
           <div className={styles.right}>
@@ -108,6 +92,22 @@ export default async function ContactPage() {
               </div>
             </section>
           </div>
+
+          <section className={`card ${styles.leftCard}`}>
+            <h2 className={styles.cardTitle}>Most conversations start here:</h2>
+            <ul className={styles.bulletList}>
+              <li>
+                <strong>Best fit</strong> if you’ve prototyped something sticky, you’re scoping an AI prototype, or you
+                need a real system to fit tight constraints
+              </li>
+              <li>
+                <strong>Best for</strong> live workflow walkthroughs and product/system design decisions
+              </li>
+              <li>
+                <strong>Bring</strong> a real problem
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </main>
