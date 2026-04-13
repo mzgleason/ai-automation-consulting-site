@@ -156,129 +156,15 @@
   padding-bottom: 0.25rem;
 }
 
-.cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 1.35rem;
-  border-radius: 0;
-  border: 0;
-  background: transparent;
-  color: var(--pc-accent-dark, #2747d9);
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background-color 180ms ease, color 180ms ease, transform 160ms ease;
+.cardCta.cardCta {
+  color: #12131a;
 }
 
-.card:hover .cta {
-  background: color-mix(in srgb, var(--pc-accent-soft, #dce4ff) 44%, transparent);
-  transform: translateY(-1px);
+.cardCta.cardCta:hover,
+.cardCta.cardCta:focus-visible {
+  color: #12131a;
 }
 
-.ctaCorners {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  color: color-mix(in srgb, var(--pc-accent, #3d63ff) 22%, var(--pc-border, #c9ccd3));
-  transition: color 180ms ease;
-}
-
-.card:hover .ctaCorners {
-  color: color-mix(in srgb, var(--pc-accent, #3d63ff) 72%, var(--pc-border, #c9ccd3));
-}
-
-.ctaCorner {
-  position: absolute;
-  width: 0.58rem;
-  height: 0.58rem;
-}
-
-.ctaCorner::before,
-.ctaCorner::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-}
-
-.ctaCornerTl {
-  top: 0;
-  left: 0;
-}
-
-.ctaCornerTl::before {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-}
-
-.ctaCornerTl::after {
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-}
-
-.ctaCornerTr {
-  top: 0;
-  right: 0;
-}
-
-.ctaCornerTr::before {
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 1px;
-}
-
-.ctaCornerTr::after {
-  top: 0;
-  right: 0;
-  width: 1px;
-  height: 100%;
-}
-
-.ctaCornerBl {
-  bottom: 0;
-  left: 0;
-}
-
-.ctaCornerBl::before {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-}
-
-.ctaCornerBl::after {
-  bottom: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-}
-
-.ctaCornerBr {
-  right: 0;
-  bottom: 0;
-}
-
-.ctaCornerBr::before {
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-}
-
-.ctaCornerBr::after {
-  right: 0;
-  bottom: 0;
-  width: 1px;
-  height: 100%;
-}
 
 .controls {
   display: grid;

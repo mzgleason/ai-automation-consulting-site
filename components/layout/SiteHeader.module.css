@@ -148,59 +148,8 @@
   color: #f5fbff;
 }
 
-.navGlow {
-  width: 0.55rem;
-  height: 0.55rem;
-  margin-right: 0.55rem;
-  border-radius: 0.2rem;
-  background: rgba(139, 211, 255, 0.84);
-  opacity: 0;
-  filter: blur(18px);
-  transform: translateX(-1rem);
-  transition:
-    opacity 280ms var(--header-easing),
-    transform 280ms var(--header-easing),
-    filter 280ms var(--header-easing);
-}
-
-.navLink:hover .navGlow,
-.navLink:focus-visible .navGlow {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateX(-0.2rem);
-}
-
 .navText {
-  position: relative;
-  display: flex;
-  overflow: hidden;
-  transition: transform 320ms var(--header-easing);
-}
-
-.navText > span {
   display: block;
-  transition: transform 320ms var(--header-easing);
-}
-
-.navText > span:last-child {
-  position: absolute;
-  inset: 0;
-  transform: translateY(100%);
-}
-
-.navLink:hover .navText,
-.navLink:focus-visible .navText {
-  transform: translateX(0.28rem);
-}
-
-.navLink:hover .navText > span:first-child,
-.navLink:focus-visible .navText > span:first-child {
-  transform: translateY(-100%);
-}
-
-.navLink:hover .navText > span:last-child,
-.navLink:focus-visible .navText > span:last-child {
-  transform: translateY(0);
 }
 
 .navHighlight {
@@ -523,9 +472,7 @@
   .brandFull,
   .brandCompact,
   .navLink,
-  .navGlow,
   .navText,
-  .navText > span,
   .navHighlight,
   .mobileToggleCore,
   .mobileLink {

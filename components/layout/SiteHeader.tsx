@@ -224,11 +224,7 @@ export function SiteHeader() {
                             onBlur={() => setHoveredIndex(null)}
                             onFocus={() => setHoveredIndex(index)}
                           >
-                            <span className={styles.navGlow} />
-                            <span className={styles.navText}>
-                              <span>{item.label}</span>
-                              <span aria-hidden="true">{item.label}</span>
-                            </span>
+                            <span className={styles.navText}>{item.label}</span>
                           </Link>
                         </li>
                       );

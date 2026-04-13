@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./HomepageClosingSection.module.css";
+import { Button } from "@/components/ui/Button";
 
 export function HomepageClosingSection() {
   return (
@@ -21,13 +22,10 @@ export function HomepageClosingSection() {
             <h3>Book a working session</h3>
             <p className={styles.supportingLine}>I’ll tell you quickly if it’s worth pursuing.</p>
             <div className={styles.ctaActions}>
-              <Link href="/contact" className="button button-accent">
+              <Button href="/contact" variant="primary">
                 Book the session
-              </Link>
+              </Button>
             </div>
-            <Link href="/work-with-me" className={styles.secondaryLink}>
-              See engagement paths
-            </Link>
           </div>
         </div>
       </div>

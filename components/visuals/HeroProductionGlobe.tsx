@@ -39,7 +39,7 @@ function fibonacciSpherePoints(count: number, radius: number) {
     base[i * 3 + 1] = py;
     base[i * 3 + 2] = pz;
 
-    sizes[i] = 0.195;
+    sizes[i] = 0.351;
     noise[i] = Math.random();
 
     const rx = Math.random() * 2 - 1;
@@ -98,8 +98,8 @@ export default function HeroTestingGlobe({
     const uniforms = {
       uScatter: { value: 0 },
       uScrollDissolve: { value: 0 },
-      uOpacity: { value: 1 },
-      uColor: { value: new THREE.Color("#7f97a8") }
+      uOpacity: { value: 0.72 },
+      uColor: { value: new THREE.Color("#97c9e6") }
     };
 
     const material = new THREE.ShaderMaterial({
@@ -142,10 +142,10 @@ export default function HeroTestingGlobe({
         void main() {
           vec2 uv = gl_PointCoord.xy - 0.5;
           float r = dot(uv, uv);
-          float circle = smoothstep(0.25, 0.20, r);
+           float circle = smoothstep(0.36, 0.18, r);
 
-          float alpha = circle * vAlpha;
-          if (alpha < 0.01) discard;
+           float alpha = clamp(circle * vAlpha, 0.0, 1.0);
+           if (alpha < 0.01) discard;
 
           gl_FragColor = vec4(uColor, alpha);
         }
