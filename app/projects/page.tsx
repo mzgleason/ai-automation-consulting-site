@@ -15,30 +15,45 @@ export default async function ProjectsPage({
 
   return (
     <main className="section section-top">
-      <div className="container page-intro">
-        <p className="eyebrow">Projects</p>
-        <h1>Real systems, prototypes, and workflow builds</h1>
-        <p className="lead">
-          A practical record of how ambiguous ideas became shipped tools, operating systems, and measurable outcomes.
-        </p>
-      </div>
-
-      <div className="container filter-row project-filter-row">
-        <Link href="/projects" className={`chip project-filter-chip ${activeCategory === "All" ? "chip-active" : ""}`}>
-          All case studies
-        </Link>
-        {categories.map((category) => (
-          <Link
-            key={category}
-            href={`/projects?category=${encodeURIComponent(category)}`}
-            className={`chip project-filter-chip ${activeCategory === category ? "chip-active" : ""}`}
-          >
-            {category}
+      <section className="projects-hero">
+        <div className="container projects-hero-intro">
+          <p className="eyebrow">Projects</p>
+          <h1>Case studies from shipped AI systems.</h1>
+          <p className="lead projects-hero-lead">
+            Practical build stories across content operations, intake automation, and model workflows—with clear decisions,
+            constraints, and outcomes.
+          </p>
+          <Link href="#featured-case-studies" className="text-link projects-hero-link">
+            Start with featured case studies
           </Link>
-        ))}
-      </div>
+        </div>
 
-      <section className="section section-compact">
+        <div className="container projects-hero-filters">
+          <div className="projects-filter-meta">
+            <p className="projects-filter-label">Browse by category</p>
+            <p className="projects-filter-count" aria-live="polite">
+              {filteredProjects.length} {filteredProjects.length === 1 ? "case study" : "case studies"}
+              {activeCategory !== "All" ? ` in ${activeCategory}` : ""}
+            </p>
+          </div>
+          <div className="filter-row project-filter-row" aria-label="Filter projects by category">
+            <Link href="/projects" className={`chip project-filter-chip ${activeCategory === "All" ? "chip-active" : ""}`}>
+              All case studies
+            </Link>
+            {categories.map((category) => (
+              <Link
+                key={category}
+                href={`/projects?category=${encodeURIComponent(category)}`}
+                className={`chip project-filter-chip ${activeCategory === category ? "chip-active" : ""}`}
+              >
+                {category}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="featured-case-studies" className="section section-compact projects-featured-section">
         <div className="container">
           <div className="section-head project-index-head">
             <div>

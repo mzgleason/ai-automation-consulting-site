@@ -1036,10 +1036,14 @@ code {
 }
 
 .project-filter-row {
-  margin-bottom: 0.9rem;
+  gap: 0.55rem;
+  margin-bottom: 0.25rem;
 }
 
 .project-filter-chip {
+  padding: 0.45rem 0.78rem;
+  font-size: 0.8rem;
+  font-weight: 650;
   transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
@@ -1051,6 +1055,64 @@ code {
 
 .project-index-head h2 {
   max-width: 18ch;
+}
+
+.projects-hero {
+  border-bottom: 1px solid rgba(190, 220, 240, 0.12);
+  margin-bottom: 0.25rem;
+  padding-bottom: 1.35rem;
+}
+
+.projects-hero-intro {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 1.15rem;
+}
+
+.projects-hero-intro h1 {
+  max-width: 16ch;
+}
+
+.projects-hero-lead {
+  max-width: 58ch;
+}
+
+.projects-hero-link {
+  width: fit-content;
+}
+
+.projects-hero-filters {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 0.78rem;
+  border-top: 1px solid rgba(190, 220, 240, 0.12);
+}
+
+.projects-filter-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.projects-filter-label {
+  margin: 0;
+  color: #c2d1dc;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.projects-filter-count {
+  margin: 0;
+  color: #c2d1dc;
+  font-size: 0.82rem;
+}
+
+.projects-featured-section {
+  padding-top: 2.1rem;
 }
 
 .project-showcase-grid {
@@ -2601,7 +2663,56 @@ textarea:focus {
   }
 
   .project-filter-row {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.16rem;
+  }
+
+  .projects-hero {
+    padding-bottom: 1rem;
+  }
+
+  .projects-hero-intro {
+    gap: 0.72rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .projects-hero-intro h1 {
+    max-width: 13ch;
+  }
+
+  .projects-hero-lead {
+    max-width: 30ch;
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .projects-hero-link {
+    font-size: 0.93rem;
+  }
+
+  .projects-hero-filters {
+    gap: 0.55rem;
+    padding-top: 0.7rem;
+  }
+
+  .projects-filter-meta {
+    gap: 0.3rem 0.7rem;
+  }
+
+  .projects-filter-label {
+    font-size: 0.71rem;
+  }
+
+  .projects-filter-count {
+    font-size: 0.8rem;
+  }
+
+  .project-filter-chip {
+    font-size: 0.77rem;
+    padding: 0.4rem 0.64rem;
+  }
+
+  .projects-featured-section {
+    padding-top: 1.75rem;
   }
 
   .detail-meta-strip span {
