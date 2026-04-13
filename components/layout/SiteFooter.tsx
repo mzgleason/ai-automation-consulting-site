@@ -16,8 +16,8 @@ export function SiteFooter() {
         <div className="footer-copy">
           <p className="footer-title">Mark Gleason</p>
           <p className="muted">
-            AI consulting for business owners and teams who want to save time, improve service, and make operations run
-            better.
+            Operator-led product consulting for teams improving strategy, systems, and workflows—with selective AI
+            automation where it fits.
           </p>
         </div>
         <ul className="footer-links">
