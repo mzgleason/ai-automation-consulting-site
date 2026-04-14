@@ -16,6 +16,7 @@
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
   --header-height: 4.75rem;
   --header-stack-height: calc(var(--header-height) + 0.9rem);
+  --header-rail-height: 102px;
   --header-easing: cubic-bezier(0.62, 0.16, 0.13, 1.01);
 }
 
@@ -25,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-height) + 1.25rem);
+  scroll-padding-top: calc(var(--header-rail-height) + 1.25rem);
 }
 
 body {

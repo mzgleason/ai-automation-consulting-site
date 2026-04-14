@@ -6,7 +6,7 @@ test.describe("homepage staging checks", () => {
   test("preview route matches live homepage content and shared chrome", async ({ page }, testInfo) => {
     await page.goto("/", { waitUntil: "domcontentloaded", timeout: 60_000 });
 
-    const header = page.locator("header").first();
+    const header = page.locator('header[data-variant="rail"]');
     const homeHeading = page.getByRole("heading", { name: /build systems that do the work for you/i });
     await expect(header).toHaveAttribute("data-hydrated", "true");
     await expect(homeHeading).toBeVisible();
@@ -43,14 +43,15 @@ test.describe("homepage staging checks", () => {
 
     await page.goto("/", { waitUntil: "domcontentloaded", timeout: 60_000 });
 
-    const header = page.locator("header").first();
+    const header = page.locator('header[data-variant="sticky"]');
     const viewportHeight = await page.evaluate(() => window.innerHeight);
 
     await expect(header).toHaveAttribute("data-hydrated", "true");
-    await expect(header).not.toHaveAttribute("data-scrolled", "true");
+    await expect(header).toHaveAttribute("aria-hidden", "true");
 
     await page.evaluate((height) => window.scrollTo({ top: Math.round(height / 3), behavior: "auto" }), viewportHeight);
     await page.waitForTimeout(200);
+    await expect(header).toHaveAttribute("data-visible", "true");
     await expect(header).toHaveAttribute("data-scrolled", "true");
     await expect(header).not.toHaveAttribute("data-hidden", "true");
 
@@ -68,7 +69,7 @@ test.describe("homepage staging checks", () => {
 
     await page.goto("/", { waitUntil: "domcontentloaded", timeout: 60_000 });
 
-    const header = page.locator("header").first();
+    const header = page.locator('header[data-variant="rail"]');
     const toggle = page.getByRole("button", { name: /toggle navigation menu/i });
     await expect(header).toHaveAttribute("data-hydrated", "true");
     await expect(toggle).toBeVisible();
