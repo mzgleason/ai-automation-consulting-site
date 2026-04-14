@@ -41,18 +41,20 @@ export default async function ContactPage() {
             <section className={`cta-panel ${styles.ctaPanel}`}>
               <h2 className={styles.panelTitle}>Book a working session</h2>
               <p className={styles.panelLead}>
-                Fastest way to align on the workflow, constraints, and a sensible next step.
+                We’ll walk through the workflow, pressure test the constraints, and figure out what’s actually worth
+                building.
               </p>
 
-              <Button
-                href={CONTACT_CALENDLY_URL}
-                variant="primary"
-                className={styles.primaryCta}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Book on Calendly
-              </Button>
+              <div className={styles.primaryCtaWrap}>
+                <Button
+                  href={CONTACT_CALENDLY_URL}
+                  variant="primary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book a working session
+                </Button>
+              </div>
 
               <div className={styles.panelDivider} aria-hidden="true" />
 
@@ -60,15 +62,15 @@ export default async function ContactPage() {
                 <p className={styles.panelKicker}>Best for:</p>
                 <ul className={styles.panelList}>
                   <li>live workflow walkthroughs</li>
-                  <li>product decisions</li>
-                  <li>system design</li>
+                  <li>non-obvious product/system decisions</li>
+                  <li>figuring out if something should be built or killed</li>
                 </ul>
               </div>
 
               <div className={styles.panelDivider} aria-hidden="true" />
 
               <div className={styles.panelBlock}>
-                <p className={styles.panelKicker}>Prefer async?</p>
+                <p className={styles.panelKicker}>Not ready to book time?</p>
                 <div className={styles.directLinks}>
                   <a className={styles.directLink} href={`mailto:${CONTACT_EMAIL}`}>
                     <span className={styles.directIcon} aria-hidden="true">
@@ -96,21 +98,14 @@ export default async function ContactPage() {
           <section className={`card ${styles.leftCard}`}>
             <h2 className={styles.cardTitle}>Most conversations start here:</h2>
             <ul className={styles.bulletList}>
-              <li>
-                <strong>Best fit</strong> if you’ve prototyped something sticky, you’re scoping an AI prototype, or you
-                need a real system to fit tight constraints
-              </li>
-              <li>
-                <strong>Best for</strong> live workflow walkthroughs and product/system design decisions
-              </li>
-              <li>
-                <strong>Bring</strong> a real problem
-              </li>
+              <li>You’ve built something, but it’s not holding up under real use</li>
+              <li>You’re scoping an AI or workflow system and want to get it right before building</li>
+              <li>You need to make a product or system decision with real constraints</li>
             </ul>
+            <p className={styles.panelLead}>Bring a real problem. We’ll work through it.</p>
           </section>
         </div>
       </div>
     </main>
   );
 }
-
