@@ -2,7 +2,7 @@
   --contact-line: rgba(190, 220, 240, 0.16);
   --contact-radius: 8px;
   min-height: 75svh;
-  padding-top: 3.6rem;
+  padding-top: 0;
   padding-bottom: 0;
 }
 
@@ -131,14 +131,13 @@
   line-height: 1.55;
 }
 
-.primaryCta {
+.primaryCtaWrap {
+  display: flex;
+}
+
+.primaryCtaWrap > a {
   width: 100%;
   justify-content: center;
-  min-height: 52px;
-  border-radius: var(--contact-radius);
-  padding: 0.96rem 1.15rem;
-  background: rgba(139, 211, 255, 0.4);
-  border: 1px solid rgba(139, 211, 255, 0.45);
 }
 
 .panelDivider {
@@ -235,7 +234,7 @@
   }
 
   .section {
-    padding-top: 2.5rem;
+    padding-top: 0;
   }
 
   .right {
