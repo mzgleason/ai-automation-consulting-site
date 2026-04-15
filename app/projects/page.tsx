@@ -43,9 +43,14 @@ export default async function ProjectsPage() {
           {projects.map((project, index) => (
             <ProjectSection
               key={project.slug}
-              project={project}
+              title={project.title}
+              description={project.summary}
               proofLine={projectProof[project.slug]}
               metrics={projectMetrics[project.slug] ?? []}
+              imageSrc={project.coverImage ?? undefined}
+              imageAlt={`${project.title} case study visual`}
+              ctaHref={`/projects/${project.slug}`}
+              ctaLabel="Read case study"
               layout={index % 2 === 0 ? "imageLeft" : "imageRight"}
             />
           ))}
