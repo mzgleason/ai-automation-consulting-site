@@ -1,7 +1,7 @@
 ---
-title: AI-Driven LinkedIn Content Workflow
+title: Scaled weekly LinkedIn publishing to 200+ posts
 slug: ai-driven-linkedin-content-workflow
-summary: A repeatable AI-assisted publishing system that turned weekly accomplishments into stronger LinkedIn content with less friction and better quality control.
+summary: Turned weekly accomplishments into publish-ready posts with clear review gates, enabling 200+ posts and ~30% more monthly engagement with less prep time.
 date: 2026-04-04
 status: Active workflow
 featured: true
