@@ -84,7 +84,7 @@ This repo contains both the production website and a small amount of agent-suppo
 Mark Z Gleason Personal Site
 
 ### Repository
-<your GitHub repo URL>
+https://github.com/mzgleason/ai-automation-consulting-site
 
 ### Linear workspace
 MZG
