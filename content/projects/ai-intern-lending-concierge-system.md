@@ -1,12 +1,12 @@
 ---
-title: AI Intern / Lending Concierge System
+title: Reduced lending intake workload by ~30%
 slug: ai-intern-lending-concierge-system
-summary: An AI-assisted intake and routing system designed to reduce early-stage friction in small business lending conversations and create a cleaner path to qualified human follow-up.
+summary: Built an intake-and-routing concierge that captured missing borrower details and clarified next steps, cutting manual intake ~30% and speeding assessments ~60%.
 date: 2026-04-04
 status: Prototype
 featured: true
 published: true
-category: AI systems
+category: Lending operations
 tags:
   - Voice AI
   - Intake automation

@@ -1,7 +1,7 @@
 ---
-title: Lendability Model + Reproducible Training System
+title: Delivered 3+ lendability model releases with reproducible training
 slug: lendability-model-reproducible-training-system
-summary: A lendability scoring model wrapped in a repeatable training and evaluation workflow so future iterations could be tested, compared, and improved more reliably.
+summary: Shipped a lendability scoring model plus reproducible training/evaluation, enabling 3+ released versions and ~30% faster iteration cycles with cleaner comparisons.
 date: 2026-04-04
 status: System design
 featured: true
