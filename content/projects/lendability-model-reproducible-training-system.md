@@ -25,8 +25,8 @@ clientType: Fintech / analytical product systems
 serviceType: Advisory + Build Support
 coverImage: /images/case-studies/lendability-model-cover.svg
 heroImage: /images/case-studies/lendability-model-hero.svg
-ctaLabel: View case studies
-ctaHref: /projects
+ctaLabel: View portfolio
+ctaHref: /portfolio
 problem: Model iteration was hard to trust because training inputs, assumptions, and outputs were not tied together in a way that made future comparison and retraining reliable.
 ---
 

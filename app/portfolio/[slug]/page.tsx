@@ -47,8 +47,8 @@ export default async function ProjectDetailPage({
   return (
     <main className="section section-top project-detail-page">
       <div className="container detail-hero project-detail-hero">
-        <Link href="/projects" className="text-link">
-          Back to projects
+        <Link href="/portfolio" className="text-link">
+          Back to portfolio
         </Link>
         <p className="eyebrow">{project.category}</p>
         <h1>{project.title}</h1>
@@ -118,8 +118,8 @@ export default async function ProjectDetailPage({
           <div className="card project-case-callout">
             <p className="card-kicker">Why this matters</p>
             <p>
-              This case study shows how a messy process can be turned into a clearer system with better decisions,
-              stronger handoffs, and outcomes a team can actually reuse.
+              This project shows how a messy process can be turned into a clearer system with better decisions, stronger
+              handoffs, and outcomes a team can actually reuse.
             </p>
           </div>
           <article className="prose-content card" dangerouslySetInnerHTML={{ __html: project.html }} />

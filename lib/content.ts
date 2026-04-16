@@ -141,16 +141,14 @@ function markdownToHtml(markdown: string): string {
     .join("");
 }
 
-const writingKindOrder = ["Essay", "Note", "Case study"];
+const writingKindOrder = ["Essay", "Note", "Build log"];
 
 function normalizeWritingKind(value: string): string {
   const normalized = value.trim().toLowerCase();
 
   if (normalized === "essay") return "Essay";
   if (normalized === "note") return "Note";
-  if (normalized === "case study" || normalized === "case-study" || normalized === "casestudy") {
-    return "Case study";
-  }
+  if (normalized === "build log" || normalized === "build-log" || normalized === "buildlog") return "Build log";
 
   return value.trim();
 }

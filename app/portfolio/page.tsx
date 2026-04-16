@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { ProjectSection } from "@/components/projects/ProjectSection";
 import { getProjects } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "A portfolio of real systems shipped under real constraints: workflow automation, product prototypes, and decision-support systems."
+};
 
 const projectMetrics: Record<string, { value: string; label: string }[]> = {
   "ai-driven-linkedin-content-workflow": [
@@ -48,9 +55,9 @@ export default async function ProjectsPage() {
               proofLine={projectProof[project.slug]}
               metrics={projectMetrics[project.slug] ?? []}
               imageSrc={project.coverImage ?? undefined}
-              imageAlt={`${project.title} case study visual`}
-              ctaHref={`/projects/${project.slug}`}
-              ctaLabel="Read case study"
+              imageAlt={`${project.title} project visual`}
+              ctaHref={`/portfolio/${project.slug}`}
+              ctaLabel="View project"
               layout={index % 2 === 0 ? "imageLeft" : "imageRight"}
             />
           ))}

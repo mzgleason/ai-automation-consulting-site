@@ -18,7 +18,7 @@ test.describe("homepage staging checks", () => {
     if (testInfo.project.name === "mobile-chrome") {
       await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();
     } else {
-      await expect(page.getByLabel("Primary").getByRole("link", { name: /^case studies$/i })).toBeVisible();
+    await expect(page.getByLabel("Primary").getByRole("link", { name: /^portfolio$/i })).toBeVisible();
     }
 
     await page.goto("/preview/foundry-home", { waitUntil: "domcontentloaded", timeout: 60_000 });
@@ -33,7 +33,7 @@ test.describe("homepage staging checks", () => {
     if (testInfo.project.name === "mobile-chrome") {
       await expect(page.getByRole("button", { name: /toggle navigation menu/i })).toBeVisible();
     } else {
-      await expect(page.getByLabel("Primary").getByRole("link", { name: /^case studies$/i })).toBeVisible();
+    await expect(page.getByLabel("Primary").getByRole("link", { name: /^portfolio$/i })).toBeVisible();
     }
     await expect(page.getByText(/automation\.\s*operations\.\s*product decisions\./i)).toBeVisible();
   });

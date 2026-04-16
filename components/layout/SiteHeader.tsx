@@ -13,7 +13,7 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/projects", label: "Case Studies", matchPrefixes: ["/projects"] },
+  { href: "/portfolio", label: "Portfolio", matchPrefixes: ["/portfolio", "/projects"] },
   { href: "/playbooks", label: "Playbooks", matchPrefixes: ["/playbooks"] },
   { href: "/about", label: "About", matchPrefixes: ["/about"] },
   { href: "/contact", label: "Contact", matchPrefixes: ["/contact"], mobileFullWidth: true }

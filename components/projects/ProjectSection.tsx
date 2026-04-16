@@ -24,7 +24,7 @@ type ProjectSectionProps = {
 export function ProjectSection({
   title,
   description,
-  eyebrow = "Case study",
+  eyebrow = "Project",
   proofLine,
   metrics = [],
   imageSrc,
