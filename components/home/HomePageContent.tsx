@@ -73,10 +73,10 @@ export async function HomePageContent() {
 
       <section className={`section ${proofStyles.section}`}>
         <div className={`container ${proofStyles.frame}`}>
-          <div className={proofStyles.intro}>
-            <p className={`eyebrow ${proofStyles.eyebrow}`}>Selected work</p>
-            <h2 className={proofStyles.heading}>Real systems. Real constraints. Better ways to operate.</h2>
-            <Link href="/projects" className={`text-link build-link ${proofStyles.explore}`}>
+            <div className={proofStyles.intro}>
+              <p className={`eyebrow ${proofStyles.eyebrow}`}>Selected work</p>
+              <h2 className={proofStyles.heading}>Real systems. Real constraints. Better ways to operate.</h2>
+            <Link href="/portfolio" className={`text-link build-link ${proofStyles.explore}`}>
               Browse selected work
             </Link>
           </div>

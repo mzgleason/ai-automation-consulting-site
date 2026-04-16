@@ -10,7 +10,7 @@ tags:
 featured: true
 published: true
 readingTime: 6 min
-kind: Case study
+kind: Build log
 ---
 
 I built an AI-assisted content workflow that turned weekly accomplishments into draft LinkedIn posts. On paper it looked simple: collect notes, extract the story, draft the post, review it, and schedule it.

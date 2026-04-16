@@ -7,7 +7,7 @@
 4. Apply the DNS records from Vercel at the registrar.
 
 ## Before shipping
-- Verify `/`, `/preview/foundry-home`, `/projects`, `/work-with-me`, `/about`, and `/contact`.
+- Verify `/`, `/preview/foundry-home`, `/portfolio`, `/work-with-me`, `/about`, and `/contact`.
 - Run `npm run test`.
 - Run `npm run test:e2e`.
 - Run `npm run build`.

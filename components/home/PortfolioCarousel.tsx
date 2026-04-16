@@ -215,7 +215,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   </div>
 
                   <div className={styles.footer}>
-                    <Button href={`/projects/${project.slug}`} variant="secondary" className={styles.cardCta}>
+                    <Button href={`/portfolio/${project.slug}`} variant="secondary" className={styles.cardCta}>
                       See breakdown
                     </Button>
                   </div>
@@ -232,7 +232,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
           className={styles.arrow}
           onClick={goPrev}
           disabled={!hasCarousel}
-          aria-label="Previous case"
+          aria-label="Previous project"
         >
           <span aria-hidden="true">←</span>
         </button>
@@ -246,7 +246,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
           className={styles.arrow}
           onClick={goNext}
           disabled={!hasCarousel}
-          aria-label="Next case"
+          aria-label="Next project"
         >
           <span aria-hidden="true">→</span>
         </button>
