@@ -23,7 +23,7 @@ outcomes:
   - Created a scalable pre-qualification workflow
 clientType: Small business lending / service operations
 serviceType: AI Workflow Design
-coverImage: /images/case-studies/lending-concierge-cover.svg
+coverImage: /images/projects/ai-intern-lending-concierge.svg
 heroImage: /images/case-studies/lending-concierge-hero.svg
 ctaLabel: See how I help
 ctaHref: /contact
