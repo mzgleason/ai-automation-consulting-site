@@ -23,7 +23,7 @@ outcomes:
   - Created a reusable workflow instead of one-off prompting
 clientType: Professional brand / solo operator
 serviceType: AI Workflow Design
-coverImage: /images/projects/automation-systems.svg
+coverImage: /images/projects/linkedin-workflow.svg
 heroImage: /images/case-studies/linkedin-workflow-hero.svg
 ctaLabel: Start a conversation
 ctaHref: /contact
