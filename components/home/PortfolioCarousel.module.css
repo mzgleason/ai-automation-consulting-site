@@ -113,19 +113,22 @@
 }
 
 .icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 22px;
   display: grid;
   place-items: center;
   color: color-mix(in srgb, var(--pc-ink, #12131a) 84%, var(--pc-accent, #3d63ff));
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid color-mix(in srgb, var(--pc-border, #c9ccd3) 70%, transparent);
 }
 
 .iconSvg {
-  width: 52px;
-  height: 52px;
+  height: 88px;
+  width: auto;
+}
+
+.iconImg {
+  height: 88px;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  display: block;
 }
 
 .payoff {

@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type CSSProperties } from "react";
 import type { ProjectEntry } from "@/lib/content";
-import { ContentEngineBlocksIcon, IntakeFunnelNodeIcon, ModelOpsLoopIcon } from "./PortfolioCardIcons";
+import { ContentEngineBlocksIcon, ModelOpsLoopIcon } from "./PortfolioCardIcons";
 import styles from "./PortfolioCarousel.module.css";
 import { Button } from "@/components/ui/Button";
 
@@ -124,8 +124,17 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
     () =>
       new Map<string, ComponentType<{ className?: string }>>([
         ["lendability-model-reproducible-training-system", ModelOpsLoopIcon],
-        ["ai-driven-linkedin-content-workflow", ContentEngineBlocksIcon],
-        ["ai-intern-lending-concierge-system", IntakeFunnelNodeIcon]
+        ["ai-driven-linkedin-content-workflow", ContentEngineBlocksIcon]
+      ]),
+    []
+  );
+
+  const pngIconBySlug = useMemo(
+    () =>
+      new Map<string, string>([
+        ["ai-driven-linkedin-content-workflow", "/images/icons/gemini-linkedin-workflow.png"],
+        ["ai-intern-lending-concierge-system", "/images/icons/gemini-ai-intake-assistant.png"],
+        ["lendability-model-reproducible-training-system", "/images/icons/gemini-model-ops-system.png"]
       ]),
     []
   );
@@ -166,6 +175,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
               const payoff = proof?.payoff ?? project.summary;
               const support = proof?.support;
               const Icon = iconBySlug.get(project.slug);
+              const pngIconSrc = pngIconBySlug.get(project.slug) ?? null;
 
               const x = offset * step;
               const scale = offset === 0 ? 1 : offset === -1 || offset === 1 ? 0.92 : 0.86;
@@ -208,7 +218,11 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
 
                   <div className={styles.body}>
                     <div className={styles.icon} aria-hidden="true">
-                      {Icon ? <Icon className={styles.iconSvg} /> : null}
+                      {pngIconSrc ? (
+                        <img className={styles.iconImg} src={pngIconSrc} alt="" aria-hidden="true" />
+                      ) : Icon ? (
+                        <Icon className={styles.iconSvg} />
+                      ) : null}
                     </div>
                     <p className={styles.payoff}>{payoff}</p>
                     {support ? <p className={styles.support}>{support}</p> : null}
