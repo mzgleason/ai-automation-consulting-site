@@ -8,21 +8,6 @@ export const metadata: Metadata = {
     "A portfolio of real systems shipped under real constraints: workflow automation, product prototypes, and decision-support systems."
 };
 
-const projectMetrics: Record<string, { value: string; label: string }[]> = {
-  "ai-driven-linkedin-content-workflow": [
-    { value: "+200+", label: "posts published" },
-    { value: "+30%", label: "engagements per month" }
-  ],
-  "ai-intern-lending-concierge-system": [
-    { value: "~30%", label: "lower manual intake" },
-    { value: "~60%", label: "faster borrower assessments" }
-  ],
-  "lendability-model-reproducible-training-system": [
-    { value: "3+", label: "model versions launched" },
-    { value: "~30%", label: "faster iteration cycles" }
-  ]
-};
-
 const projectProof: Record<string, string> = {
   "ai-driven-linkedin-content-workflow": "Built as a repeatable weekly publishing workflow with explicit review gates.",
   "ai-intern-lending-concierge-system": "Designed to reduce handoff ambiguity before human advisory conversations.",
@@ -53,7 +38,6 @@ export default async function ProjectsPage() {
               title={project.title}
               description={project.summary}
               proofLine={projectProof[project.slug]}
-              metrics={projectMetrics[project.slug] ?? []}
               imageSrc={project.coverImage ?? undefined}
               imageAlt={`${project.title} project visual`}
               ctaHref={`/portfolio/${project.slug}`}

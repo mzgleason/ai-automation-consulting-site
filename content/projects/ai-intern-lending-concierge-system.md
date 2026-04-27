@@ -21,9 +21,13 @@ outcomes:
   - Reduced intake ambiguity
   - Improved missing information capture
   - Created a scalable pre-qualification workflow
+metrics:
+  - ~30% | Intake workload reduction | Less repetitive manual follow-up
+  - ~60% | Faster assessments | Cleaner information before review
+  - 4 | Routing paths | Follow-up, secure link, scheduling, escalation
 clientType: Small business lending / service operations
 serviceType: AI Workflow Design
-coverImage: /images/projects/ai-intern-lending-concierge.svg
+coverImage: /images/projects/ai-intern-lending-concierge.jpg
 heroImage: /images/case-studies/lending-concierge-hero.svg
 ctaLabel: See how I help
 ctaHref: /contact

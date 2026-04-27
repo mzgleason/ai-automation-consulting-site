@@ -21,6 +21,10 @@ outcomes:
   - Moved quickly from concept to working model
   - Built a repeatable evaluation workflow
   - Improved future retraining and comparison
+metrics:
+  - 3+ | Model releases | Reproducible training and evaluation flow
+  - ~30% | Faster iteration cycles | Cleaner comparison between versions
+  - 1 | Validation path | Risk-reduced rollout before customer impact
 clientType: Fintech / analytical product systems
 serviceType: Advisory + Build Support
 coverImage: /images/case-studies/lendability-model-cover.svg

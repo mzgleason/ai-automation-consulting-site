@@ -21,6 +21,10 @@ outcomes:
   - Reduced content creation friction
   - Improved publishing consistency
   - Created a reusable workflow instead of one-off prompting
+metrics:
+  - 200+ | Posts supported | Repeatable weekly publishing system
+  - ~30% | Monthly engagement lift | Compared with prior baseline
+  - Weekly | Publishing cadence | Clear review gates before handoff
 clientType: Professional brand / solo operator
 serviceType: AI Workflow Design
 coverImage: /images/projects/linkedin-workflow.svg

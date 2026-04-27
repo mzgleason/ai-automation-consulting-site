@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PortfolioTemplate } from "@/components/portfolio/PortfolioTemplate";
 import { getProjectBySlug, getProjects } from "@/lib/content";
 
 export async function generateStaticParams() {
@@ -44,103 +43,61 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const results = project.metrics.length > 0
+    ? project.metrics
+    : project.outcomes.slice(0, 4).map((outcome) => ({
+        value: "Outcome",
+        label: outcome
+      }));
+
   return (
-    <main className="section section-top project-detail-page">
-      <div className="container detail-hero project-detail-hero">
-        <Link href="/portfolio" className="text-link">
-          Back to portfolio
-        </Link>
-        <p className="eyebrow">{project.category}</p>
-        <h1>{project.title}</h1>
-        <p className="lead">{project.summary}</p>
-        <div className="detail-meta-strip">
-          <span>{project.status}</span>
-          {project.serviceType ? <span>{project.serviceType}</span> : null}
-          {project.clientType ? <span>{project.clientType}</span> : null}
-          <span>{project.date}</span>
-        </div>
-        <div className="chip-wrap">
-          {project.tags.map((tag) => (
-            <span key={tag} className="chip">
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-      {project.heroImage ? (
-        <div className="container">
-          <div className="card project-hero-visual">
-            <Image src={project.heroImage} alt={`${project.title} system diagram`} width={1440} height={840} priority />
-          </div>
-        </div>
-      ) : null}
-      <div className="container detail-grid project-detail-grid">
-        <aside className="detail-sidebar card project-detail-sidebar">
-          <div>
-            <p className="card-kicker">Status</p>
-            <p>{project.status}</p>
-          </div>
-          {project.serviceType ? (
-            <div>
-              <p className="card-kicker">Offer</p>
-              <p>{project.serviceType}</p>
-            </div>
-          ) : null}
-          {project.clientType ? (
-            <div>
-              <p className="card-kicker">Client type</p>
-              <p>{project.clientType}</p>
-            </div>
-          ) : null}
-          <div>
-            <p className="card-kicker">Tools</p>
-            <ul className="plain-list">
-              {project.tools.map((tool) => (
-                <li key={tool}>{tool}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="card-kicker">Outcomes</p>
-            <ul className="plain-list">
-              {project.outcomes.map((outcome) => (
-                <li key={outcome}>{outcome}</li>
-              ))}
-            </ul>
-          </div>
-          {project.link ? (
-            <a href={project.link} className="button button-accent" target="_blank" rel="noreferrer">
-              Visit project
-            </a>
-          ) : null}
-        </aside>
-        <div className="project-detail-main">
-          <div className="card project-case-callout">
-            <p className="card-kicker">Why this matters</p>
-            <p>
-              This project shows how a messy process can be turned into a clearer system with better decisions, stronger
-              handoffs, and outcomes a team can actually reuse.
-            </p>
-          </div>
-          <article className="prose-content card" dangerouslySetInnerHTML={{ __html: project.html }} />
-          <div className="cta-panel project-cta-panel">
-            <p className="eyebrow">Next step</p>
-            <h2>Want help shaping a system like this?</h2>
-            <p className="lead">
-              If you are trying to move from idea to working workflow, prototype, or decision system, this is the kind
-              of work I help scope and build.
-            </p>
-            <div className="hero-actions">
-              <Link href={project.ctaHref ?? "/contact"} className="button button-accent">
-                {project.ctaLabel ?? "Start a conversation"}
-              </Link>
-              <Link href="/playbooks" className="button button-ghost">
-                Browse playbooks
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+    <PortfolioTemplate
+      backHref="/portfolio"
+      backLabel="Back to portfolio"
+      category={project.category}
+      title={project.title}
+      summary={project.summary}
+      metrics={results}
+      snapshot={[
+        { label: "Type", value: project.serviceType ?? project.category },
+        { label: "Problem", value: project.problem },
+        { label: "Solution", value: project.sections.shipped?.heading ? "Reusable system with explicit handoffs" : project.tools[0] },
+        { label: "Outcome", value: project.outcomes[0] },
+        { label: "Tools", value: project.tools.slice(0, 3).join(", ") }
+      ]}
+      problem={project.sections.problem ? {
+        label: "Problem",
+        headline: project.sections.problem.heading,
+        html: project.sections.problem.html
+      } : undefined}
+      approach={project.sections.approach ? {
+        label: "Approach",
+        headline: project.sections.approach.heading,
+        html: project.sections.approach.html
+      } : undefined}
+      system={project.sections.system ? {
+        label: "System",
+        headline: project.sections.system.heading,
+        html: project.sections.system.html
+      } : undefined}
+      workflowDiagram={project.heroImage ? {
+        imageSrc: project.heroImage,
+        imageAlt: `${project.title} system diagram`
+      } : undefined}
+      results={results}
+      insights={project.sections.insights ? {
+        label: "Insights",
+        headline: project.sections.insights.heading,
+        html: project.sections.insights.html
+      } : undefined}
+      cta={{
+        headline: "Want help shaping a system like this?",
+        text: "If you are trying to move from idea to working workflow, prototype, or decision system, this is the kind of work I help scope and build.",
+        href: project.ctaHref ?? "/contact",
+        label: project.ctaLabel ?? "Start a conversation",
+        secondaryHref: "/playbooks",
+        secondaryLabel: "Browse playbooks"
+      }}
+    />
   );
 }

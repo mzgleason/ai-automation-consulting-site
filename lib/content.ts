@@ -30,6 +30,29 @@ export type ProjectEntry = BaseEntry & {
   link?: string;
   published: boolean;
   problem: string;
+  sections: ProjectContentSections;
+  metrics: ProjectMetric[];
+};
+
+export type ProjectMetric = {
+  value: string;
+  label: string;
+  context?: string;
+};
+
+export type ProjectContentSection = {
+  heading: string;
+  html: string;
+};
+
+export type ProjectContentSections = {
+  problem?: ProjectContentSection;
+  context?: ProjectContentSection;
+  approach?: ProjectContentSection;
+  system?: ProjectContentSection;
+  shipped?: ProjectContentSection;
+  results?: ProjectContentSection;
+  insights?: ProjectContentSection;
 };
 
 export type WritingEntry = BaseEntry & {
@@ -141,6 +164,70 @@ function markdownToHtml(markdown: string): string {
     .join("");
 }
 
+function normalizeSectionHeading(value: string): keyof ProjectContentSections | undefined {
+  const normalized = value.trim().toLowerCase();
+
+  if (normalized === "challenge" || normalized === "problem") return "problem";
+  if (normalized === "context") return "context";
+  if (normalized === "approach") return "approach";
+  if (normalized === "system" || normalized === "system / workflow design" || normalized === "workflow design") {
+    return "system";
+  }
+  if (normalized === "what shipped") return "shipped";
+  if (normalized === "outcomes" || normalized === "results") return "results";
+  if (normalized === "lessons learned" || normalized === "key insights" || normalized === "why this matters") {
+    return "insights";
+  }
+
+  return undefined;
+}
+
+function markdownToProjectSections(markdown: string): ProjectContentSections {
+  const sections: ProjectContentSections = {};
+  const matches = Array.from(markdown.matchAll(/^##\s+(.+)$/gm));
+
+  matches.forEach((match, index) => {
+    const heading = match[1].trim();
+    const sectionKey = normalizeSectionHeading(heading);
+
+    if (!sectionKey || sections[sectionKey]) {
+      return;
+    }
+
+    const contentStart = (match.index ?? 0) + match[0].length;
+    const contentEnd = matches[index + 1]?.index ?? markdown.length;
+    const sectionMarkdown = markdown.slice(contentStart, contentEnd).trim();
+
+    if (sectionMarkdown.length > 0) {
+      sections[sectionKey] = {
+        heading,
+        html: markdownToHtml(sectionMarkdown)
+      };
+    }
+  });
+
+  return sections;
+}
+
+function optionalStringArray(data: ParsedFile["data"], key: string): string[] {
+  const value = data[key];
+  return Array.isArray(value) ? value : [];
+}
+
+function parseProjectMetrics(data: ParsedFile["data"]): ProjectMetric[] {
+  const metrics: ProjectMetric[] = [];
+
+  optionalStringArray(data, "metrics").forEach((metric) => {
+      const [value, label, context] = metric.split("|").map((part) => part.trim());
+
+      if (value && label) {
+        metrics.push(context ? { value, label, context } : { value, label });
+      }
+    });
+
+  return metrics;
+}
+
 const writingKindOrder = ["Essay", "Note", "Build log"];
 
 function normalizeWritingKind(value: string): string {
@@ -217,29 +304,35 @@ export async function getProjects(): Promise<ProjectEntry[]> {
   const files = await readCollection("projects");
 
   return files
-    .map(({ data, content }) => ({
-      slug: requireString(data, "slug"),
-      title: requireString(data, "title"),
-      description: requireString(data, "summary"),
-      summary: requireString(data, "summary"),
-      date: requireString(data, "date"),
-      status: requireString(data, "status"),
-      featured: requireBoolean(data, "featured"),
-      tags: requireStringArray(data, "tags"),
-      category: requireString(data, "category"),
-      tools: requireStringArray(data, "tools"),
-      outcomes: requireStringArray(data, "outcomes"),
-      clientType: optionalString(data, "clientType"),
-      serviceType: optionalString(data, "serviceType"),
-      coverImage: optionalString(data, "coverImage"),
-      heroImage: optionalString(data, "heroImage"),
-      ctaLabel: optionalString(data, "ctaLabel"),
-      ctaHref: optionalString(data, "ctaHref"),
-      link: optionalString(data, "link"),
-      published: requireBoolean(data, "published"),
-      problem: requireString(data, "problem"),
-      html: markdownToHtml(content)
-    }))
+    .map(({ data, content }) => {
+      const summary = requireString(data, "summary");
+
+      return {
+        slug: requireString(data, "slug"),
+        title: requireString(data, "title"),
+        description: summary,
+        summary,
+        date: requireString(data, "date"),
+        status: requireString(data, "status"),
+        featured: requireBoolean(data, "featured"),
+        tags: requireStringArray(data, "tags"),
+        category: requireString(data, "category"),
+        tools: requireStringArray(data, "tools"),
+        outcomes: requireStringArray(data, "outcomes"),
+        clientType: optionalString(data, "clientType"),
+        serviceType: optionalString(data, "serviceType"),
+        coverImage: optionalString(data, "coverImage"),
+        heroImage: optionalString(data, "heroImage"),
+        ctaLabel: optionalString(data, "ctaLabel"),
+        ctaHref: optionalString(data, "ctaHref"),
+        link: optionalString(data, "link"),
+        published: requireBoolean(data, "published"),
+        problem: requireString(data, "problem"),
+        sections: markdownToProjectSections(content),
+        metrics: parseProjectMetrics(data),
+        html: markdownToHtml(content)
+      };
+    })
     .filter((project) => project.published)
     .sort((a, b) => b.date.localeCompare(a.date));
 }
