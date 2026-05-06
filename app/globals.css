@@ -5792,11 +5792,11 @@ textarea:focus {
 }
 
 .linkedin-hero-app-static.is-center .linkedin-hero-app {
-  height: 300px !important;
+  height: 360px !important;
 }
 
 .linkedin-hero-app-static.is-side .linkedin-hero-app {
-  height: 190px !important;
+  height: 228px !important;
 }
 
 .linkedin-snapshot,
@@ -5913,11 +5913,17 @@ textarea:focus {
   padding: 4px 0;
 }
 
+.linkedin-pair-row.linkedin-pair-plain {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  justify-items: start;
+}
+
 .linkedin-next-step {
   width: min(60%, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, auto);
   gap: 16px;
   align-items: center;
 }
@@ -5932,6 +5938,20 @@ textarea:focus {
 .linkedin-next-actions {
   display: grid;
   gap: 10px;
+  justify-self: end;
+  width: min(100%, 220px);
+}
+
+.linkedin-next-actions .button {
+  border-radius: 10px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.linkedin-next-actions .button-accent {
+  background: #2f93ff;
+  border-color: #2f93ff;
+  color: #04111c;
 }
 
 @media (max-width: 1079px) {
@@ -5996,7 +6016,8 @@ textarea:focus {
   }
 
   .linkedin-next-actions {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    justify-self: center;
   }
 }
 
