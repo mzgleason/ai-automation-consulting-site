@@ -32,9 +32,9 @@ test.describe("portfolio project template", () => {
     expect(positions).toEqual([...positions].sort((a, b) => a - b));
     await expect(page.getByRole("heading", { name: /scaled weekly linkedin publishing/i })).toBeVisible();
     await expect(page.getByTestId("metrics-grid").first().locator(".portfolio-template-metric-card")).toHaveCount(3);
-    await expect(page.getByTestId("portfolio-cta").getByRole("link", { name: /start a conversation/i })).toHaveAttribute(
+    await expect(page.getByTestId("portfolio-cta").getByRole("link", { name: /view the system/i })).toHaveAttribute(
       "href",
-      "/contact"
+      /#system$/
     );
 
     const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth);

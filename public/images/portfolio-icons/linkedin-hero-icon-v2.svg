@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardFill" x1="26" y1="18" x2="72" y2="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#123A66"/>
+      <stop offset="0.45" stop-color="#0B2542"/>
+      <stop offset="1" stop-color="#071827"/>
+    </linearGradient>
+
+    <linearGradient id="cardStroke" x1="24" y1="18" x2="72" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5EC8FF"/>
+      <stop offset="0.5" stop-color="#1D7DFF"/>
+      <stop offset="1" stop-color="#0A3D7A"/>
+    </linearGradient>
+
+    <radialGradient id="innerGlow" cx="48" cy="43" r="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2DA7FF" stop-opacity="0.45"/>
+      <stop offset="0.6" stop-color="#1D7DFF" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#061523" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softShadow" x="8" y="8" width="80" height="80" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#020617" flood-opacity="0.55"/>
+    </filter>
+
+    <filter id="markGlow" x="18" y="20" width="60" height="58" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="1.1" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.25 0 0 0 0 0.75 0 0 0 0 1 0 0 0 0.65 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- subtle external blue atmosphere, not a large bubble -->
+  <rect x="20" y="18" width="56" height="60" rx="12" fill="#1D7DFF" opacity="0.18" filter="url(#softShadow)"/>
+
+  <!-- main dark rounded-square card -->
+  <rect x="22" y="18" width="52" height="58" rx="11" fill="url(#cardFill)"/>
+  <rect x="22.75" y="18.75" width="50.5" height="56.5" rx="10.25" stroke="url(#cardStroke)" stroke-width="1.5"/>
+  <rect x="26" y="22" width="44" height="50" rx="8" fill="url(#innerGlow)"/>
+
+  <!-- subtle top highlight -->
+  <path d="M33 24H63" stroke="#93D5FF" stroke-opacity="0.28" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- LinkedIn-style mark: closer proportions to the mockup -->
+  <g filter="url(#markGlow)" fill="#F2FAFF">
+    <circle cx="35" cy="36" r="4.2"/>
+    <rect x="31.2" y="44" width="7.8" height="21.5" rx="1.1"/>
+    <path d="M44.5 44H52V47.05C53.1 45.15 55.35 43.45 59.05 43.45C66.1 43.45 67.8 48.05 67.8 54.85V65.5H60.05V55.85C60.05 53.55 59.95 50.6 56.8 50.6C53.55 50.6 53.05 53.15 53.05 55.7V65.5H44.5V44Z"/>
+  </g>
+</svg>
