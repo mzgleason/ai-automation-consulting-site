@@ -340,7 +340,6 @@ export function PortfolioTemplate({
           {approach ? <SectionBlock {...approach} /> : null}
         </div>
         {system ? <SectionBlock {...system} /> : null}
-        <WorkflowDiagram imageSrc="/images/case-studies/linkedin-workflow-hero.svg" imageAlt="" />
         <section className="portfolio-template-results" data-testid="portfolio-section-results">
           <p className="portfolio-template-section-label">Results</p>
           <h2>Better content. More impact. Less time.</h2>
