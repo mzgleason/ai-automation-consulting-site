@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { LendingConciergeHeroVisual } from "@/components/portfolio/LendingConciergeHeroVisual";
 
 type PdpTempDetailProps = {
   category: string;
@@ -25,6 +26,7 @@ type PdpTempDetailProps = {
   ctaBody: string;
   primaryCtaLabel: string;
   secondaryCtaLabel: string;
+  heroVisualVariant?: "default" | "lending-concierge";
 };
 
 export function PdpTempDetail({
@@ -48,7 +50,8 @@ export function PdpTempDetail({
   ctaHeadline,
   ctaBody,
   primaryCtaLabel,
-  secondaryCtaLabel
+  secondaryCtaLabel,
+  heroVisualVariant = "default"
 }: PdpTempDetailProps) {
   const heroScreens = [
     { key: "topic", src: "/images/case-studies/Topic Inbox Mock.png", alt: "Topic Inbox app screen" },
@@ -91,27 +94,33 @@ export function PdpTempDetail({
               </div>
             </div>
             <div className="linkedin-hero-right" aria-hidden>
-              <div className="linkedin-hero-rings" />
-              <div className="linkedin-hero-app-rail">
-                {heroScreens.map((screen, index) => {
-                  const isCenter = index === 1;
-                  return (
-                    <div
-                      key={screen.key}
-                      className={`linkedin-hero-app-static ${isCenter ? "is-center" : "is-side"}`}
-                      aria-label={screen.alt}
-                    >
-                      <Image
-                        src={screen.src}
-                        alt={screen.alt}
-                        width={isCenter ? 148 : 94}
-                        height={isCenter ? 300 : 190}
-                        className="linkedin-hero-app"
-                      />
-                    </div>
-                  );
-                })}
-              </div>
+              {heroVisualVariant === "lending-concierge" ? (
+                <LendingConciergeHeroVisual />
+              ) : (
+                <>
+                  <div className="linkedin-hero-rings" />
+                  <div className="linkedin-hero-app-rail">
+                    {heroScreens.map((screen, index) => {
+                      const isCenter = index === 1;
+                      return (
+                        <div
+                          key={screen.key}
+                          className={`linkedin-hero-app-static ${isCenter ? "is-center" : "is-side"}`}
+                          aria-label={screen.alt}
+                        >
+                          <Image
+                            src={screen.src}
+                            alt={screen.alt}
+                            width={isCenter ? 148 : 94}
+                            height={isCenter ? 300 : 190}
+                            className="linkedin-hero-app"
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>

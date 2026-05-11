@@ -117,6 +117,7 @@ export default async function ProjectDetailPage({
         ctaBody="I build practical AI workflows that remove repeat admin work so reps can focus on high-value conversations."
         primaryCtaLabel="Start a conversation"
         secondaryCtaLabel="Browse playbooks"
+        heroVisualVariant="lending-concierge"
       />
     );
   }
