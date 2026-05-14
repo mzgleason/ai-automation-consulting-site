@@ -1,0 +1,36 @@
+<svg width="720" height="520" viewBox="20 35 680 450" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .node { fill: #F7F9FC; stroke: rgba(12, 24, 48, 0.12); stroke-width: 1; }
+    .node-primary { fill: #F1F6FF; stroke: rgba(64, 114, 255, 0.65); stroke-width: 1.5; }
+    .label { fill: rgba(12, 24, 48, 0.84); font-size: 14.3px; font-family: Inter, sans-serif; text-anchor: middle; dominant-baseline: middle; }
+    .label-primary { fill: #2751C7; font-weight: 600; }
+    .line { stroke: #3B82F6; stroke-width: 1.5; fill: none; }
+    .line-secondary { stroke: #94A3B8; stroke-width: 1.5; stroke-dasharray: 5 5; fill: none; }
+  </style>
+  <rect x="250" y="217.5" width="220" height="55" rx="15.4" class="node-primary"/>
+  <text x="360" y="245" class="label label-primary">loan-application-service</text>
+  <rect x="51" y="57.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="150" y="82" class="label">lead-ingestion-service</text>
+  <rect x="71" y="147.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="170" y="172" class="label">underwriting-engine</text>
+  <rect x="71" y="307.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="170" y="332" class="label">analytics-service</text>
+  <rect x="111" y="377.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="210" y="402" class="label">document-service</text>
+  <rect x="471" y="77.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="570" y="102" class="label">routing-orchestrator</text>
+  <rect x="451" y="147.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="550" y="172" class="label">customer-identity-api</text>
+  <rect x="471" y="307.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="570" y="332" class="label">notification-service</text>
+  <rect x="251" y="447.8" width="198" height="48.4" rx="13.2" class="node"/>
+  <text x="350" y="472" class="label">billing-engine</text>
+  <line x1="240" y1="82" x2="300" y2="220" class="line"/>
+  <line x1="260" y1="172" x2="300" y2="220" class="line"/>
+  <line x1="460" y1="172" x2="420" y2="220" class="line"/>
+  <line x1="350" y1="270" x2="350" y2="450" class="line"/>
+  <path d="M350 270 L350 360 L210 360 L210 380" class="line"/>
+  <line x1="260" y1="332" x2="300" y2="250" class="line-secondary"/>
+  <line x1="480" y1="332" x2="420" y2="250" class="line-secondary"/>
+  <line x1="570" y1="124" x2="550" y2="150" class="line-secondary"/>
+</svg>

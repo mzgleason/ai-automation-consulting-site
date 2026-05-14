@@ -12,14 +12,14 @@ const inProgress = [
     icon: "/images/icons/carbon/chart-relationship.svg",
   },
   {
-    title: "Roadmap Prioritization",
-    description: "Score opportunities by impact, effort, and risk so teams can commit with confidence and clear tradeoffs.",
-    icon: "/images/icons/carbon/circle-check.svg",
+    title: "Voice-of-Customer Loop",
+    description: "Turn ongoing customer feedback into ranked themes and concrete roadmap inputs.",
+    icon: "/images/icons/carbon/chat.svg",
   },
   {
-    title: "KPI Review Cadence",
-    description: "Turn weekly metrics into focused actions with a repeatable operating rhythm for owners and teams.",
-    icon: "/images/icons/carbon/share-knowledge.svg",
+    title: "Customer Onboarding System",
+    description: "Standardize the first 30 days to reduce time-to-value and increase expansion readiness.",
+    icon: "/images/icons/carbon/user-multiple.svg",
   },
 ];
 

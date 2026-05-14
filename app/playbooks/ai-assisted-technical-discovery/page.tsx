@@ -300,25 +300,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
                     </div>
                   </div>
                   <div className="pb-context-map-stage">
-                    <div className="pb-node pb-node-center">loan-application-service</div>
-                    <div className="pb-node pb-node-n1">lead-ingestion-service</div>
-                    <div className="pb-node pb-node-n2">routing-orchestrator</div>
-                    <div className="pb-node pb-node-n3">customer-identity-api</div>
-                    <div className="pb-node pb-node-n4">notification-service</div>
-                    <div className="pb-node pb-node-n5">billing-engine</div>
-                    <div className="pb-node pb-node-n6">analytics-service</div>
-                    <div className="pb-node pb-node-n7">underwriting-engine</div>
-                    <div className="pb-node pb-node-n8">document-service</div>
-                    <svg className="pb-context-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                      <path className="pb-line-primary" d="M34 16 L46 16 L46 47.5" />
-                      <path className="pb-line-primary" d="M34 38 L46 38 L46 50" />
-                      <path className="pb-line-primary" d="M54 50 L54 38 L64 38" />
-                      <path className="pb-line-primary" d="M50 54 L50 82 L44 82" />
-                      <path className="pb-line-secondary" d="M34 70 L64 70" />
-                      <path className="pb-line-secondary" d="M70 42 L70 66" />
-                      <path className="pb-line-secondary" d="M76 22 L76 26" />
-                      <path className="pb-line-secondary" d="M50 54 L50 90" />
-                    </svg>
+                    <img src="/images/playbooks/tech-discovery-system-map.svg" alt="System relationships map for loan-application-service and connected services" className="pb-context-map-image" />
                   </div>
                 </section>
 
