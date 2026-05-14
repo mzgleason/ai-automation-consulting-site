@@ -3,6 +3,7 @@ import { Grid12 } from "@/components/playbook/Grid12";
 import { PageShell } from "@/components/playbook/PageShell";
 import { SectionContainer } from "@/components/playbook/SectionContainer";
 import { SystemContainer } from "@/components/playbook/SystemContainer";
+import Link from "next/link";
 
 export default function AITechnicalDiscoveryPlaybookPage() {
   return (
@@ -246,6 +247,172 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <span>✦</span>
               <p>The result: better first-pass PRDs, fewer discovery loops, and higher quality engineering conversations.</p>
             </div>
+            </section>
+          </SystemContainer>
+        </SectionContainer>
+      </div>
+
+      <div className="pb-light-zone">
+        <SectionContainer>
+          <SystemContainer>
+            <section className="pb-context">
+              <div className="pb-context-shell">
+              <aside className="pb-context-intro">
+                <h2>AI Context That Evolves With Your System</h2>
+                <p>Stay aligned with how your systems actually work.</p>
+                <ul className="pb-context-points">
+                  <li><img src="/images/icons/carbon/document.svg" alt="" aria-hidden="true" />Up-to-date repo understanding</li>
+                  <li><img src="/images/icons/carbon/network-wired.svg" alt="" aria-hidden="true" />Integration and dependency maps</li>
+                  <li><img src="/images/icons/carbon/code.svg" alt="" aria-hidden="true" />Suggested change locations</li>
+                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" />Evidence-backed recommendations</li>
+                </ul>
+              </aside>
+
+              <div className="pb-context-main">
+                <section className="pb-context-col">
+                  <h3>Repository Summary</h3>
+                  <p className="pb-context-repo">loan-application-service</p>
+                  <h4>Purpose</h4>
+                  <p>Core service for creating and managing loan applications from intake to decisioning.</p>
+                  <h4>Primary Connections</h4>
+                  <ul>
+                    <li>lead-ingestion-service</li>
+                    <li>customer-identity-api</li>
+                    <li>underwriting-engine</li>
+                    <li>document-service</li>
+                  </ul>
+                  <h4>Common Change Areas</h4>
+                  <ul className="pb-context-code-list">
+                    <li>validation/</li>
+                    <li>workflow-routing/</li>
+                    <li>decision-logic/</li>
+                    <li>integration-mappers/</li>
+                    <li>api/</li>
+                  </ul>
+                </section>
+
+                <section className="pb-context-col pb-context-map">
+                  <div className="pb-context-map-head">
+                    <h3>System Relationships</h3>
+                    <div className="pb-context-legend" aria-hidden="true">
+                      <span><i className="pb-line-key pb-line-key-primary" />Primary</span>
+                      <span><i className="pb-line-key pb-line-key-secondary" />Secondary</span>
+                    </div>
+                  </div>
+                  <div className="pb-context-map-stage">
+                    <div className="pb-node pb-node-center">loan-application-service</div>
+                    <div className="pb-node pb-node-n1">lead-ingestion-service</div>
+                    <div className="pb-node pb-node-n2">routing-orchestrator</div>
+                    <div className="pb-node pb-node-n3">customer-identity-api</div>
+                    <div className="pb-node pb-node-n4">notification-service</div>
+                    <div className="pb-node pb-node-n5">billing-engine</div>
+                    <div className="pb-node pb-node-n6">analytics-service</div>
+                    <div className="pb-node pb-node-n7">underwriting-engine</div>
+                    <div className="pb-node pb-node-n8">document-service</div>
+                    <svg className="pb-context-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                      <path className="pb-line-primary" d="M34 16 L46 16 L46 47.5" />
+                      <path className="pb-line-primary" d="M34 38 L46 38 L46 50" />
+                      <path className="pb-line-primary" d="M54 50 L54 38 L64 38" />
+                      <path className="pb-line-primary" d="M50 54 L50 82 L44 82" />
+                      <path className="pb-line-secondary" d="M34 70 L64 70" />
+                      <path className="pb-line-secondary" d="M70 42 L70 66" />
+                      <path className="pb-line-secondary" d="M76 22 L76 26" />
+                      <path className="pb-line-secondary" d="M50 54 L50 90" />
+                    </svg>
+                  </div>
+                </section>
+
+                <section className="pb-context-col">
+                  <h3>Likely Change Locations</h3>
+                  <div className="pb-context-code">
+                    <p>src/workflows/</p>
+                    <p>src/validation/</p>
+                    <p>src/integration/mappers/</p>
+                    <p>src/api/</p>
+                  </div>
+                  <h4>Considerations</h4>
+                  <ul>
+                    <li>Impacts underwriting flow</li>
+                    <li>Triggers document generation</li>
+                    <li>Affects customer notifications</li>
+                  </ul>
+                  <div className="pb-context-confidence">
+                    <p>Confidence</p>
+                    <strong>High</strong>
+                    <div className="pb-context-confidence-track">
+                      <span />
+                    </div>
+                  </div>
+                </section>
+              </div>
+              </div>
+            </section>
+          </SystemContainer>
+        </SectionContainer>
+      </div>
+
+      <div className="pb-light-zone">
+        <SectionContainer>
+          <SystemContainer>
+            <section className="pb-summary-grid" aria-label="Discovery tradeoffs and outcomes">
+              <article className="pb-summary-card pb-summary-card-no-replace">
+                <p className="pb-summary-eyebrow">What This Does Not Replace</p>
+                <div className="pb-summary-split">
+                  <p className="pb-summary-lead">This does not replace engineering judgment.</p>
+                  <ul>
+                    <li>Engineering judgment</li>
+                    <li>Architecture review</li>
+                    <li>Production validation</li>
+                    <li>Implementation ownership</li>
+                    <li>Technical tradeoff analysis</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article className="pb-summary-card pb-summary-card-failure">
+                <p className="pb-summary-eyebrow">Failure Modes</p>
+                <ul>
+                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Stale architecture context</span></li>
+                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Hallucinated dependencies</span></li>
+                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Outdated implementation paths</span></li>
+                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Over-confidence in AI output</span></li>
+                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Missing organizational context</span></li>
+                </ul>
+              </article>
+
+              <article className="pb-summary-card pb-summary-card-outcomes">
+                <p className="pb-summary-eyebrow">Outcomes</p>
+                <ul>
+                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Better first-pass PRDs</span></li>
+                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Faster discovery cycles</span></li>
+                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Earlier edge-case visibility</span></li>
+                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Reduced tribal knowledge dependency</span></li>
+                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Higher-quality engineering discussions</span></li>
+                </ul>
+              </article>
+            </section>
+          </SystemContainer>
+        </SectionContainer>
+      </div>
+
+      <div className="pb-light-zone">
+        <SectionContainer>
+          <SystemContainer>
+            <section className="pb-final-cta" aria-label="Playbook final call to action">
+              <div className="pb-final-cta-icon" aria-hidden="true"><img src="/images/icons/carbon/compass.svg" alt="" /></div>
+
+              <div className="pb-final-cta-copy">
+                <h2>Build the system. Compound the advantage.</h2>
+                <p>
+                  This playbook helps product and engineering teams turn fragmented knowledge into clarity, alignment,
+                  and momentum.
+                </p>
+              </div>
+
+              <div className="pb-final-cta-actions">
+                <Link href="/contact" className="pb-final-cta-primary">Let&apos;s Work Together <span aria-hidden="true">→</span></Link>
+                <Link href="/playbooks" className="pb-final-cta-secondary">View All Playbooks <span aria-hidden="true">→</span></Link>
+              </div>
             </section>
           </SystemContainer>
         </SectionContainer>

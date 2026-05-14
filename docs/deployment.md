@@ -1,37 +1,37 @@
 # Deployment
 
 ## Local setup
-
 - `npm install`
 - `npm run dev`
 
-## Branch strategy
+## Vercel production setup
+1. Push the repo to GitHub.
+2. Import the repo into Vercel as a Next.js project.
+3. Add the production domain in Vercel project settings.
+4. Apply DNS records from Vercel at your registrar.
 
-- `main` is production
-- `feature/*` branches are for active work
-- Use feature branches for sprint work and preview validation before merge
+## Branch and preview flow
+- `main` is production.
+- Use feature branches for active work and sprint validation.
+- Push branch updates and review the Vercel preview before merge.
+- Validate mobile/desktop, CTA paths, and content rendering.
 
-## Preview deployment flow
+## Verification before merge/release
+- Run `npm run test`.
+- Run `npm run test:e2e`.
+- Run `npm run build`.
+- Verify `/`, `/portfolio`, `/work-with-me`, `/about`, `/contact`, `/privacy`, and `/terms`.
+- Confirm analytics events still fire for CTA clicks and form submissions.
 
-- Push a feature branch
-- Review the Vercel preview
-- Validate mobile, CTA paths, and content rendering
-- Merge only after checks pass
+## Content checks
+- Review markdown content in `content/`.
+- Review offers in `lib/offers.ts`.
 
-## Env vars
-
-- No additional env vars required for the current static content build
-
-## Domain setup
-
-- Update production metadata and canonical URLs once the final domain is confirmed
-
-## Analytics setup
-
-- Vercel Analytics is enabled in the root layout
+## Environment and analytics
+- No additional env vars required for the current static content build.
+- Vercel Analytics is enabled in the root layout.
 
 ## Production policy
-
-- Production changes are allowed only when validation passes
-- Use preview deploys for active sprint review
-- Do not update production directly while sprint work is still under review
+- Only ship to production when validation passes.
+- Use preview deploys for active sprint review.
+- Avoid direct production updates while sprint work is under review.
