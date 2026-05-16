@@ -1,55 +1,70 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { PageShell } from "@/components/playbook/PageShell";
+import { SectionContainer } from "@/components/playbook/SectionContainer";
+import { SystemContainer } from "@/components/playbook/SystemContainer";
 import { getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "A portfolio of real systems shipped under real constraints: workflow automation, product prototypes, and decision-support systems."
+    "Operational systems designed to improve decision speed, team throughput, and measurable business outcomes."
 };
 
-const projectProof: Record<string, string> = {
-  "ai-driven-linkedin-content-workflow": "Built as a repeatable weekly publishing workflow with explicit review gates.",
-  "ai-intern-lending-concierge-system": "Designed to reduce handoff ambiguity before human advisory conversations.",
-  "lendability-model-reproducible-training-system": "Shipped with reproducible training and comparison flow to support future retraining."
+type PortfolioSlug =
+  | "realtime-lead-buying"
+  | "ai-driven-linkedin-content-workflow"
+  | "ai-intern-lending-concierge-system"
+  | "lendability-model-reproducible-training-system";
+
+type PortfolioCardConfig = {
+  title: string;
+  body: string;
 };
 
-function ProjectVisual({ slug, category, metrics, tags }: { slug: string; category: string; metrics: { value: string; label: string }[]; tags: string[] }) {
-  if (slug === "affiliates-ping-post-api-launch") {
+const portfolioCardConfig: Record<PortfolioSlug, PortfolioCardConfig> = {
+  "realtime-lead-buying": {
+    title: "Lead bidding system for faster accept/reject decisions.",
+    body: "Built a left-to-right decision engine that screened, scored, priced, and routed leads in milliseconds so teams could act faster with tighter margin control."
+  },
+  "ai-driven-linkedin-content-workflow": {
+    title: "Editorial production workflow for consistent weekly publishing.",
+    body: "Replaced ad hoc drafting with a queue-based workflow that moved ideas through review states into a predictable publishing timeline."
+  },
+  "ai-intern-lending-concierge-system": {
+    title: "Voice AI intake system that converts calls into CRM-ready outcomes.",
+    body: "Designed a live conversation workflow that captured missing details and synced structured qualification data into CRM before human follow-up."
+  },
+  "lendability-model-reproducible-training-system": {
+    title: "Controlled model training workflow with reliable release governance.",
+    body: "Standardized experiment tracking, evaluation gates, and release states so model updates could move from testing to production with less risk."
+  }
+};
+
+function ProjectVisual({ slug, title }: { slug: PortfolioSlug; title: string }) {
+  if (slug === "realtime-lead-buying") {
     return (
-      <div className="portfolio-index-card-visual" aria-hidden>
-        <div className="portfolio-index-visual-head">Affiliates Ping Post Flow</div>
-        <div className="portfolio-flow-row portfolio-flow-row-5">
-          {["Affiliate Platform", "Ping API", "Pricing Engine", "Post API", "Lender System"].map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
-        <div className="portfolio-index-tags">
-          {["Up-leveling Protection", "Failsafe Pricing Logic", "End-to-End Observability"].map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
+      <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
+        <img src="/images/portfolio/project-1-visual.png" alt="" className="portfolio-project1-image" />
+        <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
   }
 
   if (slug === "ai-driven-linkedin-content-workflow") {
     return (
-      <div className="portfolio-index-card-visual" aria-hidden>
-        <div className="portfolio-index-visual-head">AI-Driven LinkedIn Content Workflow</div>
-        <div className="portfolio-flow-columns">
-          {[
-            ["1. Capture", "Weekly Goals", "Key Updates", "Notes & Wins"],
-            ["2. Draft", "AI Draft", "Hook + Structure", "First Pass"],
-            ["3. Review", "Refine", "Add Insights", "Approve"],
-            ["4. Publish", "Schedule", "Quality Check", "Go Live"]
-          ].map((group) => (
-            <div className="portfolio-flow-col" key={group[0]}>
-              <strong>{group[0]}</strong>
-              {group.slice(1).map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-          ))}
+      <div className="portfolio-index-card-visual portfolio-editorial-visual" aria-hidden>
+        <p className="portfolio-mobile-title">{title}</p>
+        <div className="portfolio-linkedin-phone-row">
+          <div className="portfolio-linkedin-phone-frame">
+            <img src="/images/case-studies/Topic Inbox Mock.png" alt="" className="portfolio-linkedin-phone-image" />
+          </div>
+          <div className="portfolio-linkedin-phone-frame">
+            <img src="/images/case-studies/Capture Opinion Mock.png" alt="" className="portfolio-linkedin-phone-image portfolio-linkedin-phone-image-capture" />
+          </div>
+          <div className="portfolio-linkedin-phone-frame">
+            <img src="/images/case-studies/Draft Review Mock.png" alt="" className="portfolio-linkedin-phone-image" />
+          </div>
         </div>
       </div>
     );
@@ -57,102 +72,63 @@ function ProjectVisual({ slug, category, metrics, tags }: { slug: string; catego
 
   if (slug === "ai-intern-lending-concierge-system") {
     return (
-      <div className="portfolio-index-card-visual portfolio-index-voice-visual" aria-hidden>
-        <div className="portfolio-voice-box">
-          <div className="portfolio-index-visual-head">Voice AI Assistant</div>
-          <div className="portfolio-wave" />
-          <p>Having a conversation...</p>
-          <ul>
-            <li>Collects missing details</li>
-            <li>Qualifies the lead</li>
-            <li>Updates CRM in real-time</li>
-          </ul>
-        </div>
-        <div className="portfolio-crm-box">
-          <div className="portfolio-index-visual-head">CRM Update</div>
-          <dl>
-            <div><dt>Lead Status</dt><dd>Contacted</dd></div>
-            <div><dt>Intent</dt><dd>High</dd></div>
-            <div><dt>Qualification</dt><dd>Completed</dd></div>
-            <div><dt>Next Step</dt><dd>Sales Follow-up</dd></div>
-          </dl>
-        </div>
+      <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
+        <img src="/images/portfolio/project-3-visual.png" alt="" className="portfolio-project3-image" />
+        <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
   }
 
   if (slug === "lendability-model-reproducible-training-system") {
     return (
-      <div className="portfolio-index-card-visual" aria-hidden>
-        <div className="portfolio-index-visual-head">Reproducible Training System</div>
-        <div className="portfolio-flow-row">
-          {["Data", "Train", "Evaluate", "Validate", "Monitor"].map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
-        <div className="portfolio-index-tags">
-          {["Versioned Datasets", "Experiment Tracking", "Model Registry", "Audit Ready"].map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
+      <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
+        <img src="/images/portfolio/project-4-visual.png" alt="" className="portfolio-project4-image" />
+        <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
   }
 
-  return (
-    <div className="portfolio-index-card-visual" aria-hidden>
-      <div className="portfolio-index-visual-head">{category}</div>
-      <div className="portfolio-index-visual-flow">
-        {(metrics.length > 0 ? metrics : [{ value: "Live", label: "System shipped" }]).slice(0, 4).map((metric) => (
-          <div className="portfolio-index-chip" key={`${metric.value}-${metric.label}`}>
-            <span>{metric.label}</span>
-            <strong>{metric.value}</strong>
-          </div>
-        ))}
-      </div>
-      <div className="portfolio-index-tags">
-        {tags.slice(0, 3).map((tag) => (
-          <span key={tag}>{tag}</span>
-        ))}
-      </div>
-    </div>
-  );
+  return null;
 }
 
 export default async function ProjectsPage() {
-  const projects = await getProjects();
+  const projects = (await getProjects()).filter((project): project is typeof project & { slug: PortfolioSlug } =>
+    project.slug in portfolioCardConfig
+  );
 
   return (
-    <main className="section section-top portfolio-index-page">
-      <section className="portfolio-index-hero">
-        <div className="container portfolio-index-hero-intro">
-          <p className="eyebrow">Portfolio</p>
-          <h1>Real systems shipped under real constraints.</h1>
-          <p className="lead portfolio-index-hero-lead">
-            Scroll through projects across content, lending, and modeling to see what was built,
-            what changed, and why it mattered.
-          </p>
-        </div>
-      </section>
+    <PageShell className="portfolio-page-shell">
+      <SectionContainer>
+        <SystemContainer>
+          <section className="pb-library-hero portfolio-library-hero" aria-label="Portfolio hero">
+            <div className="pb-library-hero-copy">
+              <h1 className="pb-library-title portfolio-hero-title">PORTFOLIO</h1>
+              <p className="portfolio-hero-scroll">Scroll for more</p>
+            </div>
+          </section>
+        </SystemContainer>
+      </SectionContainer>
 
-      <section className="section section-compact portfolio-index-grid-section">
-        <div className="container portfolio-index-grid">
-          {projects.map((project, index) => (
-            <article className="portfolio-index-card" key={project.slug}>
-              <div className="portfolio-index-card-copy">
-                <p className="portfolio-index-card-kicker">Project {String(index + 1).padStart(2, "0")}</p>
-                <h2>{project.title}</h2>
-                <p>{project.summary}</p>
-                {projectProof[project.slug] ? <p className="portfolio-index-proof">{projectProof[project.slug]}</p> : null}
-                <a href={`/portfolio/${project.slug}`} className="text-link build-link">
-                  View project
-                </a>
-              </div>
-              <ProjectVisual slug={project.slug} category={project.category} metrics={project.metrics} tags={project.tags} />
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+      <SectionContainer>
+        <SystemContainer>
+          <section aria-label="Portfolio projects" className="portfolio-projects-section">
+            <div className="portfolio-index-grid">
+              {projects.map((project, index) => (
+                <Link href={`/portfolio/${project.slug}`} className="portfolio-index-card" key={project.slug}>
+                  <p className="portfolio-row-index">#{index + 1}</p>
+                  <ProjectVisual slug={project.slug} title={portfolioCardConfig[project.slug].title} />
+                  <div className="portfolio-index-card-copy">
+                    <h2>{portfolioCardConfig[project.slug].title}</h2>
+                    <p>{portfolioCardConfig[project.slug].body}</p>
+                    <p className="portfolio-see-more">See more</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </SystemContainer>
+      </SectionContainer>
+    </PageShell>
   );
 }
+

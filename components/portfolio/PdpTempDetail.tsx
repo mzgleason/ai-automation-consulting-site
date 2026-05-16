@@ -27,6 +27,7 @@ type PdpTempDetailProps = {
   primaryCtaLabel: string;
   secondaryCtaLabel: string;
   heroVisualVariant?: "default" | "lending-concierge";
+  heroVisualImageSrc?: string;
 };
 
 export function PdpTempDetail({
@@ -51,7 +52,8 @@ export function PdpTempDetail({
   ctaBody,
   primaryCtaLabel,
   secondaryCtaLabel,
-  heroVisualVariant = "default"
+  heroVisualVariant = "default",
+  heroVisualImageSrc
 }: PdpTempDetailProps) {
   const heroScreens = [
     { key: "topic", src: "/images/case-studies/Topic Inbox Mock.png", alt: "Topic Inbox app screen" },
@@ -72,7 +74,7 @@ export function PdpTempDetail({
         <section className="linkedin-hero-shell" aria-label="Hero">
           <div className="linkedin-hero">
             <div className="linkedin-hero-left">
-              <Link href="/portfolio" className="text-link">← Back to portfolio</Link>
+              <Link href="/portfolio" className="text-link portfolio-template-back">Portfolio</Link>
               <p className="portfolio-template-pill">{category}</p>
               <h1>{title}</h1>
               <p>{summary}</p>
@@ -94,7 +96,9 @@ export function PdpTempDetail({
               </div>
             </div>
             <div className="linkedin-hero-right" aria-hidden>
-              {heroVisualVariant === "lending-concierge" ? (
+              {heroVisualImageSrc ? (
+                <img src={heroVisualImageSrc} alt="" className="portfolio-project1-image" />
+              ) : heroVisualVariant === "lending-concierge" ? (
                 <LendingConciergeHeroVisual />
               ) : (
                 <>
@@ -205,3 +209,4 @@ export function PdpTempDetail({
     </main>
   );
 }
+

@@ -16,8 +16,8 @@ export function SiteFooter() {
         <div className="footer-copy">
           <p className="footer-title">Mark Gleason</p>
           <p className="muted">
-            Operator-led product consulting for teams improving strategy, systems, and workflows—with selective AI
-            automation where it fits.
+            Operator-led product consulting focused on workflow systems, marketplace operations, and practical
+            AI-enabled execution.
           </p>
         </div>
         <ul className="footer-links">
@@ -31,4 +31,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

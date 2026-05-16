@@ -46,7 +46,7 @@ export default async function ProjectDetailPage({
 
   const isLinkedInWorkflow = slug === "ai-driven-linkedin-content-workflow";
   const isLendingConcierge = slug === "ai-intern-lending-concierge-system";
-  const isAffiliatesLaunch = slug === "affiliates-ping-post-api-launch";
+  const isAffiliatesLaunch = slug === "realtime-lead-buying";
   const isPdpTemp = slug === "pdpTemp";
 
   if (isLinkedInWorkflow) {
@@ -156,62 +156,70 @@ export default async function ProjectDetailPage({
   if (isAffiliatesLaunch) {
     return (
       <PdpTempDetail
-        category="0 TO 1 PRODUCT LAUNCH"
-        title="Led a 0 to 1 launch of a real-time lead decisioning product."
-        summary="I led the launch of a real-time lead decisioning system that improved speed-to-decision, tightened traffic quality controls, and gave teams clear visibility into performance."
-        metricOneValue="0→1"
-        metricOneLabel="New product capability launched"
-        metricTwoValue="Real-time"
-        metricTwoLabel="Decisioning and routing enabled"
+        category="REAL-TIME BUYER / SELLER SYSTEMS"
+        title="Building Real-Time Routing Systems for Marketplace Businesses"
+        summary="Built a real-time routing workflow that helped buyers and sellers connect faster, apply partner rules earlier, and improve decision quality in a high-volume marketplace."
+        metricOneValue="Real-time"
+        metricOneLabel="Routing and marketplace decisions"
+        metricTwoValue="Flexible"
+        metricTwoLabel="Partner controls and workflow automation"
         snapshot={[
-          { label: "Type", value: "0 to 1 product launch leadership (strategy + systems execution)" },
-          { label: "Problem", value: "Lead intake and bidding decisions were too slow and inconsistent, which limited growth and reduced signal quality." },
-          { label: "Solution", value: "Built a real-time decisioning workflow with quality checks, pricing logic, and operational reporting." },
-          { label: "Outcome", value: "Faster decisions, better traffic control, and stronger cross-functional operating visibility." },
-          { label: "Tools & Systems", value: "Real-time API workflows, identity-based duplicate controls, rule-based decisioning, event telemetry" }
+          { label: "Type", value: "Marketplace workflow launch and operational rollout" },
+          { label: "Problem", value: "Legacy marketplace flows relied on slow handoffs, rigid rules, and limited visibility across buyer and seller operations." },
+          { label: "Solution", value: "A real-time routing workflow was implemented so partners could preview opportunities, apply business rules, and respond instantly." },
+          { label: "Outcome", value: "Faster decisions, improved operational flexibility, and stronger alignment between supply and demand." },
+          { label: "Tools & Systems", value: "API integrations, routing logic, partner controls, operational dashboards, marketplace monitoring" }
         ]}
-        problemHeadline="Growth was constrained by slow decision loops."
+        problemHeadline="Slow handoffs and rigid rules reduced marketplace speed."
         problemBullets={[
-          "Lead decisions were not happening early enough in the flow.",
-          "Quality controls were inconsistent across incoming traffic.",
-          "Teams lacked one clear operational view of performance.",
-          "Manual coordination created avoidable handoff delays."
+          "Partners used different quality thresholds, targeting rules, and response strategies.",
+          "Legacy workflows added delays between lead intake, evaluation, and action.",
+          "Operational teams lacked shared real-time visibility into marketplace performance.",
+          "The system needed partner flexibility without degrading customer experience."
         ]}
-        approachHeadline="Design a narrow 0→1 wedge, then operationalize it."
+        approachHeadline="Design a routing system, then operationalize it."
         approachSteps={[
-          "Define the fastest viable decisioning path.",
-          "Add quality gates before committing spend.",
-          "Codify bid and routing logic for repeatability.",
-          "Connect the new path to existing operations.",
-          "Instrument reporting so teams can coach from evidence."
+          "Define rollout scope, decision points, and launch constraints.",
+          "Design routing and response workflow for real-time execution.",
+          "Standardize partner onboarding requirements and control surfaces.",
+          "Define operational reporting and monitoring requirements.",
+          "Coordinate implementation across product, engineering, and operations."
         ]}
-        systemHeadline="A real-time operating loop from intake to measurement."
+        systemHeadline="A repeatable flow from intake to routed outcomes."
         systemSteps={[
-          { name: "Ingest", icon: "/images/portfolio-icons/capture.svg" },
-          { name: "Screen", icon: "/images/portfolio-icons/extract.svg" },
-          { name: "Decide", icon: "/images/portfolio-icons/draft.svg" },
-          { name: "Route", icon: "/images/portfolio-icons/review.svg" },
-          { name: "Measure", icon: "/images/portfolio-icons/publish.svg" }
+          { name: "Ingest", icon: "/images/portfolio-icons/receive.svg" },
+          { name: "Enrich", icon: "/images/portfolio-icons/data-2.svg" },
+          { name: "Validate", icon: "/images/portfolio-icons/shield-check.svg" },
+          { name: "Auction", icon: "/images/portfolio-icons/money-check.svg" },
+          { name: "Route", icon: "/images/portfolio-icons/branch.svg" }
         ]}
-        supportTags={["0→1 Launch", "Real-time Operations", "Decision Systems", "Quality Controls", "Cross-team Visibility"]}
+        supportTags={[
+          "Intake and qualification workflows",
+          "Real-time response and matching",
+          "Business rule and traffic controls",
+          "Operational routing and distribution",
+          "Marketplace reporting and visibility"
+        ]}
         insights={[
-          "Narrow launch scope increases execution quality.",
-          "Decision rights should be explicit before scaling.",
-          "Operational visibility is a growth lever, not a reporting afterthought."
+          "Faster routing improves both operational speed and buyer experience.",
+          "Configurable partner controls support healthier marketplace balance.",
+          "Real-time visibility enables earlier response to performance shifts.",
+          "Scalable workflow logic reduces overhead as marketplace volume grows."
         ]}
         lessons={[
-          "Launch the smallest version that proves real behavior.",
-          "Treat quality controls as product features, not just safeguards.",
-          "Design systems teams can run without heroics."
+          "Operational flexibility is as important as raw system speed.",
+          "Routing systems perform better when decision logic is explicit.",
+          "Stable real-time workflows require shared cross-team ownership.",
+          "Simple operational controls can create outsized marketplace impact."
         ]}
-        ctaHeadline="Need a 0→1 launch partner?"
-        ctaBody="I help founders and teams launch new products, tighten decision systems, and build operating rhythms that scale."
+        ctaHeadline="Need a marketplace or routing system like this?"
+        ctaBody="This project shows a practical way to improve routing speed, workflow visibility, and marketplace performance without adding unnecessary complexity."
         primaryCtaLabel="Start a conversation"
         secondaryCtaLabel="Browse playbooks"
+        heroVisualImageSrc="/images/portfolio/project-1-visual.png"
       />
     );
-  }
-  return (
+  }  return (
     <PdpTempDetail
       category={project.category.toUpperCase()}
       title={project.title}
@@ -246,3 +254,10 @@ export default async function ProjectDetailPage({
     />
   );
 }
+
+
+
+
+
+
+

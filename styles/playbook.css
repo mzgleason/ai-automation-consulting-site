@@ -1,5 +1,5 @@
 :root {
-  --pb-bg: #0b0b0c;
+  --pb-bg: #000;
   --pb-surface: #121316;
   --pb-border: rgba(255, 255, 255, 0.08);
   --pb-divider: rgba(255, 255, 255, 0.06);
@@ -17,8 +17,16 @@
   overflow: hidden;
 }
 
-body:has(.pb-page-shell) {
-  background: #0b0b0c !important;
+body:has(.pb-page-shell:not(.portfolio-page-shell)) {
+  background: #000 !important;
+  background-image: none !important;
+  background-color: #000 !important;
+}
+
+html:has(.pb-page-shell:not(.portfolio-page-shell)) {
+  background: #000 !important;
+  background-image: none !important;
+  background-color: #000 !important;
 }
 
 .pb-page-shell::before {
@@ -43,15 +51,15 @@ body:has(.pb-page-shell) {
   border-bottom: 1px solid var(--pb-divider);
 }
 
-body:has(.pb-page-shell) .site-header,
-body:has(.pb-page-shell) .site-footer,
-body:has(.pb-page-shell) .rail,
-body:has(.pb-page-shell) [data-variant="rail"],
-body:has(.pb-page-shell) [data-variant="sticky"] {
-  background: #0b0b0c !important;
+body:has(.pb-page-shell:not(.portfolio-page-shell)) .site-header,
+body:has(.pb-page-shell:not(.portfolio-page-shell)) .site-footer,
+body:has(.pb-page-shell:not(.portfolio-page-shell)) .rail,
+body:has(.pb-page-shell:not(.portfolio-page-shell)) [data-variant="rail"],
+body:has(.pb-page-shell:not(.portfolio-page-shell)) [data-variant="sticky"] {
+  background: #000 !important;
 }
-body:has(.pb-page-shell) [data-variant="rail"] *,
-body:has(.pb-page-shell) [data-variant="sticky"] * {
+body:has(.pb-page-shell:not(.portfolio-page-shell)) [data-variant="rail"] *,
+body:has(.pb-page-shell:not(.portfolio-page-shell)) [data-variant="sticky"] * {
   --line: rgba(255, 255, 255, 0.12);
 }
 
@@ -1101,7 +1109,7 @@ body:has(.pb-page-shell) [data-variant="sticky"] * {
   display: grid;
   grid-template-columns: 24px 1fr;
   gap: 12px;
-  align-items: start;
+  align-items: center;
   padding: 16px 0;
   border-bottom: 1px solid var(--pb-border);
 }

@@ -1,104 +1,100 @@
 ---
-title: Launched a real-time Affiliates Ping Post API for Personal Loans.
-slug: affiliates-ping-post-api-launch
-summary: Shipped a controlled first phase of real-time ping/post bidding for personal loans, with duplicate protection, fallback pricing logic, and end-to-end observability.
+title: Built a real-time bidding system for lead acquisition and pricing.
+slug: realtime-lead-buying
+summary: Helped launch a real-time bidding and routing platform used to evaluate, price, and purchase leads at scale while improving margin controls and operational visibility.
 date: 2026-05-09
-status: Phase 1 launched
+status: 0?1 launch
 featured: true
 published: true
-category: Revenue systems
+category: Real-time bidding infrastructure
 tags:
-  - Lead acquisition
-  - Real-time bidding
-  - API systems
-  - Observability
+  - Real-time APIs
+  - Pricing logic
+  - Routing systems
+  - Margin controls
+  - Traffic quality
+  - Marketplace infrastructure
 tools:
-  - Ping/post API
-  - Duplicate detection (email and phone hash)
-  - Rule-based bid decisioning
-  - Kafka + Snowflake + CAKE telemetry
+  - Real-time bidding APIs
+  - Pricing and routing logic
+  - Marketplace systems
+  - Traffic quality controls
+  - Event telemetry
+  - Operational reporting
 outcomes:
-  - Added a new real-time lead acquisition path for Personal Loans
-  - Improved duplicate control before bid submission
-  - Enabled cross-team reporting across auction and lead flow
+  - Improved pricing speed
+  - Tighter traffic controls
+  - More scalable lead acquisition foundation
 metrics:
-  - Phase 1 | Personal Loans only | Controlled scope to validate behavior before expansion
-  - 10 min | Bid and consumer cache window | Supports post flow after auction win
+  - 0?1 Launch | New bidding infrastructure launched
+  - Real-Time Pricing | Live lead evaluation and routing
+  - Margin Controls | Improved pricing consistency and traffic safeguards
 clientType: Internal product launch
-serviceType: Product + systems delivery
-problem: Lending products were not participating in real-time ping/post auctions, limiting early lead evaluation and bidding opportunities.
+serviceType: Real-time bidding infrastructure
+problem: Lead pricing and routing decisions were fragmented across systems, making it harder to control margins, traffic quality, and operational consistency.
 ---
 
 ## Challenge
 
-Before launch, lending workflows were missing a real-time auction path. That reduced early decision quality and limited opportunities to compete on incoming affiliate traffic.
+Lead pricing decisions lacked speed and consistency.
 
-The core delivery challenge was to add speed without losing control:
-
-- evaluate incoming ping traffic quickly enough to bid in real time
-- prevent wasted bids on duplicated lead traffic
-- keep bid logic explicit when input data is incomplete
-- connect the new path into existing downstream processing safely
+- Pricing decisions were spread across disconnected systems.
+- Traffic quality controls varied by source and workflow.
+- Teams lacked shared visibility into bidding performance.
+- Manual processes slowed routing and optimization updates.
+- Operational changes were difficult to scale consistently.
 
 ## Context
 
-This release was intentionally scoped as a narrow first phase.
-
-It launched on Personal Loans with a small partner group to validate performance, quality, and partner behavior before wider rollout.
-
-That scope decision reduced launch risk while creating a usable production path teams could monitor from day one.
+Lead pricing and routing decisions were fragmented across systems, making it harder to control margins, traffic quality, and operational consistency.
 
 ## Approach
 
-The launch flow was designed as a staged decision pipeline.
+Build a narrow bidding path first. Scale once the logic proves reliable.
 
-1. Accept partner ping payloads and run fast eligibility checks.
-2. Apply duplicate controls using email and phone hash signals.
-3. Run rule-based bid decisioning and select bid price.
-4. Fall back through defined pricing tiers when data is limited.
-5. Cache bid and consumer context for up to 10 minutes.
-6. On auction win, execute post with cached context and re-check alignment.
-7. Route accepted leads into normal processing and redirect flows.
+1. Define the fastest path for evaluating and pricing leads.
+2. Add configurable quality and margin controls.
+3. Centralize routing and bidding logic into a shared system.
+4. Instrument operational reporting and telemetry.
+5. Expand integrations and workflows after stability is proven.
 
 ## System / workflow design
 
-The system connected real-time decisioning with existing operations instead of creating a separate side flow.
+A real-time bidding flow from intake to optimization.
 
-- ping intake and pre-checks handled early filtering
-- duplicate detection reduced low-value bid spend
-- pricing fallbacks preserved responsiveness with controlled logic
-- cache + post alignment checks protected consistency between ping and post
-- downstream handoff kept standard lead processing intact
-- event telemetry flowed through Kafka, Snowflake, and CAKE for reporting
+Receive ? Evaluate ? Price ? Route ? Measure
+
+- Real-Time APIs
+- Pricing Logic
+- Routing Systems
+- Margin Controls
+- Traffic Quality
+- Marketplace Infrastructure
 
 ## What shipped
 
-A production Phase 1 Affiliates Ping Post API launch for Personal Loans that supports:
-
-- real-time ping evaluation and bid participation
-- duplicate screening using hashed contact signals
-- deliberate fallback behavior when data quality varies
-- post execution tied to original bid context
-- end-to-end observability for Product, Analytics, Marketing, and Operations
+Built a centralized bidding API with configurable pricing logic, routing controls, and operational reporting for real-time lead purchasing.
 
 ## Outcomes
 
-- real-time auction participation added where it did not previously exist
-- stronger duplicate control at the top of the auction workflow
-- cross-functional visibility into launch behavior and outcomes
-- a controlled foundation ready for measured expansion
+Improved pricing speed, tighter traffic controls, and a more scalable foundation for lead acquisition operations.
+
+## Key insights
+
+- Fast pricing systems require strong guardrails.
+- Routing logic should be configurable, not manual.
+- Operational visibility improves bidding quality.
+- Smaller launch scopes reduce system risk.
+- Shared infrastructure scales better than isolated workflows.
 
 ## Lessons learned
 
-The biggest win was launch discipline: narrow scope, explicit logic, and observable operations.
-
-Key takeaways from this phase:
-
-- bounded rollout scope can accelerate learning without sacrificing quality
-- fallback logic is essential for real-world data variance
-- observability must ship with the workflow, not after it
-- integrating into existing downstream systems reduces adoption friction
+- Real-time systems need operational simplicity.
+- Pricing controls should be observable and adjustable.
+- Shared APIs improve consistency across integrations.
+- Early telemetry reduces scaling problems later.
 
 ## Why this matters
 
-This project demonstrates a practical pattern for shipping revenue-impacting AI/data systems: start narrow, keep decision logic explicit, instrument deeply, and connect to existing operations from the first release.
+Building systems that depend on fast pricing and routing decisions requires scalable operational systems, pricing workflows, and real-time infrastructure that support growth without adding unnecessary complexity.
+

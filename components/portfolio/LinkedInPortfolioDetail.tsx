@@ -39,7 +39,7 @@ export function LinkedInPortfolioDetail({ title, summary, metrics }: LinkedInPor
         <section className="linkedin-hero-shell" aria-label="Hero">
           <div className="linkedin-hero">
           <div className="linkedin-hero-left">
-            <Link href="/portfolio" className="text-link">← Back to portfolio</Link>
+            <Link href="/portfolio" className="text-link portfolio-template-back">Portfolio</Link>
             <p className="portfolio-template-pill">AI SYSTEMS &amp; WORKFLOWS</p>
             <h1>{title}</h1>
             <p>{summary}</p>
@@ -179,6 +179,7 @@ export function LinkedInPortfolioDetail({ title, summary, metrics }: LinkedInPor
     </main>
   );
 }
+
 
 
 
