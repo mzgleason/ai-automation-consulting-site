@@ -1,4 +1,4 @@
-﻿import { z } from "zod";
+import { z } from "zod";
 
 export const contactSubmissionSchema = z.object({
   name: z.string().min(2).max(100),
@@ -14,6 +14,8 @@ export const CONTACT_EMAIL = "mark.z.gleason@gmail.com";
 export const CONTACT_LINKEDIN_URL = "https://www.linkedin.com/in/mark-gleason-mba-0558aa80/";
 export const CONTACT_CALENDLY_URL = "https://calendly.com/mark-z-gleason/chat-with-mark";
 
+export const MAX_CONTACT_PAYLOAD_BYTES = 10_000;
+
 export function sanitizeContactSubmission(submission: ContactSubmission): ContactSubmission {
   return {
     name: submission.name.trim(),
@@ -23,4 +25,3 @@ export function sanitizeContactSubmission(submission: ContactSubmission): Contac
     source: submission.source.trim()
   };
 }
-

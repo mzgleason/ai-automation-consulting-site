@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type CSSProperties } from "react";
 import type { ProjectEntry } from "@/lib/content";
@@ -219,7 +220,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   <div className={styles.body}>
                     <div className={styles.icon} aria-hidden="true">
                       {pngIconSrc ? (
-                        <img className={styles.iconImg} src={pngIconSrc} alt="" aria-hidden="true" />
+                        <Image className={styles.iconImg} src={pngIconSrc} alt="" aria-hidden="true" width={88} height={88} />
                       ) : Icon ? (
                         <Icon className={styles.iconSvg} />
                       ) : null}
@@ -248,7 +249,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
           disabled={!hasCarousel}
           aria-label="Previous project"
         >
-          <span aria-hidden="true">←</span>
+          <span aria-hidden="true">&larr;</span>
         </button>
 
         <p className={styles.count} aria-label="Carousel position">
@@ -262,7 +263,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
           disabled={!hasCarousel}
           aria-label="Next project"
         >
-          <span aria-hidden="true">→</span>
+          <span aria-hidden="true">&rarr;</span>
         </button>
       </div>
     </div>

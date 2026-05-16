@@ -34,6 +34,21 @@ npm run test:e2e
 npm run build
 ```
 
+## Security and performance baseline
+- Global response hardening is configured in `next.config.ts` with CSP, HSTS, frame/object protections, strict referrer policy, and permissions policy.
+- Contact intake API (`/api/contact`) enforces payload size checks, in-memory rate limiting, and generic error responses.
+- Heavy client-only visuals are dynamically loaded to reduce initial JS cost.
+- Raster imagery in interactive UI should use `next/image` with explicit dimensions.
+- HTML rendered from markdown is sanitized server-side before being passed to `dangerouslySetInnerHTML`.
+
+## Verification workflow
+Run these before merging frontend or platform-affecting changes:
+```bash
+npm run build
+npm run test
+npm run test:e2e
+```
+
 ## Notes
 - The live homepage and `/preview/foundry-home` both render the same shared homepage content component so the preview route can be used as a staging copy.
 - Content changes are usually made in `content/` and `lib/offers.ts`.

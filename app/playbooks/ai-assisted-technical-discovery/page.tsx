@@ -3,6 +3,7 @@ import { Grid12 } from "@/components/playbook/Grid12";
 import { PageShell } from "@/components/playbook/PageShell";
 import { SectionContainer } from "@/components/playbook/SectionContainer";
 import { SystemContainer } from "@/components/playbook/SystemContainer";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function AITechnicalDiscoveryPlaybookPage() {
@@ -36,38 +37,38 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <div className="pb-flow-stage">
               <div className="pb-flow">
                 <div className="pb-flow-node pb-flow-node-with-icon">
-                  <img src="/images/icons/carbon/document.svg" alt="" />
+                  <Image src="/images/icons/carbon/document.svg" alt="" width={20} height={20} />
                   <span>PRD Framework</span>
                 </div>
                 <div className="pb-flow-arrow">↓</div>
                 <div className="pb-flow-node pb-flow-node-with-icon">
-                  <img src="/images/icons/carbon/data-base.svg" alt="" />
+                  <Image src="/images/icons/carbon/data-base.svg" alt="" width={20} height={20} />
                   <span>Repo Knowledge Layer</span>
                 </div>
                 <div className="pb-flow-arrow">↓</div>
                 <div className="pb-flow-node pb-flow-node-with-icon">
-                  <img src="/images/icons/carbon/network.svg" alt="" />
+                  <Image src="/images/icons/carbon/network.svg" alt="" width={20} height={20} />
                   <span>Architecture References</span>
                 </div>
                 <div className="pb-flow-arrow">↓</div>
                 <div className="pb-flow-node pb-flow-node-accent pb-flow-node-with-icon">
-                  <img src="/images/icons/carbon/artificial-intelligence-outline.svg" alt="" />
+                  <Image src="/images/icons/carbon/artificial-intelligence-outline.svg" alt="" width={20} height={20} />
                   <span>AI Discovery Workflow</span>
                 </div>
                 <div className="pb-flow-arrow">↓</div>
                 <div className="pb-flow-row">
                   <div className="pb-flow-node pb-flow-node-with-icon">
-                    <img src="/images/icons/carbon/help.svg" alt="" />
+                    <Image src="/images/icons/carbon/help.svg" alt="" width={20} height={20} />
                     <span>Scoped Technical Questions</span>
                   </div>
                   <div className="pb-flow-node pb-flow-node-with-icon">
-                    <img src="/images/icons/carbon/network-chart.svg" alt="" />
+                    <Image src="/images/icons/carbon/network-chart.svg" alt="" width={20} height={20} />
                     <span>Impacted Systems &amp; Dependencies</span>
                   </div>
                 </div>
                 <div className="pb-flow-arrow">↓</div>
                 <div className="pb-flow-node pb-flow-node-with-icon">
-                  <img src="/images/icons/carbon/code.svg" alt="" />
+                  <Image src="/images/icons/carbon/code.svg" alt="" width={20} height={20} />
                   <span>Engineering Refinement</span>
                 </div>
               </div>
@@ -191,7 +192,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
 
             <div className="pb-workflow-row" role="list" aria-label="Discovery workflow steps">
               <article className="pb-workflow-card" role="listitem">
-                <div className="pb-workflow-badge pb-workflow-badge-blue"><img src="/images/icons/carbon/document.svg" alt="" /></div>
+                <div className="pb-workflow-badge pb-workflow-badge-blue"><Image src="/images/icons/carbon/document.svg" alt="" width={20} height={20} /></div>
                 <p className="pb-workflow-step">01</p>
                 <h3>PRD Framework</h3>
                 <p>Start with a proven structure. Define objectives, constraints, and success metrics.</p>
@@ -200,7 +201,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <div className="pb-workflow-arrow" aria-hidden="true">→</div>
 
               <article className="pb-workflow-card" role="listitem">
-                <div className="pb-workflow-badge pb-workflow-badge-green"><img src="/images/icons/carbon/stacked-scrolling-1.svg" alt="" /></div>
+                <div className="pb-workflow-badge pb-workflow-badge-green"><Image src="/images/icons/carbon/stacked-scrolling-1.svg" alt="" width={20} height={20} /></div>
                 <p className="pb-workflow-step">02</p>
                 <h3>Repo Mapping</h3>
                 <p>AI summarizes each repository, its purpose, responsibilities, and primary connections.</p>
@@ -209,7 +210,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <div className="pb-workflow-arrow" aria-hidden="true">→</div>
 
               <article className="pb-workflow-card" role="listitem">
-                <div className="pb-workflow-badge pb-workflow-badge-purple"><img src="/images/icons/carbon/data-base.svg" alt="" /></div>
+                <div className="pb-workflow-badge pb-workflow-badge-purple"><Image src="/images/icons/carbon/data-base.svg" alt="" width={20} height={20} /></div>
                 <p className="pb-workflow-step">03</p>
                 <h3>Architecture References</h3>
                 <p>Build a layered understanding of systems, services, and data flows.</p>
@@ -218,7 +219,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <div className="pb-workflow-arrow" aria-hidden="true">→</div>
 
               <article className="pb-workflow-card" role="listitem">
-                <div className="pb-workflow-badge pb-workflow-badge-cyan"><img src="/images/icons/carbon/chat.svg" alt="" /></div>
+                <div className="pb-workflow-badge pb-workflow-badge-cyan"><Image src="/images/icons/carbon/chat.svg" alt="" width={20} height={20} /></div>
                 <p className="pb-workflow-step">04</p>
                 <h3>Discovery</h3>
                 <p>AI asks targeted questions, identifies edge cases, and uncovers assumptions.</p>
@@ -227,7 +228,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <div className="pb-workflow-arrow" aria-hidden="true">→</div>
 
               <article className="pb-workflow-card" role="listitem">
-                <div className="pb-workflow-badge pb-workflow-badge-amber"><img src="/images/icons/carbon/code.svg" alt="" /></div>
+                <div className="pb-workflow-badge pb-workflow-badge-amber"><Image src="/images/icons/carbon/code.svg" alt="" width={20} height={20} /></div>
                 <p className="pb-workflow-step">05</p>
                 <h3>Implementation Awareness</h3>
                 <p>Surface likely change areas, files, and impacted systems.</p>
@@ -236,7 +237,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <div className="pb-workflow-arrow" aria-hidden="true">→</div>
 
               <article className="pb-workflow-card" role="listitem">
-                <div className="pb-workflow-badge pb-workflow-badge-mint"><img src="/images/icons/carbon/user-multiple.svg" alt="" /></div>
+                <div className="pb-workflow-badge pb-workflow-badge-mint"><Image src="/images/icons/carbon/user-multiple.svg" alt="" width={20} height={20} /></div>
                 <p className="pb-workflow-step">06</p>
                 <h3>Engineering Review</h3>
                 <p>Collaborate with engineering to refine, validate, and finalize the plan.</p>
@@ -261,10 +262,10 @@ export default function AITechnicalDiscoveryPlaybookPage() {
                 <h2>AI Context That Evolves With Your System</h2>
                 <p>Stay aligned with how your systems actually work.</p>
                 <ul className="pb-context-points">
-                  <li><img src="/images/icons/carbon/document.svg" alt="" aria-hidden="true" />Up-to-date repo understanding</li>
-                  <li><img src="/images/icons/carbon/network-wired.svg" alt="" aria-hidden="true" />Integration and dependency maps</li>
-                  <li><img src="/images/icons/carbon/code.svg" alt="" aria-hidden="true" />Suggested change locations</li>
-                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" />Evidence-backed recommendations</li>
+                  <li><Image src="/images/icons/carbon/document.svg" alt="" aria-hidden="true" width={20} height={20} />Up-to-date repo understanding</li>
+                  <li><Image src="/images/icons/carbon/network-wired.svg" alt="" aria-hidden="true" width={20} height={20} />Integration and dependency maps</li>
+                  <li><Image src="/images/icons/carbon/code.svg" alt="" aria-hidden="true" width={20} height={20} />Suggested change locations</li>
+                  <li><Image src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" width={20} height={20} />Evidence-backed recommendations</li>
                 </ul>
               </aside>
 
@@ -300,7 +301,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
                     </div>
                   </div>
                   <div className="pb-context-map-stage">
-                    <img src="/images/playbooks/tech-discovery-system-map.svg" alt="System relationships map for loan-application-service and connected services" className="pb-context-map-image" />
+                    <Image src="/images/playbooks/tech-discovery-system-map.svg" alt="System relationships map for loan-application-service and connected services" className="pb-context-map-image" width={900} height={520} />
                   </div>
                 </section>
 
@@ -354,22 +355,22 @@ export default function AITechnicalDiscoveryPlaybookPage() {
               <article className="pb-summary-card pb-summary-card-failure">
                 <p className="pb-summary-eyebrow">Failure Modes</p>
                 <ul>
-                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Stale architecture context</span></li>
-                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Hallucinated dependencies</span></li>
-                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Outdated implementation paths</span></li>
-                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Over-confidence in AI output</span></li>
-                  <li><img src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" /><span>Missing organizational context</span></li>
+                  <li><Image src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Stale architecture context</span></li>
+                  <li><Image src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Hallucinated dependencies</span></li>
+                  <li><Image src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Outdated implementation paths</span></li>
+                  <li><Image src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Over-confidence in AI output</span></li>
+                  <li><Image src="/images/icons/carbon/warning-triangle.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Missing organizational context</span></li>
                 </ul>
               </article>
 
               <article className="pb-summary-card pb-summary-card-outcomes">
                 <p className="pb-summary-eyebrow">Outcomes</p>
                 <ul>
-                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Better first-pass PRDs</span></li>
-                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Faster discovery cycles</span></li>
-                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Earlier edge-case visibility</span></li>
-                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Reduced tribal knowledge dependency</span></li>
-                  <li><img src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" /><span>Higher-quality engineering discussions</span></li>
+                  <li><Image src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Better first-pass PRDs</span></li>
+                  <li><Image src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Faster discovery cycles</span></li>
+                  <li><Image src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Earlier edge-case visibility</span></li>
+                  <li><Image src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Reduced tribal knowledge dependency</span></li>
+                  <li><Image src="/images/icons/carbon/circle-check.svg" alt="" aria-hidden="true" width={20} height={20} /><span>Higher-quality engineering discussions</span></li>
                 </ul>
               </article>
             </section>
@@ -381,7 +382,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
         <SectionContainer>
           <SystemContainer>
             <section className="pb-final-cta" aria-label="Playbook final call to action">
-              <div className="pb-final-cta-icon" aria-hidden="true"><img src="/images/icons/carbon/compass.svg" alt="" /></div>
+              <div className="pb-final-cta-icon" aria-hidden="true"><Image src="/images/icons/carbon/compass.svg" alt="" width={20} height={20} /></div>
 
               <div className="pb-final-cta-copy">
                 <h2>Build the system. Compound the advantage.</h2>

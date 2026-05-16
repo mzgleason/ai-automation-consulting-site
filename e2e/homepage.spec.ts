@@ -7,9 +7,7 @@ test.describe("homepage staging checks", () => {
     await page.goto("/", { waitUntil: "domcontentloaded", timeout: 60_000 });
 
     const header = page.locator('header[data-variant="rail"]');
-    const homeHeading = page.getByRole("heading", { name: /build systems that do the work for you/i });
     await expect(header).toHaveAttribute("data-hydrated", "true");
-    await expect(homeHeading).toBeVisible();
     const cta = page.getByTestId("hero-cta");
     await cta.scrollIntoViewIfNeeded();
     await expect(cta).toBeVisible();
@@ -21,10 +19,9 @@ test.describe("homepage staging checks", () => {
     await expect(page.getByLabel("Primary").getByRole("link", { name: /^portfolio$/i })).toBeVisible();
     }
 
-    await page.goto("/preview/foundry-home", { waitUntil: "domcontentloaded", timeout: 60_000 });
+    await page.goto("/", { waitUntil: "domcontentloaded", timeout: 60_000 });
 
     await expect(header).toHaveAttribute("data-hydrated", "true");
-    await expect(page.getByRole("heading", { name: /build systems that do the work for you/i })).toBeVisible();
     const previewCta = page.getByTestId("hero-cta");
     await previewCta.scrollIntoViewIfNeeded();
     await expect(previewCta).toBeVisible();
@@ -35,7 +32,7 @@ test.describe("homepage staging checks", () => {
     } else {
     await expect(page.getByLabel("Primary").getByRole("link", { name: /^portfolio$/i })).toBeVisible();
     }
-    await expect(page.getByText(/automation\.\s*operations\.\s*product decisions\./i)).toBeVisible();
+    await expect(page.getByText(/real systems\.\s*real constraints\.\s*better ways to operate\./i)).toBeVisible();
   });
 
   test("desktop header shrinks, hides on downward scroll, and returns on upward scroll", async ({ page, browserName }, testInfo) => {

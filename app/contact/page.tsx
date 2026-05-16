@@ -39,7 +39,7 @@ export default async function ContactPage() {
 
           <div className={styles.right}>
             <section className={`cta-panel ${styles.ctaPanel}`}>
-              <h2 className={styles.panelTitle}>Book a working session</h2>
+              <h2 className={styles.panelTitle}>Book on Calendly</h2>
               <p className={styles.panelLead}>
                 We’ll walk through the workflow, pressure test the constraints, and figure out what’s actually worth
                 building.
@@ -52,7 +52,7 @@ export default async function ContactPage() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Book a working session
+                  Book on Calendly
                 </Button>
               </div>
 

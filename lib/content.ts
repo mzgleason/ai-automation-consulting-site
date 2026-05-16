@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { sanitizeHtml } from "@/lib/sanitize";
 
 const root = process.cwd();
 
@@ -131,7 +132,8 @@ function inlineMarkdown(value: string): string {
 function markdownToHtml(markdown: string): string {
   const blocks = markdown.split(/\n\s*\n/).map((block) => block.trim()).filter(Boolean);
 
-  return blocks
+  return sanitizeHtml(
+    blocks
     .map((block) => {
       if (block.startsWith("## ")) {
         return `<h2>${escapeHtml(block.slice(3))}</h2>`;
@@ -161,7 +163,8 @@ function markdownToHtml(markdown: string): string {
 
       return `<p>${inlineMarkdown(block)}</p>`;
     })
-    .join("");
+    .join("")
+  );
 }
 
 function normalizeSectionHeading(value: string): keyof ProjectContentSections | undefined {

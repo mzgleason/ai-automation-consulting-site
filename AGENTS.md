@@ -108,3 +108,17 @@ Use this site to showcase portfolio projects and attract consulting opportunitie
 - Avoid over-engineering or unnecessary abstraction
 - Remove weak or redundant sections before adding new ones
 - Optimize for scannability and decision-making, not storytelling
+
+---
+
+## Security and performance guardrails
+- Keep strict global security headers in 
+ext.config.ts (CSP, HSTS, frame/object restrictions, permissions-policy, referrer-policy, nosniff).
+- For API routes, enforce payload size limits, rate limiting, and generic error responses that do not leak validation internals.
+- Prefer dynamic imports (
+ext/dynamic) for heavy client-only visual systems to protect initial page load.
+- Prefer 
+ext/image over raw <img> for raster assets, with explicit dimensions and stable layout behavior.
+- Any markdown or CMS-like HTML path rendered via dangerouslySetInnerHTML must be sanitized server-side before rendering.
+- When adding third-party embeds/scripts, update CSP and document the exact allowed origins in the same change.
+

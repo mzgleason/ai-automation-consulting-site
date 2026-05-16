@@ -1,9 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-import HeroProductionGlobe from "@/components/visuals/HeroProductionGlobe";
 import styles from "@/components/BuilderHero.module.css";
+
+const HeroProductionGlobe = dynamic(() => import("@/components/visuals/HeroProductionGlobe"), {
+  ssr: false
+});
 
 type BuilderHeroProps = {
   title: string;

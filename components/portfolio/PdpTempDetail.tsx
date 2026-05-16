@@ -97,7 +97,7 @@ export function PdpTempDetail({
             </div>
             <div className="linkedin-hero-right" aria-hidden>
               {heroVisualImageSrc ? (
-                <img src={heroVisualImageSrc} alt="" className="portfolio-project1-image" />
+                <Image src={heroVisualImageSrc} alt="" className="portfolio-project1-image" width={800} height={500} />
               ) : heroVisualVariant === "lending-concierge" ? (
                 <LendingConciergeHeroVisual />
               ) : (

@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/playbook/PageShell";
 import { SectionContainer } from "@/components/playbook/SectionContainer";
 import { SystemContainer } from "@/components/playbook/SystemContainer";
+import Image from "next/image";
 import Link from "next/link";
 
 const featuredTags = ["Discovery", "Systems Thinking", "Engineering Alignment"];
@@ -40,7 +41,7 @@ export default function PlaybooksPage() {
 
             <aside className="pb-card pb-library-hero-points" aria-label="Playbook principles">
               <article className="pb-library-point">
-                <img src="/images/icons/carbon/document.svg" alt="" aria-hidden="true" />
+                <Image src="/images/icons/carbon/document.svg" alt="" aria-hidden="true" width={20} height={20} />
                 <div>
                   <h2>Actionable by design</h2>
                   <p>Step-by-step frameworks you can apply immediately.</p>
@@ -48,7 +49,7 @@ export default function PlaybooksPage() {
               </article>
 
               <article className="pb-library-point">
-                <img src="/images/icons/carbon/location-current.svg" alt="" aria-hidden="true" />
+                <Image src="/images/icons/carbon/location-current.svg" alt="" aria-hidden="true" width={20} height={20} />
                 <div>
                   <h2>Built from experience</h2>
                   <p>Real-world lessons from systems and workflows in the wild.</p>
@@ -56,7 +57,7 @@ export default function PlaybooksPage() {
               </article>
 
               <article className="pb-library-point">
-                <img src="/images/icons/carbon/rocket.svg" alt="" aria-hidden="true" />
+                <Image src="/images/icons/carbon/rocket.svg" alt="" aria-hidden="true" width={20} height={20} />
                 <div>
                   <h2>Evolving library</h2>
                   <p>New playbooks added as the systems and challenges evolve.</p>
@@ -107,7 +108,7 @@ export default function PlaybooksPage() {
             <div className="pb-library-progress-grid">
               {inProgress.map((playbook) => (
                 <article key={playbook.title} className="pb-card pb-library-progress-card">
-                  <img src={playbook.icon} alt="" aria-hidden="true" />
+                  <Image src={playbook.icon} alt="" aria-hidden="true" width={20} height={20} />
                   <h2>{playbook.title}</h2>
                   <p>{playbook.description}</p>
                   <span>Coming soon</span>

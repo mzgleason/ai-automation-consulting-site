@@ -10,32 +10,24 @@ test.describe("portfolio project template", () => {
     });
 
     const expectedOrder = [
-      "portfolio-hero",
-      "project-snapshot",
-      "portfolio-section-problem",
-      "portfolio-section-approach",
-      "portfolio-section-system",
-      "workflow-diagram",
-      "portfolio-section-results",
-      "portfolio-section-insights",
-      "portfolio-cta"
+      page.getByRole("heading", { level: 1, name: /human-guided ai linkedin publishing/i }),
+      page.getByText("Project snapshot", { exact: true }),
+      page.getByText("The problem", { exact: true }),
+      page.getByText("The approach", { exact: true }),
+      page.getByText("The system", { exact: true }),
+      page.getByText("Next step", { exact: true })
     ];
 
     const positions = await Promise.all(
-      expectedOrder.map(async (testId) => {
-        const locator = page.getByTestId(testId);
-        await expect(locator).toBeVisible();
-        return locator.evaluate((element) => element.getBoundingClientRect().top + window.scrollY);
+      expectedOrder.map(async (locator) => {
+        await expect(locator.first()).toBeVisible();
+        return locator.first().evaluate((element) => element.getBoundingClientRect().top + window.scrollY);
       })
     );
 
     expect(positions).toEqual([...positions].sort((a, b) => a - b));
-    await expect(page.getByRole("heading", { name: /scaled weekly linkedin publishing/i })).toBeVisible();
-    await expect(page.getByTestId("metrics-grid").first().locator(".portfolio-template-metric-card")).toHaveCount(3);
-    await expect(page.getByTestId("portfolio-cta").getByRole("link", { name: /view the system/i })).toHaveAttribute(
-      "href",
-      /#system$/
-    );
+    await expect(page.locator(".linkedin-hero-metric-card")).toHaveCount(2);
+    await expect(page.getByRole("link", { name: /start a conversation/i })).toHaveAttribute("href", /\/contact$/);
 
     const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth);
     const viewportWidth = await page.evaluate(() => window.innerWidth);

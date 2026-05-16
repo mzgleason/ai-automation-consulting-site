@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/playbook/PageShell";
 import { SectionContainer } from "@/components/playbook/SectionContainer";
 import { SystemContainer } from "@/components/playbook/SystemContainer";
 import { getProjects } from "@/lib/content";
+import { PortfolioHeroScrollCta } from "@/components/portfolio/PortfolioHeroScrollCta";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -45,7 +47,7 @@ function ProjectVisual({ slug, title }: { slug: PortfolioSlug; title: string }) 
   if (slug === "realtime-lead-buying") {
     return (
       <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
-        <img src="/images/portfolio/project-1-visual.png" alt="" className="portfolio-project1-image" />
+        <Image src="/images/portfolio/project-1-visual.png" alt="" className="portfolio-project1-image" width={800} height={500} />
         <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
@@ -57,13 +59,13 @@ function ProjectVisual({ slug, title }: { slug: PortfolioSlug; title: string }) 
         <p className="portfolio-mobile-title">{title}</p>
         <div className="portfolio-linkedin-phone-row">
           <div className="portfolio-linkedin-phone-frame">
-            <img src="/images/case-studies/Topic Inbox Mock.png" alt="" className="portfolio-linkedin-phone-image" />
+            <Image src="/images/case-studies/Topic Inbox Mock.png" alt="" className="portfolio-linkedin-phone-image" width={240} height={480} />
           </div>
           <div className="portfolio-linkedin-phone-frame">
-            <img src="/images/case-studies/Capture Opinion Mock.png" alt="" className="portfolio-linkedin-phone-image portfolio-linkedin-phone-image-capture" />
+            <Image src="/images/case-studies/Capture Opinion Mock.png" alt="" className="portfolio-linkedin-phone-image portfolio-linkedin-phone-image-capture" width={240} height={480} />
           </div>
           <div className="portfolio-linkedin-phone-frame">
-            <img src="/images/case-studies/Draft Review Mock.png" alt="" className="portfolio-linkedin-phone-image" />
+            <Image src="/images/case-studies/Draft Review Mock.png" alt="" className="portfolio-linkedin-phone-image" width={240} height={480} />
           </div>
         </div>
       </div>
@@ -73,7 +75,7 @@ function ProjectVisual({ slug, title }: { slug: PortfolioSlug; title: string }) 
   if (slug === "ai-intern-lending-concierge-system") {
     return (
       <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
-        <img src="/images/portfolio/project-3-visual.png" alt="" className="portfolio-project3-image" />
+        <Image src="/images/portfolio/project-3-visual.png" alt="" className="portfolio-project3-image" width={800} height={500} />
         <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
@@ -82,7 +84,7 @@ function ProjectVisual({ slug, title }: { slug: PortfolioSlug; title: string }) 
   if (slug === "lendability-model-reproducible-training-system") {
     return (
       <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
-        <img src="/images/portfolio/project-4-visual.png" alt="" className="portfolio-project4-image" />
+        <Image src="/images/portfolio/project-4-visual.png" alt="" className="portfolio-project4-image" width={800} height={500} />
         <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
@@ -103,7 +105,7 @@ export default async function ProjectsPage() {
           <section className="pb-library-hero portfolio-library-hero" aria-label="Portfolio hero">
             <div className="pb-library-hero-copy">
               <h1 className="pb-library-title portfolio-hero-title">PORTFOLIO</h1>
-              <p className="portfolio-hero-scroll">Scroll for more</p>
+              <PortfolioHeroScrollCta />
             </div>
           </section>
         </SystemContainer>
@@ -111,7 +113,7 @@ export default async function ProjectsPage() {
 
       <SectionContainer>
         <SystemContainer>
-          <section aria-label="Portfolio projects" className="portfolio-projects-section">
+          <section id="portfolio-projects" aria-label="Portfolio projects" className="portfolio-projects-section">
             <div className="portfolio-index-grid">
               {projects.map((project, index) => (
                 <Link href={`/portfolio/${project.slug}`} className="portfolio-index-card" key={project.slug}>
@@ -131,4 +133,6 @@ export default async function ProjectsPage() {
     </PageShell>
   );
 }
+
+
 
