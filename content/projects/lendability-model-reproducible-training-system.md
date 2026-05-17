@@ -1,101 +1,108 @@
 ---
-title: Delivered 3+ lendability model releases with reproducible training
+title: Built a scoring system that improved lead distribution consistency across marketplace partners
 slug: lendability-model-reproducible-training-system
-summary: Shipped a lendability scoring model plus reproducible training/evaluation, enabling 3+ released versions and ~30% faster iteration cycles with cleaner comparisons.
+summary: Designed and operationalized a lead scoring workflow used to support fairer distribution decisions, improve routing confidence, and create more consistent allocation behavior across marketplace clients.
 date: 2026-04-04
-status: System design
+status: Marketplace systems
 featured: true
 published: true
-category: Product systems
+category: Marketplace operations
 tags:
-  - Machine learning
-  - Reproducibility
-  - Backend AI
-  - Evaluation
+  - Marketplace Systems
+  - Routing Logic
+  - Scoring Infrastructure
+  - Operational Visibility
 tools:
   - Python
-  - Training workflows
-  - Evaluation reports
-  - Validation rollout
+  - Scoring Workflows
+  - Marketplace Logic
+  - Operational Reporting
 outcomes:
-  - Moved quickly from concept to working model
-  - Built a repeatable evaluation workflow
-  - Improved future retraining and comparison
+  - Improved confidence in routing decisions
+  - More consistent partner allocation behavior
+  - Stronger foundation for marketplace optimization
 metrics:
-  - 3+ | Model releases | Reproducible training and evaluation flow
-  - ~30% | Faster iteration cycles | Cleaner comparison between versions
-  - 1 | Validation path | Risk-reduced rollout before customer impact
-clientType: Fintech / analytical product systems
+  - Scoring Infrastructure | Operational lead distribution system
+  - Routing Confidence | Improved allocation consistency across partners
+clientType: Marketplace Operations / Decision Systems / Scoring Infrastructure
 serviceType: Advisory + Build Support
 coverImage: /images/case-studies/lendability-model-cover.svg
 heroImage: /images/case-studies/lendability-model-hero.svg
 ctaLabel: View portfolio
 ctaHref: /portfolio
-problem: Model iteration was hard to trust because training inputs, assumptions, and outputs were not tied together in a way that made future comparison and retraining reliable.
+problem: Lead distribution decisions lacked a consistent scoring framework, making it difficult to balance quality, routing behavior, and fairness across marketplace clients.
 ---
 
-## Challenge
+## Hero tag
 
-The initial challenge was to develop a model that could help estimate lendability for a specific segment. The bigger question appeared immediately after that:
+MARKETPLACE SYSTEMS
 
-How do you make sure the work is useful beyond the first version?
+## Supporting copy
 
-Without a repeatable system, model efforts tend to become fragile:
+Designed and operationalized a lead scoring workflow used to support fairer distribution decisions, improve routing confidence, and create more consistent allocation behavior across marketplace clients.
 
-- hard to reproduce later
-- difficult to compare versions cleanly
-- inconsistent evaluation
-- too much dependence on the original builder
-- slower future iteration
+## Project snapshot
 
-## Context
+### Type
 
-The goal was to build two things at once:
+Marketplace Operations / Decision Systems / Scoring Infrastructure
 
-1. a working lendability model
-2. the system around it so it could be retrained, evaluated, and improved later
+### Problem
 
-That meant the project had to support clear training flow, repeatable evaluation, future comparison, and a cleaner deployment path into validation.
+Lead distribution decisions lacked a consistent scoring framework, making it difficult to balance quality, routing behavior, and fairness across marketplace clients.
 
-## Approach
+### Solution
 
-The work moved quickly from concept to a usable first version, but the focus was not just speed.
+Built a scoring and evaluation workflow that introduced structured lead ranking, clearer allocation logic, and operational visibility into marketplace distribution behavior.
 
-1. Define the outcome the model was meant to support.
-2. Build an initial model using practical methods suited to structured business data.
-3. Wrap training, evaluation, and comparison into the deliverable itself.
-4. Deploy the model into a validation phase instead of changing the customer experience immediately.
-5. Prepare the workflow for future retraining and comparison.
+### Outcome
+
+Improved confidence in routing decisions, supported more consistent partner allocation, and created a stronger operational foundation for future marketplace optimization.
+
+### Tools & systems
+
+Python, Scoring Workflows, Marketplace Logic, Operational Reporting
+
+## The problem
+
+### Challenge
+
+- Marketplace lead quality varied significantly between submissions
+- Distribution decisions lacked consistent scoring visibility
+- Allocation behavior became difficult to evaluate across partners
+- Operational trust depended on clearer routing governance
+
+## The approach
+
+### Approach
+
+1. Defined structured lead scoring inputs and evaluation logic
+2. Built workflows to standardize scoring and allocation behavior
+3. Created reporting visibility around distribution outcomes
+4. Improved operational confidence in marketplace routing decisions
 
 ## System / workflow design
 
-The long-term value came from repeatability, not just from the first score.
+- Score: Evaluate lead quality and routing characteristics
+- Rank: Generate structured scoring outputs
+- Allocate: Distribute traffic across marketplace partners
+- Monitor: Track routing behavior and allocation consistency
+- Optimize: Refine scoring logic based on marketplace performance
 
-- versioned datasets and inputs reduced ambiguity
-- standardized run configuration made comparison easier
-- evaluation outputs became easier to inspect and explain
-- validation before rollout reduced operational risk
+## Key insights
 
-## What shipped
-
-The delivered system included a working lendability model, a repeatable training and evaluation process, and a validation path that made later iteration more trustworthy.
-
-## Outcomes
-
-- faster movement from idea to usable model
-- better future maintainability
-- cleaner comparison between model versions
-- stronger connection between analytical work and product decisions
+- Marketplace trust depends on consistent allocation behavior
+- Scoring systems become operational infrastructure over time
+- Visibility into routing decisions improves long-term optimization
 
 ## Lessons learned
 
-A few principles stood out:
+- Simple operational visibility can improve decision confidence quickly
+- Distribution systems need governance as marketplaces scale
+- Scoring logic should support both performance and fairness
 
-- speed matters, but repeatability matters more
-- dark-mode validation reduces risk
-- one-off experiments rarely create long-term business value
-- the workflow around the model can matter as much as the model itself
+## Final CTA
 
-## Why this matters
+Want help building operational marketplace systems?
 
-This is a reusable pattern for any business where AI or analytics influences decisions over time: do not just build the model, build the process that makes the model testable, maintainable, and useful after version one.
+I design practical scoring, routing, and workflow infrastructure that improves operational clarity and marketplace decision-making.

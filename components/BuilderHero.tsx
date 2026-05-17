@@ -26,6 +26,18 @@ export function BuilderHero(_props: BuilderHeroProps) {
   const phraseDoRef = useRef<HTMLSpanElement>(null);
   const phraseWorkRef = useRef<HTMLSpanElement>(null);
   const [headlineReady, setHeadlineReady] = useState(false);
+  const [loaderComplete, setLoaderComplete] = useState(false);
+
+  useEffect(() => {
+    const complete = () => setLoaderComplete(true);
+    if (document.body.dataset.homeLoaderComplete === "true") {
+      complete();
+      return;
+    }
+
+    window.addEventListener("home-loader-complete", complete);
+    return () => window.removeEventListener("home-loader-complete", complete);
+  }, []);
 
   useEffect(() => {
     const stageEl = headlineStageRef.current;
@@ -124,31 +136,31 @@ export function BuilderHero(_props: BuilderHeroProps) {
   }, []);
 
   return (
-    <section className={styles.hero} ref={heroRef}>
+    <section className={styles.hero} ref={heroRef} data-loader-complete={loaderComplete ? "true" : "false"}>
       <div className={styles.globeWrap} ref={globeWrapRef} aria-hidden="true">
         <canvas ref={canvasRef} className={styles.canvas} />
       </div>
 
       <div className={styles.overlay} ref={overlayRef}>
         <div className={styles.textStage}>
-          <h1 className={styles.srOnly}>BUILD SYSTEMS THAT DO THE WORK FOR YOU</h1>
+          <h1 className={styles.srOnly}>TURN AMBIGUOUS OPERATIONS INTO EXECUTABLE SYSTEMS</h1>
           <div
             className={styles.headlineStage}
             aria-hidden="true"
             ref={headlineStageRef}
-            data-ready={headlineReady ? "true" : "false"}
+            data-ready={headlineReady && loaderComplete ? "true" : "false"}
           >
             <span className={`${styles.phrase} ${styles.phraseBuild}`} ref={phraseBuildRef}>
-              BUILD SYSTEMS
+              TURN AMBIGUOUS
             </span>
             <span className={`${styles.phrase} ${styles.phraseThat}`} ref={phraseThatRef}>
-              THAT
+              OPERATIONS
             </span>
             <span className={`${styles.phrase} ${styles.phraseDo}`} ref={phraseDoRef}>
-              DO THE
+              INTO
             </span>
             <span className={`${styles.phrase} ${styles.phraseWork}`} ref={phraseWorkRef}>
-              WORK FOR YOU
+              EXECUTABLE SYSTEMS
             </span>
           </div>
         </div>

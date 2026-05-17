@@ -65,56 +65,69 @@ export default async function ProjectDetailPage({
     return (
       <PdpTempDetail
         category="SALES OPERATIONS"
-        title="Built an AI Voice Sales Assistant for Incomplete Leads"
-        summary="I built a voice AI sales assistant that calls incomplete leads, collects final qualification details, and updates the CRM so the sales team saves time."
-        metricOneValue="~30%"
-        metricOneLabel="Less manual follow-up"
+        title="Automated Lead Qualification Before Human Follow-Up"
+        summary="I built an AI-assisted qualification workflow that called incomplete leads, collected missing application details, updated operational systems automatically, and prepared cleaner handoffs for human sales reps."
+        metricOneValue="~40%"
+        metricOneLabel="Faster lead qualification"
         metricTwoValue="~60%"
-        metricTwoLabel="Faster lead review"
+        metricTwoLabel="Faster application review"
         snapshot={[
-          { label: "Type", value: "Client project (Operator-led)" },
-          { label: "Problem", value: "Leads were incomplete, so reps spent too much time chasing missing details." },
-          { label: "Solution", value: "AI voice assistant collected final qualification details and updated CRM records." },
-          { label: "Outcome", value: "Less rep admin time and faster handoff to real sales conversations." },
-          { label: "Tools & Systems", value: "Voice AI, qualification scripts, CRM sync logic, sales handoff rules" }
+          { label: "Type", value: "Operator-led workflow automation project" },
+          { label: "Problem", value: "Sales reps spent too much time repeating intake questions and manually updating incomplete lead records before follow-up conversations could begin." },
+          { label: "Solution", value: "Built an AI-assisted intake workflow using n8n and VAPI to collect missing qualification details, sync operational systems, schedule follow-ups, and prepare structured summaries for sales reps." },
+          { label: "Outcome", value: "Cleaner lead records, faster qualification review, reduced repetitive admin work, and more consistent human handoffs." },
+          { label: "Tools & Systems", value: "n8n workflows, VAPI voice agents, Google Sheets operations tracking, calendar-aware scheduling, CRM synchronization, structured qualification pipelines" }
         ]}
-        problemHeadline="Leads were coming in unfinished."
+        problemHeadline="Lead qualification work was slowing down the sales process."
         problemBullets={[
-          "Reps asked the same questions again and again.",
-          "Important details were missing from lead records.",
-          "The CRM needed manual cleanup before review.",
-          "Too much time went to admin work instead of selling."
+          "Lead records often entered review missing key qualification details.",
+          "Reps repeated the same intake conversations across large lead volumes.",
+          "Operational updates were manually copied across systems.",
+          "Follow-up scheduling depended heavily on rep availability.",
+          "CRM records required cleanup before meaningful sales conversations could happen.",
+          "High-intent leads were delayed by repetitive admin work."
         ]}
-        approachHeadline="Automate repeat qualification work first."
+        approachHeadline="Move repetitive qualification work earlier in the workflow."
         approachSteps={[
-          "Call leads that are missing key details.",
-          "Ask short, clear qualification questions.",
-          "Save answers into the right CRM fields.",
-          "Update the lead record automatically.",
-          "Send edge cases to a human rep."
+          "Detect incomplete lead records: n8n monitored operational lead lists and identified applications missing required qualification details.",
+          "Launch AI qualification calls: VAPI voice agents contacted leads automatically to collect missing intake information.",
+          "Pull operational context: The AI assistant referenced calendars, project notes, and operational tracking systems during conversations.",
+          "Update operational systems: Structured summaries, qualification fields, and scheduling updates were written back automatically.",
+          "Escalate qualified opportunities: High-intent or edge-case leads were routed to human reps for direct follow-up."
         ]}
-        systemHeadline="A voice AI flow that prepares leads for the sales team."
+        systemHeadline="How the operational workflow functioned."
+        systemSteps={[
+          { name: "Detect", icon: "/images/portfolio-icons/target.svg" },
+          { name: "Qualify", icon: "/images/portfolio-icons/capture.svg" },
+          { name: "Synchronize", icon: "/images/portfolio-icons/data-2.svg" },
+          { name: "Escalate", icon: "/images/portfolio-icons/branch.svg" }
+        ]}
         supportTags={[
           "Voice AI",
-          "Lead Qualification",
-          "CRM Updates",
-          "Sales Routing",
-          "Human Handoff Rules",
-          "Ops Time Savings"
+          "Qualification Workflows",
+          "Operational Automation",
+          "CRM Synchronization",
+          "Human Handoff Logic",
+          "Scheduling Automation",
+          "Structured Intake Systems",
+          "AI-Assisted Operations"
         ]}
         insights={[
-          "Clear questions lead to better answers.",
-          "Fast CRM updates prevent follow-up mistakes.",
-          "Defined handoff rules improve team speed.",
-          "AI works best on repeat tasks."
+          "AI performs best on repetitive operational conversations.",
+          "Structured intake flows improve downstream review quality.",
+          "Fast operational synchronization reduces rep friction.",
+          "Human escalation logic matters more than conversational complexity.",
+          "Qualification workflows work best with tightly defined schemas."
         ]}
         lessons={[
-          "Keep call scripts simple and direct.",
-          "Set strict rules for human escalation.",
-          "Track missing-field rates each week."
+          "Narrow operational workflows outperform broad AI assistants.",
+          "Human review checkpoints remain important for edge cases.",
+          "Qualification systems fail when required fields are loosely defined.",
+          "AI workflows become more reliable when escalation paths are explicit.",
+          "Operational clarity matters more than conversational realism."
         ]}
-        ctaHeadline="Want this for your sales team?"
-        ctaBody="I build practical AI workflows that remove repeat admin work so reps can focus on high-value conversations."
+        ctaHeadline="Building practical AI workflows for operational teams"
+        ctaBody="I design AI-assisted operational systems that reduce repetitive admin work, improve workflow quality, and keep human teams focused on higher-value decisions."
         primaryCtaLabel="Start a conversation"
         secondaryCtaLabel="Browse playbooks"
         heroVisualVariant="lending-concierge"
@@ -157,33 +170,33 @@ export default async function ProjectDetailPage({
     return (
       <PdpTempDetail
         category="REAL-TIME BUYER / SELLER SYSTEMS"
-        title="Building Real-Time Routing Systems for Marketplace Businesses"
-        summary="Built a real-time routing workflow that helped buyers and sellers connect faster, apply partner rules earlier, and improve decision quality in a high-volume marketplace."
+        title="Building Operational Systems for Real-Time Marketplace Decisions"
+        summary="Built operational routing infrastructure that helped marketplace teams react faster, apply business logic earlier, and manage traffic more intentionally in real time."
         metricOneValue="Real-time"
         metricOneLabel="Routing and marketplace decisions"
         metricTwoValue="Flexible"
         metricTwoLabel="Partner controls and workflow automation"
         snapshot={[
           { label: "Type", value: "Marketplace workflow launch and operational rollout" },
-          { label: "Problem", value: "Legacy marketplace flows relied on slow handoffs, rigid rules, and limited visibility across buyer and seller operations." },
-          { label: "Solution", value: "A real-time routing workflow was implemented so partners could preview opportunities, apply business rules, and respond instantly." },
-          { label: "Outcome", value: "Faster decisions, improved operational flexibility, and stronger alignment between supply and demand." },
+          { label: "Problem", value: "Routing decisions were delayed by operational handoffs, inconsistent partner logic, and workflows that could not react fast enough to marketplace changes." },
+          { label: "Solution", value: "Built a configurable routing layer that let teams apply business logic earlier, respond to traffic shifts faster, and reduce lag between intake and operational action." },
+          { label: "Outcome", value: "Improved marketplace responsiveness, faster operational decisions, and better visibility into how traffic moved through the system." },
           { label: "Tools & Systems", value: "API integrations, routing logic, partner controls, operational dashboards, marketplace monitoring" }
         ]}
         problemHeadline="Slow handoffs and rigid rules reduced marketplace speed."
         problemBullets={[
           "Partners used different quality thresholds, targeting rules, and response strategies.",
           "Legacy workflows added delays between lead intake, evaluation, and action.",
-          "Operational teams lacked shared real-time visibility into marketplace performance.",
+          "Teams were reacting to marketplace changes too late because routing visibility was fragmented across systems.",
           "The system needed partner flexibility without degrading customer experience."
         ]}
         approachHeadline="Design a routing system, then operationalize it."
         approachSteps={[
-          "Define rollout scope, decision points, and launch constraints.",
-          "Design routing and response workflow for real-time execution.",
-          "Standardize partner onboarding requirements and control surfaces.",
-          "Define operational reporting and monitoring requirements.",
-          "Coordinate implementation across product, engineering, and operations."
+          "Translate marketplace constraints into routing logic teams could actually operate against.",
+          "Design operational decision flows that could react to marketplace conditions in real time.",
+          "Create configurable controls so partner behavior could adapt without rebuilding the system.",
+          "Expose routing visibility earlier so operational teams could identify issues before performance degraded.",
+          "Keep operational, product, and engineering decisions aligned as the system evolved."
         ]}
         systemHeadline="A repeatable flow from intake to routed outcomes."
         systemSteps={[
@@ -213,10 +226,10 @@ export default async function ProjectDetailPage({
           "Simple operational controls can create outsized marketplace impact."
         ]}
         ctaHeadline="Need a marketplace or routing system like this?"
-        ctaBody="This project shows a practical way to improve routing speed, workflow visibility, and marketplace performance without adding unnecessary complexity."
+        ctaBody="This system was designed to improve marketplace responsiveness, reduce operational friction, and make routing decisions easier to manage at scale without creating unnecessary process overhead."
         primaryCtaLabel="Start a conversation"
         secondaryCtaLabel="Browse playbooks"
-        heroVisualImageSrc="/images/portfolio/project-1-visual.png"
+        heroBackgroundVariant="realtime-routing-field"
       />
     );
   }  return (

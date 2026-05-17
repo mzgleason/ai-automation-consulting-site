@@ -1,4 +1,4 @@
-import styles from "./HomepageClosingSection.module.css";
+﻿import styles from "./HomepageClosingSection.module.css";
 import { Button } from "@/components/ui/Button";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
@@ -10,18 +10,18 @@ export function HomepageClosingSection() {
           <div>
             <p className="eyebrow">Decision point</p>
             <h2 className={styles.headline}>
-              If you’re working through a messy workflow or a real product decision, I’ll take a look.
+              If your workflow is messy, your roadmap feels stuck, or the system keeps breaking under real usage, let’s pressure test it.
             </h2>
           </div>
 
           <p className={styles.processLine}>
-            We’ll walk through the workflow, pressure test the constraints, and decide what’s actually worth building
-            (or what to kill).
+            We’ll map the constraints, identify what’s slowing execution down, and decide what’s actually worth
+            building.
           </p>
         </div>
 
         <div className={styles.column}>
-          <div className={`cta-panel ${styles.ctaPanel}`}>
+          <div className={styles.ctaPanel}>
             <h3>Book a working session</h3>
             <p className={styles.supportingLine}>
               Walk through the workflow. Pressure test constraints. Leave with a clean next step.
@@ -45,3 +45,4 @@ export function HomepageClosingSection() {
     </section>
   );
 }
+

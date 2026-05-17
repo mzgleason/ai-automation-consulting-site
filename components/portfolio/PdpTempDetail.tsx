@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { LendingConciergeHeroVisual } from "@/components/portfolio/LendingConciergeHeroVisual";
+import RealtimeRoutingFieldHero from "@/components/portfolio/RealtimeRoutingFieldHero";
 
 type PdpTempDetailProps = {
   category: string;
@@ -28,6 +29,7 @@ type PdpTempDetailProps = {
   secondaryCtaLabel: string;
   heroVisualVariant?: "default" | "lending-concierge";
   heroVisualImageSrc?: string;
+  heroBackgroundVariant?: "none" | "realtime-routing-field";
 };
 
 export function PdpTempDetail({
@@ -53,7 +55,8 @@ export function PdpTempDetail({
   primaryCtaLabel,
   secondaryCtaLabel,
   heroVisualVariant = "default",
-  heroVisualImageSrc
+  heroVisualImageSrc,
+  heroBackgroundVariant = "none"
 }: PdpTempDetailProps) {
   const heroScreens = [
     { key: "topic", src: "/images/case-studies/Topic Inbox Mock.png", alt: "Topic Inbox app screen" },
@@ -67,12 +70,18 @@ export function PdpTempDetail({
     { name: "Review", icon: "/images/portfolio-icons/review.svg" },
     { name: "Publish", icon: "/images/portfolio-icons/publish.svg" }
   ];
+  const useHeroBackground = heroBackgroundVariant === "realtime-routing-field";
 
   return (
     <main className="section section-top portfolio-template-page">
       <div className="container portfolio-template-stack linkedin-detail-page">
-        <section className="linkedin-hero-shell" aria-label="Hero">
-          <div className="linkedin-hero">
+        <section className={`linkedin-hero-shell${useHeroBackground ? " linkedin-hero-shell-routing" : ""}`} aria-label="Hero">
+          {useHeroBackground ? (
+            <div className="linkedin-hero-bg" aria-hidden>
+              <RealtimeRoutingFieldHero />
+            </div>
+          ) : null}
+          <div className={`linkedin-hero${useHeroBackground ? " linkedin-hero-no-right" : ""}`}>
             <div className="linkedin-hero-left">
               <Link href="/portfolio" className="text-link portfolio-template-back">Portfolio</Link>
               <p className="portfolio-template-pill">{category}</p>
@@ -95,7 +104,7 @@ export function PdpTempDetail({
                 </div>
               </div>
             </div>
-            <div className="linkedin-hero-right" aria-hidden>
+            {!useHeroBackground ? <div className="linkedin-hero-right" aria-hidden>
               {heroVisualImageSrc ? (
                 <Image src={heroVisualImageSrc} alt="" className="portfolio-project1-image" width={800} height={500} />
               ) : heroVisualVariant === "lending-concierge" ? (
@@ -125,7 +134,7 @@ export function PdpTempDetail({
                   </div>
                 </>
               )}
-            </div>
+            </div> : null}
           </div>
         </section>
 
@@ -168,7 +177,7 @@ export function PdpTempDetail({
             {steps.map((step) => (
               <div key={step.name} className="linkedin-system-step">
                 <span className="linkedin-system-dot" aria-hidden>
-                  <Image src={step.icon} alt="" aria-hidden width={24} height={24} />
+                  <Image src={step.icon} alt="" aria-hidden width={24} height={24} className="linkedin-system-icon" />
                 </span>
                 <h3>{step.name}</h3>
               </div>

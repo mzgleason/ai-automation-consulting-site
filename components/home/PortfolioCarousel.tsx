@@ -135,7 +135,8 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
       new Map<string, string>([
         ["ai-driven-linkedin-content-workflow", "/images/icons/gemini-linkedin-workflow.png"],
         ["ai-intern-lending-concierge-system", "/images/icons/gemini-ai-intake-assistant.png"],
-        ["lendability-model-reproducible-training-system", "/images/icons/gemini-model-ops-system.png"]
+        ["lendability-model-reproducible-training-system", "/images/icons/gemini-model-ops-system.png"],
+        ["realtime-lead-buying", "/images/icons/realtime-lead-buying-iconography.png"]
       ]),
     []
   );
@@ -231,7 +232,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
 
                   <div className={styles.footer}>
                     <Button href={`/portfolio/${project.slug}`} variant="secondary" className={styles.cardCta}>
-                      See breakdown
+                      SEE BREAKDOWN
                     </Button>
                   </div>
                 </motion.article>

@@ -1,5 +1,5 @@
 ---
-title: Built a real-time bidding system for lead acquisition and pricing.
+title: Building Operational Systems for Real-Time Marketplace Decisions
 slug: realtime-lead-buying
 summary: Helped launch a real-time bidding and routing platform used to evaluate, price, and purchase leads at scale while improving margin controls and operational visibility.
 date: 2026-05-09

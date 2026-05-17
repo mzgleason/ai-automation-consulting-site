@@ -1,108 +1,131 @@
 ---
-title: Scaled weekly LinkedIn publishing to 200+ posts.
+title: Turn weekly work into publish-ready content.
 slug: ai-driven-linkedin-content-workflow
-summary: Built an AI-assisted workflow that turns weekly work into high-quality LinkedIn content at scale, without burning time or sacrificing quality.
-date: 2026-04-04
+summary: Built a repeatable system that captures work, extracts strong story angles, drafts content, and keeps quality high through human review.
+date: 2026-05-17
 status: Active workflow
 featured: true
 published: true
 category: AI workflows
 tags:
-  - Content systems
-  - AI workflows
-  - Human in the loop
-  - Automation
+  - ChatGPT
+  - Codex
+  - OpenAI APIs
+  - Next.js + Postgres
+  - Weekly Review Cadence
+  - LinkedIn Feedback Loop
 tools:
-  - Structured intake
-  - Multi-step prompting
-  - Review workflow
-  - Publishing handoff
+  - ChatGPT
+  - Codex
+  - OpenAI APIs
+  - Postgres
+  - Next.js
 outcomes:
-  - 200+ posts published
-  - +30% more monthly engagement
-  - 10+ hours saved per week
+  - Consistent publishing cadence
+  - ~70% faster drafting
+  - Repeatable weekly process
 metrics:
-  - 200+ | Posts published | Scaled output without sacrificing quality
-  - +30% | More monthly engagement | Stronger stories and consistency drove better results
-  - 10+ hrs/wk | Saved on content creation | Reclaimed time from drafting and editing
-clientType: Professional brand / solo operator
+  - 3 posts/wk | Consistent publishing cadence
+  - ~70% faster drafting | Without lowering quality
+clientType: Personal workflow system
 serviceType: AI Workflow Design
 coverImage: /images/projects/linkedin-workflow.svg
 heroImage: /images/case-studies/linkedin-workflow-hero.svg
 ctaLabel: Start a conversation
 ctaHref: /contact
 link: https://www.linkedin.com/
-problem: There was no reliable process for turning weekly accomplishments into strong LinkedIn posts without draining time.
+problem: Most weeks started with scattered notes, unfinished thoughts, screenshots, and voice memos spread across different tools.
 ---
 
-## Challenge
+## Hero
 
-The blocker was not a lack of ideas. The blocker was moving from scattered notes to publishable posts quickly and consistently.
+Eyebrow: AI SYSTEMS & WORKFLOWS
 
-There was already strong source material: weekly accomplishments, project notes, experiments, and lessons from active builds. The process around that source material was weak.
+Headline: Turn weekly work into publish-ready content.
 
-Without a defined system, the same problems repeated every week:
+Subheadline: I was spending too much time turning rough ideas into posts. So I built a repeatable system that captures work, extracts strong story angles, drafts content, and keeps quality high through human review.
 
-- too much time spent turning raw notes into polished posts
-- inconsistent publishing cadence
-- too much dependence on finding time to write
-- no real feedback loop for improving the process itself
+Metrics:
 
-## Context
+- 3 posts/wk — Consistent publishing cadence
+- ~70% faster drafting — Without lowering quality
 
-The goal was not full automation. The goal was to remove the messy middle between "I know what happened this week" and "I have a post worth publishing."
+## Project Snapshot
 
-That meant building a system that could:
+Type: Personal workflow system
 
-- collect the right source material quickly
-- turn it into clearer storylines
-- produce stronger first drafts
-- preserve a human review step
-- support a repeatable publishing cadence
-- improve over time instead of acting like a one-off prompt
+Problem: Most weeks started with scattered notes, unfinished thoughts, screenshots, and voice memos spread across different tools.
 
-## Approach
+Solution: Built a structured workflow that captures weekly work, extracts the strongest signals, drafts posts, and routes everything through review before publishing.
 
-The workflow was designed as a staged operating system, not a one-shot prompt.
+Outcome: Consistent publishing without rebuilding the process every week.
 
-1. Capture weekly accomplishments, project updates, and rough observations in a structured format.
-2. Extract the strongest story, lesson, failure, or result from that source material.
-3. Draft a narrative direction before asking for finished post copy.
-4. Generate draft posts from the narrative direction.
-5. Route every draft through human review before publishing.
-6. Track breakpoints and improve weak stages over time.
+Tools & Systems: ChatGPT, Codex, OpenAI APIs, Postgres, Next.js
 
-## System / workflow design
+## The Problem
 
-The leverage came from workflow design, not model novelty.
+Headline: Great ideas, poor system.
 
-- source capture kept inputs consistent
-- story extraction improved signal quality before drafting
-- narrative shaping made the drafts less generic
-- review gates preserved voice and quality
-- staged handoffs made failure points easy to detect and fix
+- Ideas lived across notes, screenshots, and unfinished drafts
+- Turning raw thoughts into posts took too long
+- Posting quality and cadence were inconsistent
+- Every week started from scratch again
 
-## What shipped
+## The Approach
 
-The shipped system created a repeatable path from raw notes to reviewed LinkedIn drafts, with explicit stage ownership and clear quality gates at every handoff.
+Headline: Design the system first. Then improve the output.
 
-## Outcomes
+1. Capture weekly work and raw observations
+2. Pull out the strongest signal from the week
+3. Draft content from a clear narrative direction
+4. Review and refine for quality and tone
+5. Publish consistently and learn from engagement
 
-- lower friction from raw idea to usable draft
-- more consistent weekly publishing
-- stronger quality control before scheduling
-- a workflow that can be tuned rather than rebuilt
+## The System
 
-## Lessons learned
+Headline: A repeatable workflow from raw work to published posts.
 
-The first version exposed a sequencing issue: some stages moved forward before review feedback had fully landed.
+Stages:
 
-That became the most useful lesson from the build:
+- Capture
+- Extract
+- Draft
+- Review
+- Publish
 
-- orchestration matters more than clever prompting
-- timing and review gates matter as much as generation quality
-- observability is what makes a multi-step AI workflow improvable
+Tags:
 
-## Why this matters
+- ChatGPT
+- Codex
+- OpenAI APIs
+- Next.js + Postgres
+- Weekly Review Cadence
+- LinkedIn Feedback Loop
 
-This is not just a content project. It shows a reusable way to take a messy process, separate it into stages, use AI where it adds leverage, and keep human review where judgment still matters.
+## Key Insights
+
+- Strong inputs matter more than better prompts
+- Clear narrative direction improves draft quality
+- Human review is the quality multiplier
+- Systems reduce creative friction over time
+
+## Lessons Learned
+
+- Capture systems matter more than generation systems
+- Earlier orchestration reduced manual cleanup work
+- Feedback loops improved post quality over time
+- Consistency comes from process, not motivation
+
+## CTA
+
+Headline: Need a system that scales your execution?
+
+Body: I help operators and teams turn messy workflows into structured systems that save time, improve quality, and create repeatable output.
+
+Primary Button: Start a conversation
+
+Secondary Button: Browse playbooks
+
+## Footer Bio
+
+Operator-led product consulting focused on workflow systems, operational leverage, and practical AI-enabled execution.

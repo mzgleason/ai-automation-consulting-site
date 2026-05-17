@@ -94,6 +94,22 @@ export default function HeroTestingGlobe({
     const simPositions = positionAttr.array as Float32Array;
     const restPositions = basePositions;
     const velocities = new Float32Array(simPositions.length);
+    const introStartPositions = new Float32Array(simPositions.length);
+    const introDurationMs = 2000;
+    const introStartTime = performance.now();
+
+    for (let i = 0; i < simPositions.length; i += 3) {
+      const spread = globeRadius * 2.8;
+      const rx = (Math.random() * 2 - 1) * spread;
+      const ry = (Math.random() * 2 - 1) * spread;
+      const rz = (Math.random() * 2 - 1) * spread;
+      introStartPositions[i] = rx;
+      introStartPositions[i + 1] = ry;
+      introStartPositions[i + 2] = rz;
+      simPositions[i] = rx;
+      simPositions[i + 1] = ry;
+      simPositions[i + 2] = rz;
+    }
 
     const uniforms = {
       uScatter: { value: 0 },
@@ -286,7 +302,27 @@ export default function HeroTestingGlobe({
 
       const damping = Math.pow(dampingAt60Fps, dt * 60);
 
-      for (let i = 0; i < simPositions.length; i += 3) {
+      const introElapsed = now - introStartTime;
+      const introT = Math.max(0, Math.min(1, introElapsed / introDurationMs));
+      const introEase = introT * introT * (3 - 2 * introT);
+
+      if (introT < 1) {
+        for (let i = 0; i < simPositions.length; i += 3) {
+          const sx = introStartPositions[i];
+          const sy = introStartPositions[i + 1];
+          const sz = introStartPositions[i + 2];
+          const rx = restPositions[i];
+          const ry = restPositions[i + 1];
+          const rz = restPositions[i + 2];
+
+          simPositions[i] = sx + (rx - sx) * introEase;
+          simPositions[i + 1] = sy + (ry - sy) * introEase;
+          simPositions[i + 2] = sz + (rz - sz) * introEase;
+          velocities[i] = 0;
+          velocities[i + 1] = 0;
+          velocities[i + 2] = 0;
+        }
+      } else for (let i = 0; i < simPositions.length; i += 3) {
         let px = simPositions[i];
         let py = simPositions[i + 1];
         let pz = simPositions[i + 2];

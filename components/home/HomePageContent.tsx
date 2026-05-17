@@ -22,7 +22,7 @@ const serviceFocusItems = [
   {
     id: "ai-advisory",
     slug: "advisory-build-support",
-    title: "STAY THROUGH EXECUTION",
+    title: "REMOVE HANDOFFS",
     description: "Shape the system as it's built. Make sure it holds."
   }
 ];
@@ -37,9 +37,9 @@ const projectProofCopy: Record<
   }
 > = {
   "ai-driven-linkedin-content-workflow": {
-    shortCategory: "CONTENT ENGINE",
-    displayTitle: "LINKEDIN CONTENT SYSTEM FOR WEEKLY PUBLISHING",
-    payoff: "Reduces weekly content friction with a repeatable workflow for capture, drafting, review, and publishing."
+    shortCategory: "CONTENT WORKFLOW",
+    displayTitle: "TURN WEEKLY WORK INTO LINKEDIN POSTS",
+    payoff: "A repeatable publishing system that captures raw work, extracts strong story angles, drafts content faster, and keeps quality high through human review."
   },
   "ai-intern-lending-concierge-system": {
     shortCategory: "AI INTAKE SYSTEM",
@@ -75,7 +75,7 @@ export async function HomePageContent() {
         <div className={`container ${proofStyles.frame}`}>
             <div className={proofStyles.intro}>
               <p className={`eyebrow ${proofStyles.eyebrow}`}>Selected work</p>
-              <h2 className={proofStyles.heading}>Real systems. Real constraints. Better ways to operate.</h2>
+              <h2 className={proofStyles.heading}>Real operational problems solved with practical systems and AI-enabled execution.</h2>
             <Link href="/portfolio" className={`text-link build-link ${proofStyles.explore}`}>
               Browse selected work
             </Link>

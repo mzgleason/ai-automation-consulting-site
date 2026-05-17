@@ -43,6 +43,10 @@ body:has(.portfolio-template-page) {
   --header-page-accent: var(--pf-accent-color, #b9c84a);
 }
 
+body:has(.home-page) {
+  --header-page-accent: var(--pf-accent-color, #b9c84a);
+}
+
 body:has(.pb-page-shell:not(.portfolio-page-shell)) {
   --header-page-accent: var(--pb-accent, #3d63ff);
 }
@@ -4972,10 +4976,7 @@ textarea:focus {
   inset: 0;
   z-index: -3;
   pointer-events: none;
-  background:
-    radial-gradient(circle at 28% 14%, rgba(132, 213, 255, 0.1), transparent 16%),
-    radial-gradient(circle at 84% 10%, rgba(255, 255, 255, 0.08), transparent 14%),
-    linear-gradient(180deg, #04080c 0%, #071019 100%);
+  background: linear-gradient(180deg, #04080c 0%, #071019 100%);
 }
 
 .home-page::after {
@@ -6314,6 +6315,19 @@ textarea:focus {
   padding-top: 8px;
 }
 
+.linkedin-hero-shell-routing {
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  border-radius: 20px;
+}
+
+.linkedin-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .linkedin-hero {
   display: grid;
   grid-template-columns: minmax(0, 612px) 400px;
@@ -6321,6 +6335,18 @@ textarea:focus {
   align-items: start;
   padding: 0;
   justify-content: space-between;
+}
+
+.linkedin-hero-no-right {
+  grid-template-columns: 1fr;
+  min-height: 620px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.linkedin-hero-no-right .linkedin-hero-left {
+  max-width: 760px;
 }
 
 .linkedin-hero-left h1 {
@@ -6762,6 +6788,10 @@ textarea:focus {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.linkedin-system-icon {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(56%) saturate(593%) hue-rotate(170deg) brightness(101%) contrast(99%);
 }
 
 .linkedin-supported {
