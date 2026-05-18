@@ -17,7 +17,7 @@ test.describe("contact page", () => {
     await expect(secondaryCta).toBeVisible();
     await expect(secondaryCta).toHaveAttribute("href", /calendly\.com/i);
 
-    await expect(page.getByText(/placeholder 1/i)).toBeVisible();
+    await expect(page.getByText(/what a working session looks like/i)).toBeVisible();
     await expect(page.getByRole("link", { name: /linkedin/i })).toBeVisible();
     await expect(page.getByRole("link", { name: /email:/i })).toHaveAttribute("href", /^mailto:/i);
 

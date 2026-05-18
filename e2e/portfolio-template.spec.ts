@@ -26,7 +26,7 @@ test.describe("portfolio project template", () => {
     );
 
     expect(positions).toEqual([...positions].sort((a, b) => a - b));
-    await expect(page.locator(".linkedin-hero-metric-card")).toHaveCount(2);
+    await expect(page.locator(".hero-metric-card")).toHaveCount(2);
     await expect(page.getByRole("link", { name: /start a conversation/i })).toHaveAttribute("href", /\/contact$/);
 
     const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth);
