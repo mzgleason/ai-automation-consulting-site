@@ -102,7 +102,7 @@ Python, Scoring Workflows, Marketplace Logic, Operational Reporting
 
 ## Final CTA
 
-Want help building operational marketplace systems?
+Want help building a system like this?
 
 I build practical workflow and decision systems that help teams move faster, make cleaner decisions, and improve operational visibility.
 

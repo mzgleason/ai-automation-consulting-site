@@ -43,9 +43,15 @@ const projectProofCopy: Record<
   },
   "ai-intake-qualification-workflow": {
     shortCategory: "AI INTAKE SYSTEM",
-    displayTitle: "AI INTAKE ASSISTANT FOR FASTER QUALIFICATION",
+    displayTitle: "AI ASSISTANT FOR FASTER QUALIFICATION",
     payoff:
       "Improves early qualification by structuring intake, surfacing missing information, and reducing manual follow-up."
+  },
+  "realtime-decision-routing-system": {
+    shortCategory: "REAL-TIME ROUTING",
+    displayTitle: "REAL-TIME LEAD BUYING ENGINE",
+    payoff:
+      "Built operational routing infrastructure that helps marketplace teams react faster and apply business logic earlier."
   },
   "marketplace-scoring-system": {
     shortCategory: "MARKETPLACE SCORING",

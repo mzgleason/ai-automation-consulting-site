@@ -195,6 +195,7 @@ export default async function ProjectDetailPage({
         metricTwoValue="Flexible"
         metricTwoLabel="Partner controls and workflow automation"
         metricOneIconSrc="/images/portfolio-icons/activity.svg"
+        metricTwoIconSrc="/images/portfolio-icons/file-sliders.svg"
         snapshot={[
           { label: "Type", value: "Marketplace workflow launch and operational rollout" },
           { label: "Problem", value: "Routing decisions were delayed by operational handoffs, inconsistent partner logic, and workflows that could not react fast enough to marketplace changes." },
@@ -266,18 +267,40 @@ export default async function ProjectDetailPage({
       metricTwoValue={project.metrics[1]?.value ?? "Live"}
       metricTwoLabel={project.metrics[1]?.label ?? project.outcomes[1] ?? "Operational impact"}
       metricOneIconSrc={isMarketplaceScoring ? "/images/portfolio-icons/activity.svg" : undefined}
-      metricTwoIconSrc={isMarketplaceScoring ? "/images/portfolio-icons/signal.svg" : undefined}
+      metricTwoIconSrc={isMarketplaceScoring ? "/images/portfolio-icons/tower-control.svg" : undefined}
       snapshot={[
         { label: "Type", value: `${project.clientType ?? "Project"} (${project.serviceType ?? "Operator-led"})` },
         { label: "Problem", value: project.problem },
-        { label: "Solution", value: project.summary },
+        {
+          label: "Solution",
+          value: isMarketplaceScoring
+            ? "Designed and operationalized a scoring workflow that evaluated allocation signals, partner rules, and marketplace constraints."
+            : project.summary
+        },
         { label: "Outcome", value: project.outcomes.join(" | ") },
         { label: "Tools & Systems", value: project.tools.slice(0, 5).join(", ") }
       ]}
-      problemHeadline={project.sections.problem?.heading ?? "What problem did this system solve?"}
-      problemBullets={project.outcomes.slice(0, 4)}
-      approachHeadline={project.sections.approach?.heading ?? "How was the system implemented?"}
-      approachSteps={project.tools.slice(0, 5)}
+      problemHeadline={isMarketplaceScoring ? "Lead distribution lacked measurable scoring rules." : project.sections.problem?.heading ?? "What problem did this system solve?"}
+      problemBullets={
+        isMarketplaceScoring
+          ? [
+              "Routing behavior was difficult to evaluate consistently",
+              "Partner allocation logic lacked clear operational scoring rules",
+              "Marketplace teams needed better visibility into distribution outcomes"
+            ]
+          : project.outcomes.slice(0, 4)
+      }
+      approachHeadline={isMarketplaceScoring ? "Instrumented routing decisions with scoring-based reporting." : project.sections.approach?.heading ?? "How was the system implemented?"}
+      approachSteps={
+        isMarketplaceScoring
+          ? [
+              "Defined the scoring signals used to evaluate lead and partner fit",
+              "Built Python-based scoring workflows for repeatable allocation logic",
+              "Connected scoring outputs to routing and marketplace decision rules",
+              "Instrumented reporting to monitor allocation behavior over time"
+            ]
+          : project.tools.slice(0, 5)
+      }
       systemHeadline={isMarketplaceScoring ? "Operational scoring workflow" : project.sections.system?.heading ?? "What is the system and why does it matter for operational outcomes?"}
       systemSteps={
         isMarketplaceScoring
@@ -291,14 +314,34 @@ export default async function ProjectDetailPage({
           : undefined
       }
       supportTags={project.tags.slice(0, 6)}
-      insights={project.outcomes.slice(0, 4)}
-      lessons={[
-        "Start narrow, then scale from measured production behavior.",
-        "Keep decisioning logic explicit and testable.",
-        "Instrument end-to-end visibility from day one."
-      ]}
+      insights={
+        isMarketplaceScoring
+          ? [
+              "Scoring rules made routing behavior easier to evaluate",
+              "Allocation logic became more consistent across marketplace partners",
+              "Reporting created a clearer feedback loop for marketplace optimization"
+            ]
+          : project.outcomes.slice(0, 4)
+      }
+      lessons={
+        isMarketplaceScoring
+          ? [
+              "Start with measurable routing behavior before adding more scoring complexity",
+              "Keep decisioning logic explicit, testable, and easy to explain",
+              "Instrument allocation outcomes early so optimization is based on evidence, not opinion"
+            ]
+          : [
+              "Start narrow, then scale from measured production behavior.",
+              "Keep decisioning logic explicit and testable.",
+              "Instrument end-to-end visibility from day one."
+            ]
+      }
       ctaHeadline="Want help building a system like this?"
-      ctaBody="I build practical AI and automation systems that improve speed, quality, and decision confidence."
+      ctaBody={
+        isMarketplaceScoring
+          ? "I build practical workflow and decision systems that help teams move faster, make cleaner decisions, and improve operational visibility."
+          : "I build practical AI and automation systems that improve speed, quality, and decision confidence."
+      }
       primaryCtaLabel={project.ctaLabel ?? "Start a conversation"}
       secondaryCtaLabel="Browse playbooks"
       heroBackgroundImageSrc={heroBackgroundImageSrc}

@@ -44,15 +44,15 @@ export function LinkedInPortfolioDetail({ title, summary, metrics, heroBackgroun
             <h1>{title}</h1>
             <p>{summary}</p>
             {lastUpdated ? <p><strong>Last updated:</strong> {lastUpdated}</p> : null}
-            <div className="portfolio-detail-hero-metrics">
+            <div className="portfolio-detail-hero-metrics portfolio-detail-hero-metrics-inline">
               {metrics.map((metric, index) => (
                 <div key={metric.value} className="hero-metric-card">
                   <Image
                     src={index === 0 ? "/images/portfolio-icons/kpi-posts.svg" : "/images/portfolio-icons/clock-3.svg"}
                     alt=""
                     aria-hidden
-                    width={21}
-                    height={21}
+                    width={24}
+                    height={24}
                   />
                   <div>
                     <strong>{metric.value}</strong>
@@ -71,7 +71,7 @@ export function LinkedInPortfolioDetail({ title, summary, metrics, heroBackgroun
             {snapshot.map((item) => (
               <article key={item.label} className="portfolio-detail-snapshot-item">
                 <h2 className="portfolio-detail-snapshot-item-label">
-                  <Image src={item.label === "Type" ? "/images/portfolio-icons/snapshot-type.svg" : item.label === "Problem" ? "/images/portfolio-icons/snapshot-problem.svg" : item.label === "Solution" ? "/images/portfolio-icons/snapshot-solution.svg" : item.label === "Outcome" ? "/images/portfolio-icons/snapshot-outcome.svg" : "/images/portfolio-icons/snapshot-tools.svg"} alt="" aria-hidden width={16} height={16} />
+                  <Image src={item.label === "Type" ? "/images/portfolio-icons/snapshot-type.svg" : item.label === "Problem" ? "/images/portfolio-icons/snapshot-problem.svg" : item.label === "Solution" ? "/images/portfolio-icons/snapshot-solution.svg" : item.label === "Outcome" ? "/images/portfolio-icons/snapshot-outcome.svg" : "/images/portfolio-icons/snapshot-tools.svg"} alt="" aria-hidden width={20} height={20} />
                   {item.label}
                 </h2>
                 <p>{item.value}</p>

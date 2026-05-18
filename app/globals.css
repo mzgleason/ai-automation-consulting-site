@@ -6422,6 +6422,20 @@ textarea:focus {
   align-items: stretch;
 }
 
+@media (min-width: 1080px) {
+  .portfolio-detail-hero-metrics-inline {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 640px;
+  }
+
+  .portfolio-detail-hero-metrics-inline .hero-metric-card {
+    min-width: 0;
+    flex: unset;
+  }
+}
+
 .hero-metric-card {
   min-width: min(240px, 100%);
   flex: 1 1 280px;

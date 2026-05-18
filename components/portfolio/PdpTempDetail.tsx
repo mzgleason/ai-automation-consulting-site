@@ -82,16 +82,16 @@ export function PdpTempDetail({
               <h1>{title}</h1>
               <p>{summary}</p>
               {lastUpdated ? <p><strong>Last updated:</strong> {lastUpdated}</p> : null}
-              <div className="portfolio-detail-hero-metrics">
+              <div className="portfolio-detail-hero-metrics portfolio-detail-hero-metrics-inline">
                 <div className="hero-metric-card">
-                  <Image src={metricOneIconSrc} alt="" aria-hidden width={21} height={21} />
+                  <Image src={metricOneIconSrc} alt="" aria-hidden width={24} height={24} />
                   <div>
                     <strong>{metricOneValue}</strong>
                     <span>{metricOneLabel}</span>
                   </div>
                 </div>
                 <div className="hero-metric-card">
-                  <Image src={metricTwoIconSrc} alt="" aria-hidden width={21} height={14} />
+                  <Image src={metricTwoIconSrc} alt="" aria-hidden width={24} height={24} />
                   <div>
                     <strong>{metricTwoValue}</strong>
                     <span>{metricTwoLabel}</span>
@@ -108,7 +108,7 @@ export function PdpTempDetail({
             {snapshot.map((item) => (
               <article key={item.label} className="portfolio-detail-snapshot-item">
                 <h2 className="portfolio-detail-snapshot-item-label">
-                  <Image src={item.label === "Type" ? "/images/portfolio-icons/snapshot-type.svg" : item.label === "Problem" ? "/images/portfolio-icons/snapshot-problem.svg" : item.label === "Solution" ? "/images/portfolio-icons/snapshot-solution.svg" : item.label === "Outcome" ? "/images/portfolio-icons/snapshot-outcome.svg" : "/images/portfolio-icons/snapshot-tools.svg"} alt="" aria-hidden width={16} height={16} />
+                  <Image src={item.label === "Type" ? "/images/portfolio-icons/snapshot-type.svg" : item.label === "Problem" ? "/images/portfolio-icons/snapshot-problem.svg" : item.label === "Solution" ? "/images/portfolio-icons/snapshot-solution.svg" : item.label === "Outcome" ? "/images/portfolio-icons/snapshot-outcome.svg" : "/images/portfolio-icons/snapshot-tools.svg"} alt="" aria-hidden width={20} height={20} />
                   {item.label}
                 </h2>
                 <p>{item.value}</p>
