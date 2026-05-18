@@ -6294,7 +6294,7 @@ textarea:focus {
     justify-content: flex-start;
   }
 }
-.linkedin-detail-page {
+.portfolio-detail-page {
   gap: 20px;
   --li-eyebrow-size: 12px;
   --li-body: 15px;
@@ -6303,7 +6303,7 @@ textarea:focus {
   --li-h3: 36px;
 }
 
-.linkedin-detail-page .portfolio-template-section-label {
+.portfolio-detail-page .portfolio-template-section-label {
   font-size: var(--li-eyebrow-size);
   letter-spacing: 0.12em;
   font-weight: 700;
@@ -6311,18 +6311,18 @@ textarea:focus {
   text-transform: uppercase;
 }
 
-.linkedin-hero-shell {
+.portfolio-detail-hero-shell {
   padding-top: 8px;
 }
 
-.linkedin-hero-shell-routing {
+.portfolio-detail-hero-shell-routing {
   position: relative;
   overflow: hidden;
   min-height: 620px;
   border-radius: 20px;
 }
 
-.linkedin-hero-shell-routing::after {
+.portfolio-detail-hero-shell-routing::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -6338,19 +6338,19 @@ textarea:focus {
   z-index: 1;
 }
 
-.linkedin-hero-bg {
+.portfolio-detail-hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.linkedin-hero-bg-image {
+.portfolio-detail-hero-bg-image {
   object-fit: cover;
   object-position: center;
   opacity: 1;
 }
 
-.linkedin-hero {
+.portfolio-detail-hero {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -6363,15 +6363,15 @@ textarea:focus {
   background: transparent;
 }
 
-.linkedin-hero-no-right {
+.portfolio-detail-hero-no-right {
   min-height: 0;
 }
 
-.linkedin-hero-no-right .linkedin-hero-left {
+.portfolio-detail-hero-no-right .portfolio-detail-hero-left {
   max-width: 760px;
 }
 
-.linkedin-hero-left h1 {
+.portfolio-detail-hero-left h1 {
   margin: 16px 0 14px;
   font-size: 62px;
   line-height: 1.02;
@@ -6379,18 +6379,18 @@ textarea:focus {
   letter-spacing: -0.022em;
 }
 
-.linkedin-hero-left {
+.portfolio-detail-hero-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.linkedin-hero-left .text-link {
+.portfolio-detail-hero-left .text-link {
   display: block;
   margin: 0;
 }
 
-.linkedin-hero-left > p {
+.portfolio-detail-hero-left > p {
   margin: 0;
   max-width: 590px;
   color: rgba(224, 233, 245, 0.9);
@@ -6398,7 +6398,7 @@ textarea:focus {
   line-height: 1.55;
 }
 
-.linkedin-hero-left .portfolio-template-pill {
+.portfolio-detail-hero-left .portfolio-template-pill {
   margin-top: 16px;
   display: inline-flex;
   align-items: center;
@@ -6414,7 +6414,7 @@ textarea:focus {
   font-weight: 700;
 }
 
-.linkedin-hero-metrics {
+.portfolio-detail-hero-metrics {
   margin-top: 22px;
   display: flex;
   flex-wrap: wrap;
@@ -6655,29 +6655,29 @@ textarea:focus {
   100% { opacity: 0.26; transform: translateY(2px); }
 }
 
-.linkedin-snapshot,
-.linkedin-card,
-.linkedin-system,
-.linkedin-next-step {
+.portfolio-detail-snapshot,
+.portfolio-detail-card,
+.portfolio-detail-system,
+.portfolio-detail-next-step {
   border: 0;
   border-radius: 0;
   background: transparent;
 }
 
-.linkedin-snapshot,
-.linkedin-system,
-.linkedin-next-step {
+.portfolio-detail-snapshot,
+.portfolio-detail-system,
+.portfolio-detail-next-step {
   padding: 20px;
 }
 
-.linkedin-snapshot-grid {
+.portfolio-detail-snapshot-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
 }
 
-.linkedin-snapshot-item h2,
-.linkedin-snapshot-item-label {
+.portfolio-detail-snapshot-item h2,
+.portfolio-detail-snapshot-item-label {
   margin: 0 0 8px;
   font-size: 18px;
   line-height: 1.2;
@@ -6688,35 +6688,35 @@ textarea:focus {
   gap: 8px;
 }
 
-.linkedin-snapshot-item p {
+.portfolio-detail-snapshot-item p {
   margin: 0;
   color: rgba(224, 233, 245, 0.88);
   line-height: 1.45;
   font-size: var(--li-body);
 }
 
-.linkedin-pair-row {
+.portfolio-detail-pair-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
-.linkedin-card {
+.portfolio-detail-card {
   padding: 20px;
 }
 
-.linkedin-card h2,
-.linkedin-system h2,
-.linkedin-next-step h2 {
+.portfolio-detail-card h2,
+.portfolio-detail-system h2,
+.portfolio-detail-next-step h2 {
   margin: 0 0 12px;
   font-size: var(--li-h2);
   line-height: 1.12;
   letter-spacing: -0.015em;
 }
 
-.linkedin-card ul,
-.linkedin-card ol,
-.linkedin-pair-plain ul {
+.portfolio-detail-card ul,
+.portfolio-detail-card ol,
+.portfolio-detail-pair-plain ul {
   margin: 0;
   padding-left: 20px;
   color: rgba(224, 233, 245, 0.88);
@@ -6724,23 +6724,23 @@ textarea:focus {
   font-size: var(--li-body);
 }
 
-.linkedin-system-steps {
+.portfolio-detail-system-steps {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
 }
 
-.linkedin-system-step {
+.portfolio-detail-system-step {
   text-align: center;
 }
 
-.linkedin-system-step h3 {
+.portfolio-detail-system-step h3 {
   margin: 0;
   font-size: var(--li-h3);
   line-height: 1.2;
 }
 
-.linkedin-system-dot {
+.portfolio-detail-system-dot {
   width: 62px;
   height: 62px;
   border-radius: 999px;
@@ -6751,37 +6751,37 @@ textarea:focus {
   margin-bottom: 10px;
 }
 
-.linkedin-system-icon {
+.portfolio-detail-system-icon {
   width: 28px;
   height: 28px;
   filter: brightness(0) saturate(100%) invert(73%) sepia(56%) saturate(593%) hue-rotate(170deg) brightness(101%) contrast(99%);
 }
 
-.linkedin-supported {
+.portfolio-detail-supported {
   margin-top: 18px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.linkedin-supported span {
+.portfolio-detail-supported span {
   border: 1px solid rgba(88, 162, 255, 0.32);
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 12px;
 }
 
-.linkedin-pair-plain article {
+.portfolio-detail-pair-plain article {
   padding: 4px 0;
 }
 
-.linkedin-pair-row.linkedin-pair-plain {
+.portfolio-detail-pair-row.portfolio-detail-pair-plain {
   width: min(980px, 100%);
   margin: 0 auto;
   justify-items: start;
 }
 
-.linkedin-next-step {
+.portfolio-detail-next-step {
   width: min(70ch, 100%);
   margin: 0 auto;
   display: grid;
@@ -6790,58 +6790,58 @@ textarea:focus {
   align-items: center;
 }
 
-.linkedin-next-step p {
+.portfolio-detail-next-step p {
   margin: 0;
   color: rgba(224, 233, 245, 0.86);
   font-size: var(--li-body);
   line-height: 1.55;
 }
 
-.linkedin-next-actions {
+.portfolio-detail-next-actions {
   display: grid;
   gap: 10px;
   justify-self: end;
   width: min(100%, 220px);
 }
 
-.linkedin-next-actions .button {
+.portfolio-detail-next-actions .button {
   border-radius: 10px;
   white-space: nowrap;
   width: 100%;
 }
 
-.linkedin-next-actions .button-accent {
+.portfolio-detail-next-actions .button-accent {
   background: #2f93ff;
   border-color: #2f93ff;
   color: #04111c;
 }
 
 @media (max-width: 1079px) {
-  .linkedin-detail-page {
+  .portfolio-detail-page {
     --li-body: 14px;
     --li-body-sm: 12px;
     --li-h2: 26px;
     --li-h3: 30px;
   }
 
-  .linkedin-hero {
+  .portfolio-detail-hero {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .linkedin-hero-left h1 {
+  .portfolio-detail-hero-left h1 {
     font-size: 46px;
     line-height: 1.06;
     max-width: 100%;
   }
 
-  .linkedin-hero-left > p {
+  .portfolio-detail-hero-left > p {
     font-size: 17px;
     line-height: 1.52;
     max-width: 100%;
   }
 
-  .linkedin-hero-metrics {
+  .portfolio-detail-hero-metrics {
     margin-top: 18px;
     flex-wrap: wrap;
   }
@@ -6851,28 +6851,28 @@ textarea:focus {
     min-width: min(250px, 100%);
   }
 
-  .linkedin-snapshot-grid {
+  .portfolio-detail-snapshot-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .linkedin-system-steps {
+  .portfolio-detail-system-steps {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     row-gap: 18px;
   }
 
-  .linkedin-next-step {
+  .portfolio-detail-next-step {
     width: 100%;
     grid-template-columns: 1fr;
   }
 
-  .linkedin-next-actions {
+  .portfolio-detail-next-actions {
     grid-template-columns: minmax(0, 1fr);
     justify-self: center;
   }
 }
 
 @media (max-width: 719px) {
-  .linkedin-hero-shell-routing::after {
+  .portfolio-detail-hero-shell-routing::after {
     background:
       linear-gradient(
         90deg,
@@ -6882,19 +6882,19 @@ textarea:focus {
       );
   }
 
-  .linkedin-detail-page {
+  .portfolio-detail-page {
     --li-body: 15px;
     --li-body-sm: 12px;
     --li-h2: 24px;
     --li-h3: 28px;
   }
 
-  .linkedin-hero-left h1 {
+  .portfolio-detail-hero-left h1 {
     font-size: 42px;
     line-height: 1.06;
   }
 
-  .linkedin-hero-left > p {
+  .portfolio-detail-hero-left > p {
     font-size: 16px;
     line-height: 1.5;
   }
@@ -6905,10 +6905,10 @@ textarea:focus {
     min-width: 100%;
   }
 
-  .linkedin-pair-row,
-  .linkedin-snapshot-grid,
-  .linkedin-system-steps,
-  .linkedin-next-actions {
+  .portfolio-detail-pair-row,
+  .portfolio-detail-snapshot-grid,
+  .portfolio-detail-system-steps,
+  .portfolio-detail-next-actions {
     grid-template-columns: 1fr;
   }
 }
@@ -7041,13 +7041,13 @@ textarea:focus {
   background: transparent !important;
 }
 
-.portfolio-template-page .linkedin-next-step p {
+.portfolio-template-page .portfolio-detail-next-step p {
   color: rgba(224, 233, 245, 0.86) !important;
 }
 
 .portfolio-template-page .button-accent,
 .portfolio-template-page .hero-actions .button-accent,
-.portfolio-template-page .linkedin-next-actions .button-accent,
+.portfolio-template-page .portfolio-detail-next-actions .button-accent,
 .portfolio-template-page .portfolio-template-hero .hero-actions .button-accent {
   background: transparent !important;
   border: 1px solid var(--pf-accent-color) !important;
