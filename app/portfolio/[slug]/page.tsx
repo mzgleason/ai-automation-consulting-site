@@ -63,6 +63,7 @@ export default async function ProjectDetailPage({
   const isLinkedInWorkflow = slug === "ai-content-publishing-workflow";
   const isLendingConcierge = slug === "ai-intake-qualification-workflow";
   const isAffiliatesLaunch = slug === "realtime-decision-routing-system";
+  const isMarketplaceScoring = slug === "marketplace-scoring-system";
   const isPdpTemp = slug === "pdpTemp";
   const heroBackgroundImageSrc = PROJECT_HERO_VISUAL_BY_SLUG[slug];
   const projectDate = project.date;
@@ -264,6 +265,8 @@ export default async function ProjectDetailPage({
       metricOneLabel={project.metrics[0]?.label ?? project.outcomes[0] ?? "Production delivery"}
       metricTwoValue={project.metrics[1]?.value ?? "Live"}
       metricTwoLabel={project.metrics[1]?.label ?? project.outcomes[1] ?? "Operational impact"}
+      metricOneIconSrc={isMarketplaceScoring ? "/images/portfolio-icons/activity.svg" : undefined}
+      metricTwoIconSrc={isMarketplaceScoring ? "/images/portfolio-icons/signal.svg" : undefined}
       snapshot={[
         { label: "Type", value: `${project.clientType ?? "Project"} (${project.serviceType ?? "Operator-led"})` },
         { label: "Problem", value: project.problem },
@@ -275,7 +278,18 @@ export default async function ProjectDetailPage({
       problemBullets={project.outcomes.slice(0, 4)}
       approachHeadline={project.sections.approach?.heading ?? "How was the system implemented?"}
       approachSteps={project.tools.slice(0, 5)}
-      systemHeadline={project.sections.system?.heading ?? "What is the system and why does it matter for operational outcomes?"}
+      systemHeadline={isMarketplaceScoring ? "Operational scoring workflow" : project.sections.system?.heading ?? "What is the system and why does it matter for operational outcomes?"}
+      systemSteps={
+        isMarketplaceScoring
+          ? [
+              { name: "Collect", icon: "/images/portfolio-icons/database.svg" },
+              { name: "Score", icon: "/images/portfolio-icons/gauge.svg" },
+              { name: "Allocate", icon: "/images/portfolio-icons/shuffle.svg" },
+              { name: "Monitor", icon: "/images/portfolio-icons/eye.svg" },
+              { name: "Optimize", icon: "/images/portfolio-icons/sliders-horizontal.svg" }
+            ]
+          : undefined
+      }
       supportTags={project.tags.slice(0, 6)}
       insights={project.outcomes.slice(0, 4)}
       lessons={[

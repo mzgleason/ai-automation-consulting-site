@@ -33,7 +33,7 @@ test.describe("homepage staging checks", () => {
     await expect(page.getByLabel("Primary").getByRole("link", { name: /^portfolio$/i })).toBeVisible();
     }
     await expect(
-      page.getByText(/operator-led product consultant.*ai-enabled workflows.*ship reliable operational outcomes/i)
+      page.getByText(/real operational problems solved with practical systems and ai-enabled execution/i)
     ).toBeVisible();
   });
 
