@@ -306,4 +306,25 @@
   .quoteBand {
     padding: 2.4rem 1rem;
   }
+
+  .quoteBand::before,
+  .quoteBand::after {
+    top: 66%;
+    width: 8px;
+    height: 42px;
+  }
+
+  .quoteBand::before {
+    left: 0.7rem;
+  }
+
+  .quoteBand::after {
+    right: 0.7rem;
+  }
+
+  .quoteSub {
+    margin-top: 0.75rem;
+    letter-spacing: 0.14em;
+    line-height: 1.45;
+  }
 }
