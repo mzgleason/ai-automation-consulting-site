@@ -9,6 +9,8 @@ type LinkedInPortfolioDetailProps = {
   title: string;
   summary: string;
   metrics: Metric[];
+  heroBackgroundImageSrc: string;
+  lastUpdated?: string;
 };
 
 const snapshot = [
@@ -19,12 +21,7 @@ const snapshot = [
   { label: "Tools & Systems", value: "ChatGPT, Codex, OpenAI API, Postgres, Docker, Next.js" }
 ];
 
-export function LinkedInPortfolioDetail({ title, summary, metrics }: LinkedInPortfolioDetailProps) {
-  const heroScreens = [
-    { key: "topic", src: "/images/case-studies/Topic Inbox Mock.png", alt: "Topic Inbox app screen" },
-    { key: "capture", src: "/images/case-studies/Capture Opinion Mock.png", alt: "Capture Opinion app screen" },
-    { key: "draft", src: "/images/case-studies/Draft Review Mock.png", alt: "Draft Review app screen" }
-  ] as const;
+export function LinkedInPortfolioDetail({ title, summary, metrics, heroBackgroundImageSrc, lastUpdated }: LinkedInPortfolioDetailProps) {
   const steps = [
     { name: "Capture", icon: "/images/portfolio-icons/capture.svg" },
     { name: "Extract", icon: "/images/portfolio-icons/extract.svg" },
@@ -36,22 +33,26 @@ export function LinkedInPortfolioDetail({ title, summary, metrics }: LinkedInPor
   return (
     <main className="section section-top portfolio-template-page">
       <div className="container portfolio-template-stack linkedin-detail-page">
-        <section className="linkedin-hero-shell" aria-label="Hero">
+        <section className="linkedin-hero-shell linkedin-hero-shell-routing" aria-label="Hero">
+          <div className="linkedin-hero-bg" aria-hidden>
+            <Image src={heroBackgroundImageSrc} alt="" fill sizes="100vw" className="linkedin-hero-bg-image" />
+          </div>
           <div className="linkedin-hero">
           <div className="linkedin-hero-left">
             <Link href="/portfolio" className="text-link portfolio-template-back">Portfolio</Link>
             <p className="portfolio-template-pill">AI SYSTEMS &amp; WORKFLOWS</p>
             <h1>{title}</h1>
             <p>{summary}</p>
+            {lastUpdated ? <p><strong>Last updated:</strong> {lastUpdated}</p> : null}
             <div className="linkedin-hero-metrics">
               {metrics.map((metric, index) => (
-                <div key={metric.value} className="linkedin-hero-metric-card">
+                <div key={metric.value} className="hero-metric-card">
                   <Image
-                    src={index === 0 ? "/images/portfolio-icons/kpi-posts.svg" : "/images/portfolio-icons/kpi-hours.svg"}
+                    src={index === 0 ? "/images/portfolio-icons/kpi-posts.svg" : "/images/portfolio-icons/clock-3.svg"}
                     alt=""
                     aria-hidden
                     width={21}
-                    height={index === 0 ? 21 : 14}
+                    height={21}
                   />
                   <div>
                     <strong>{metric.value}</strong>
@@ -59,29 +60,6 @@ export function LinkedInPortfolioDetail({ title, summary, metrics }: LinkedInPor
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-          <div className="linkedin-hero-right" aria-hidden>
-            <div className="linkedin-hero-rings" />
-            <div className="linkedin-hero-app-rail">
-              {heroScreens.map((screen, index) => {
-                const isCenter = index === 1;
-                return (
-                  <div
-                    key={screen.key}
-                    className={`linkedin-hero-app-static ${isCenter ? "is-center" : "is-side"}`}
-                    aria-label={screen.alt}
-                  >
-                    <Image
-                      src={screen.src}
-                      alt={screen.alt}
-                      width={isCenter ? 148 : 94}
-                      height={isCenter ? 300 : 190}
-                      className="linkedin-hero-app"
-                    />
-                  </div>
-                );
-              })}
             </div>
           </div>
           </div>

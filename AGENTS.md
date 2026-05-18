@@ -39,6 +39,7 @@ This repo contains both the production website and a small amount of agent-suppo
 - Treat `content/` and `lib/offers.ts` as the main source for business copy and service packaging.
 - Keep `/preview/foundry-home` aligned with the homepage when it is being used as a staging copy.
 - Prefer removing dead prototypes and unused assets instead of leaving alternate implementations around.
+- Keep the `README.md` site map updated whenever pages are created, removed, or renamed.
 - Run `npm run build` for code-level verification.
 - Run `npm run test:e2e` for UI verification after meaningful frontend changes.
 

@@ -143,7 +143,7 @@ export function BuilderHero(_props: BuilderHeroProps) {
 
       <div className={styles.overlay} ref={overlayRef}>
         <div className={styles.textStage}>
-          <h1 className={styles.srOnly}>TURN AMBIGUOUS OPERATIONS INTO EXECUTABLE SYSTEMS</h1>
+          <h1 className={styles.srOnly}>Turn ambiguous operations into executable systems</h1>
           <div
             className={styles.headlineStage}
             aria-hidden="true"

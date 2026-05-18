@@ -28,9 +28,26 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.markzgleason.com" }],
+        destination: "https://markzgleason.com/:path*",
+        permanent: true
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "markgleason.ai" }],
+        destination: "https://markzgleason.com/:path*",
+        permanent: true
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.markgleason.ai" }],
+        destination: "https://markzgleason.com/:path*",
+        permanent: true
+      },
       {
         source: "/projects",
         destination: "/portfolio",
@@ -39,6 +56,11 @@ const nextConfig: NextConfig = {
       {
         source: "/projects/:path*",
         destination: "/portfolio/:path*",
+        statusCode: 301
+      },
+      {
+        source: "/portfolio/realtime-lead-buying",
+        destination: "/portfolio/realtime-decision-routing-system",
         statusCode: 301
       }
     ];

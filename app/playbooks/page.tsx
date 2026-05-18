@@ -1,8 +1,15 @@
 import { PageShell } from "@/components/playbook/PageShell";
 import { SectionContainer } from "@/components/playbook/SectionContainer";
 import { SystemContainer } from "@/components/playbook/SystemContainer";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Playbooks",
+  description: "Operational playbooks for AI-enabled execution, system design, and implementation-ready product operations.",
+  alternates: { canonical: "/playbooks" }
+};
 
 const featuredTags = ["Discovery", "Systems Thinking", "Engineering Alignment"];
 
@@ -37,6 +44,7 @@ export default function PlaybooksPage() {
                 Frameworks built from real marketplace operations, AI workflows, routing systems, and execution
                 bottlenecks.
               </p>
+              <p className="pb-body">Last updated: 2026-05-17</p>
             </div>
 
             <aside className="pb-card pb-library-hero-points" aria-label="Playbook principles">

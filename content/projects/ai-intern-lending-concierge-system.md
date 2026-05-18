@@ -1,6 +1,6 @@
 ---
 title: Automated Lead Qualification Before Human Follow-Up
-slug: ai-intern-lending-concierge-system
+slug: ai-intake-qualification-workflow
 summary: I built an AI-assisted qualification workflow that called incomplete leads, collected missing application details, updated operational systems automatically, and prepared cleaner handoffs for human sales reps.
 date: 2026-04-04
 status: Prototype
@@ -109,4 +109,5 @@ I design AI-assisted operational systems that reduce repetitive admin work, impr
 [Start a conversation](/contact)
 
 [Browse playbooks](/playbooks)
+
 

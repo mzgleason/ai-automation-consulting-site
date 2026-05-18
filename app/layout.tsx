@@ -17,13 +17,13 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://markgleason.ai"),
+  metadataBase: new URL("https://markzgleason.com"),
   title: {
-    default: "Mark Gleason | Builder-led AI systems",
+    default: "Mark Gleason | Operator-led AI systems",
     template: "%s | Mark Gleason"
   },
   description:
-    "Builder-led site for AI workflows, prototypes, product systems, and practical writing about turning ideas into systems that ship.",
+    "Operator-led consulting for AI-enabled workflows, marketplace operations, and executable product systems.",
   alternates: { canonical: "/" }
 };
 
@@ -35,6 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Mark Gleason",
+              url: "https://markzgleason.com",
+              sameAs: ["https://www.linkedin.com/in/markzgleason", "https://github.com/mzgleason"]
+            })
+          }}
+        />
         <AppShell>{children}</AppShell>
         <Analytics />
       </body>

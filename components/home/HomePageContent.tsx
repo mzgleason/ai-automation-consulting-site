@@ -36,22 +36,22 @@ const projectProofCopy: Record<
     support?: string;
   }
 > = {
-  "ai-driven-linkedin-content-workflow": {
+  "ai-content-publishing-workflow": {
     shortCategory: "CONTENT WORKFLOW",
     displayTitle: "TURN WEEKLY WORK INTO LINKEDIN POSTS",
     payoff: "A repeatable publishing system that captures raw work, extracts strong story angles, drafts content faster, and keeps quality high through human review."
   },
-  "ai-intern-lending-concierge-system": {
+  "ai-intake-qualification-workflow": {
     shortCategory: "AI INTAKE SYSTEM",
-    displayTitle: "AI INTAKE ASSISTANT FOR LENDING QUALIFICATION",
+    displayTitle: "AI INTAKE ASSISTANT FOR FASTER QUALIFICATION",
     payoff:
       "Improves early qualification by structuring intake, surfacing missing information, and reducing manual follow-up."
   },
-  "lendability-model-reproducible-training-system": {
-    shortCategory: "MODEL OPS SYSTEM",
-    displayTitle: "LENDING MODEL RETRAINING SYSTEM",
+  "marketplace-scoring-system": {
+    shortCategory: "MARKETPLACE SCORING",
+    displayTitle: "SYSTEMS FOR REALTIME MARKETPLACE DECISIONS",
     payoff:
-      "A reusable retraining workflow for keeping lending models current without rebuilding the process each cycle."
+      "A scoring workflow that improves consistency and confidence across marketplace allocation decisions."
   }
 };
 

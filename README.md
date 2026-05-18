@@ -21,6 +21,25 @@ Next.js website for Mark Gleason's AI consulting business.
 - `docs/`: product, brand, content, and planning docs
 - `prompts/`: saved AI-agent prompt templates and working prompts
 
+## Site map
+- `/` (Home)
+- `/about`
+- `/contact`
+- `/work-with-me`
+- `/portfolio`
+- `/portfolio/[slug]`
+- `/portfolio/pdpTemp`
+- `/playbooks`
+- `/playbooks/ai-assisted-technical-discovery`
+- `/privacy`
+- `/terms`
+
+Dynamic portfolio pages (current):
+- `/portfolio/ai-content-publishing-workflow`
+- `/portfolio/realtime-decision-routing-system`
+- `/portfolio/ai-intake-qualification-workflow`
+- `/portfolio/marketplace-scoring-system`
+
 ## Local development
 ```bash
 npm install

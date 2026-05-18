@@ -20,25 +20,26 @@ type ParticleState = {
 
 function RoutingFieldScene() {
   const isMobile = typeof window !== "undefined" ? window.innerWidth < 860 : false;
-  const particleCount = isMobile ? 260 : 650;
+  const particleCount = isMobile ? 84 : 180;
   const laneY = useMemo(() => [2.35, 0.82, -0.78, -2.55], []);
+  const activeCountRef = useRef(0);
 
   const particles = useMemo<ParticleState[]>(() => {
     return Array.from({ length: particleCount }, () => {
       const r = Math.random();
       const outcome: Outcome = r < 0.7 ? "accept" : r < 0.9 ? "reroute" : "reject";
       const depthBand = Math.floor(Math.random() * 3);
-      const x = -10 + Math.random() * 20;
+      const x = -10.6 - Math.random() * 0.8;
       const laneTarget = outcome === "accept" ? laneY[0] : outcome === "reroute" ? laneY[2] : laneY[3] - 0.35;
-      const y = x < -2.2 ? (Math.random() - 0.5) * 0.9 : laneTarget + (Math.random() - 0.5) * 0.26;
+      const y = laneTarget + (Math.random() - 0.5) * 0.08;
 
       return {
         x,
         y,
-        z: depthBand === 0 ? -1.55 + Math.random() * 0.35 : depthBand === 1 ? -0.18 + Math.random() * 0.3 : 0.78 + Math.random() * 0.3,
-        vx: 0.0105 + Math.random() * 0.004,
-        vy: (Math.random() - 0.5) * 0.00035,
-        vz: (Math.random() - 0.5) * 0.00045,
+        z: depthBand === 0 ? -1.5 + Math.random() * 0.18 : depthBand === 1 ? -0.14 + Math.random() * 0.16 : 0.82 + Math.random() * 0.16,
+        vx: 0.0105 + Math.random() * 0.0014,
+        vy: (Math.random() - 0.5) * 0.00012,
+        vz: (Math.random() - 0.5) * 0.00014,
         depthBand,
         outcome,
         laneLock: 0.88 + Math.random() * 0.1
@@ -69,6 +70,8 @@ function RoutingFieldScene() {
 
   useFrame(({ clock, camera }) => {
     const t = clock.getElapsedTime();
+    const ramp = Math.min(1, t / 3.8);
+    activeCountRef.current = Math.floor(particleCount * ramp);
 
     camera.position.x = Math.sin(t * 0.038) * 0.035;
     camera.position.y = Math.sin(t * 0.051) * 0.03;
@@ -78,6 +81,16 @@ function RoutingFieldScene() {
     const congestionB = { x: 1.4, y: -0.2, radius: 1.45, drag: 0.94 };
 
     for (let i = 0; i < particleCount; i += 1) {
+      const idx = i * 3;
+      if (i >= activeCountRef.current) {
+        particlePositions[idx] = -1000;
+        particlePositions[idx + 1] = -1000;
+        particlePositions[idx + 2] = -1000;
+        particleColors[idx] = 0;
+        particleColors[idx + 1] = 0;
+        particleColors[idx + 2] = 0;
+        continue;
+      }
       const p = particles[i];
 
       const laneTarget = p.outcome === "accept" ? laneY[0] : p.outcome === "reroute" ? laneY[2] : laneY[3] - 0.35;
@@ -139,15 +152,14 @@ function RoutingFieldScene() {
         const r2 = Math.random();
         p.outcome = r2 < 0.7 ? "accept" : r2 < 0.9 ? "reroute" : "reject";
         p.x = -10.5 - Math.random() * 1.2;
-        p.y = (Math.random() - 0.5) * 1.1;
-        p.z = p.depthBand === 0 ? -1.58 + Math.random() * 0.3 : p.depthBand === 1 ? -0.2 + Math.random() * 0.25 : 0.8 + Math.random() * 0.25;
-        p.vx = 0.0102 + Math.random() * 0.0035;
-        p.vy = (Math.random() - 0.5) * 0.0006;
-        p.vz = (Math.random() - 0.5) * 0.0004;
+        p.y = laneTarget + (Math.random() - 0.5) * 0.1;
+        p.z = p.depthBand === 0 ? -1.5 + Math.random() * 0.18 : p.depthBand === 1 ? -0.14 + Math.random() * 0.16 : 0.82 + Math.random() * 0.16;
+        p.vx = 0.0104 + Math.random() * 0.0012;
+        p.vy = (Math.random() - 0.5) * 0.00014;
+        p.vz = (Math.random() - 0.5) * 0.00012;
         p.laneLock = 0.88 + Math.random() * 0.1;
       }
 
-      const idx = i * 3;
       particlePositions[idx] = p.x;
       particlePositions[idx + 1] = p.y;
       particlePositions[idx + 2] = p.z;

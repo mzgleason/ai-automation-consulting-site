@@ -6322,27 +6322,49 @@ textarea:focus {
   border-radius: 20px;
 }
 
+.linkedin-hero-shell-routing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.82) 28%,
+      rgba(0, 0, 0, 0.45) 55%,
+      rgba(0, 0, 0, 0.12) 100%
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
 .linkedin-hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
+.linkedin-hero-bg-image {
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+}
+
 .linkedin-hero {
   display: grid;
-  grid-template-columns: minmax(0, 612px) 400px;
-  gap: 56px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   align-items: start;
   padding: 0;
   justify-content: space-between;
+  min-height: 620px;
+  position: relative;
+  z-index: 2;
+  background: transparent;
 }
 
 .linkedin-hero-no-right {
-  grid-template-columns: 1fr;
-  min-height: 620px;
-  position: relative;
-  z-index: 1;
-  background: transparent;
+  min-height: 0;
 }
 
 .linkedin-hero-no-right .linkedin-hero-left {
@@ -6395,13 +6417,14 @@ textarea:focus {
 .linkedin-hero-metrics {
   margin-top: 22px;
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   align-items: stretch;
 }
 
-.linkedin-hero-metric-card {
-  width: 210px;
-  flex: 0 0 210px;
+.hero-metric-card {
+  min-width: min(240px, 100%);
+  flex: 1 1 280px;
   min-height: 64px;
   border: 0;
   border-radius: 0;
@@ -6412,79 +6435,15 @@ textarea:focus {
   background: transparent;
 }
 
-.linkedin-hero-metric-card strong { display: block; }
-.linkedin-hero-metric-card strong { font-size: clamp(23px, 1.45vw, 28px); line-height: 1.1; letter-spacing: -0.01em; }
-.linkedin-hero-metric-card span { display: block; font-size: clamp(11px, 0.78vw, 13px); opacity: 0.88; line-height: 1.25; }
-.linkedin-hero-metric-card strong,
-.linkedin-hero-metric-card span {
-  white-space: nowrap;
+.hero-metric-card strong { display: block; }
+.hero-metric-card strong { font-size: clamp(23px, 1.45vw, 28px); line-height: 1.1; letter-spacing: -0.01em; }
+.hero-metric-card span { display: block; font-size: clamp(11px, 0.78vw, 13px); opacity: 0.88; line-height: 1.25; }
+.hero-metric-card strong,
+.hero-metric-card span {
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
-.linkedin-hero-right {
-  width: 400px;
-  min-height: 372px;
-  display: grid;
-  place-items: center;
-  position: relative;
-  margin-top: 14px;
-}
-
-.linkedin-hero-rings {
-  position: absolute;
-  inset: -8px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle, rgba(42,114,255,0) 30%, rgba(42,114,255,0.22) 31.5%, rgba(42,114,255,0) 35%),
-    radial-gradient(circle, rgba(42,114,255,0) 41%, rgba(42,114,255,0.17) 42.4%, rgba(42,114,255,0) 46%),
-    radial-gradient(circle, rgba(42,114,255,0) 53%, rgba(42,114,255,0.13) 54.2%, rgba(42,114,255,0) 57%);
-}
-
-.linkedin-hero-app-rail {
-  width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
-}
-
-.linkedin-hero-app-button {
-  border: 0;
-  background: transparent;
-  padding: 0;
-  line-height: 0;
-  cursor: pointer;
-  opacity: 0.92;
-  transition: transform 180ms ease, opacity 180ms ease, filter 180ms ease;
-}
-
-.linkedin-hero-app-button.is-selected {
-  opacity: 1;
-  filter: drop-shadow(0 8px 22px rgba(57, 142, 255, 0.28));
-}
-
-.linkedin-hero-app-static {
-  line-height: 0;
-}
-
-.linkedin-hero-app-static.is-center {
-  filter: drop-shadow(0 8px 22px rgba(57, 142, 255, 0.28));
-}
-
-.linkedin-hero-app {
-  width: auto;
-  border-radius: 18px;
-  display: block;
-}
-
-.linkedin-hero-app-static.is-center .linkedin-hero-app {
-  height: 360px !important;
-}
-
-.linkedin-hero-app-static.is-side .linkedin-hero-app {
-  height: 228px !important;
-}
 
 .lending-hero-visual {
   width: 100%;
@@ -6500,9 +6459,9 @@ textarea:focus {
   inset: -8px;
   border-radius: 999px;
   background:
-    radial-gradient(circle, rgba(42,114,255,0) 30%, rgba(42,114,255,0.2) 31.5%, rgba(42,114,255,0) 35%),
-    radial-gradient(circle, rgba(42,114,255,0) 44%, rgba(42,114,255,0.14) 45.5%, rgba(42,114,255,0) 49%),
-    radial-gradient(circle, rgba(42,114,255,0) 56%, rgba(42,114,255,0.1) 57.5%, rgba(42,114,255,0) 61%);
+    radial-gradient(circle, rgba(42,114,255,0) 30%, rgba(42,114,255,0.13) 31.5%, rgba(42,114,255,0) 35%),
+    radial-gradient(circle, rgba(42,114,255,0) 44%, rgba(42,114,255,0.1) 45.5%, rgba(42,114,255,0) 49%),
+    radial-gradient(circle, rgba(42,114,255,0) 56%, rgba(42,114,255,0.07) 57.5%, rgba(42,114,255,0) 61%);
 }
 
 .lending-hero-board {
@@ -6540,7 +6499,7 @@ textarea:focus {
 
 .lending-node {
   position: absolute;
-  width: 172px;
+  width: 146px;
   border: 1px solid rgba(105, 174, 255, 0.34);
   border-radius: 12px;
   padding: 10px 11px;
@@ -6559,13 +6518,13 @@ textarea:focus {
 .lending-node strong {
   display: block;
   margin-top: 5px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.15;
 }
 
 .lending-node p {
   margin: 5px 0 0;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.35;
   color: rgba(214, 230, 247, 0.86);
 }
@@ -6584,10 +6543,11 @@ textarea:focus {
   background: rgba(164, 212, 255, 0.24);
 }
 
-.lending-node-lead { top: 16px; left: 16px; animation: lendStepLead 6s ease-in-out infinite; }
-.lending-node-voice { top: 16px; right: 16px; animation: lendStepVoice 6s ease-in-out infinite; }
-.lending-node-crm { bottom: 16px; left: 16px; animation: lendStepCrm 6s ease-in-out infinite; }
-.lending-node-handoff { bottom: 16px; right: 16px; animation: lendStepHandoff 6s ease-in-out infinite; }
+.lending-node-intake { top: 14px; left: 10px; animation: lendStepLead 6s ease-in-out infinite; }
+.lending-node-missing { top: 14px; left: 170px; animation: lendStepVoice 6s ease-in-out infinite; }
+.lending-node-outreach { top: 108px; left: 90px; animation: lendStepCrm 6s ease-in-out infinite; }
+.lending-node-qualify { top: 202px; left: 10px; animation: lendStepVoice 6s ease-in-out infinite; }
+.lending-node-escalate { top: 202px; left: 170px; animation: lendStepHandoff 6s ease-in-out infinite; }
 
 .lending-signal-token {
   position: absolute;
@@ -6608,9 +6568,10 @@ textarea:focus {
   opacity: 0.26;
 }
 
-.lending-link-1 { top: 88px; left: 189px; width: 56px; animation: lendLink 6s linear infinite; }
-.lending-link-2 { top: 166px; left: 98px; width: 202px; transform: rotate(32deg); animation: lendLink 6s linear infinite 0.6s; }
-.lending-link-3 { bottom: 93px; left: 189px; width: 56px; animation: lendLink 6s linear infinite 1.2s; }
+.lending-link-1 { top: 77px; left: 148px; width: 34px; transform: rotate(0deg); animation: lendLink 6s linear infinite; }
+.lending-link-2 { top: 121px; left: 146px; width: 58px; transform: rotate(52deg); animation: lendLink 6s linear infinite 0.6s; }
+.lending-link-3 { top: 214px; left: 76px; width: 34px; transform: rotate(0deg); animation: lendLink 6s linear infinite 1.2s; }
+.lending-link-4 { top: 214px; left: 222px; width: 34px; transform: rotate(180deg); animation: lendLink 6s linear infinite 1.8s; }
 
 .lending-callout {
   position: absolute;
@@ -6624,16 +6585,16 @@ textarea:focus {
 }
 
 .lending-callout-before {
-  top: 128px;
-  left: 16px;
+  top: 166px;
+  left: 8px;
   color: rgba(247, 199, 162, 0.9);
   border-color: rgba(247, 199, 162, 0.36);
   animation: lendBeforeTag 6s ease-in-out infinite;
 }
 
 .lending-callout-after {
-  top: 128px;
-  right: 16px;
+  top: 166px;
+  right: 8px;
   color: rgba(180, 236, 194, 0.92);
   border-color: rgba(180, 236, 194, 0.36);
   animation: lendAfterTag 6s ease-in-out infinite;
@@ -6780,8 +6741,8 @@ textarea:focus {
 }
 
 .linkedin-system-dot {
-  width: 56px;
-  height: 56px;
+  width: 62px;
+  height: 62px;
   border-radius: 999px;
   border: 2px solid var(--pf-accent-color);
   display: inline-flex;
@@ -6791,6 +6752,8 @@ textarea:focus {
 }
 
 .linkedin-system-icon {
+  width: 28px;
+  height: 28px;
   filter: brightness(0) saturate(100%) invert(73%) sepia(56%) saturate(593%) hue-rotate(170deg) brightness(101%) contrast(99%);
 }
 
@@ -6819,7 +6782,7 @@ textarea:focus {
 }
 
 .linkedin-next-step {
-  width: min(60%, 100%);
+  width: min(70ch, 100%);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, auto);
@@ -6866,13 +6829,6 @@ textarea:focus {
     gap: 18px;
   }
 
-  .linkedin-hero-right {
-    width: 100%;
-    justify-self: center;
-    margin-top: 6px;
-    min-height: 330px;
-  }
-
   .linkedin-hero-left h1 {
     font-size: 46px;
     line-height: 1.06;
@@ -6890,14 +6846,9 @@ textarea:focus {
     flex-wrap: wrap;
   }
 
-  .linkedin-hero-metric-card {
-    width: calc(50% - 8px);
-    flex: 0 0 calc(50% - 8px);
-  }
-
-  .linkedin-hero-app-rail {
-    width: 100%;
-    justify-content: center;
+  .hero-metric-card {
+    flex: 1 1 calc(50% - 8px);
+    min-width: min(250px, 100%);
   }
 
   .linkedin-snapshot-grid {
@@ -6905,7 +6856,7 @@ textarea:focus {
   }
 
   .linkedin-system-steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     row-gap: 18px;
   }
 
@@ -6921,6 +6872,16 @@ textarea:focus {
 }
 
 @media (max-width: 719px) {
+  .linkedin-hero-shell-routing::after {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.92) 0%,
+        rgba(0, 0, 0, 0.82) 28%,
+        rgba(0, 0, 0, 0.45) 55%
+      );
+  }
+
   .linkedin-detail-page {
     --li-body: 15px;
     --li-body-sm: 12px;
@@ -6938,8 +6899,10 @@ textarea:focus {
     line-height: 1.5;
   }
 
-  .linkedin-hero-metric-card {
+  .hero-metric-card {
     width: 100%;
+    flex-basis: 100%;
+    min-width: 100%;
   }
 
   .linkedin-pair-row,

@@ -118,7 +118,7 @@ export function PortfolioHero({
         <div className="portfolio-template-hero-window">
           <div className="portfolio-template-hero-linkedin portfolio-template-hero-linkedin-app">
             <Image
-              src="/images/case-studies/linkedin-app-screen-1.png"
+              src="/images/case-studies/linkedin-workflow-hero.svg"
               alt=""
               aria-hidden
               width={200}
@@ -217,9 +217,9 @@ export function WorkflowDiagram({ imageSrc }: WorkflowDiagramProps) {
         <span>Performance Feedback Loop</span>
       </div>
       <div className="portfolio-template-app-shots" aria-label="Workflow app screens">
-        <Image src="/images/case-studies/linkedin-app-screen-1.png" alt="Topic Inbox mobile screen" width={340} height={680} />
-        <Image src="/images/case-studies/linkedin-app-screen-2.png" alt="Capture Opinion mobile screen" width={340} height={680} />
-        <Image src="/images/case-studies/linkedin-app-screen-3.png" alt="Draft Review mobile screen" width={340} height={680} />
+        <Image src="/images/case-studies/linkedin-workflow-hero.svg" alt="Topic Inbox mobile screen" width={340} height={680} />
+        <Image src="/images/case-studies/linkedin-workflow-hero.svg" alt="Capture Opinion mobile screen" width={340} height={680} />
+        <Image src="/images/case-studies/linkedin-workflow-hero.svg" alt="Draft Review mobile screen" width={340} height={680} />
       </div>
     </section>
   );

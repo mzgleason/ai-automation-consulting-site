@@ -1,7 +1,25 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Use - markzgleason.com",
+  description: "Terms of Use for markzgleason.com, including permitted use, intellectual property, and liability limitations.",
+  alternates: { canonical: "/terms" }
+};
+
 export default function TermsPage() {
+  const legalSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Terms of Use",
+    url: "https://markzgleason.com/terms",
+    datePublished: "2026-05-17",
+    dateModified: "2026-05-17"
+  };
+
   return (
     <section className="section section-top">
       <div className="container prose">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalSchema) }} />
         <h1>Terms of Use</h1>
         <p>
           <strong>Last updated:</strong> May 17, 2026

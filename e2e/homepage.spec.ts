@@ -32,7 +32,9 @@ test.describe("homepage staging checks", () => {
     } else {
     await expect(page.getByLabel("Primary").getByRole("link", { name: /^portfolio$/i })).toBeVisible();
     }
-    await expect(page.getByText(/real systems\.\s*real constraints\.\s*better ways to operate\./i)).toBeVisible();
+    await expect(
+      page.getByText(/operator-led product consultant.*ai-enabled workflows.*ship reliable operational outcomes/i)
+    ).toBeVisible();
   });
 
   test("desktop header shrinks, hides on downward scroll, and returns on upward scroll", async ({ page, browserName }, testInfo) => {

@@ -83,60 +83,13 @@
 .heroVisual {
   position: relative;
   overflow: hidden;
-  border-left: 1px solid var(--line);
-  background:
-    radial-gradient(circle at 56% 50%, rgba(132, 197, 255, 0.18), transparent 52%),
-    radial-gradient(circle at 60% 48%, rgba(255, 255, 255, 0.12), transparent 17%),
-    linear-gradient(120deg, rgba(88, 156, 224, 0.14), rgba(5, 14, 26, 0.7));
+  min-height: 560px;
+  background: #000;
 }
 
-.heroVisual::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-radial-gradient(circle at 62% 52%, rgba(195, 230, 255, 0.08) 0 1px, transparent 1px 15px),
-    repeating-linear-gradient(165deg, rgba(170, 217, 255, 0.12) 0 1px, transparent 1px 14px);
-  opacity: 0.34;
-}
-
-.heroVisual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 65% 42%, rgba(255, 255, 255, 0.11), transparent 6%),
-    radial-gradient(circle at 76% 56%, rgba(255, 255, 255, 0.08), transparent 5%),
-    radial-gradient(circle at 34% 66%, rgba(255, 255, 255, 0.08), transparent 5%),
-    radial-gradient(circle at 52% 72%, rgba(255, 255, 255, 0.08), transparent 5%),
-    radial-gradient(circle at 20% 20%, rgba(174, 220, 255, 0.06), transparent 60%);
-  opacity: 0.45;
-}
-
-.placeholderBadge {
-  position: absolute;
-  top: 1.05rem;
-  right: 1.05rem;
-  z-index: 2;
-  padding: 0.36rem 0.56rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: 1px dashed var(--line-strong);
-  background: rgba(0, 0, 0, 0.46);
-  color: rgba(202, 230, 250, 0.95);
-}
-
-.visualChip {
-  position: absolute;
-  z-index: 2;
-  padding: 0.45rem 0.72rem;
-  border: 1px solid var(--line);
-  font-size: 0.86rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(218, 236, 252, 0.92);
-  background: rgba(5, 13, 24, 0.52);
+.heroVisualImage {
+  object-fit: cover;
+  object-position: center;
 }
 
 .proofRow,
@@ -339,7 +292,6 @@
 
   .heroVisual {
     min-height: 300px;
-    border-left: 0;
     border-top: 1px solid var(--line);
   }
 

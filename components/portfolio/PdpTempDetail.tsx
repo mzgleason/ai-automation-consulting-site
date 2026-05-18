@@ -1,9 +1,7 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { LendingConciergeHeroVisual } from "@/components/portfolio/LendingConciergeHeroVisual";
-import RealtimeRoutingFieldHero from "@/components/portfolio/RealtimeRoutingFieldHero";
 
 type PdpTempDetailProps = {
   category: string;
@@ -13,6 +11,8 @@ type PdpTempDetailProps = {
   metricOneLabel: string;
   metricTwoValue: string;
   metricTwoLabel: string;
+  metricOneIconSrc?: string;
+  metricTwoIconSrc?: string;
   snapshot: Array<{ label: string; value: string }>;
   problemHeadline: string;
   problemBullets: string[];
@@ -27,9 +27,8 @@ type PdpTempDetailProps = {
   ctaBody: string;
   primaryCtaLabel: string;
   secondaryCtaLabel: string;
-  heroVisualVariant?: "default" | "lending-concierge";
-  heroVisualImageSrc?: string;
-  heroBackgroundVariant?: "none" | "realtime-routing-field";
+  heroBackgroundImageSrc?: string;
+  lastUpdated?: string;
 };
 
 export function PdpTempDetail({
@@ -40,6 +39,8 @@ export function PdpTempDetail({
   metricOneLabel,
   metricTwoValue,
   metricTwoLabel,
+  metricOneIconSrc = "/images/portfolio-icons/kpi-posts.svg",
+  metricTwoIconSrc = "/images/portfolio-icons/kpi-hours.svg",
   snapshot,
   problemHeadline,
   problemBullets,
@@ -54,15 +55,9 @@ export function PdpTempDetail({
   ctaBody,
   primaryCtaLabel,
   secondaryCtaLabel,
-  heroVisualVariant = "default",
-  heroVisualImageSrc,
-  heroBackgroundVariant = "none"
+  heroBackgroundImageSrc,
+  lastUpdated
 }: PdpTempDetailProps) {
-  const heroScreens = [
-    { key: "topic", src: "/images/case-studies/Topic Inbox Mock.png", alt: "Topic Inbox app screen" },
-    { key: "capture", src: "/images/case-studies/Capture Opinion Mock.png", alt: "Capture Opinion app screen" },
-    { key: "draft", src: "/images/case-studies/Draft Review Mock.png", alt: "Draft Review app screen" }
-  ] as const;
   const steps = systemSteps ?? [
     { name: "Capture", icon: "/images/portfolio-icons/capture.svg" },
     { name: "Extract", icon: "/images/portfolio-icons/extract.svg" },
@@ -70,33 +65,33 @@ export function PdpTempDetail({
     { name: "Review", icon: "/images/portfolio-icons/review.svg" },
     { name: "Publish", icon: "/images/portfolio-icons/publish.svg" }
   ];
-  const useHeroBackground = heroBackgroundVariant === "realtime-routing-field";
-
+  const useHeroBackground = Boolean(heroBackgroundImageSrc);
   return (
     <main className="section section-top portfolio-template-page">
       <div className="container portfolio-template-stack linkedin-detail-page">
         <section className={`linkedin-hero-shell${useHeroBackground ? " linkedin-hero-shell-routing" : ""}`} aria-label="Hero">
           {useHeroBackground ? (
             <div className="linkedin-hero-bg" aria-hidden>
-              <RealtimeRoutingFieldHero />
+              <Image src={heroBackgroundImageSrc!} alt="" fill sizes="100vw" className="linkedin-hero-bg-image" />
             </div>
           ) : null}
-          <div className={`linkedin-hero${useHeroBackground ? " linkedin-hero-no-right" : ""}`}>
+          <div className="linkedin-hero linkedin-hero-no-right">
             <div className="linkedin-hero-left">
               <Link href="/portfolio" className="text-link portfolio-template-back">Portfolio</Link>
               <p className="portfolio-template-pill">{category}</p>
               <h1>{title}</h1>
               <p>{summary}</p>
+              {lastUpdated ? <p><strong>Last updated:</strong> {lastUpdated}</p> : null}
               <div className="linkedin-hero-metrics">
-                <div className="linkedin-hero-metric-card">
-                  <Image src="/images/portfolio-icons/kpi-posts.svg" alt="" aria-hidden width={21} height={21} />
+                <div className="hero-metric-card">
+                  <Image src={metricOneIconSrc} alt="" aria-hidden width={21} height={21} />
                   <div>
                     <strong>{metricOneValue}</strong>
                     <span>{metricOneLabel}</span>
                   </div>
                 </div>
-                <div className="linkedin-hero-metric-card">
-                  <Image src="/images/portfolio-icons/kpi-hours.svg" alt="" aria-hidden width={21} height={14} />
+                <div className="hero-metric-card">
+                  <Image src={metricTwoIconSrc} alt="" aria-hidden width={21} height={14} />
                   <div>
                     <strong>{metricTwoValue}</strong>
                     <span>{metricTwoLabel}</span>
@@ -104,37 +99,6 @@ export function PdpTempDetail({
                 </div>
               </div>
             </div>
-            {!useHeroBackground ? <div className="linkedin-hero-right" aria-hidden>
-              {heroVisualImageSrc ? (
-                <Image src={heroVisualImageSrc} alt="" className="portfolio-project1-image" width={800} height={500} />
-              ) : heroVisualVariant === "lending-concierge" ? (
-                <LendingConciergeHeroVisual />
-              ) : (
-                <>
-                  <div className="linkedin-hero-rings" />
-                  <div className="linkedin-hero-app-rail">
-                    {heroScreens.map((screen, index) => {
-                      const isCenter = index === 1;
-                      return (
-                        <div
-                          key={screen.key}
-                          className={`linkedin-hero-app-static ${isCenter ? "is-center" : "is-side"}`}
-                          aria-label={screen.alt}
-                        >
-                          <Image
-                            src={screen.src}
-                            alt={screen.alt}
-                            width={isCenter ? 148 : 94}
-                            height={isCenter ? 300 : 190}
-                            className="linkedin-hero-app"
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
-            </div> : null}
           </div>
         </section>
 

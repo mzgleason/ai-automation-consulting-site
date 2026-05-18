@@ -1,6 +1,6 @@
 ---
 title: Building Operational Systems for Real-Time Marketplace Decisions
-slug: realtime-lead-buying
+slug: realtime-decision-routing-system
 summary: Helped launch a real-time bidding and routing platform used to evaluate, price, and purchase leads at scale while improving margin controls and operational visibility.
 date: 2026-05-09
 status: 0?1 launch
@@ -97,4 +97,5 @@ Improved pricing speed, tighter traffic controls, and a more scalable foundation
 ## Why this matters
 
 Building systems that depend on fast pricing and routing decisions requires scalable operational systems, pricing workflows, and real-time infrastructure that support growth without adding unnecessary complexity.
+
 

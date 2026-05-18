@@ -115,20 +115,29 @@
 .icon {
   display: grid;
   place-items: center;
+  width: 116px;
+  height: 116px;
+  overflow: hidden;
   color: color-mix(in srgb, var(--pc-ink, #12131a) 84%, var(--pc-accent, #3d63ff));
 }
 
 .iconSvg {
-  height: 88px;
-  width: auto;
+  width: 116px;
+  height: 116px;
 }
 
 .iconImg {
-  height: 88px;
-  width: auto;
-  max-width: none;
-  object-fit: contain;
+  width: 116px;
+  height: 116px;
+  max-width: 116px;
+  object-fit: cover;
+  object-position: center;
   display: block;
+}
+
+.iconImgRealtime {
+  transform: scale(1.32);
+  transform-origin: center;
 }
 
 .payoff {

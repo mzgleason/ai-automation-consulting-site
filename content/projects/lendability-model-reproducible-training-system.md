@@ -1,6 +1,6 @@
 ---
-title: Built a scoring system that improved lead distribution consistency across marketplace partners
-slug: lendability-model-reproducible-training-system
+title: Scoring workflow for more consistent allocation decisions
+slug: marketplace-scoring-system
 summary: Designed and operationalized a lead scoring workflow used to support fairer distribution decisions, improve routing confidence, and create more consistent allocation behavior across marketplace clients.
 date: 2026-04-04
 status: Marketplace systems
@@ -106,3 +106,4 @@ Python, Scoring Workflows, Marketplace Logic, Operational Reporting
 Want help building operational marketplace systems?
 
 I design practical scoring, routing, and workflow infrastructure that improves operational clarity and marketplace decision-making.
+

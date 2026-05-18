@@ -1,6 +1,6 @@
 ---
 title: Turn weekly work into publish-ready content.
-slug: ai-driven-linkedin-content-workflow
+slug: ai-content-publishing-workflow
 summary: Built a repeatable system that captures work, extracts strong story angles, drafts content, and keeps quality high through human review.
 date: 2026-05-17
 status: Active workflow
@@ -47,8 +47,8 @@ Subheadline: I was spending too much time turning rough ideas into posts. So I b
 
 Metrics:
 
-- 3 posts/wk — Consistent publishing cadence
-- ~70% faster drafting — Without lowering quality
+- 3 posts/wk â€” Consistent publishing cadence
+- ~70% faster drafting â€” Without lowering quality
 
 ## Project Snapshot
 
@@ -129,3 +129,4 @@ Secondary Button: Browse playbooks
 ## Footer Bio
 
 Operator-led product consulting focused on workflow systems, operational leverage, and practical AI-enabled execution.
+

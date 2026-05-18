@@ -209,6 +209,8 @@
 }
 
 .placeholder {
+  position: relative;
+  overflow: hidden;
   height: 100%;
   min-height: 320px;
   display: grid;
@@ -219,6 +221,11 @@
   font-weight: 700;
   text-transform: lowercase;
   letter-spacing: 0.04em;
+}
+
+.placeholderImage {
+  object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 1080px) {

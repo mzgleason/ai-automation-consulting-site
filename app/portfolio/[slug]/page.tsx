@@ -4,6 +4,13 @@ import { LinkedInPortfolioDetail } from "@/components/portfolio/LinkedInPortfoli
 import { PdpTempDetail } from "@/components/portfolio/PdpTempDetail";
 import { getProjectBySlug, getProjects } from "@/lib/content";
 
+const PROJECT_HERO_VISUAL_BY_SLUG: Record<string, string> = {
+  "realtime-decision-routing-system": "/images/portfolio/project-1-visual-v2.png",
+  "ai-content-publishing-workflow": "/images/portfolio/project-2-visual-v2.png",
+  "ai-intake-qualification-workflow": "/images/portfolio/project-3-visual-v2.png",
+  "marketplace-scoring-system": "/images/portfolio/project-4-visual-v2.png"
+};
+
 export async function generateStaticParams() {
   const projects = await getProjects();
   return projects.map((project) => ({ slug: project.slug }));
@@ -24,11 +31,20 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.summary,
+    alternates: { canonical: `/portfolio/${project.slug}` },
     openGraph: project.heroImage
       ? {
           images: [{ url: project.heroImage, alt: project.title }]
         }
-      : undefined
+      : {
+          images: [{ url: "/images/portfolio/project-1-visual.png", alt: "Mark Gleason portfolio case study visual" }]
+        },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Mark Gleason`,
+      description: project.summary,
+      images: [project.heroImage ?? "/images/portfolio/project-1-visual.png"]
+    }
   };
 }
 
@@ -44,131 +60,132 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
-  const isLinkedInWorkflow = slug === "ai-driven-linkedin-content-workflow";
-  const isLendingConcierge = slug === "ai-intern-lending-concierge-system";
-  const isAffiliatesLaunch = slug === "realtime-lead-buying";
+  const isLinkedInWorkflow = slug === "ai-content-publishing-workflow";
+  const isLendingConcierge = slug === "ai-intake-qualification-workflow";
+  const isAffiliatesLaunch = slug === "realtime-decision-routing-system";
   const isPdpTemp = slug === "pdpTemp";
+  const heroBackgroundImageSrc = PROJECT_HERO_VISUAL_BY_SLUG[slug];
+  const projectDate = project.date;
+  const schemaPayload = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    headline: project.title,
+    description: project.summary,
+    author: { "@type": "Person", name: "Mark Gleason" },
+    datePublished: project.date,
+    dateModified: project.date,
+    keywords: project.tags,
+    url: `https://markzgleason.com/portfolio/${project.slug}`,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://markzgleason.com/" },
+        { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://markzgleason.com/portfolio" },
+        { "@type": "ListItem", position: 3, name: project.title, item: `https://markzgleason.com/portfolio/${project.slug}` }
+      ]
+    }
+  };
 
   if (isLinkedInWorkflow) {
     return (
+      <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaPayload) }} />
       <LinkedInPortfolioDetail
         title="Human-guided AI LinkedIn publishing"
         summary="Built an AI-assisted workflow that turns weekly work into high-quality LinkedIn content at scale, without burning time or sacrificing quality."
+        heroBackgroundImageSrc={heroBackgroundImageSrc ?? "/images/portfolio/project-2-visual-v2.png"}
+        lastUpdated={projectDate}
         metrics={[
           { value: "3x posts/wk", label: "Publishing cadence" },
           { value: "~2+ hrs/wk", label: "Saved on content creation" }
         ]}
       />
+      </>
     );
   }
   if (isLendingConcierge) {
     return (
       <PdpTempDetail
         category="SALES OPERATIONS"
-        title="Automated Lead Qualification Before Human Follow-Up"
-        summary="I built an AI-assisted qualification workflow that called incomplete leads, collected missing application details, updated operational systems automatically, and prepared cleaner handoffs for human sales reps."
-        metricOneValue="~40%"
-        metricOneLabel="Faster lead qualification"
-        metricTwoValue="~60%"
-        metricTwoLabel="Faster application review"
+        title="AI-Assisted Intake Handling Before Sales Team Review"
+        summary="I built an AI-assisted intake triage prototype that handled repetitive early-stage conversations, filtered low-quality operational work before sales team engagement, and escalated qualified opportunities to sales reps with structured context attached."
+        metricOneValue="~35%"
+        metricOneLabel="More sales rep time spent on qualified opportunities"
+        metricTwoValue="~50%"
+        metricTwoLabel="Reduction in repetitive intake and follow-up work"
         snapshot={[
-          { label: "Type", value: "Operator-led workflow automation project" },
-          { label: "Problem", value: "Sales reps spent too much time repeating intake questions and manually updating incomplete lead records before follow-up conversations could begin." },
-          { label: "Solution", value: "Built an AI-assisted intake workflow using n8n and VAPI to collect missing qualification details, sync operational systems, schedule follow-ups, and prepare structured summaries for sales reps." },
-          { label: "Outcome", value: "Cleaner lead records, faster qualification review, reduced repetitive admin work, and more consistent human handoffs." },
-          { label: "Tools & Systems", value: "n8n workflows, VAPI voice agents, Google Sheets operations tracking, calendar-aware scheduling, CRM synchronization, structured qualification pipelines" }
+          { label: "Type", value: "Operational intake automation prototype" },
+          { label: "Problem", value: "Sales and operations teams were spending too much time on repetitive intake cleanup before meaningful conversations and decisions could happen." },
+          { label: "Solution", value: "Built an operational triage prototype using n8n and VAPI to automate intake collection, synchronize records, and apply qualification and escalation rules before sales team review." },
+          { label: "Outcome", value: "Reduced repetitive intake work, improved sales handoffs, and allowed teams to focus more attention on high-value conversations and edge cases." },
+          { label: "Tools & Systems", value: "n8n workflows, VAPI voice agents, Google Sheets operations tracking, calendar-aware scheduling, CRM synchronization, escalation routing logic" }
         ]}
-        problemHeadline="Lead qualification work was slowing down the sales process."
+        problemHeadline="Repetitive intake work was consuming employee time before real decisions could start."
         problemBullets={[
-          "Lead records often entered review missing key qualification details.",
-          "Reps repeated the same intake conversations across large lead volumes.",
+          "Incoming records often entered review with missing context and inconsistent structure.",
+          "Team members repeated the same intake collection work across high volumes.",
           "Operational updates were manually copied across systems.",
-          "Follow-up scheduling depended heavily on rep availability.",
-          "CRM records required cleanup before meaningful sales conversations could happen.",
-          "High-intent leads were delayed by repetitive admin work."
+          "Sales handoffs were inconsistent because qualification and escalation rules were not clearly defined.",
+          "CRM records required cleanup before meaningful follow-up could happen.",
+          "High-value opportunities were delayed by incomplete intake and repetitive operational tasks."
         ]}
-        approachHeadline="Move repetitive qualification work earlier in the workflow."
+        approachHeadline="Shift repetitive intake handling into an automated triage layer."
         approachSteps={[
-          "Detect incomplete lead records: n8n monitored operational lead lists and identified applications missing required qualification details.",
-          "Launch AI qualification calls: VAPI voice agents contacted leads automatically to collect missing intake information.",
-          "Pull operational context: The AI assistant referenced calendars, project notes, and operational tracking systems during conversations.",
-          "Update operational systems: Structured summaries, qualification fields, and scheduling updates were written back automatically.",
-          "Escalate qualified opportunities: High-intent or edge-case leads were routed to human reps for direct follow-up."
+          "Detect incomplete records: n8n monitored intake queues and flagged requests missing required context.",
+          "Run AI outreach: VAPI agents handled repetitive early-stage conversations to fill data gaps.",
+          "Synchronize structured data: Summaries, fields, and scheduling updates were written back automatically.",
+          "Route based on qualification signals: Workflow rules separated low-quality intake work from sales escalation candidates.",
+          "Escalate qualified cases: High-intent or edge-case requests were handed to sales reps with structured conversation context attached."
         ]}
-        systemHeadline="How the operational workflow functioned."
+        systemHeadline="Operational triage system for protecting sales team focus."
         systemSteps={[
           { name: "Detect", icon: "/images/portfolio-icons/target.svg" },
-          { name: "Qualify", icon: "/images/portfolio-icons/capture.svg" },
+          { name: "Qualify", icon: "/images/portfolio-icons/review.svg" },
           { name: "Synchronize", icon: "/images/portfolio-icons/data-2.svg" },
-          { name: "Escalate", icon: "/images/portfolio-icons/branch.svg" }
+          { name: "Route", icon: "/images/portfolio-icons/branch.svg" },
+          { name: "Escalate", icon: "/images/portfolio-icons/capture.svg" }
         ]}
         supportTags={[
           "Voice AI",
-          "Qualification Workflows",
-          "Operational Automation",
+          "Operational Triage",
+          "Lead Qualification Workflow",
           "CRM Synchronization",
-          "Human Handoff Logic",
+          "Sales Rep Handoff Rules",
           "Scheduling Automation",
-          "Structured Intake Systems",
-          "AI-Assisted Operations"
+          "Structured Intake Collection",
+          "AI-Assisted Intake Operations"
         ]}
         insights={[
           "AI performs best on repetitive operational conversations.",
           "Structured intake flows improve downstream review quality.",
           "Fast operational synchronization reduces rep friction.",
-          "Human escalation logic matters more than conversational complexity.",
+          "Sales escalation logic matters more than conversational complexity.",
           "Qualification workflows work best with tightly defined schemas."
         ]}
         lessons={[
-          "Narrow operational workflows outperform broad AI assistants.",
-          "Human review checkpoints remain important for edge cases.",
-          "Qualification systems fail when required fields are loosely defined.",
-          "AI workflows become more reliable when escalation paths are explicit.",
-          "Operational clarity matters more than conversational realism."
+          "AI works best inside tightly scoped operational workflows.",
+          "Escalation logic matters more than conversational realism.",
+          "Structured intake improves downstream workflow quality.",
+          "Sales team review remains critical for edge cases and high-value conversations.",
+          "Operational clarity beats feature complexity."
         ]}
-        ctaHeadline="Building practical AI workflows for operational teams"
-        ctaBody="I design AI-assisted operational systems that reduce repetitive admin work, improve workflow quality, and keep human teams focused on higher-value decisions."
+        ctaHeadline="Building operational systems that protect sales team focus"
+        ctaBody="I design AI-assisted operational workflows that reduce repetitive intake work, improve sales handoffs, and help teams spend more time on high-value conversations and decisions."
         primaryCtaLabel="Start a conversation"
         secondaryCtaLabel="Browse playbooks"
-        heroVisualVariant="lending-concierge"
+        heroBackgroundImageSrc={heroBackgroundImageSrc ?? "/images/portfolio/project-3-visual-v2.png"}
+        lastUpdated={projectDate}
       />
     );
   }
-  if (isPdpTemp) {
-    return (
-      <PdpTempDetail
-        category="[Category placeholder]"
-        title="[Project title placeholder]"
-        summary="[Project summary placeholder]"
-        metricOneValue="[Metric value 1]"
-        metricOneLabel="[Metric label 1]"
-        metricTwoValue="[Metric value 2]"
-        metricTwoLabel="[Metric label 2]"
-        snapshot={[
-          { label: "Type", value: "[Type placeholder]" },
-          { label: "Problem", value: "[Problem summary placeholder]" },
-          { label: "Solution", value: "[Solution summary placeholder]" },
-          { label: "Outcome", value: "[Outcome placeholder]" },
-          { label: "Tools & Systems", value: "[Tools and systems placeholder]" }
-        ]}
-        problemHeadline="[Problem headline placeholder]"
-        problemBullets={["[Problem bullet 1]", "[Problem bullet 2]", "[Problem bullet 3]", "[Problem bullet 4]"]}
-        approachHeadline="[Approach headline placeholder]"
-        approachSteps={["[Approach step 1]", "[Approach step 2]", "[Approach step 3]", "[Approach step 4]", "[Approach step 5]"]}
-        systemHeadline="[System headline placeholder]"
-        supportTags={["[Support tag 1]", "[Support tag 2]", "[Support tag 3]", "[Support tag 4]", "[Support tag 5]", "[Support tag 6]"]}
-        insights={["[Insight 1]", "[Insight 2]", "[Insight 3]", "[Insight 4]"]}
-        lessons={["[Lesson 1]", "[Lesson 2]", "[Lesson 3]"]}
-        ctaHeadline="[CTA headline placeholder]"
-        ctaBody="[CTA body placeholder]"
-        primaryCtaLabel="[Primary CTA label]"
-        secondaryCtaLabel="[Secondary CTA label]"
-      />
-    );
-  }
+  if (isPdpTemp) notFound();
+
   if (isAffiliatesLaunch) {
     return (
+      <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaPayload) }} />
       <PdpTempDetail
+        lastUpdated={projectDate}
         category="REAL-TIME BUYER / SELLER SYSTEMS"
         title="Building Operational Systems for Real-Time Marketplace Decisions"
         summary="Built operational routing infrastructure that helped marketplace teams react faster, apply business logic earlier, and manage traffic more intentionally in real time."
@@ -176,6 +193,7 @@ export default async function ProjectDetailPage({
         metricOneLabel="Routing and marketplace decisions"
         metricTwoValue="Flexible"
         metricTwoLabel="Partner controls and workflow automation"
+        metricOneIconSrc="/images/portfolio-icons/activity.svg"
         snapshot={[
           { label: "Type", value: "Marketplace workflow launch and operational rollout" },
           { label: "Problem", value: "Routing decisions were delayed by operational handoffs, inconsistent partner logic, and workflows that could not react fast enough to marketplace changes." },
@@ -190,7 +208,7 @@ export default async function ProjectDetailPage({
           "Teams were reacting to marketplace changes too late because routing visibility was fragmented across systems.",
           "The system needed partner flexibility without degrading customer experience."
         ]}
-        approachHeadline="Design a routing system, then operationalize it."
+        approachHeadline="Move routing decisions earlier and make controls configurable."
         approachSteps={[
           "Translate marketplace constraints into routing logic teams could actually operate against.",
           "Design operational decision flows that could react to marketplace conditions in real time.",
@@ -198,7 +216,7 @@ export default async function ProjectDetailPage({
           "Expose routing visibility earlier so operational teams could identify issues before performance degraded.",
           "Keep operational, product, and engineering decisions aligned as the system evolved."
         ]}
-        systemHeadline="A repeatable flow from intake to routed outcomes."
+        systemHeadline="What is the routing system and why it matters: intake-to-route decisions become faster, clearer, and easier to govern at scale."
         systemSteps={[
           { name: "Ingest", icon: "/images/portfolio-icons/receive.svg" },
           { name: "Enrich", icon: "/images/portfolio-icons/data-2.svg" },
@@ -229,11 +247,16 @@ export default async function ProjectDetailPage({
         ctaBody="This system was designed to improve marketplace responsiveness, reduce operational friction, and make routing decisions easier to manage at scale without creating unnecessary process overhead."
         primaryCtaLabel="Start a conversation"
         secondaryCtaLabel="Browse playbooks"
-        heroBackgroundVariant="realtime-routing-field"
+        heroBackgroundImageSrc={heroBackgroundImageSrc ?? "/images/portfolio/project-1-visual-v2.png"}
       />
+      </>
     );
-  }  return (
+  }
+  return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaPayload) }} />
     <PdpTempDetail
+      lastUpdated={projectDate}
       category={project.category.toUpperCase()}
       title={project.title}
       summary={project.summary}
@@ -248,11 +271,11 @@ export default async function ProjectDetailPage({
         { label: "Outcome", value: project.outcomes.join(" | ") },
         { label: "Tools & Systems", value: project.tools.slice(0, 5).join(", ") }
       ]}
-      problemHeadline={project.sections.problem?.heading ?? "Core execution problem"}
+      problemHeadline={project.sections.problem?.heading ?? "What problem did this system solve?"}
       problemBullets={project.outcomes.slice(0, 4)}
-      approachHeadline={project.sections.approach?.heading ?? "Build a staged, controlled workflow"}
+      approachHeadline={project.sections.approach?.heading ?? "How was the system implemented?"}
       approachSteps={project.tools.slice(0, 5)}
-      systemHeadline={project.sections.system?.heading ?? "A repeatable system with explicit controls and handoffs."}
+      systemHeadline={project.sections.system?.heading ?? "What is the system and why does it matter for operational outcomes?"}
       supportTags={project.tags.slice(0, 6)}
       insights={project.outcomes.slice(0, 4)}
       lessons={[
@@ -264,7 +287,9 @@ export default async function ProjectDetailPage({
       ctaBody="I build practical AI and automation systems that improve speed, quality, and decision confidence."
       primaryCtaLabel={project.ctaLabel ?? "Start a conversation"}
       secondaryCtaLabel="Browse playbooks"
-    />
+      heroBackgroundImageSrc={heroBackgroundImageSrc}
+      />
+    </>
   );
 }
 

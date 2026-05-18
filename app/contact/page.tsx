@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/Button";
 import { CONTACT_CALENDLY_URL, CONTACT_EMAIL, CONTACT_LINKEDIN_URL } from "@/lib/contact";
+import type { Metadata } from "next";
+import Image from "next/image";
 import styles from "./ContactPage.module.css";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Schedule a consultation with Mark Gleason to analyze workflow systems, constraints, and execution priorities.",
+  alternates: { canonical: "/contact" }
+};
 
 function MailIcon() {
   return (
@@ -98,8 +106,32 @@ function ArrowIcon() {
 }
 
 export default function ContactPage() {
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What can I expect from a working session?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "A focused walkthrough of your current workflow, constraint analysis, and clear recommendations for what to change, build, or remove."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Who is this session for?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Operators, product teams, and founders who need practical AI-enabled workflow systems with clear execution priorities."
+        }
+      }
+    ]
+  };
+
   return (
     <main className={`section section-top ${styles.page}`}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
       <div className={`container ${styles.container}`}>
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
@@ -113,12 +145,15 @@ export default function ContactPage() {
               <span className={styles.ctaInner}><CalendarIcon />Pressure-test the workflow</span>
             </Button>
           </div>
-          <div className={styles.heroVisual} aria-label="Workflow visual placeholder">
-            <div className={styles.placeholderBadge}>Placeholder 1</div>
-            <span className={styles.visualChip} style={{ top: "18%", left: "26%" }}>Inputs</span>
-            <span className={styles.visualChip} style={{ top: "42%", left: "52%" }}>Decisions</span>
-            <span className={styles.visualChip} style={{ top: "65%", left: "32%" }}>Bottlenecks</span>
-            <span className={styles.visualChip} style={{ top: "54%", left: "78%" }}>Outputs</span>
+          <div className={styles.heroVisual} aria-label="Workflow visual">
+            <Image
+              src="/images/contact-page-hero-visual.png"
+              alt="Clarity through conversation workflow sketch"
+              fill
+              sizes="(max-width: 980px) 100vw, 55vw"
+              className={styles.heroVisualImage}
+              priority
+            />
           </div>
         </section>
 

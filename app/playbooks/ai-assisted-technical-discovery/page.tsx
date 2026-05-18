@@ -3,8 +3,15 @@ import { Grid12 } from "@/components/playbook/Grid12";
 import { PageShell } from "@/components/playbook/PageShell";
 import { SectionContainer } from "@/components/playbook/SectionContainer";
 import { SystemContainer } from "@/components/playbook/SystemContainer";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "AI-Assisted Technical Discovery",
+  description: "A practical playbook for using AI to accelerate technical discovery while preserving system-level product and engineering clarity.",
+  alternates: { canonical: "/playbooks/ai-assisted-technical-discovery" }
+};
 
 export default function AITechnicalDiscoveryPlaybookPage() {
   return (
@@ -30,6 +37,7 @@ export default function AITechnicalDiscoveryPlaybookPage() {
                   begins.
                 </p>
                 <p className="pb-support">System-Aware Product Discovery For Complex Platforms</p>
+                <p className="pb-support">Last updated: 2026-05-17</p>
               </EditorialContainer>
             </div>
 

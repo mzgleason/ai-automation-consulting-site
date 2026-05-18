@@ -41,12 +41,6 @@ function formatCount(value: number) {
   return String(value).padStart(2, "0");
 }
 
-function relativeOffset(index: number, active: number, length: number) {
-  const raw = index - active;
-  const alt = raw > 0 ? raw - length : raw + length;
-  return Math.abs(raw) <= Math.abs(alt) ? raw : alt;
-}
-
 export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProps) {
   const shouldReduceMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -113,19 +107,14 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
 
   const visible = useMemo(() => {
     if (!hasCarousel) return featured.slice(0, 1);
-
-    const indices = new Set<number>();
-    for (let offset = -2; offset <= 2; offset += 1) {
-      indices.add(wrapIndex(activeIndex + offset, length));
-    }
-    return [...indices].sort((a, b) => a - b).map((index) => featured[index]);
-  }, [activeIndex, featured, hasCarousel, length]);
+    return featured;
+  }, [featured, hasCarousel]);
 
   const iconBySlug = useMemo(
     () =>
       new Map<string, ComponentType<{ className?: string }>>([
-        ["lendability-model-reproducible-training-system", ModelOpsLoopIcon],
-        ["ai-driven-linkedin-content-workflow", ContentEngineBlocksIcon]
+        ["marketplace-scoring-system", ModelOpsLoopIcon],
+        ["ai-content-publishing-workflow", ContentEngineBlocksIcon]
       ]),
     []
   );
@@ -133,10 +122,10 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
   const pngIconBySlug = useMemo(
     () =>
       new Map<string, string>([
-        ["ai-driven-linkedin-content-workflow", "/images/icons/gemini-linkedin-workflow.png"],
-        ["ai-intern-lending-concierge-system", "/images/icons/gemini-ai-intake-assistant.png"],
-        ["lendability-model-reproducible-training-system", "/images/icons/gemini-model-ops-system.png"],
-        ["realtime-lead-buying", "/images/icons/realtime-lead-buying-iconography.png"]
+        ["ai-content-publishing-workflow", "/images/icons/gemini-linkedin-workflow.png"],
+        ["ai-intake-qualification-workflow", "/images/icons/gemini-ai-intake-assistant.png"],
+        ["marketplace-scoring-system", "/images/icons/gemini-model-ops-system.png"],
+        ["realtime-decision-routing-system", "/images/icons/realtime-lead-buying-iconography.png"]
       ]),
     []
   );
@@ -169,7 +158,7 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
           <div className={styles.track} aria-live="polite">
             {visible.map((project) => {
               const index = featuredIndexBySlug.get(project.slug) ?? 0;
-              const offset = hasCarousel ? relativeOffset(index, activeIndex, length) : 0;
+              const offset = hasCarousel ? index - activeIndex : 0;
               const proof = proofCopy[project.slug];
 
               const cardTitle = proof?.displayTitle ?? project.title;
@@ -221,7 +210,14 @@ export function PortfolioCarousel({ projects, proofCopy }: PortfolioCarouselProp
                   <div className={styles.body}>
                     <div className={styles.icon} aria-hidden="true">
                       {pngIconSrc ? (
-                        <Image className={styles.iconImg} src={pngIconSrc} alt="" aria-hidden="true" width={88} height={88} />
+                        <Image
+                          className={`${styles.iconImg}${project.slug === "realtime-decision-routing-system" ? ` ${styles.iconImgRealtime}` : ""}`}
+                          src={pngIconSrc}
+                          alt=""
+                          aria-hidden="true"
+                          width={116}
+                          height={116}
+                        />
                       ) : Icon ? (
                         <Icon className={styles.iconSvg} />
                       ) : null}

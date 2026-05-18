@@ -4,7 +4,7 @@ test.describe("portfolio project template", () => {
   test.describe.configure({ timeout: 60_000 });
 
   test("renders reusable case study sections in order across breakpoints", async ({ page }) => {
-    await page.goto("/portfolio/ai-driven-linkedin-content-workflow", {
+    await page.goto("/portfolio/ai-content-publishing-workflow", {
       waitUntil: "domcontentloaded",
       timeout: 60_000
     });

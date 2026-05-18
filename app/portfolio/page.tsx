@@ -10,14 +10,15 @@ import { PortfolioHeroScrollCta } from "@/components/portfolio/PortfolioHeroScro
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "Operational systems designed to improve decision speed, team throughput, and measurable business outcomes."
+    "Case studies on operator-led AI workflows, routing systems, and marketplace operations with clear implementation outcomes.",
+  alternates: { canonical: "/portfolio" }
 };
 
 type PortfolioSlug =
-  | "realtime-lead-buying"
-  | "ai-driven-linkedin-content-workflow"
-  | "ai-intern-lending-concierge-system"
-  | "lendability-model-reproducible-training-system";
+  | "realtime-decision-routing-system"
+  | "ai-content-publishing-workflow"
+  | "ai-intake-qualification-workflow"
+  | "marketplace-scoring-system";
 
 type PortfolioCardConfig = {
   title: string;
@@ -25,66 +26,56 @@ type PortfolioCardConfig = {
 };
 
 const portfolioCardConfig: Record<PortfolioSlug, PortfolioCardConfig> = {
-  "realtime-lead-buying": {
+  "realtime-decision-routing-system": {
     title: "Lead bidding system for faster accept/reject decisions.",
     body: "Built a left-to-right decision engine that screened, scored, priced, and routed leads in milliseconds so teams could act faster with tighter margin control."
   },
-  "ai-driven-linkedin-content-workflow": {
+  "ai-content-publishing-workflow": {
     title: "Editorial production workflow for consistent weekly publishing.",
     body: "Replaced ad hoc drafting with a queue-based workflow that moved ideas through review states into a predictable publishing timeline."
   },
-  "ai-intern-lending-concierge-system": {
-    title: "Voice AI intake system that converts calls into CRM-ready outcomes.",
+  "ai-intake-qualification-workflow": {
+    title: "Voice AI intake system that converts conversations into CRM-ready outcomes.",
     body: "Designed a live conversation workflow that captured missing details and synced structured qualification data into CRM before human follow-up."
   },
-  "lendability-model-reproducible-training-system": {
-    title: "Controlled model training workflow with reliable release governance.",
-    body: "Standardized experiment tracking, evaluation gates, and release states so model updates could move from testing to production with less risk."
+  "marketplace-scoring-system": {
+    title: "Scoring workflow for more consistent allocation decisions.",
+    body: "Built a repeatable scoring and decision workflow that improved consistency, governance, and confidence in marketplace allocation behavior."
   }
 };
 
 function ProjectVisual({ slug, title }: { slug: PortfolioSlug; title: string }) {
-  if (slug === "realtime-lead-buying") {
+  if (slug === "realtime-decision-routing-system") {
     return (
       <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
-        <Image src="/images/portfolio/project-1-visual.png" alt="" className="portfolio-project1-image" width={800} height={500} />
+        <Image src="/images/portfolio/project-1-visual-v2.png" alt="" className="portfolio-project1-image" width={800} height={500} />
         <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
   }
 
-  if (slug === "ai-driven-linkedin-content-workflow") {
+  if (slug === "ai-content-publishing-workflow") {
     return (
       <div className="portfolio-index-card-visual portfolio-editorial-visual" aria-hidden>
-        <p className="portfolio-mobile-title">{title}</p>
-        <div className="portfolio-linkedin-phone-row">
-          <div className="portfolio-linkedin-phone-frame">
-            <Image src="/images/case-studies/Topic Inbox Mock.png" alt="" className="portfolio-linkedin-phone-image" width={240} height={480} />
-          </div>
-          <div className="portfolio-linkedin-phone-frame">
-            <Image src="/images/case-studies/Capture Opinion Mock.png" alt="" className="portfolio-linkedin-phone-image portfolio-linkedin-phone-image-capture" width={240} height={480} />
-          </div>
-          <div className="portfolio-linkedin-phone-frame">
-            <Image src="/images/case-studies/Draft Review Mock.png" alt="" className="portfolio-linkedin-phone-image" width={240} height={480} />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (slug === "ai-intern-lending-concierge-system") {
-    return (
-      <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
-        <Image src="/images/portfolio/project-3-visual.png" alt="" className="portfolio-project3-image" width={800} height={500} />
+        <Image src="/images/portfolio/project-2-visual-v2.png" alt="" className="portfolio-project1-image" width={800} height={500} />
         <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
   }
 
-  if (slug === "lendability-model-reproducible-training-system") {
+  if (slug === "ai-intake-qualification-workflow") {
     return (
       <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
-        <Image src="/images/portfolio/project-4-visual.png" alt="" className="portfolio-project4-image" width={800} height={500} />
+        <Image src="/images/portfolio/project-3-visual-v2.png" alt="" className="portfolio-project3-image" width={800} height={500} />
+        <p className="portfolio-mobile-title">{title}</p>
+      </div>
+    );
+  }
+
+  if (slug === "marketplace-scoring-system") {
+    return (
+      <div className="portfolio-index-card-visual portfolio-system-visual" aria-hidden>
+        <Image src="/images/portfolio/project-4-visual-v2.png" alt="" className="portfolio-project4-image" width={800} height={500} />
         <p className="portfolio-mobile-title">{title}</p>
       </div>
     );
@@ -105,6 +96,9 @@ export default async function ProjectsPage() {
           <section className="pb-library-hero portfolio-library-hero" aria-label="Portfolio hero">
             <div className="pb-library-hero-copy">
               <h1 className="pb-library-title portfolio-hero-title">PORTFOLIO</h1>
+              <p className="pb-body">
+                Operational and AI workflow case studies showing the problem, implementation approach, and measurable outcome.
+              </p>
               <PortfolioHeroScrollCta />
             </div>
           </section>
@@ -133,6 +127,8 @@ export default async function ProjectsPage() {
     </PageShell>
   );
 }
+
+
 
 
 

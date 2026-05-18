@@ -1,7 +1,25 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - markzgleason.com",
+  description: "Privacy Policy for markzgleason.com covering data collection, usage, sharing, retention, and contact details.",
+  alternates: { canonical: "/privacy" }
+};
+
 export default function PrivacyPage() {
+  const legalSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Privacy Policy",
+    url: "https://markzgleason.com/privacy",
+    datePublished: "2026-05-17",
+    dateModified: "2026-05-17"
+  };
+
   return (
     <section className="section section-top">
       <div className="container prose">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalSchema) }} />
         <h1>Privacy Policy</h1>
         <p>
           <strong>Last updated:</strong> May 17, 2026
