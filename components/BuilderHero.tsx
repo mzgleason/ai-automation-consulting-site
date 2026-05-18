@@ -143,7 +143,7 @@ export function BuilderHero(_props: BuilderHeroProps) {
 
       <div className={styles.overlay} ref={overlayRef}>
         <div className={styles.textStage}>
-          <h1 className={styles.srOnly}>Turn ambiguous operations into executable systems</h1>
+          <h1 className={styles.srOnly}>Systems powering modern operations</h1>
           <div
             className={styles.headlineStage}
             aria-hidden="true"
@@ -151,16 +151,16 @@ export function BuilderHero(_props: BuilderHeroProps) {
             data-ready={headlineReady && loaderComplete ? "true" : "false"}
           >
             <span className={`${styles.phrase} ${styles.phraseBuild}`} ref={phraseBuildRef}>
-              TURN AMBIGUOUS
+              SYSTEMS
             </span>
             <span className={`${styles.phrase} ${styles.phraseThat}`} ref={phraseThatRef}>
-              OPERATIONS
+              POWERING
             </span>
             <span className={`${styles.phrase} ${styles.phraseDo}`} ref={phraseDoRef}>
-              INTO
+              MODERN
             </span>
             <span className={`${styles.phrase} ${styles.phraseWork}`} ref={phraseWorkRef}>
-              EXECUTABLE SYSTEMS
+              OPERATIONS
             </span>
           </div>
         </div>
