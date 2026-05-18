@@ -13,13 +13,11 @@ Next.js website for Mark Gleason's AI consulting business.
 ## Repo layout
 - `app/`: routes, layouts, and page entrypoints
 - `components/`: shared UI and page-building components
-- `content/`: markdown content for pages, projects, and writing
+- `content/`: markdown content for pages and projects
 - `lib/`: content loaders, offer definitions, analytics, and form logic
 - `public/`: static assets
 - `tests/`: unit tests with Vitest
 - `e2e/`: browser tests with Playwright
-- `docs/`: product, brand, content, and planning docs
-- `prompts/`: saved AI-agent prompt templates and working prompts
 
 ## Site map
 - `/` (Home)

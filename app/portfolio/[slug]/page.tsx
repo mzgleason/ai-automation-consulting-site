@@ -37,13 +37,13 @@ export async function generateMetadata({
           images: [{ url: project.heroImage, alt: project.title }]
         }
       : {
-          images: [{ url: "/images/portfolio/project-1-visual.png", alt: "Mark Gleason portfolio case study visual" }]
+          images: [{ url: "/images/portfolio/project-1-visual-v2.png", alt: "Mark Gleason portfolio case study visual" }]
         },
     twitter: {
       card: "summary_large_image",
       title: `${project.title} | Mark Gleason`,
       description: project.summary,
-      images: [project.heroImage ?? "/images/portfolio/project-1-visual.png"]
+      images: [project.heroImage ?? "/images/portfolio/project-1-visual-v2.png"]
     }
   };
 }
