@@ -31,24 +31,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.markzgleason.com" }],
-        destination: "https://markzgleason.com/:path*",
-        permanent: true
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "markgleason.ai" }],
-        destination: "https://markzgleason.com/:path*",
-        permanent: true
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.markgleason.ai" }],
-        destination: "https://markzgleason.com/:path*",
-        permanent: true
-      },
-      {
         source: "/projects",
         destination: "/portfolio",
         statusCode: 301
